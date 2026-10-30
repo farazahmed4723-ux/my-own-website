@@ -3,15 +3,27 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { FileText } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Terms and Conditions | AI by Faraz",
+import { buildBreadcrumbJsonLd, buildPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Terms & Conditions",
   description:
-    "Terms and Conditions governing digital development, website consulting, and AI automation services provided by Faraz Ahmed.",
-};
+    "Terms and Conditions governing digital engineering, website development, Shopify e-commerce, and AI automation services provided by Faraz Ahmed.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Terms & Conditions", path: "/terms" },
+  ]);
+
   return (
     <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-[#060813]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="max-w-4xl mx-auto">
         <div className="mb-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-purple-400">
           <Link href="/" className="hover:text-white transition-colors">

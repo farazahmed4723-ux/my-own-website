@@ -33,6 +33,12 @@ const iconMap: Record<string, React.ElementType> = {
   Terminal,
 };
 
+import {
+  buildBreadcrumbJsonLd,
+  buildPageMetadata,
+  buildServiceDetailJsonLd,
+} from "@/lib/seo";
+
 export async function generateStaticParams() {
   return servicesData.map((service) => ({
     slug: service.slug,
@@ -45,14 +51,12 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     return { title: "Service Not Found" };
   }
 
-  return {
-    title: `${service.title} | AI by Faraz`,
-    description: service.shortDescription,
-    openGraph: {
-      title: `${service.title} | AI by Faraz`,
-      description: service.shortDescription,
-    },
-  };
+  return buildPageMetadata({
+    title: `${service.title} — ${service.tagline}`,
+    description: `${service.shortDescription} Engineered by Faraz Ahmed (${service.technologies.slice(0, 4).join(", ")}).`,
+    path: `/services/${service.slug}`,
+    keywords: [service.title, service.badge, ...service.technologies],
+  });
 }
 
 export default function ServiceDetailPage({ params }: ServicePageProps) {
@@ -63,9 +67,23 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
   }
 
   const Icon = iconMap[service.icon] || Code;
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: service.title, path: `/services/${service.slug}` },
+  ]);
+  const serviceJsonLd = buildServiceDetailJsonLd(service);
 
   return (
     <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-[#060813]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
       <div className="max-w-5xl mx-auto">
         {/* Back Link & Breadcrumbs */}
         <div className="flex items-center justify-between mb-8">

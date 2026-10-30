@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk, Caveat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingSocialBar from "@/components/FloatingSocialBar";
 import AIChatBot from "@/components/AIChatBot";
+import { buildGlobalGraphJsonLd, SITE_NAME, SITE_URL, FOUNDER_NAME } from "@/lib/seo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,31 +25,47 @@ const caveat = Caveat({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#060813" },
+    { media: "(prefers-color-scheme: light)", color: "#F8FAFC" },
+  ],
+};
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aibyfaraz.com"),
+  metadataBase: new URL(SITE_URL),
+  applicationName: SITE_NAME,
+  category: "technology",
   title: {
-    default: "AI by Faraz | Web Developer & AI Solutions Specialist",
-    template: "%s | AI by Faraz",
+    default: `${SITE_NAME} | Web Developer & AI Solutions Specialist (${FOUNDER_NAME})`,
+    template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Official portfolio and digital agency website for AI by Faraz, owned by Faraz Ahmed. Specializing in WordPress, Next.js, modern web applications, AI chatbots, and intelligent automation systems.",
+    "Official portfolio and digital engineering studio of Faraz Ahmed (AI by Faraz). Building high-converting Next.js & WordPress websites, Shopify stores, custom 24/7 AI chatbots, autonomous AI agents, and CRM workflow automations.",
   keywords: [
     "AI by Faraz",
     "Faraz Ahmed",
-    "Web Developer",
+    "Faraz Ahmed Web Developer",
     "AI Solutions Specialist",
-    "WordPress Developer",
     "Next.js Developer",
-    "AI Chatbots",
-    "AI Automation",
+    "WordPress Developer",
+    "Custom AI Chatbots",
+    "AI Automation Agency",
     "Autonomous AI Agents",
-    "E-commerce Developer",
-    "Elite Class Limo Developer",
+    "Shopify E-commerce Developer",
+    "WooCommerce Developer",
+    "Supabase Full-Stack Developer",
     "Toronto Web Developer",
+    "Canada AI Consultant",
   ],
-  authors: [{ name: "Faraz Ahmed", url: "https://aibyfaraz.com" }],
-  creator: "Faraz Ahmed",
-  publisher: "AI by Faraz",
+  authors: [{ name: FOUNDER_NAME, url: SITE_URL }],
+  creator: FOUNDER_NAME,
+  publisher: SITE_NAME,
+  alternates: {
+    canonical: SITE_URL,
+  },
   robots: {
     index: true,
     follow: true,
@@ -63,26 +80,26 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://aibyfaraz.com",
-    siteName: "AI by Faraz",
-    title: "AI by Faraz | Building Intelligent Websites & AI-Powered Solutions",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | Building Intelligent Websites & AI-Powered Solutions`,
     description:
-      "Modern websites, custom AI chatbots, business automation workflows, and tailored software solutions engineered by Faraz Ahmed.",
+      "Modern Next.js & WordPress websites, custom 24/7 AI chatbots, Shopify storefronts, and automated workflows engineered by Faraz Ahmed.",
     images: [
       {
-        url: "/images/website-reference.png",
+        url: `${SITE_URL}/images/website-reference.png`,
         width: 1200,
         height: 630,
-        alt: "AI by Faraz - Futuristic AI and Web Development",
+        alt: "AI by Faraz — Web Developer & AI Solutions Specialist",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI by Faraz | Web Developer & AI Solutions Specialist",
+    title: `${SITE_NAME} | Web Developer & AI Solutions Specialist`,
     description:
-      "Building intelligent websites, AI chatbots, and automated digital solutions that help businesses scale.",
-    images: ["/images/website-reference.png"],
+      "Building intelligent Next.js & WordPress websites, AI chatbots, Shopify stores, and automated workflows that help businesses scale.",
+    images: [`${SITE_URL}/images/website-reference.png`],
   },
   icons: {
     icon: "/images/logo.jpg",
@@ -95,56 +112,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": "https://aibyfaraz.com/#faraz",
-        name: "Faraz Ahmed",
-        jobTitle: "Web Developer & AI Solutions Specialist",
-        url: "https://aibyfaraz.com",
-        image: "https://aibyfaraz.com/images/faraz-portrait.png",
-        email: "faraz.ahmed4724@gmail.com",
-        telephone: "+14374348789",
-        knowsAbout: [
-          "Next.js",
-          "WordPress",
-          "React",
-          "TypeScript",
-          "AI Chatbots",
-          "AI Automation",
-          "AI Agents",
-          "Shopify",
-          "Full Stack Web Development",
-        ],
-      },
-      {
-        "@type": "ProfessionalService",
-        "@id": "https://aibyfaraz.com/#business",
-        name: "AI by Faraz",
-        url: "https://aibyfaraz.com",
-        logo: "https://aibyfaraz.com/images/logo.jpg",
-        image: "https://aibyfaraz.com/images/website-reference.png",
-        founder: {
-          "@id": "https://aibyfaraz.com/#faraz",
-        },
-        description:
-          "Professional web development, custom AI chatbots, workflow automation, and custom digital software development.",
-        telephone: "+14374348789",
-        email: "faraz.ahmed4724@gmail.com",
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://aibyfaraz.com/#website",
-        url: "https://aibyfaraz.com",
-        name: "AI by Faraz",
-        publisher: {
-          "@id": "https://aibyfaraz.com/#faraz",
-        },
-      },
-    ],
-  };
+  const jsonLd = buildGlobalGraphJsonLd();
 
   return (
     <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>

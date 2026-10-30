@@ -14,11 +14,21 @@ import {
   Sparkles,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Services & Capabilities | AI by Faraz",
+import { buildBreadcrumbJsonLd, buildPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Web Development, AI Chatbots & Automation Services",
   description:
-    "Explore the six core digital services offered by Faraz Ahmed: AI Automation, AI Chatbots, Website Development, AI Agents, E-commerce Solutions, and Custom Software Development.",
-};
+    "Explore the 6 core engineering services by Faraz Ahmed: AI Automation, Custom 24/7 AI Chatbots, Next.js & WordPress Website Development, Autonomous AI Agents, Shopify/WooCommerce E-Commerce, and Custom Software.",
+  path: "/services",
+  keywords: [
+    "Web Development Services",
+    "Custom AI Chatbot Development",
+    "Business Process Automation Services",
+    "Shopify Store Development",
+    "Autonomous AI Agent Engineering",
+  ],
+});
 
 const iconMap: Record<string, React.ElementType> = {
   Cpu,
@@ -30,8 +40,17 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 export default function ServicesPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+  ]);
+
   return (
     <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-[#060813]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="max-w-7xl mx-auto">
         {/* Breadcrumb */}
         <div className="mb-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-purple-400">

@@ -12,18 +12,44 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Portfolio & Client Case Studies | AI by Faraz",
+import {
+  buildBreadcrumbJsonLd,
+  buildPageMetadata,
+  buildPortfolioCollectionJsonLd,
+} from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Portfolio & Verified Client Case Studies",
   description:
-    "Explore real client work by Faraz Ahmed, including Elite Class Limo, alongside conceptual AI agent and web architectures.",
-};
+    "Explore real client deployments engineered by Faraz Ahmed — including Elite Class Limo — alongside high-converting Next.js web platforms and autonomous AI agent architectures.",
+  path: "/portfolio",
+  keywords: [
+    "Faraz Ahmed Portfolio",
+    "Elite Class Limo Website Developer",
+    "Next.js Case Studies",
+    "AI Chatbot Portfolio",
+  ],
+});
 
 export default function PortfolioPage() {
   const realProjects = portfolioProjects.filter((p) => p.isRealClient);
   const conceptProjects = portfolioProjects.filter((p) => !p.isRealClient);
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Portfolio", path: "/portfolio" },
+  ]);
+  const portfolioJsonLd = buildPortfolioCollectionJsonLd();
 
   return (
     <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-[#060813]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioJsonLd) }}
+      />
       <div className="max-w-7xl mx-auto">
         {/* Breadcrumb */}
         <div className="mb-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-purple-400">

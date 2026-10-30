@@ -15,11 +15,23 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "My Development Process | AI by Faraz",
+import {
+  buildBreadcrumbJsonLd,
+  buildPageMetadata,
+  buildProcessHowToJsonLd,
+} from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "6-Stage Web & AI Engineering Process",
   description:
-    "Explore the 6-stage engineering and design lifecycle Faraz Ahmed uses to deliver websites and AI solutions: Discovery, Planning, Design, Development, Testing, and Launch.",
-};
+    "Discover the transparent 6-step engineering lifecycle Faraz Ahmed uses to deliver high-speed websites and AI solutions: Discovery, Architecture, UI/UX Design, Development, QA Testing, and Launch.",
+  path: "/process",
+  keywords: [
+    "Web Development Process",
+    "AI Project Delivery Lifecycle",
+    "Software Engineering Workflow",
+  ],
+});
 
 const detailedSteps = [
   {
@@ -73,8 +85,22 @@ const detailedSteps = [
 ];
 
 export default function ProcessPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Development Process", path: "/process" },
+  ]);
+  const howToJsonLd = buildProcessHowToJsonLd(detailedSteps);
+
   return (
     <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-[#060813]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+      />
       <div className="max-w-5xl mx-auto">
         {/* Breadcrumb */}
         <div className="mb-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-purple-400">

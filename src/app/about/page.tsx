@@ -11,16 +11,46 @@ import {
 import TechProficiencySection from "@/components/TechProficiencySection";
 import FounderJourneyCard from "@/components/FounderJourneyCard";
 import FounderShowcaseCard from "@/components/FounderShowcaseCard";
+import { buildBreadcrumbJsonLd, buildPageMetadata, SITE_URL } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About Faraz Ahmed | Web Developer & AI Solutions Specialist",
+export const metadata: Metadata = buildPageMetadata({
+  title: "About Faraz Ahmed — Full-Stack Web Developer & AI Specialist",
   description:
-    "Learn about Faraz Ahmed, an independent web developer and AI specialist crafting high-performance WordPress and Next.js websites, intelligent AI chatbots, and automated workflows.",
-};
+    "Meet Faraz Ahmed, founder of AI by Faraz — an independent full-stack web developer and AI solutions specialist building Next.js & WordPress websites, Shopify stores, AI chatbots, and workflow automations.",
+  path: "/about",
+  keywords: [
+    "About Faraz Ahmed",
+    "Faraz Ahmed Bio",
+    "Independent AI Engineer",
+    "Full-Stack Next.js WordPress Developer",
+  ],
+});
 
 export default function AboutPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "About Faraz Ahmed", path: "/about" },
+  ]);
+
+  const profilePageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    url: `${SITE_URL}/about`,
+    mainEntity: {
+      "@id": `${SITE_URL}/#faraz`,
+    },
+  };
+
   return (
     <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-[#060813]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd) }}
+      />
       <div className="max-w-6xl mx-auto">
         {/* Breadcrumb / Top Tag */}
         <div className="mb-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-purple-400">

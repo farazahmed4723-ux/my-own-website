@@ -3,15 +3,27 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { ShieldCheck } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | AI by Faraz",
+import { buildBreadcrumbJsonLd, buildPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Privacy Policy",
   description:
-    "Privacy Policy for AI by Faraz, owned by Faraz Ahmed. Explaining how inquiry data and client confidentiality are handled.",
-};
+    "Privacy Policy for AI by Faraz, owned by Faraz Ahmed. Explaining how inquiry data, Supabase database encryption, and client confidentiality are handled.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Privacy Policy", path: "/privacy" },
+  ]);
+
   return (
     <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-[#060813]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="max-w-4xl mx-auto">
         <div className="mb-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-purple-400">
           <Link href="/" className="hover:text-white transition-colors">

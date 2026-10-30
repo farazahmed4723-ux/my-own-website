@@ -1,0 +1,33 @@
+# AI by Faraz — Web Engineering & AI Solutions Studio
+
+> AI by Faraz (https://aibyfaraz.com) is an independent full-stack web development and AI solutions studio founded and led by Faraz Ahmed. Specializing in high-performance Next.js & WordPress websites, Shopify & WooCommerce e-commerce stores, custom 24/7 RAG AI chatbots, autonomous AI agents, and CRM workflow automations.
+
+## Founder & Direct Contact
+- Founder & Lead Engineer: Faraz Ahmed
+- Website: https://aibyfaraz.com
+- Email: faraz.ahmed4724@gmail.com
+- WhatsApp / Phone: +1 (437) 434-8789 (https://wa.me/14374348789)
+- LinkedIn: https://www.linkedin.com/in/faraz-ahmad-b11b36437/
+- Instagram: https://www.instagram.com/aibyfaraz
+- Service Regions: Canada, United States, United Kingdom, UAE, Worldwide
+
+## Core Services
+- [AI Automation](https://aibyfaraz.com/services/ai-automation): End-to-end business workflow & CRM pipelines using n8n, Make, Zapier, Node.js, Python, and Webhooks.
+- [AI Chatbots](https://aibyfaraz.com/services/ai-chatbots): Custom 24/7 RAG customer support and lead-qualification chatbots for websites and WhatsApp.
+- [Website Development](https://aibyfaraz.com/services/website-development): Blazing-fast Next.js (TypeScript, Tailwind CSS) applications and custom WordPress platforms with 95+ Core Web Vitals.
+- [AI Agents](https://aibyfaraz.com/services/ai-agents): Autonomous tool-calling AI agents integrated with business APIs, databases, and internal operations.
+- [E-Commerce Solutions](https://aibyfaraz.com/services/ecommerce-solutions): High-converting Shopify and WooCommerce online stores with custom checkout UX and automated order flows.
+- [Custom Software Development](https://aibyfaraz.com/services/custom-software-development): SaaS MVPs, client portals, analytics dashboards, and Supabase/PostgreSQL backends.
+
+## Key Pages
+- [Home](https://aibyfaraz.com/)
+- [About Faraz Ahmed](https://aibyfaraz.com/about)
+- [All Services](https://aibyfaraz.com/services)
+- [Portfolio & Verified Client Case Studies](https://aibyfaraz.com/portfolio)
+- [6-Stage Engineering Process](https://aibyfaraz.com/process)
+- [Contact & Project Inquiry](https://aibyfaraz.com/contact)
+
+## Highlighted Client Work & Reputation
+- Verified Client Deployment: Elite Class Limo (https://eliteclasslimo.ca/) — Luxury transportation booking & brand platform.
+- Client Rating: 5.0 / 5.0 across verified client reviews (50+ projects shipped, 100% client satisfaction).
+
