@@ -95,7 +95,7 @@ export default function TestimonialsSection() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#121634]/80 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4 shadow-[0_0_15px_rgba(139,92,246,0.2)]">
             <ShieldCheck className="w-4 h-4 text-emerald-400" />
             <span>Verified Client Feedback</span>
@@ -106,14 +106,55 @@ export default function TestimonialsSection() {
               Endorsements
             </span>
           </h2>
-          <p className="text-[#94A3B8] text-sm sm:text-base mt-4 leading-relaxed">
+          <p className="text-[#94A3B8] text-xs sm:text-base mt-3.5 sm:mt-4 leading-relaxed">
             Real outcomes from real collaboration. Here is what founders and
             business leaders say about partnering with Faraz Ahmed.
           </p>
+
+          {/* Compact Trust Summary Strip with Client Avatars (Visible on Mobile & Desktop) */}
+          <div className="mt-5 inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#111532]/90 border border-white/10 shadow-md">
+            <div className="flex items-center -space-x-2.5">
+              <div className="relative w-7 h-7 rounded-full overflow-hidden border-2 border-white dark:border-[#0e122b]">
+                <Image
+                  src="/images/reviews/saima-dp.webp"
+                  alt="Saima"
+                  fill
+                  sizes="28px"
+                  className="object-cover"
+                  unoptimized
+                />
+              </div>
+              <div className="relative w-7 h-7 rounded-full overflow-hidden border-2 border-white dark:border-[#0e122b]">
+                <Image
+                  src="/images/reviews/uzair-dp.webp"
+                  alt="Uzair Ahmed"
+                  fill
+                  sizes="28px"
+                  className="object-cover"
+                  unoptimized
+                />
+              </div>
+              <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-[#7C3AED] to-[#A855F7] border-2 border-white dark:border-[#0e122b] flex items-center justify-center text-[9px] font-bold text-white">
+                EC
+              </div>
+              <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-[#8B5CF6] to-[#F59E0B] border-2 border-white dark:border-[#0e122b] flex items-center justify-center text-[9px] font-bold text-white">
+                50+
+              </div>
+            </div>
+            <div className="flex items-center gap-1.5 text-left">
+              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400 shrink-0" />
+              <span className="text-[11px] sm:text-xs font-bold text-white">
+                5.0 Rated
+              </span>
+              <span className="text-[11px] text-[#94A3B8]">
+                &bull; 100% Satisfaction
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* 2x2 Bento Grid of All 4 Verified Client Reviews */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
           {testimonials.map((item, idx) => (
             <motion.div
               key={item.id}
@@ -121,32 +162,32 @@ export default function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="group relative rounded-3xl bg-gradient-to-b from-[#11142e]/90 to-[#0c0f24]/90 border border-white/10 hover:border-purple-500/35 p-6 sm:p-8 shadow-2xl backdrop-blur-2xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1"
+              className="group relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#11142e]/90 to-[#0c0f24]/90 border border-white/10 hover:border-purple-500/35 p-5 sm:p-8 shadow-2xl backdrop-blur-2xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1"
             >
               <div>
                 {/* Top Row: Stars & Project Type Tag */}
-                <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-4 sm:mb-6">
                   <div className="flex items-center gap-1">
                     {[...Array(item.rating)].map((_, i) => (
                       <Star
                         key={i}
-                        className="w-4 h-4 sm:w-[18px] sm:h-[18px] fill-amber-400 text-amber-400 drop-shadow-[0_0_6px_rgba(245,158,11,0.45)]"
+                        className="w-3.5 h-3.5 sm:w-[18px] sm:h-[18px] fill-amber-400 text-amber-400 drop-shadow-[0_0_6px_rgba(245,158,11,0.45)]"
                       />
                     ))}
-                    <span className="text-xs font-bold text-white ml-1.5">
+                    <span className="text-xs font-bold text-white ml-1">
                       5.0
                     </span>
                   </div>
 
-                  <span className="text-[11px] font-semibold px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/25 text-purple-300">
+                  <span className="text-[10px] sm:text-[11px] font-semibold px-2.5 sm:px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/25 text-purple-300">
                     {item.projectType}
                   </span>
                 </div>
 
                 {/* Quote Body */}
-                <div className="relative mb-6">
-                  <Quote className="w-8 h-8 text-purple-500/20 absolute -top-3 -left-2 pointer-events-none" />
-                  <p className="text-sm sm:text-base text-gray-200 leading-relaxed italic relative z-10">
+                <div className="relative mb-4 sm:mb-6">
+                  <Quote className="w-7 h-7 sm:w-8 sm:h-8 text-purple-500/20 absolute -top-2.5 -left-2 pointer-events-none" />
+                  <p className="text-[13.5px] sm:text-base text-gray-200 leading-relaxed italic relative z-10">
                     &ldquo;{item.quote}&rdquo;
                   </p>
                 </div>
@@ -154,7 +195,7 @@ export default function TestimonialsSection() {
 
               <div>
                 {/* Key Highlight Pill */}
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 text-xs font-medium mb-6">
+                <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 text-[11px] sm:text-xs font-medium mb-4 sm:mb-6">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
                   <span>{item.highlight}</span>
                 </div>

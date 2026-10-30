@@ -93,15 +93,15 @@ export default function FounderJourneyCard({
         </div>
 
         {/* Mobile Cutout Showcase (Optimized specifically for mobile screens) */}
-        <div className="flex sm:hidden relative z-20 mt-1 w-full justify-center items-end">
+        <div className="flex sm:hidden relative z-20 mt-1.5 w-full justify-center items-end">
           <div className="relative flex justify-center items-end">
-            <div className="absolute bottom-0 w-48 h-48 bg-[#8B5CF6]/25 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute bottom-0 w-56 h-56 bg-[#8B5CF6]/25 rounded-full blur-2xl pointer-events-none" />
             <Image
               src="/images/faraz-journey-cutout.webp?v=2"
               alt="Faraz Ahmed - Web Developer & AI Solutions Specialist"
               width={422}
               height={351}
-              className="relative z-10 w-[245px] h-auto max-h-[205px] object-contain object-bottom drop-shadow-[0_10px_20px_rgba(15,23,42,0.28)]"
+              className="relative z-10 w-[275px] h-auto max-h-[230px] object-contain object-bottom drop-shadow-[0_12px_24px_rgba(15,23,42,0.3)]"
               unoptimized
             />
           </div>

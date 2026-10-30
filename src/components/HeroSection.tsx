@@ -85,7 +85,7 @@ export default function HeroSection() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight mb-4 sm:mb-5">
+          <h1 className="font-heading text-[2.1rem] sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.13] sm:leading-[1.1] tracking-tight mb-4 sm:mb-5">
             <span className="block">Building Intelligent</span>
             <span className="block bg-gradient-to-r from-[#A855F7] via-[#8B5CF6] to-[#C084FC] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(168,85,247,0.35)]">
               Websites & AI-Powered
@@ -151,10 +151,23 @@ export default function HeroSection() {
         </div>
 
         {/* Right Column: Sharp Portrait, Orbital Rings, 4 Floating Cards, Parallax */}
-        <div className="lg:col-span-6 relative flex items-center justify-center min-h-[460px] sm:min-h-[560px] lg:min-h-[620px]">
-          <div className="hero-studio-stage dark-preserve relative w-full h-full min-h-[460px] sm:min-h-[560px] lg:min-h-[620px] flex items-center justify-center">
+        <div className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[300px] sm:min-h-[560px] lg:min-h-[620px]">
+          <div className="hero-studio-stage dark-preserve relative w-full h-full min-h-[300px] sm:min-h-[560px] lg:min-h-[620px] flex items-end sm:items-center justify-center rounded-3xl sm:rounded-none overflow-hidden sm:overflow-visible pt-4 sm:pt-0">
             {/* 1. Animated Orbital System (behind portrait) */}
             <OrbitalSystem />
+
+            {/* Mobile-Only Non-Overlapping Corner Status Pills */}
+            <div className="sm:hidden absolute top-3 left-3 z-20 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0e132e]/85 border border-white/15 backdrop-blur-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[10px] font-semibold text-gray-200">
+                Available Now
+              </span>
+            </div>
+            <div className="sm:hidden absolute top-3 right-3 z-20 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#0e132e]/85 border border-purple-500/30 backdrop-blur-md">
+              <span className="text-[10px] font-bold text-purple-200">
+                ★ 50+ Shipped
+              </span>
+            </div>
 
             {/* 2. Handwritten Script Annotations */}
             {/* Top-left: "Faraz Ahmed" with curved arrow pointing to him */}
@@ -224,13 +237,13 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* 4. Four Independent Floating Service Cards with Kinetic Movement & Deep Links */}
+          {/* 4. Four Independent Floating Service Cards (Tablet & Desktop >= sm) */}
           {/* Card 1: Modern Websites (Top Right) */}
           <FloatingServiceCard
             title="Modern Websites"
             subtitle="WordPress | Next.js"
             icon={<Code2 className="w-5 h-5 text-white" />}
-            className="absolute top-3 sm:top-5 -right-1 sm:right-1 z-30"
+            className="hidden sm:block absolute top-3 sm:top-5 -right-1 sm:right-1 z-30"
             floatDuration={5.8}
             floatDelay={0}
             mouseX={smoothMouseX}
@@ -244,7 +257,7 @@ export default function HeroSection() {
             title="AI Chatbots"
             subtitle="Smart Automation"
             icon={<Bot className="w-5 h-5 text-white" />}
-            className="absolute top-24 sm:top-28 right-1 sm:right-5 z-30"
+            className="hidden sm:block absolute top-24 sm:top-28 right-1 sm:right-5 z-30"
             floatDuration={6.8}
             floatDelay={0.8}
             mouseX={smoothMouseX}
@@ -258,7 +271,7 @@ export default function HeroSection() {
             title="AI Agents"
             subtitle="Custom Solutions"
             icon={<Zap className="w-5 h-5 text-white" />}
-            className="absolute top-44 sm:top-52 -right-2 sm:right-0 z-30"
+            className="hidden sm:block absolute top-44 sm:top-52 -right-2 sm:right-0 z-30"
             floatDuration={6.2}
             floatDelay={1.4}
             mouseX={smoothMouseX}
@@ -272,7 +285,7 @@ export default function HeroSection() {
             title="E-commerce"
             subtitle="Shopify | WooCommerce"
             icon={<ShoppingBag className="w-5 h-5 text-white" />}
-            className="absolute bottom-16 sm:bottom-24 lg:bottom-[150px] left-2 sm:left-8 lg:left-[86px] z-30"
+            className="hidden sm:block absolute bottom-16 sm:bottom-24 lg:bottom-[150px] left-2 sm:left-8 lg:left-[86px] z-30"
             floatDuration={7.2}
             floatDelay={0.4}
             mouseX={smoothMouseX}
@@ -280,6 +293,57 @@ export default function HeroSection() {
             parallaxDepth={8}
             href="/services/ecommerce-solutions"
           />
+
+          {/* Mobile-Only Clean 2x2 Interactive Service Bento Grid (Zero Face Overlap!) */}
+          <div className="grid grid-cols-2 gap-2.5 w-full mt-3.5 sm:hidden">
+            {[
+              {
+                title: "Websites",
+                sub: "WordPress | Next.js",
+                href: "/services/website-development",
+                icon: <Code2 className="w-4 h-4 text-white" />,
+              },
+              {
+                title: "AI Chatbots",
+                sub: "Smart Automation",
+                href: "/services/ai-chatbots",
+                icon: <Bot className="w-4 h-4 text-white" />,
+              },
+              {
+                title: "AI Agents",
+                sub: "Custom Solutions",
+                href: "/services/ai-agents",
+                icon: <Zap className="w-4 h-4 text-white" />,
+              },
+              {
+                title: "E-Commerce",
+                sub: "Shopify | Woo",
+                href: "/services/ecommerce-solutions",
+                icon: <ShoppingBag className="w-4 h-4 text-white" />,
+              },
+            ].map((card) => (
+              <Link
+                key={card.title}
+                href={card.href}
+                className="flex items-center gap-2.5 p-2.5 rounded-2xl border border-white/10 bg-[#111532]/90 backdrop-blur-md shadow-md active:scale-95 transition-transform"
+              >
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#7C3AED] via-[#8B5CF6] to-[#A855F7] flex items-center justify-center text-white shrink-0 shadow-[0_0_12px_rgba(139,92,246,0.4)]">
+                  {card.icon}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between gap-1">
+                    <span className="font-heading text-[11.5px] font-bold text-white truncate">
+                      {card.title}
+                    </span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
+                  </div>
+                  <span className="text-[10px] text-[#94A3B8] block truncate">
+                    {card.sub}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
 
         </div>
       </div>
@@ -298,8 +362,8 @@ export default function HeroSection() {
             </span>
           </div>
 
-          {/* Technology Badges */}
-          <div className="flex items-center flex-wrap justify-center gap-5 sm:gap-8 lg:gap-10">
+          {/* Technology Badges (Symmetric 3x2 grid on mobile, horizontal row on sm+) */}
+          <div className="grid grid-cols-3 gap-x-6 gap-y-4 w-full sm:w-auto sm:flex sm:items-center sm:flex-wrap sm:justify-center sm:gap-8 lg:gap-10">
             {/* WordPress */}
             <div className="flex flex-col items-center gap-1.5 group cursor-default">
               <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#21759B]/15 border border-[#21759B]/35 flex items-center justify-center text-[#21759B] group-hover:scale-110 group-hover:border-[#21759B] transition-all shadow-md">

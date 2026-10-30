@@ -252,7 +252,7 @@ export default function FounderShowcaseCard({
               </div>
             </div>
 
-            <div className="founder-verified-tag hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-[10px] font-bold uppercase tracking-wider shrink-0">
+            <div className="founder-verified-tag inline-flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider shrink-0">
               <span>Verified</span>
             </div>
           </div>
