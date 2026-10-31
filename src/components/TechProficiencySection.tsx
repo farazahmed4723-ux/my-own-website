@@ -9,6 +9,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ScrollReveal } from "@/components/ScrollMotion";
 
 interface SkillItem {
   name: string;
@@ -106,60 +107,63 @@ export default function TechProficiencySection({
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header + Category Switcher Tabs */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 sm:gap-6 mb-7 sm:mb-10">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-3">
-              <Sparkles className="w-3.5 h-3.5 shrink-0" />
-              <span>Technical Proficiency &amp; Stack</span>
+        <ScrollReveal variant="pop-up">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 sm:gap-6 mb-7 sm:mb-10">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-3">
+                <Sparkles className="w-3.5 h-3.5 shrink-0" />
+                <span>Technical Proficiency &amp; Stack</span>
+              </div>
+              <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+                Core <span className="gradient-text-purple">Engineering Mastery</span>
+              </h2>
             </div>
-            <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Core <span className="gradient-text-purple">Engineering Mastery</span>
-            </h2>
-          </div>
 
-          {/* Interactive Discipline Switcher Pills (Clean 3-col single row on mobile, pill flex on sm+) */}
-          <div
-            className="grid grid-cols-3 gap-1.5 w-full sm:w-auto sm:flex sm:flex-wrap sm:items-center sm:gap-2"
-            role="tablist"
-            aria-label="Engineering skill categories"
-          >
-            {categories.map((cat) => {
-              const TabIcon = cat.icon;
-              const isSelected = cat.id === activeId;
-              const shortLabel =
-                cat.id === "fullstack-web"
-                  ? "Full Stack"
-                  : cat.id === "ai-automation"
-                  ? "AI & Agents"
-                  : "E-Commerce";
-              return (
-                <button
-                  key={cat.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={isSelected}
-                  onClick={() => setActiveId(cat.id)}
-                  className={`px-1.5 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-full text-[10.5px] sm:text-sm font-semibold flex items-center justify-center gap-1 sm:gap-2 transition-all duration-300 cursor-pointer focus:outline-none ${
-                    isSelected
-                      ? "bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#A855F7] text-white shadow-[0_6px_20px_rgba(139,92,246,0.4)] sm:scale-[1.02]"
-                      : "tech-tab-inactive bg-[#10142c] border border-white/10 text-gray-300 hover:text-white hover:border-purple-500/35"
-                  }`}
-                >
-                  <TabIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
-                  <span className="sm:hidden truncate">{shortLabel}</span>
-                  <span className="hidden sm:inline">{cat.tabLabel}</span>
-                </button>
-              );
-            })}
+            {/* Interactive Discipline Switcher Pills (Clean 3-col single row on mobile, pill flex on sm+) */}
+            <div
+              className="grid grid-cols-3 gap-1.5 w-full sm:w-auto sm:flex sm:flex-wrap sm:items-center sm:gap-2"
+              role="tablist"
+              aria-label="Engineering skill categories"
+            >
+              {categories.map((cat) => {
+                const TabIcon = cat.icon;
+                const isSelected = cat.id === activeId;
+                const shortLabel =
+                  cat.id === "fullstack-web"
+                    ? "Full Stack"
+                    : cat.id === "ai-automation"
+                    ? "AI & Agents"
+                    : "E-Commerce";
+                return (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isSelected}
+                    onClick={() => setActiveId(cat.id)}
+                    className={`px-1.5 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-full text-[10.5px] sm:text-sm font-semibold flex items-center justify-center gap-1 sm:gap-2 transition-all duration-300 cursor-pointer focus:outline-none ${
+                      isSelected
+                        ? "bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-[#A855F7] text-white shadow-[0_6px_20px_rgba(139,92,246,0.4)] sm:scale-[1.02]"
+                        : "tech-tab-inactive bg-[#10142c] border border-white/10 text-gray-300 hover:text-white hover:border-purple-500/35"
+                    }`}
+                  >
+                    <TabIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+                    <span className="sm:hidden truncate">{shortLabel}</span>
+                    <span className="hidden sm:inline">{cat.tabLabel}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Main Showcase Panel (Matches Reference Design 1:1 with Top Accent Bar & 3x2 Proficiency Grid) */}
-        <div className="tech-proficiency-panel relative rounded-[1.5rem] sm:rounded-[2.25rem] border border-white/10 bg-gradient-to-b from-[#111530] via-[#0d1025] to-[#090c1c] shadow-2xl overflow-hidden transition-colors duration-300">
-          {/* Sleek Top Multi-Tone Gradient Accent Bar */}
-          <div className="h-1.5 w-full bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#F59E0B]" />
+        <ScrollReveal variant="zoom-pop" delay={0.1}>
+          <div className="tech-proficiency-panel relative rounded-[1.5rem] sm:rounded-[2.25rem] border border-white/10 bg-gradient-to-b from-[#111530] via-[#0d1025] to-[#090c1c] shadow-2xl overflow-hidden transition-colors duration-300">
+            {/* Sleek Top Multi-Tone Gradient Accent Bar */}
+            <div className="h-1.5 w-full bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#F59E0B]" />
 
-          <div className="p-4 sm:p-8 lg:p-10">
+            <div className="p-4 sm:p-8 lg:p-10">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeCategory.id}
@@ -256,6 +260,7 @@ export default function TechProficiencySection({
             </AnimatePresence>
           </div>
         </div>
+        </ScrollReveal>
       </div>
     </section>
   );

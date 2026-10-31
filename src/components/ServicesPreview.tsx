@@ -13,7 +13,7 @@ import {
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { ScrollReveal, StaggerGrid, StaggerItem } from "@/components/ScrollMotion";
 
 const iconMap: Record<string, React.ElementType> = {
   Cpu,
@@ -32,7 +32,7 @@ export default function ServicesPreview() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <ScrollReveal variant="blur-zoom" className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4">
             Specialized Capabilities
           </div>
@@ -42,27 +42,20 @@ export default function ServicesPreview() {
           <p className="text-base text-gray-400 leading-relaxed">
             From modern responsive web platforms to custom autonomous AI assistants and business workflow automation, Faraz Ahmed delivers end-to-end digital engineering.
           </p>
-        </div>
+        </ScrollReveal>
 
-        {/* 6 Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {servicesData.map((service, index) => {
+        {/* 6 Services Grid — Cascading 3D Pop-Up & Zoom-In */}
+        <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {servicesData.map((service) => {
             const IconComponent = iconMap[service.icon] || Code;
 
             return (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative"
-              >
-                <div className="h-full rounded-2xl p-7 glass-card border border-white/10 hover:border-purple-500/40 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_0_35px_rgba(139,92,246,0.25)] hover:-translate-y-1">
+              <StaggerItem key={service.id} className="group relative h-full">
+                <div className="h-full rounded-2xl p-7 glass-card border border-white/10 hover:border-purple-500/40 transition-colors duration-300 flex flex-col justify-between hover:shadow-[0_0_35px_rgba(139,92,246,0.25)]">
                   <div>
                     {/* Top Row: Icon & Badge */}
                     <div className="flex items-center justify-between mb-6">
-                      <div className="w-12 h-12 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-300 group-hover:scale-110 group-hover:bg-purple-600/30 group-hover:text-purple-200 transition-all duration-300">
+                      <div className="w-12 h-12 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-300 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-purple-600/30 group-hover:text-purple-200 transition-all duration-300">
                         <IconComponent className="w-6 h-6" />
                       </div>
                       <span className="text-[11px] font-semibold tracking-wide uppercase px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300">
@@ -107,21 +100,21 @@ export default function ServicesPreview() {
                     </Link>
                   </div>
                 </div>
-              </motion.div>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerGrid>
 
         {/* View All Services Bottom Banner */}
-        <div className="mt-14 text-center">
+        <ScrollReveal variant="zoom-pop" delay={0.12} className="mt-14 text-center">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#121630] border border-purple-500/30 text-white text-sm font-semibold hover:bg-[#1a2046] hover:border-purple-400/60 transition-all shadow-lg"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#121630] border border-purple-500/30 text-white text-sm font-semibold hover:bg-[#1a2046] hover:border-purple-400/60 hover:scale-105 active:scale-95 transition-all shadow-lg"
           >
             <span>Compare All 6 Service Offerings & Tech Specs</span>
             <ArrowRight className="w-4 h-4 text-purple-400" />
           </Link>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

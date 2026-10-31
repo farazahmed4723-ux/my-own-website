@@ -16,6 +16,7 @@ import {
 import OrbitalSystem from "@/components/OrbitalSystem";
 import FloatingServiceCard from "@/components/FloatingServiceCard";
 import StatCounter from "@/components/StatCounter";
+import { ScrollReveal } from "@/components/ScrollMotion";
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -77,31 +78,51 @@ export default function HeroSection() {
         {/* Left Column: Heading, Subtitle, CTAs, Stats */}
         <div className="lg:col-span-6 flex flex-col justify-center pt-2 sm:pt-0">
           {/* Top Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#121634]/80 border border-purple-500/30 backdrop-blur-md w-fit mb-4 sm:mb-5 shadow-[0_0_20px_rgba(139,92,246,0.18)]">
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.88 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.05 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#121634]/80 border border-purple-500/30 backdrop-blur-md w-fit mb-4 sm:mb-5 shadow-[0_0_20px_rgba(139,92,246,0.18)]"
+          >
             <span className="text-sm">🚀</span>
             <span className="text-xs sm:text-sm font-medium text-purple-200 tracking-wide">
               AI Solutions for Modern Businesses
             </span>
-          </div>
+          </motion.div>
 
           {/* Main Headline */}
-          <h1 className="font-heading text-[2.1rem] sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.13] sm:leading-[1.1] tracking-tight mb-4 sm:mb-5">
+          <motion.h1
+            initial={{ opacity: 0, y: 30, scale: 0.94, filter: "blur(6px)" }}
+            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+            transition={{ type: "spring", stiffness: 220, damping: 22, delay: 0.14 }}
+            className="font-heading text-[2.1rem] sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.13] sm:leading-[1.1] tracking-tight mb-4 sm:mb-5"
+          >
             <span className="block">Building Intelligent</span>
             <span className="block bg-gradient-to-r from-[#A855F7] via-[#8B5CF6] to-[#C084FC] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(168,85,247,0.35)]">
               Websites & AI-Powered
             </span>
             <span className="block">Solutions.</span>
-          </h1>
+          </motion.h1>
 
           {/* Subheading */}
-          <p className="text-sm sm:text-base lg:text-lg text-[#B9B9C9] leading-relaxed mb-6 sm:mb-8 max-w-xl font-normal">
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 220, damping: 22, delay: 0.24 }}
+            className="text-sm sm:text-base lg:text-lg text-[#B9B9C9] leading-relaxed mb-6 sm:mb-8 max-w-xl font-normal"
+          >
             I help businesses grow with modern websites, AI chatbots, automation
             systems and custom software solutions using WordPress, Next.js and
             the latest AI technologies.
-          </p>
+          </motion.p>
 
           {/* CTA Buttons Row */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8 sm:mb-10">
+          <motion.div
+            initial={{ opacity: 0, y: 24, scale: 0.94 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ type: "spring", stiffness: 240, damping: 20, delay: 0.34 }}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8 sm:mb-10"
+          >
             {/* Primary Button */}
             <Link
               href="/services"
@@ -125,10 +146,15 @@ export default function HeroSection() {
               <MessageCircle className="w-4 h-4 text-emerald-400" />
               <span>Let&apos;s Talk on WhatsApp</span>
             </a>
-          </div>
+          </motion.div>
 
           {/* Animated Statistics Counters */}
-          <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-5 sm:pt-6 border-t border-white/10 max-w-lg">
+          <motion.div
+            initial={{ opacity: 0, y: 22, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ type: "spring", stiffness: 230, damping: 21, delay: 0.44 }}
+            className="grid grid-cols-3 gap-3 sm:gap-6 pt-5 sm:pt-6 border-t border-white/10 max-w-lg"
+          >
             <StatCounter
               target={2}
               suffix="+"
@@ -147,11 +173,16 @@ export default function HeroSection() {
               label="Client Satisfaction"
               duration={2000}
             />
-          </div>
+          </motion.div>
         </div>
 
         {/* Right Column: Sharp Portrait, Orbital Rings, 4 Floating Cards, Parallax */}
-        <div className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[300px] sm:min-h-[560px] lg:min-h-[620px]">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 28 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 200, damping: 22, delay: 0.18 }}
+          className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[300px] sm:min-h-[560px] lg:min-h-[620px]"
+        >
           <div className="hero-studio-stage dark-preserve relative w-full h-full min-h-[300px] sm:min-h-[560px] lg:min-h-[620px] flex items-end sm:items-center justify-center rounded-3xl sm:rounded-none overflow-hidden sm:overflow-visible pt-4 sm:pt-0">
             {/* 1. Animated Orbital System (behind portrait) */}
             <OrbitalSystem />
@@ -345,11 +376,11 @@ export default function HeroSection() {
             ))}
           </div>
 
-        </div>
+        </motion.div>
       </div>
 
-      {/* 5. Bottom Technologies Strip Dock (matching Reference Image 1) */}
-      <div className="max-w-6xl mx-auto w-full mt-8 sm:mt-12 z-20">
+      {/* 5. Bottom Technologies Strip Dock (Pop-Up + Zoom-In on Scroll) */}
+      <ScrollReveal variant="zoom-pop" delay={0.1} className="max-w-6xl mx-auto w-full mt-8 sm:mt-12 z-20">
 
         <div className="glass-dock px-5 sm:px-10 py-4 sm:py-5 rounded-2xl sm:rounded-3xl border border-white/10 flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
           {/* Dock Label */}
@@ -499,7 +530,7 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

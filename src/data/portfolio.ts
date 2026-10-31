@@ -37,6 +37,27 @@ export const portfolioProjects: PortfolioProject[] = [
     technologies: ["React", "Next.js", "Tailwind CSS", "SEO Optimization"],
   },
   {
+    id: "stn-trucking-ltd",
+    slug: "stn-trucking-ltd",
+    title: "STN Trucking Ltd.",
+    category: "Commercial Trucking, Moving & Logistics Website",
+    developer: "Faraz Ahmed",
+    projectType: "Client Website & Quote Platform",
+    description:
+      "Engineered a high-converting commercial trucking, moving, and heavy flatbed hauling platform for STN Trucking Ltd. across Surrey, Vancouver, and the Lower Mainland, BC—featuring an interactive live fleet showcase and instant freight quote capture.",
+    image: "/images/stn-trucking.webp",
+    liveUrl: "https://infostntrucking.ca/",
+    isRealClient: true,
+    statusBadge: "Verified Client Project",
+    highlights: [
+      "Interactive live fleet & heavy flatbed showcase carousel",
+      "Instant freight, moving & hauling quote request workflow",
+      "Local SEO architecture targeting Surrey, Vancouver & Lower Mainland BC",
+      "Executive high-contrast dark & gold responsive UI across mobile & desktop",
+    ],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Local SEO", "Lead Capture"],
+  },
+  {
     id: "concept-ai-agent-mesh",
     slug: "concept-ai-agent-mesh",
     title: "Autonomous Agent Orchestration Mesh",

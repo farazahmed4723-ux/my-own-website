@@ -154,7 +154,7 @@ export default function PortfolioPage() {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          id="portfolio-visit-live-elite"
+                          id={`portfolio-visit-live-${project.slug}`}
                           className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#8B5CF6] to-[#A855F7] text-white text-sm font-semibold shadow-[0_0_20px_rgba(139,92,246,0.5)] hover:scale-105 transition-all"
                         >
                           <span>Visit Live Website</span>

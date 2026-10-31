@@ -9,6 +9,7 @@ import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import FounderJourneyCard from "@/components/FounderJourneyCard";
+import CustomerReviewSection from "@/components/CustomerReviewSection";
 import ContactCTA from "@/components/ContactCTA";
 import { buildFaqJsonLd, SITE_URL } from "@/lib/seo";
 
@@ -41,7 +42,7 @@ export default function HomePage() {
       {/* 4. Core Engineering Proficiency & Technical Stack */}
       <TechProficiencySection />
 
-      {/* 5. Genuine Client Project (Elite Class Limo) + Portfolio */}
+      {/* 5. Genuine Client Projects (Elite Class Limo + STN Trucking Ltd.) */}
       <PortfolioPreview />
 
       {/* 6. 6-Step Development Process */}
@@ -56,7 +57,10 @@ export default function HomePage() {
       {/* 9. Personal Founder Journey & Signature Showcase Card */}
       <FounderJourneyCard />
 
-      {/* 10. High-Conversion Contact CTA */}
+      {/* 10. Client Review Submission ("Write a Review") */}
+      <CustomerReviewSection />
+
+      {/* 11. High-Conversion Contact CTA */}
       <ContactCTA />
     </div>
   );

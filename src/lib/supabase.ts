@@ -285,7 +285,8 @@ export async function fetchVerifiedReviewsFromSupabase(): Promise<{
       .from("reviews")
       .select("*")
       .eq("approved", true)
-      .order("sort_order", { ascending: true });
+      .order("sort_order", { ascending: true })
+      .order("created_at", { ascending: false });
 
     if (error || !data || data.length === 0) {
       return { reviews: verifiedReviewsData, source: "static-verified" };
@@ -313,6 +314,117 @@ export async function fetchVerifiedReviewsFromSupabase(): Promise<{
   } catch {
     return { reviews: verifiedReviewsData, source: "static-verified" };
   }
+}
+
+export interface NewCustomerReviewInput {
+  clientName: string;
+  role: string;
+  company: string;
+  companyUrl?: string;
+  projectType: string;
+  rating: number;
+  highlight?: string;
+  quote: string;
+}
+
+export async function createCustomerReviewInSupabase(
+  input: NewCustomerReviewInput
+): Promise<{
+  saved: boolean;
+  storedInPostgres: boolean;
+  storedInVault: boolean;
+  review: VerifiedReview;
+}> {
+  const createdAt = new Date().toISOString();
+  const id = `client-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
+  const words = input.clientName.trim().split(/\s+/);
+  const initials =
+    words.length >= 2
+      ? `${words[0][0]}${words[words.length - 1][0]}`.toUpperCase()
+      : input.clientName.trim().slice(0, 2).toUpperCase();
+
+  const cleanHighlight =
+    input.highlight && input.highlight.trim().length >= 4
+      ? input.highlight.trim().slice(0, 95)
+      : `Rated ${input.rating}.0/5 for ${input.projectType}`;
+
+  const reviewObj: VerifiedReview = {
+    id,
+    clientName: input.clientName,
+    role: input.role,
+    company: input.company,
+    companyUrl: input.companyUrl,
+    initials,
+    projectType: input.projectType,
+    quote: input.quote,
+    rating: input.rating,
+    highlight: cleanHighlight,
+    verified: true,
+    publishedDate: createdAt.slice(0, 10),
+  };
+
+  const supabase = getSupabaseAdmin();
+  if (!supabase) {
+    return {
+      saved: false,
+      storedInPostgres: false,
+      storedInVault: false,
+      review: reviewObj,
+    };
+  }
+
+  const rowPayload = {
+    id,
+    created_at: createdAt,
+    client_name: input.clientName,
+    role: input.role,
+    company: input.company,
+    company_url: input.companyUrl || null,
+    avatar_url: null,
+    initials,
+    project_type: input.projectType,
+    quote: input.quote,
+    rating: input.rating,
+    highlight: cleanHighlight,
+    verified: true,
+    approved: true,
+    sort_order: 50,
+  };
+
+  let storedInPostgres = false;
+  let storedInVault = false;
+
+  try {
+    const { error } = await supabase.from("reviews").insert([rowPayload]);
+    if (!error) storedInPostgres = true;
+  } catch {
+    storedInPostgres = false;
+  }
+
+  try {
+    const bucketReady = await ensurePrivateVaultBucket(supabase);
+    if (bucketReady) {
+      const dayFolder = createdAt.slice(0, 10);
+      const objectPath = `reviews/${dayFolder}/${id}.json`;
+      const jsonBlob = Buffer.from(JSON.stringify(rowPayload, null, 2), "utf-8");
+      const { error: uploadErr } = await supabase.storage
+        .from(VAULT_BUCKET)
+        .upload(objectPath, jsonBlob, {
+          contentType: "application/json",
+          upsert: true,
+        });
+      if (!uploadErr) storedInVault = true;
+    }
+  } catch {
+    storedInVault = false;
+  }
+
+  return {
+    saved: storedInPostgres || storedInVault,
+    storedInPostgres,
+    storedInVault,
+    review: reviewObj,
+  };
 }
 
 export async function getBackendHealthStatus() {
