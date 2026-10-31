@@ -213,10 +213,15 @@ html:not(.dark) [class~="bg-[#0e122b]/90"]:not(.dark-preserve):not(.dark-preserv
 
 html:not(.dark) [class~="bg-[#10142A]/80"]:not(.dark-preserve):not(.dark-preserve *),
 html:not(.dark) [class~="bg-[#111530]"]:not(.dark-preserve):not(.dark-preserve *),
-html:not(.dark) [class~="bg-[#121630]"]:not(.dark-preserve):not(.dark-preserve *) {
+html:not(.dark) [class~="bg-[#121630]"]:not(.dark-preserve):not(.dark-preserve *),
+html:not(.dark) [class~="bg-[#0f142e]/85"]:not(.dark-preserve):not(.dark-preserve *),
+html:not(.dark) [class~="bg-[#0f142e]"]:not(.dark-preserve):not(.dark-preserve *),
+html:not(.dark) [class~="bg-[#0e122b]/80"]:not(.dark-preserve):not(.dark-preserve *),
+html:not(.dark) [class~="bg-[#0e142e]/90"]:not(.dark-preserve):not(.dark-preserve *),
+html:not(.dark) [class~="bg-[#0d1229]/90"]:not(.dark-preserve):not(.dark-preserve *) {
   background-color: #FFFFFF;
   border-color: rgba(15, 23, 42, 0.12);
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 4px 18px -4px rgba(15, 23, 42, 0.08);
 }
 
 html:not(.dark) [class~="hover:bg-[#181d3f]"]:not(.dark-preserve):not(.dark-preserve *):hover,
