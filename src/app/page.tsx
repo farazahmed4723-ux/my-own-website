@@ -2,11 +2,11 @@ import React from "react";
 import type { Metadata } from "next";
 import HeroSection from "@/components/HeroSection";
 import AboutPreview from "@/components/AboutPreview";
+import ServicesPreview from "@/components/ServicesPreview";
 import PortfolioPreview from "@/components/PortfolioPreview";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import WhyChooseMeSection from "@/components/WhyChooseMeSection";
 import ProcessSection from "@/components/ProcessSection";
-import ServicesPreview from "@/components/ServicesPreview";
 import TechProficiencySection from "@/components/TechProficiencySection";
 import FAQSection from "@/components/FAQSection";
 import FounderJourneyCard from "@/components/FounderJourneyCard";
@@ -37,21 +37,23 @@ export default function HomePage() {
       {/* 2. Stats Strip + About Faraz (Matches Pic 2) */}
       <AboutPreview />
 
-      {/* 3. Featured Projects & Solutions (Horizontal Swipe Carousel, Matches Pic 6) */}
+      {/* 3. Services: What I Can Do For You (Matches User Request & Attachment Screenshot) */}
+      <ServicesPreview />
+
+      {/* 4. Featured Projects & Solutions (Horizontal Swipe Carousel, Matches Pic 6) */}
       <PortfolioPreview />
 
-      {/* 4. Client Reviews & Real Chat Proofs (Matches Pic 4) */}
+      {/* 5. Client Reviews & Real Chat Proofs (Matches Pic 4) */}
       <TestimonialsSection />
 
-      {/* 5. Why Clients Choose My Digital Solutions (Matches Pic 3 & Latest Screenshot) */}
+      {/* 6. Why Clients Choose My Digital Solutions (Matches Pic 3) */}
       <WhyChooseMeSection />
 
-      {/* 6. Development Process: From Idea to Impact (Matches Latest Screenshot) */}
+      {/* 7. Development Process: From Idea to Impact (Matches Pic 5 & Reference) */}
       <ProcessSection />
 
-      {/* Desktop Deep-Dive Engineering & Specialized Services (Preserved for Desktop) */}
+      {/* Desktop Deep-Dive Engineering & Specialized Services */}
       <div className="hidden lg:block">
-        <ServicesPreview />
         <TechProficiencySection />
         <FounderJourneyCard />
       </div>
