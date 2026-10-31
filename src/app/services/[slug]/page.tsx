@@ -10,11 +10,12 @@ import {
   Zap,
   ShoppingBag,
   Terminal,
+  Globe,
+  Layers,
   CheckCircle2,
   ArrowRight,
   Sparkles,
   Phone,
-  Layers,
   ArrowLeft,
 } from "lucide-react";
 
@@ -31,6 +32,8 @@ const iconMap: Record<string, React.ElementType> = {
   Zap,
   ShoppingBag,
   Terminal,
+  Globe,
+  Layers,
 };
 
 import {
