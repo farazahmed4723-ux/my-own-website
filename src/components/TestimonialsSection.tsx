@@ -8,13 +8,114 @@ import {
   Quote,
   ExternalLink,
   Check,
-  MessageSquarePlus,
   Sparkles,
   Lock,
   MessageCircle,
 } from "lucide-react";
 import { verifiedReviewsData, VerifiedReview } from "@/data/reviews";
-import { ScrollReveal, StaggerGrid, StaggerItem } from "@/components/ScrollMotion";
+import { ScrollReveal } from "@/components/ScrollMotion";
+
+function ReviewCard({ item }: { item: VerifiedReview }) {
+  return (
+    <div className="group/card w-[270px] sm:w-[340px] lg:w-[380px] shrink-0 rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:border-purple-500/50 hover:shadow-[0_12px_30px_rgba(139,92,246,0.22)] cursor-pointer select-none border bg-white dark:bg-gradient-to-b dark:from-[#11142e]/95 dark:to-[#0c0f24]/95 border-slate-200 dark:border-white/10 shadow-md dark:shadow-2xl relative">
+      <div>
+        {/* Top Row: '//' Symbol + Stars + Project Type */}
+        <div className="flex items-center justify-between gap-2 mb-3">
+          <div className="flex items-center gap-2">
+            <span className="text-amber-500 font-mono font-black text-base sm:text-lg select-none group-hover/card:scale-110 transition-transform">
+              {"//"}
+            </span>
+            <div className="flex items-center gap-0.5">
+              {[...Array(item.rating || 5)].map((_, i) => (
+                <Star
+                  key={i}
+                  className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-amber-400 text-amber-400 drop-shadow-[0_0_5px_rgba(245,158,11,0.45)]"
+                />
+              ))}
+            </div>
+          </div>
+
+          <span className="text-[9.5px] sm:text-[10.5px] font-semibold px-2.5 py-0.5 rounded-full bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-500/25 truncate max-w-[130px] sm:max-w-[160px]">
+            {item.projectType}
+          </span>
+        </div>
+
+        {/* Quote Body */}
+        <p className="text-[11.5px] sm:text-[12.5px] text-slate-700 dark:text-gray-200 italic leading-relaxed line-clamp-4 mb-3">
+          &ldquo;{item.quote}&rdquo;
+        </p>
+      </div>
+
+      <div>
+        {/* Key Highlight Pill */}
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300/60 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-[10px] sm:text-[10.5px] font-medium mb-3 max-w-full truncate">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse shrink-0" />
+          <span className="truncate">{item.highlight}</span>
+        </div>
+
+        {/* Author Info with DP Avatar */}
+        <div className="pt-3 border-t border-slate-200 dark:border-white/10 flex items-center justify-between gap-2.5">
+          <div className="flex items-center gap-2.5 min-w-0 flex-1">
+            <div className="relative shrink-0">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full p-[2px] bg-gradient-to-tr from-[#8B5CF6] via-[#A855F7] to-[#F59E0B] shadow-sm">
+                {item.avatar ? (
+                  <div className="relative w-full h-full rounded-full overflow-hidden bg-slate-100 dark:bg-[#0e122b]">
+                    <Image
+                      src={item.avatar}
+                      alt={`${item.clientName} - Verified Client`}
+                      fill
+                      sizes="44px"
+                      className="object-cover"
+                      unoptimized
+                    />
+                  </div>
+                ) : (
+                  <div className="w-full h-full rounded-full bg-gradient-to-tr from-[#7C3AED] to-[#A855F7] flex items-center justify-center text-white font-heading font-extrabold text-[11px] sm:text-xs tracking-wider">
+                    {item.initials || item.clientName.substring(0, 2).toUpperCase()}
+                  </div>
+                )}
+              </div>
+
+              {item.verified && (
+                <span
+                  title="Verified Client"
+                  className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-gradient-to-tr from-emerald-500 to-emerald-400 border-2 border-white dark:border-[#0e122b] flex items-center justify-center text-white shadow-sm"
+                >
+                  <Check className="w-2 h-2 text-white stroke-[3]" />
+                </span>
+              )}
+            </div>
+
+            <div className="min-w-0 flex-1">
+              <h3 className="font-heading font-bold text-slate-900 dark:text-white text-xs sm:text-[13px] truncate group-hover/card:text-purple-600 dark:group-hover/card:text-purple-300 transition-colors">
+                {item.clientName}
+              </h3>
+              <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-[#94A3B8] truncate">
+                {item.role} &bull;{" "}
+                <span className="text-purple-600 dark:text-purple-300 font-semibold">
+                  {item.company}
+                </span>
+              </p>
+            </div>
+          </div>
+
+          {item.companyUrl && (
+            <a
+              href={item.companyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-semibold text-purple-600 dark:text-purple-300 hover:text-purple-700 dark:hover:text-purple-200 transition-colors bg-purple-50 dark:bg-[#181d3f]/60 px-2.5 py-1 rounded-full border border-purple-200 dark:border-purple-500/20 shrink-0"
+            >
+              <span>Live Site</span>
+              <ExternalLink className="w-2.5 h-2.5" />
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function TestimonialsSection() {
   const [reviews, setReviews] = useState<VerifiedReview[]>(verifiedReviewsData);
@@ -53,46 +154,46 @@ export default function TestimonialsSection() {
 
   return (
     <section
-      className="relative py-16 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#070711] overflow-hidden"
+      className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/60 dark:bg-[#070711] overflow-hidden transition-colors duration-300"
       id="testimonials"
     >
       {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[450px] rounded-full bg-purple-950/20 blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[450px] rounded-full bg-purple-500/10 dark:bg-purple-950/20 blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Mobile Swipe Hint (Matches Pic 4) */}
-        <div className="sm:hidden text-center text-xs font-semibold text-gray-400 mb-3 flex items-center justify-center gap-1.5 animate-pulse">
-          <span>&larr; Swipe to explore client reviews &rarr;</span>
+        {/* Mobile Live Sliding Hint */}
+        <div className="sm:hidden text-center text-xs font-semibold text-purple-600 dark:text-purple-300 mb-3 flex items-center justify-center gap-1.5 animate-pulse">
+          <span>&larr; Live sliding client reviews &bull; Tap or hold to pause &rarr;</span>
         </div>
 
-        {/* Section Header (Matches Pic 4 Exactly 1:1) */}
+        {/* Section Header */}
         <ScrollReveal variant="pop-up">
           <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#121634]/80 border border-purple-500/30 text-purple-300 text-[11px] sm:text-xs font-semibold uppercase tracking-wider mb-4 shadow-[0_0_15px_rgba(139,92,246,0.2)]">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-[#121634]/80 border border-slate-200 dark:border-purple-500/30 text-purple-700 dark:text-purple-300 text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-4 shadow-sm dark:shadow-[0_0_15px_rgba(139,92,246,0.2)]">
+              <ShieldCheck className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
               <span>100% VERIFIED SOCIAL PROOF</span>
             </div>
 
-            <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-3">
+            <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
               Client Reviews &amp;{" "}
               <span className="bg-gradient-to-r from-[#A855F7] via-[#8B5CF6] to-[#C084FC] bg-clip-text text-transparent">
                 Real Chat Proofs
               </span>
             </h2>
 
-            <p className="text-[#94A3B8] text-xs sm:text-base leading-relaxed max-w-2xl mx-auto mb-6">
+            <p className="text-slate-600 dark:text-[#94A3B8] text-xs sm:text-base leading-relaxed max-w-2xl mx-auto mb-6">
               Transparent feedback, 10/10 client ratings, and real WhatsApp payment &amp; project completion receipts.
             </p>
 
-            {/* Two Social Proof Tabs (Matches Pic 4) */}
-            <div className="inline-flex items-center p-1.5 rounded-2xl bg-[#0f142e] border border-white/10 shadow-lg gap-2">
+            {/* Two Social Proof Tabs */}
+            <div className="inline-flex items-center p-1.5 rounded-2xl bg-slate-200/80 dark:bg-[#0f142e] border border-slate-300 dark:border-white/10 shadow-md gap-2">
               <button
                 type="button"
                 onClick={() => setActiveTab("written")}
                 className={`px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all cursor-pointer ${
                   activeTab === "written"
                     ? "bg-gradient-to-r from-[#1d4ed8] via-[#2563eb] to-[#3b82f6] text-white shadow-md shadow-blue-600/30"
-                    : "text-gray-400 hover:text-white"
+                    : "text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white"
                 }`}
               >
                 <Quote className="w-3.5 h-3.5" />
@@ -105,12 +206,12 @@ export default function TestimonialsSection() {
                 className={`px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all cursor-pointer ${
                   activeTab === "proofs"
                     ? "bg-gradient-to-r from-[#1d4ed8] via-[#2563eb] to-[#3b82f6] text-white shadow-md shadow-blue-600/30"
-                    : "text-gray-400 hover:text-white"
+                    : "text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white"
                 }`}
               >
-                <Lock className="w-3.5 h-3.5 text-amber-400" />
+                <Lock className="w-3.5 h-3.5 text-amber-500" />
                 <span>Verified WhatsApp &amp; Payment Proofs</span>
-                <span className="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 text-[10px] font-mono font-bold">
+                <span className="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-600 dark:text-amber-300 text-[10px] font-mono font-bold">
                   LOCKED
                 </span>
               </button>
@@ -118,141 +219,59 @@ export default function TestimonialsSection() {
           </div>
         </ScrollReveal>
 
-        {/* Tab 1: Written Reviews (Horizontal Swipe Carousel on Mobile, Grid on Desktop) */}
+        {/* Tab 1: Written Reviews (Live Infinite Marquee Sliding Tracks) */}
         {activeTab === "written" && (
-          <div className="flex sm:grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 overflow-x-auto snap-x snap-mandatory pb-4 sm:pb-0 no-scrollbar">
-            {reviews.map((item) => (
-              <div
-                key={item.id}
-                className="min-w-[85vw] sm:min-w-0 snap-center h-full group relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#11142e]/90 to-[#0c0f24]/90 border border-white/10 hover:border-purple-500/40 p-5 sm:p-8 shadow-2xl backdrop-blur-2xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-purple-950/30"
-              >
-                <div>
-                  {/* Top Row: '//' Symbol (Pic 4) + Stars + Project Type */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-4 sm:mb-6">
-                    <div className="flex items-center gap-2">
-                      <span className="text-amber-500 font-mono font-extrabold text-lg select-none">
-                        {"//"}
-                      </span>
-                      <div className="flex items-center gap-0.5">
-                        {[...Array(item.rating || 5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-amber-400 text-amber-400 drop-shadow-[0_0_6px_rgba(245,158,11,0.45)]"
-                          />
-                        ))}
-                      </div>
-                    </div>
+          <div className="relative w-full overflow-hidden py-2 sm:py-4 -mx-4 sm:mx-0">
+            {/* Left and Right Edge Fade Masks for Smooth Infinite Aesthetic */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-24 bg-gradient-to-r from-slate-50 via-slate-50/80 to-transparent dark:from-[#070711] dark:via-[#070711]/80 dark:to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-24 bg-gradient-to-l from-slate-50 via-slate-50/80 to-transparent dark:from-[#070711] dark:via-[#070711]/80 dark:to-transparent z-10" />
 
-                    <span className="text-[10px] sm:text-[11px] font-semibold px-2.5 sm:px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/25 text-purple-300">
-                      {item.projectType}
-                    </span>
-                  </div>
-
-                  {/* Quote Body */}
-                  <div className="relative mb-4 sm:mb-6">
-                    <p className="text-[13px] sm:text-base text-gray-200 leading-relaxed italic relative z-10">
-                      &ldquo;{item.quote}&rdquo;
-                    </p>
-                  </div>
-                </div>
-
-                <div>
-                  {/* Key Highlight Pill */}
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 text-[10.5px] sm:text-xs font-medium mb-4 sm:mb-6">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                    <span>{item.highlight}</span>
-                  </div>
-
-                  {/* Author Info with DP Avatar (Matches Pic 4) */}
-                  <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <div className="relative shrink-0">
-                        <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-full p-[2px] bg-gradient-to-tr from-[#8B5CF6] via-[#A855F7] to-[#F59E0B] shadow-md">
-                          {item.avatar ? (
-                            <div className="relative w-full h-full rounded-full overflow-hidden bg-[#0e122b]">
-                              <Image
-                                src={item.avatar}
-                                alt={`${item.clientName} - Verified Client`}
-                                fill
-                                sizes="52px"
-                                className="object-cover"
-                                unoptimized
-                              />
-                            </div>
-                          ) : (
-                            <div className="w-full h-full rounded-full bg-gradient-to-tr from-[#7C3AED] to-[#A855F7] flex items-center justify-center text-white font-heading font-bold text-xs tracking-wider">
-                              {item.initials || item.clientName.substring(0, 2).toUpperCase()}
-                            </div>
-                          )}
-                        </div>
-
-                        {item.verified && (
-                          <span
-                            title="Verified Client"
-                            className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-gradient-to-tr from-emerald-500 to-emerald-400 border-2 border-white dark:border-[#0e122b] flex items-center justify-center text-white shadow-sm"
-                          >
-                            <Check className="w-2.5 h-2.5 text-white stroke-[3]" />
-                          </span>
-                        )}
-                      </div>
-
-                      <div className="min-w-0">
-                        <h3 className="font-heading font-bold text-white text-sm sm:text-base truncate">
-                          {item.clientName}
-                        </h3>
-                        <p className="text-[11px] sm:text-xs text-[#94A3B8] truncate">
-                          {item.role} &bull;{" "}
-                          <span className="text-purple-300 font-semibold">
-                            {item.company}
-                          </span>
-                        </p>
-                      </div>
-                    </div>
-
-                    {item.companyUrl && (
-                      <a
-                        href={item.companyUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-[11px] font-semibold text-purple-300 hover:text-purple-200 transition-colors bg-[#181d3f]/60 px-3 py-1.5 rounded-full border border-purple-500/20 shrink-0"
-                      >
-                        <span>Live Site</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    )}
-                  </div>
-                </div>
+            {/* Row 1: Sliding Left */}
+            <div className="flex overflow-hidden group mb-4 sm:mb-6">
+              <div className="animate-marquee-left flex gap-3 sm:gap-5 group-hover:[animation-play-state:paused] py-1">
+                {[...reviews, ...reviews].map((item, idx) => (
+                  <ReviewCard key={`track1-${item.id}-${idx}`} item={item} />
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Row 2: Sliding Right */}
+            <div className="flex overflow-hidden group">
+              <div className="animate-marquee-right flex gap-3 sm:gap-5 group-hover:[animation-play-state:paused] py-1">
+                {[...reviews.slice().reverse(), ...reviews.slice().reverse()].map((item, idx) => (
+                  <ReviewCard key={`track2-${item.id}-${idx}`} item={item} />
+                ))}
+              </div>
+            </div>
           </div>
         )}
 
         {/* Tab 2: Verified WhatsApp Chat & Payment Proofs */}
         {activeTab === "proofs" && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto py-4">
             {/* Proof Card 1: STN Trucking Ltd. Deliverable */}
-            <div className="rounded-2xl p-6 glass-card border border-emerald-500/30 bg-[#0e142e]/90 flex flex-col justify-between">
+            <div className="rounded-2xl p-6 glass-card border border-emerald-500/30 bg-white/95 dark:bg-[#0e142e]/90 flex flex-col justify-between shadow-lg">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
-                    <MessageCircle className="w-4 h-4 text-emerald-400" />
-                    <span className="text-xs font-bold text-white">STN Trucking Ltd. — Surrey, BC</span>
+                    <MessageCircle className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
+                    <span className="text-xs font-bold text-slate-900 dark:text-white">STN Trucking Ltd. — Surrey, BC</span>
                   </div>
-                  <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-[10px] font-bold">
+                  <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-600 dark:text-emerald-300 text-[10px] font-bold">
                     100% Shipped
                   </span>
                 </div>
-                <p className="text-xs text-gray-300 leading-relaxed mb-4">
-                  &ldquo;Faraz, the fleet showcase and instant quote form on infostntrucking.ca are working flawlessly. The drivers and dispatchers are already getting inquiries!&rdquo;
+                <p className="text-xs text-slate-700 dark:text-gray-300 leading-relaxed mb-4">
+                  &ldquo;Faraz, the fleet showcase and instant freight quote form on infostntrucking.ca are working flawlessly. The drivers and dispatchers are already getting inquiries!&rdquo;
                 </p>
               </div>
-              <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-gray-400">
+              <div className="pt-3 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11px] text-slate-500 dark:text-gray-400">
                 <span>Client: STN Trucking Operations</span>
                 <a
                   href="https://infostntrucking.ca/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sky-300 font-semibold hover:underline"
+                  className="text-sky-600 dark:text-sky-300 font-semibold hover:underline"
                 >
                   infostntrucking.ca ↗
                 </a>
@@ -260,28 +279,28 @@ export default function TestimonialsSection() {
             </div>
 
             {/* Proof Card 2: Elite Class Limo Vancouver */}
-            <div className="rounded-2xl p-6 glass-card border border-purple-500/30 bg-[#0e142e]/90 flex flex-col justify-between">
+            <div className="rounded-2xl p-6 glass-card border border-purple-500/30 bg-white/95 dark:bg-[#0e142e]/90 flex flex-col justify-between shadow-lg">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
-                    <MessageCircle className="w-4 h-4 text-purple-400" />
-                    <span className="text-xs font-bold text-white">Elite Class Limo — Vancouver, BC</span>
+                    <MessageCircle className="w-4 h-4 text-purple-500 dark:text-purple-400" />
+                    <span className="text-xs font-bold text-slate-900 dark:text-white">Elite Class Limo — Vancouver, BC</span>
                   </div>
-                  <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-[10px] font-bold">
+                  <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-600 dark:text-emerald-300 text-[10px] font-bold">
                     Verified
                   </span>
                 </div>
-                <p className="text-xs text-gray-300 leading-relaxed mb-4">
+                <p className="text-xs text-slate-700 dark:text-gray-300 leading-relaxed mb-4">
                   &ldquo;Faraz delivered our luxury fleet platform on schedule. The dark aesthetic and mobile booking speed increased our weekend VIP bookings noticeably.&rdquo;
                 </p>
               </div>
-              <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-gray-400">
+              <div className="pt-3 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11px] text-slate-500 dark:text-gray-400">
                 <span>Client: Executive Chauffeur Team</span>
                 <a
                   href="https://eliteclasslimo.ca/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-purple-300 font-semibold hover:underline"
+                  className="text-purple-600 dark:text-purple-300 font-semibold hover:underline"
                 >
                   eliteclasslimo.ca ↗
                 </a>
@@ -292,13 +311,13 @@ export default function TestimonialsSection() {
 
         {/* Quick Review Prompt banner at bottom */}
         <ScrollReveal variant="zoom-pop" delay={0.2}>
-          <div className="mt-10 sm:mt-12 text-center p-5 sm:p-6 rounded-2xl glass-card border border-purple-500/20 max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="mt-10 sm:mt-12 text-center p-5 sm:p-6 rounded-2xl glass-card border border-slate-200 dark:border-purple-500/20 bg-white/80 dark:bg-transparent max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
             <div className="text-left">
-              <h4 className="text-xs sm:text-sm font-bold text-white flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-purple-400" />
+              <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-purple-500 dark:text-purple-400" />
                 <span>Worked with Faraz Ahmed on a project?</span>
               </h4>
-              <p className="text-[11px] sm:text-xs text-gray-400 mt-0.5">
+              <p className="text-[11px] sm:text-xs text-slate-600 dark:text-gray-400 mt-0.5">
                 Share your authentic experience and project feedback with prospective clients.
               </p>
             </div>
