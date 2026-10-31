@@ -1,12 +1,13 @@
 import React from "react";
 import type { Metadata } from "next";
 import HeroSection from "@/components/HeroSection";
-import ServicesPreview from "@/components/ServicesPreview";
 import AboutPreview from "@/components/AboutPreview";
-import TechProficiencySection from "@/components/TechProficiencySection";
+import WhyChooseMeSection from "@/components/WhyChooseMeSection";
+import ServicesPreview from "@/components/ServicesPreview";
 import PortfolioPreview from "@/components/PortfolioPreview";
-import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import TechProficiencySection from "@/components/TechProficiencySection";
+import ProcessSection from "@/components/ProcessSection";
 import FAQSection from "@/components/FAQSection";
 import FounderJourneyCard from "@/components/FounderJourneyCard";
 import CustomerReviewSection from "@/components/CustomerReviewSection";
@@ -30,37 +31,38 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* 1. Hero Section */}
+      {/* 1. Mobile & Desktop Hero (Matches Pic 1) */}
       <HeroSection />
 
-      {/* 2. Specialized Services Showcase (All 6 Core Services) */}
-      <ServicesPreview />
-
-      {/* 3. About Faraz Ahmed */}
+      {/* 2. Stats Strip + About Faraz (Matches Pic 2) */}
       <AboutPreview />
 
-      {/* 4. Core Engineering Proficiency & Technical Stack */}
-      <TechProficiencySection />
+      {/* 3. Why Clients Choose My Digital Solutions (Matches Pic 3 & 5) */}
+      <WhyChooseMeSection />
 
-      {/* 5. Genuine Client Projects (Elite Class Limo + STN Trucking Ltd.) */}
+      {/* 4. Client Portfolio: STN Trucking Ltd. + Elite Class Limo (Matches Pic 4 user instruction) */}
       <PortfolioPreview />
 
-      {/* 6. 6-Step Development Process */}
-      <ProcessSection />
-
-      {/* 7. Verified Client Testimonials */}
+      {/* 4b. Client Reviews & Real Chat Proofs (Matches Pic 4) */}
       <TestimonialsSection />
 
-      {/* 8. Comprehensive FAQs */}
+      {/* 5. 6-Step Development Process: From Idea to Impact (Matches Pic 5) */}
+      <ProcessSection />
+
+      {/* Desktop Deep-Dive Engineering & Specialized Services (Preserved for Desktop) */}
+      <div className="hidden lg:block">
+        <ServicesPreview />
+        <TechProficiencySection />
+        <FounderJourneyCard />
+      </div>
+
+      {/* Comprehensive FAQs */}
       <FAQSection />
 
-      {/* 9. Personal Founder Journey & Signature Showcase Card */}
-      <FounderJourneyCard />
-
-      {/* 10. Client Review Submission ("Write a Review") */}
+      {/* Client Review Submission ("Write a Review") */}
       <CustomerReviewSection />
 
-      {/* 11. High-Conversion Contact CTA */}
+      {/* High-Conversion Contact CTA */}
       <ContactCTA />
     </div>
   );

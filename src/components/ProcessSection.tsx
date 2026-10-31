@@ -65,16 +65,16 @@ export default function ProcessSection() {
       <div className="absolute top-1/2 right-1/4 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
+        {/* Header (Matches Pic 5 Exactly) */}
         <ScrollReveal variant="pop-up">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4">
-              Structured Execution
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <div className="text-amber-400 font-extrabold text-xs sm:text-sm uppercase tracking-widest mb-2">
+              MY PROCESS
             </div>
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
-              My Proven <span className="gradient-text-purple">Development Process</span>
+            <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-3">
+              From Idea to Impact
             </h2>
-            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-400 text-xs sm:text-base leading-relaxed">
               From initial strategy to final deployment, every project follows a predictable, transparent 6-stage engineering roadmap.
             </p>
           </div>
@@ -99,8 +99,9 @@ export default function ProcessSection() {
                     </div>
 
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xs font-bold text-purple-400">STAGE {step.number}</span>
-                      <span className="w-1 h-1 rounded-full bg-gray-500" />
+                      <span className="px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-extrabold text-[10px] tracking-wide shadow-sm">
+                        {step.number}
+                      </span>
                       <h3 className="font-heading text-lg font-bold text-white group-hover:text-purple-300 transition-colors">
                         {step.title}
                       </h3>

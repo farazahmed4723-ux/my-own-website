@@ -76,84 +76,68 @@ export default function HeroSection() {
       {/* Main Grid: Split Layout */}
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center relative z-10 my-auto">
         {/* Left Column: Heading, Subtitle, CTAs, Stats */}
-        <div className="lg:col-span-6 flex flex-col justify-center pt-2 sm:pt-0">
-          {/* Top Pill Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.88 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.05 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#121634]/80 border border-purple-500/30 backdrop-blur-md w-fit mb-4 sm:mb-5 shadow-[0_0_20px_rgba(139,92,246,0.18)]"
-          >
-            <span className="text-sm">🚀</span>
+        <div className="lg:col-span-6 flex flex-col justify-center items-center text-center lg:items-start lg:text-left pt-2 sm:pt-0">
+          {/* Top Pill Badge (Matches Pic 1) */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#121634]/80 border border-purple-500/30 backdrop-blur-md w-fit mb-4 sm:mb-5 shadow-[0_0_20px_rgba(139,92,246,0.18)]">
+            <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
             <span className="text-xs sm:text-sm font-medium text-purple-200 tracking-wide">
-              AI Solutions for Modern Businesses
+              Full Stack Developer &amp; AI Specialist
             </span>
-          </motion.div>
+          </div>
 
-          {/* Main Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30, scale: 0.94, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-            transition={{ type: "spring", stiffness: 220, damping: 22, delay: 0.14 }}
-            className="font-heading text-[2.1rem] sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.13] sm:leading-[1.1] tracking-tight mb-4 sm:mb-5"
-          >
-            <span className="block">Building Intelligent</span>
-            <span className="block bg-gradient-to-r from-[#A855F7] via-[#8B5CF6] to-[#C084FC] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(168,85,247,0.35)]">
-              Websites & AI-Powered
+          {/* Main Headline (Matches Pic 1) */}
+          <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.18] sm:leading-[1.1] tracking-tight mb-4 sm:mb-5 max-w-2xl">
+            <span className="lg:hidden">
+              We simplify the complex with{" "}
+              <span className="bg-gradient-to-r from-[#38bdf8] via-[#818cf8] to-[#c084fc] bg-clip-text text-transparent">
+                stunning web &amp; AI solutions!
+              </span>
             </span>
-            <span className="block">Solutions.</span>
-          </motion.h1>
+            <span className="hidden lg:inline">
+              <span className="block">Building Intelligent</span>
+              <span className="block bg-gradient-to-r from-[#A855F7] via-[#8B5CF6] to-[#C084FC] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(168,85,247,0.35)]">
+                Websites &amp; AI-Powered
+              </span>
+              <span className="block">Solutions.</span>
+            </span>
+          </h1>
 
-          {/* Subheading */}
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 220, damping: 22, delay: 0.24 }}
-            className="text-sm sm:text-base lg:text-lg text-[#B9B9C9] leading-relaxed mb-6 sm:mb-8 max-w-xl font-normal"
-          >
-            I help businesses grow with modern websites, AI chatbots, automation
-            systems and custom software solutions using WordPress, Next.js and
-            the latest AI technologies.
-          </motion.p>
+          {/* Subheading (Matches Pic 1) */}
+          <p className="text-xs sm:text-base lg:text-lg text-[#B9B9C9] leading-relaxed mb-6 sm:mb-8 max-w-xl font-normal">
+            Harnessing innovative React web apps, custom WordPress theme engineering, context-aware AI chatbots, and automated workflows to turn your vision into high-converting digital realities.
+          </p>
 
-          {/* CTA Buttons Row */}
-          <motion.div
-            initial={{ opacity: 0, y: 24, scale: 0.94 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ type: "spring", stiffness: 240, damping: 20, delay: 0.34 }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8 sm:mb-10"
-          >
+          {/* CTA Buttons Row (Matches Pic 1: View My Work ↗ & Hire Me Now ⚡) */}
+          <div className="grid grid-cols-2 gap-3 w-full max-w-sm sm:max-w-md sm:flex sm:items-center sm:gap-4 mb-8 sm:mb-10">
             {/* Primary Button */}
-            <Link
-              href="/services"
-              id="hero-explore-services-btn"
-              className="group px-7 py-3.5 rounded-full bg-gradient-to-r from-[#8B5CF6] via-[#9333EA] to-[#A855F7] text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-3 shadow-[0_0_25px_rgba(139,92,246,0.45)] hover:shadow-[0_0_40px_rgba(139,92,246,0.7)] transition-all duration-300 hover:scale-105 active:scale-95"
+            <a
+              href="#portfolio"
+              id="hero-view-my-work-btn"
+              className="group px-4 sm:px-7 py-3 sm:py-3.5 rounded-xl sm:rounded-full bg-gradient-to-r from-[#1d4ed8] via-[#2563eb] to-[#3b82f6] text-white font-semibold text-xs sm:text-base flex items-center justify-center gap-1.5 sm:gap-2.5 shadow-[0_0_20px_rgba(37,99,235,0.45)] hover:shadow-[0_0_35px_rgba(37,99,235,0.7)] transition-all duration-300 hover:scale-105 active:scale-95"
             >
-              <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-0.5 transition-transform">
-                <ArrowRight className="w-3.5 h-3.5" />
-              </div>
-              <span>Explore Services</span>
-            </Link>
+              <span>View My Work</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </a>
 
-            {/* Secondary WhatsApp Button */}
+            {/* Secondary WhatsApp / Hire Button */}
             <a
               href="https://wa.me/14374348789"
               target="_blank"
               rel="noopener noreferrer"
-              id="hero-whatsapp-btn"
-              className="px-6 py-3.5 rounded-full bg-[#10142A]/80 hover:bg-[#151a38] border border-white/15 hover:border-purple-500/40 text-gray-200 hover:text-white font-medium text-sm sm:text-base flex items-center justify-center gap-2.5 backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
+              id="hero-hire-me-now-btn"
+              className="px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl sm:rounded-full bg-white/10 hover:bg-white/15 border border-white/20 text-white font-medium text-xs sm:text-base flex items-center justify-center gap-1.5 sm:gap-2 backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 shadow-md"
             >
-              <MessageCircle className="w-4 h-4 text-emerald-400" />
-              <span>Let&apos;s Talk on WhatsApp</span>
+              <span>Hire Me Now</span>
+              <span className="text-amber-400">⚡</span>
             </a>
-          </motion.div>
+          </div>
 
-          {/* Animated Statistics Counters */}
+          {/* Animated Statistics Counters (Desktop Only, on Mobile stats are featured in About top strip) */}
           <motion.div
             initial={{ opacity: 0, y: 22, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ type: "spring", stiffness: 230, damping: 21, delay: 0.44 }}
-            className="grid grid-cols-3 gap-3 sm:gap-6 pt-5 sm:pt-6 border-t border-white/10 max-w-lg"
+            className="hidden lg:grid grid-cols-3 gap-3 sm:gap-6 pt-5 sm:pt-6 border-t border-white/10 max-w-lg"
           >
             <StatCounter
               target={2}
@@ -265,6 +249,35 @@ export default function HeroSection() {
               {/* Desk Bottom Warm Gold Reflection Beam (Matches reference image) */}
               <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#F59E0B]/50 to-transparent pointer-events-none" />
               <div className="absolute bottom-0 inset-x-0 h-6 bg-gradient-to-t from-[#070711] to-transparent pointer-events-none" />
+
+              {/* Mobile-Only Dual Floating Skill Badges (Matches Pic 1 Exactly) */}
+              <div className="lg:hidden absolute bottom-3 left-1 z-20 flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-[#0f142e]/90 border border-white/15 backdrop-blur-md shadow-lg">
+                <div className="w-6 h-6 rounded-lg bg-sky-500/20 border border-sky-400/40 flex items-center justify-center text-sky-300 font-mono text-[10px] font-bold">
+                  &lt;/&gt;
+                </div>
+                <div className="text-left">
+                  <div className="text-[10px] font-bold text-white leading-tight">Full Stack Dev</div>
+                  <div className="text-[8px] text-gray-400">React, Node &amp; APIs</div>
+                </div>
+              </div>
+
+              <div className="lg:hidden absolute bottom-3 right-12 z-20 flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-[#0f142e]/90 border border-white/15 backdrop-blur-md shadow-lg">
+                <div className="w-6 h-6 rounded-lg bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-300 text-[10px]">
+                  🌐
+                </div>
+                <div className="text-left">
+                  <div className="text-[10px] font-bold text-white leading-tight">WordPress Expert</div>
+                  <div className="text-[8px] text-gray-400">Custom Themes &amp; Woo</div>
+                </div>
+              </div>
+
+              {/* Floating Glowing Brand Logo Bubble with Online Dot (Matches Pic 1) */}
+              <div className="lg:hidden absolute -bottom-1 right-0 z-30 w-10 h-10 rounded-full p-[2px] bg-gradient-to-tr from-[#38bdf8] via-[#818cf8] to-[#f59e0b] shadow-[0_0_15px_rgba(56,189,248,0.5)] flex items-center justify-center">
+                <div className="relative w-full h-full rounded-full overflow-hidden bg-black">
+                  <Image src="/images/logo.jpg" alt="Logo" fill className="object-cover" />
+                </div>
+                <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-[#070711] animate-pulse" />
+              </div>
             </motion.div>
           </div>
 
@@ -325,62 +338,11 @@ export default function HeroSection() {
             href="/services/ecommerce-solutions"
           />
 
-          {/* Mobile-Only Clean 2x2 Interactive Service Bento Grid (Zero Face Overlap!) */}
-          <div className="grid grid-cols-2 gap-2.5 w-full mt-3.5 sm:hidden">
-            {[
-              {
-                title: "Websites",
-                sub: "WordPress | Next.js",
-                href: "/services/website-development",
-                icon: <Code2 className="w-4 h-4 text-white" />,
-              },
-              {
-                title: "AI Chatbots",
-                sub: "Smart Automation",
-                href: "/services/ai-chatbots",
-                icon: <Bot className="w-4 h-4 text-white" />,
-              },
-              {
-                title: "AI Agents",
-                sub: "Custom Solutions",
-                href: "/services/ai-agents",
-                icon: <Zap className="w-4 h-4 text-white" />,
-              },
-              {
-                title: "E-Commerce",
-                sub: "Shopify | Woo",
-                href: "/services/ecommerce-solutions",
-                icon: <ShoppingBag className="w-4 h-4 text-white" />,
-              },
-            ].map((card) => (
-              <Link
-                key={card.title}
-                href={card.href}
-                className="flex items-center gap-2.5 p-2.5 rounded-2xl border border-white/10 bg-[#111532]/90 backdrop-blur-md shadow-md active:scale-95 transition-transform"
-              >
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#7C3AED] via-[#8B5CF6] to-[#A855F7] flex items-center justify-center text-white shrink-0 shadow-[0_0_12px_rgba(139,92,246,0.4)]">
-                  {card.icon}
-                </div>
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center justify-between gap-1">
-                    <span className="font-heading text-[11.5px] font-bold text-white truncate">
-                      {card.title}
-                    </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-                  </div>
-                  <span className="text-[10px] text-[#94A3B8] block truncate">
-                    {card.sub}
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-
         </motion.div>
       </div>
 
-      {/* 5. Bottom Technologies Strip Dock (Pop-Up + Zoom-In on Scroll) */}
-      <ScrollReveal variant="zoom-pop" delay={0.1} className="max-w-6xl mx-auto w-full mt-8 sm:mt-12 z-20">
+      {/* 5. Bottom Technologies Strip Dock (Desktop/Tablet Only to keep mobile concise like Pic 1 & 2) */}
+      <ScrollReveal variant="zoom-pop" delay={0.1} className="hidden sm:block max-w-6xl mx-auto w-full mt-8 sm:mt-12 z-20">
 
         <div className="glass-dock px-5 sm:px-10 py-4 sm:py-5 rounded-2xl sm:rounded-3xl border border-white/10 flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
           {/* Dock Label */}
