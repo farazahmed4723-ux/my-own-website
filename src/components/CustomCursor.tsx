@@ -7,62 +7,69 @@ import gsap from "gsap";
  * Premium Animated Custom Cursor Follower
  * Inspired by aliaideveloper.site
  *
- * Features:
+ * Requirements Met:
  * - Fluid dual-layer follower (responsive core dot + inertia outer ring)
- * - Continuous subtle rotating orbital ring
- * - Soft brand blue glow (#38bdf8 / #818cf8)
- * - Dynamic button/link hover expansion
- * - Smooth magnetic pull on CTA buttons
- * - Interactive "VIEW" badge on portfolio cards
- * - Zero interference (pointer-events: none)
- * - Auto-disabled on touch devices & prefers-reduced-motion
+ * - Subtle rotating dashed orbital ring (GSAP infinite rotation)
+ * - Soft brand blue glow (#38bdf8 / #818cf8 / #8B5CF6)
+ * - Smooth enlargement on button and link hover
+ * - Subtle magnetic attraction on CTA buttons
+ * - Interactive "VIEW ↗" badge over portfolio cards
+ * - Zero interference (pointer-events: none on all elements)
+ * - Auto-disabled on touch taps and respects reduced-motion
+ * - Visible on all screen sizes when using mouse / trackpad
  */
 export default function CustomCursor() {
-  const cursorRef = useRef<HTMLDivElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const rotatingRingRef = useRef<SVGSVGElement>(null);
-  const dotRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
+  const trail1Ref = useRef<HTMLDivElement>(null);
+  const trail2Ref = useRef<HTMLDivElement>(null);
+  const clickWaveRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
 
-  const [cursorState, setCursorState] = useState<"default" | "hover" | "portfolio">("default");
   const [cursorText, setCursorText] = useState<string>("");
-  const [isClient, setIsClient] = useState<boolean>(false);
+  const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
-    setIsClient(true);
+    setMounted(true);
 
-    // Disable on touch devices or users who prefer reduced motion
-    const isTouch =
-      window.matchMedia("(pointer: coarse)").matches ||
-      window.matchMedia("(hover: none)").matches ||
-      "ontouchstart" in window;
+    // Respect reduced-motion accessibility settings
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    if (prefersReducedMotion) return;
 
-    if (isTouch || prefersReducedMotion) {
-      return;
-    }
-
-    const ring = ringRef.current;
     const dot = dotRef.current;
+    const ring = ringRef.current;
     const rotatingRing = rotatingRingRef.current;
-    const textEl = textRef.current;
+    const trail1 = trail1Ref.current;
+    const trail2 = trail2Ref.current;
+    const clickWave = clickWaveRef.current;
 
-    if (!ring || !dot || !rotatingRing) return;
+    if (!dot || !ring || !rotatingRing) return;
 
-    // Initially hide cursor until first movement
-    gsap.set([ring, dot], { opacity: 0 });
+    // Set initial centering offsets in GSAP (prevents Tailwind translate clashes)
+    gsap.set([dot, ring, trail1, trail2, clickWave].filter(Boolean), {
+      xPercent: -50,
+      yPercent: -50,
+      opacity: 0,
+    });
 
-    // GSAP high-performance quickTo setters for 60/120fps fluid tracking
-    const setDotX = gsap.quickTo(dot, "x", { duration: 0.12, ease: "power2.out" });
-    const setDotY = gsap.quickTo(dot, "y", { duration: 0.12, ease: "power2.out" });
+    // High performance GSAP quickTo setters for 60/120fps fluid tracking
+    const setDotX = gsap.quickTo(dot, "x", { duration: 0.08, ease: "none" });
+    const setDotY = gsap.quickTo(dot, "y", { duration: 0.08, ease: "none" });
 
-    const setRingX = gsap.quickTo(ring, "x", { duration: 0.42, ease: "power3.out" });
-    const setRingY = gsap.quickTo(ring, "y", { duration: 0.42, ease: "power3.out" });
+    const setRingX = gsap.quickTo(ring, "x", { duration: 0.32, ease: "power2.out" });
+    const setRingY = gsap.quickTo(ring, "y", { duration: 0.32, ease: "power2.out" });
 
-    // Continuous smooth rotation for the outer decorative dashed ring
+    const setTrail1X = trail1 ? gsap.quickTo(trail1, "x", { duration: 0.44, ease: "power3.out" }) : null;
+    const setTrail1Y = trail1 ? gsap.quickTo(trail1, "y", { duration: 0.44, ease: "power3.out" }) : null;
+
+    const setTrail2X = trail2 ? gsap.quickTo(trail2, "x", { duration: 0.6, ease: "power3.out" }) : null;
+    const setTrail2Y = trail2 ? gsap.quickTo(trail2, "y", { duration: 0.6, ease: "power3.out" }) : null;
+
+    // Continuous subtle rotating ring animation (12s smooth rotation)
     const rotationTween = gsap.to(rotatingRing, {
       rotation: 360,
       repeat: -1,
@@ -71,36 +78,56 @@ export default function CustomCursor() {
       transformOrigin: "center center",
     });
 
-    let hasRevealed = false;
-    let activeMagneticEl: HTMLElement | null = null;
+    let isVisible = false;
+    let activeMagnetic: HTMLElement | null = null;
+    let currentState: "default" | "hover" | "portfolio" = "default";
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const handlePointerMove = (e: PointerEvent) => {
+      // If it is a touch tap, hide cursor and return
+      if (e.pointerType === "touch") {
+        if (isVisible) {
+          gsap.to([dot, ring, trail1, trail2].filter(Boolean), { opacity: 0, duration: 0.2 });
+          isVisible = false;
+        }
+        return;
+      }
+
       const { clientX: x, clientY: y } = e;
 
-      // Reveal cursor elements on first mouse movement
-      if (!hasRevealed) {
-        gsap.to([ring, dot], { opacity: 1, duration: 0.25 });
-        hasRevealed = true;
+      // Make cursor visible on first move
+      if (!isVisible) {
+        gsap.to([dot, ring], { opacity: 1, duration: 0.25 });
+        if (trail1) gsap.to(trail1, { opacity: 0.6, duration: 0.25 });
+        if (trail2) gsap.to(trail2, { opacity: 0.35, duration: 0.25 });
+        isVisible = true;
       }
 
       setDotX(x);
       setDotY(y);
       setRingX(x);
       setRingY(y);
+      if (setTrail1X && setTrail1Y) {
+        setTrail1X(x);
+        setTrail1Y(y);
+      }
+      if (setTrail2X && setTrail2Y) {
+        setTrail2X(x);
+        setTrail2Y(y);
+      }
 
-      // Handle magnetic pull on active CTA button if hovered
-      if (activeMagneticEl) {
-        const rect = activeMagneticEl.getBoundingClientRect();
+      // Magnetic hover pull on CTA buttons
+      if (activeMagnetic) {
+        const rect = activeMagnetic.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
-        const pullFactor = 0.22;
-        const deltaX = (x - centerX) * pullFactor;
-        const deltaY = (y - centerY) * pullFactor;
+        const maxPull = 12;
+        const deltaX = Math.max(-maxPull, Math.min(maxPull, (x - centerX) * 0.24));
+        const deltaY = Math.max(-maxPull, Math.min(maxPull, (y - centerY) * 0.24));
 
-        gsap.to(activeMagneticEl, {
+        gsap.to(activeMagnetic, {
           x: deltaX,
           y: deltaY,
-          duration: 0.35,
+          duration: 0.2,
           ease: "power2.out",
           overwrite: "auto",
         });
@@ -111,72 +138,72 @@ export default function CustomCursor() {
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
-      // Check if target is inside a portfolio showcase card
+      // 1. Check if hovering over a portfolio showcase card
       const portfolioCard = target.closest<HTMLElement>(
         "#portfolio .glass-card, [data-cursor='portfolio'], [id^='portfolio-'], a[href*='infostntrucking.ca'], a[href*='eliteclasslimo.ca']"
       );
 
       if (portfolioCard) {
-        setCursorState("portfolio");
+        currentState = "portfolio";
         setCursorText("VIEW");
         gsap.to(ring, {
-          scale: 2.2,
-          backgroundColor: "rgba(10, 16, 38, 0.8)",
-          borderColor: "rgba(56, 189, 248, 0.9)",
-          boxShadow: "0 0 25px rgba(56, 189, 248, 0.55), 0 0 45px rgba(139, 92, 246, 0.3)",
-          duration: 0.35,
+          scale: 2.25,
+          backgroundColor: "rgba(10, 16, 38, 0.85)",
+          borderColor: "rgba(56, 189, 248, 0.95)",
+          boxShadow: "0 0 25px rgba(56, 189, 248, 0.65), 0 0 45px rgba(139, 92, 246, 0.35)",
+          duration: 0.3,
           ease: "power2.out",
         });
-        gsap.to(dot, { opacity: 0, scale: 0.4, duration: 0.2 });
+        gsap.to(dot, { opacity: 0, scale: 0.3, duration: 0.2 });
         return;
       }
 
-      // Check if target is an interactive button / link / input
+      // 2. Check if hovering over buttons, links, or interactive elements
       const interactiveEl = target.closest<HTMLElement>(
-        "a, button, input, select, textarea, [role='button'], label, [data-cursor='pointer']"
+        "button, a, input, select, textarea, [role='button'], label, [data-magnetic], .cursor-pointer"
       );
 
       if (interactiveEl) {
-        setCursorState("hover");
+        currentState = "hover";
         setCursorText("");
-
         gsap.to(ring, {
-          scale: 1.65,
-          backgroundColor: "rgba(56, 189, 248, 0.12)",
-          borderColor: "rgba(56, 189, 248, 0.85)",
-          boxShadow: "0 0 20px rgba(56, 189, 248, 0.45), 0 0 35px rgba(99, 102, 241, 0.25)",
+          scale: 1.7,
+          backgroundColor: "rgba(56, 189, 248, 0.15)",
+          borderColor: "rgba(56, 189, 248, 0.9)",
+          boxShadow: "0 0 22px rgba(56, 189, 248, 0.55), 0 0 35px rgba(99, 102, 241, 0.3)",
           duration: 0.3,
           ease: "power2.out",
         });
         gsap.to(dot, {
-          scale: 0.6,
-          opacity: 0.6,
+          scale: 0.5,
+          opacity: 0.5,
           duration: 0.2,
         });
 
-        // Detect CTA buttons for magnetic hover effect
+        // Detect CTA buttons for magnetic pull
         const isCta =
           interactiveEl.matches("button") ||
           interactiveEl.matches("a[href*='contact']") ||
           interactiveEl.matches("a[href*='wa.me']") ||
+          interactiveEl.matches("a[href*='#write-review']") ||
           interactiveEl.matches("[id*='btn']") ||
           interactiveEl.matches("[class*='cta']") ||
           interactiveEl.hasAttribute("data-magnetic");
 
         if (isCta) {
-          activeMagneticEl = interactiveEl;
+          activeMagnetic = interactiveEl;
         }
         return;
       }
 
-      // Default state reset
-      setCursorState("default");
+      // 3. Reset to default state
+      currentState = "default";
       setCursorText("");
       gsap.to(ring, {
         scale: 1,
         backgroundColor: "transparent",
-        borderColor: "rgba(56, 189, 248, 0.55)",
-        boxShadow: "0 0 14px rgba(56, 189, 248, 0.35), 0 0 28px rgba(139, 92, 246, 0.15)",
+        borderColor: "rgba(56, 189, 248, 0.7)",
+        boxShadow: "0 0 14px rgba(56, 189, 248, 0.4), 0 0 28px rgba(139, 92, 246, 0.2)",
         duration: 0.35,
         ease: "power2.out",
       });
@@ -186,77 +213,112 @@ export default function CustomCursor() {
         duration: 0.25,
       });
 
-      if (activeMagneticEl) {
-        gsap.to(activeMagneticEl, {
+      if (activeMagnetic) {
+        gsap.to(activeMagnetic, {
           x: 0,
           y: 0,
-          duration: 0.65,
+          duration: 0.6,
           ease: "elastic.out(1, 0.4)",
         });
-        activeMagneticEl = null;
+        activeMagnetic = null;
       }
+    };
+
+    const handlePointerDown = (e: PointerEvent) => {
+      if (e.pointerType === "touch") return;
+
+      gsap.to(ring, { scale: 0.85, duration: 0.15, ease: "power2.out" });
+      gsap.to(dot, { scale: 1.4, duration: 0.15, ease: "power2.out" });
+
+      // Click ripple wave effect
+      if (clickWave) {
+        gsap.set(clickWave, {
+          x: e.clientX,
+          y: e.clientY,
+          scale: 0.4,
+          opacity: 0.9,
+        });
+        gsap.to(clickWave, {
+          scale: 2.2,
+          opacity: 0,
+          duration: 0.45,
+          ease: "power2.out",
+        });
+      }
+    };
+
+    const handlePointerUp = (e: PointerEvent) => {
+      if (e.pointerType === "touch") return;
+
+      const targetScale = currentState === "portfolio" ? 2.25 : currentState === "hover" ? 1.7 : 1;
+      gsap.to(ring, { scale: targetScale, duration: 0.25, ease: "back.out(2)" });
+      gsap.to(dot, { scale: currentState === "hover" ? 0.5 : 1, duration: 0.25 });
     };
 
     const handleMouseLeave = () => {
-      gsap.to([ring, dot], { opacity: 0, duration: 0.25 });
-      if (activeMagneticEl) {
-        gsap.to(activeMagneticEl, {
+      gsap.to([dot, ring, trail1, trail2].filter(Boolean), { opacity: 0, duration: 0.25 });
+      isVisible = false;
+      if (activeMagnetic) {
+        gsap.to(activeMagnetic, {
           x: 0,
           y: 0,
-          duration: 0.65,
+          duration: 0.6,
           ease: "elastic.out(1, 0.4)",
         });
-        activeMagneticEl = null;
+        activeMagnetic = null;
       }
     };
 
-    const handleMouseDown = () => {
-      gsap.to(ring, { scale: 0.82, duration: 0.15, ease: "power2.out" });
-      gsap.to(dot, { scale: 1.3, duration: 0.15, ease: "power2.out" });
-    };
-
-    const handleMouseUp = () => {
-      const targetScale = cursorState === "portfolio" ? 2.2 : cursorState === "hover" ? 1.65 : 1;
-      gsap.to(ring, { scale: targetScale, duration: 0.25, ease: "back.out(2)" });
-      gsap.to(dot, { scale: cursorState === "hover" ? 0.6 : 1, duration: 0.25 });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    window.addEventListener("pointermove", handlePointerMove, { passive: true });
     document.addEventListener("mouseover", handleMouseOver, { passive: true });
+    window.addEventListener("pointerdown", handlePointerDown, { passive: true });
+    window.addEventListener("pointerup", handlePointerUp, { passive: true });
     document.documentElement.addEventListener("mouseleave", handleMouseLeave);
-    window.addEventListener("mousedown", handleMouseDown);
-    window.addEventListener("mouseup", handleMouseUp);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("pointermove", handlePointerMove);
       document.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener("pointerdown", handlePointerDown);
+      window.removeEventListener("pointerup", handlePointerUp);
       document.documentElement.removeEventListener("mouseleave", handleMouseLeave);
-      window.removeEventListener("mousedown", handleMouseDown);
-      window.removeEventListener("mouseup", handleMouseUp);
       rotationTween.kill();
-      if (activeMagneticEl) {
-        gsap.set(activeMagneticEl, { x: 0, y: 0 });
+      if (activeMagnetic) {
+        gsap.set(activeMagnetic, { x: 0, y: 0 });
       }
     };
-  }, [cursorState]);
+  }, []);
 
-  if (!isClient) return null;
+  if (!mounted) return null;
 
   return (
-    <div
-      ref={cursorRef}
-      aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden select-none hidden md:block"
-    >
-      {/* Outer Follower Ring */}
+    <>
+      {/* 1. Click Ripple Expansion Wave */}
+      <div
+        ref={clickWaveRef}
+        aria-hidden="true"
+        className="fixed top-0 left-0 pointer-events-none z-[999996] w-10 h-10 rounded-full border border-sky-400 opacity-0 will-change-transform"
+      />
+
+      {/* 2. Trailing Inertia Micro Particles (from aliaideveloper.site) */}
+      <div
+        ref={trail2Ref}
+        aria-hidden="true"
+        className="fixed top-0 left-0 pointer-events-none z-[999997] w-1.5 h-1.5 rounded-full bg-[#818cf8]/50 opacity-0 will-change-transform shadow-[0_0_6px_#818cf8]"
+      />
+      <div
+        ref={trail1Ref}
+        aria-hidden="true"
+        className="fixed top-0 left-0 pointer-events-none z-[999997] w-2 h-2 rounded-full bg-[#38bdf8]/60 opacity-0 will-change-transform shadow-[0_0_8px_#38bdf8]"
+      />
+
+      {/* 3. Outer Rotating Follower Ring */}
       <div
         ref={ringRef}
-        className="pointer-events-none fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center will-change-transform border border-sky-400/60 backdrop-blur-[1px] transition-colors duration-200"
+        aria-hidden="true"
+        className="fixed top-0 left-0 pointer-events-none z-[999998] w-[38px] h-[38px] rounded-full flex items-center justify-center will-change-transform border-[1.5px] border-sky-400/75 backdrop-blur-[1px] transition-colors duration-200 opacity-0"
         style={{
-          width: 38,
-          height: 38,
           boxShadow:
-            "0 0 16px rgba(56, 189, 248, 0.35), 0 0 32px rgba(139, 92, 246, 0.18)",
+            "0 0 16px rgba(56, 189, 248, 0.45), 0 0 32px rgba(139, 92, 246, 0.22)",
         }}
       >
         {/* Subtle Decorative Rotating SVG Ring */}
@@ -271,10 +333,10 @@ export default function CustomCursor() {
             r="47"
             fill="none"
             stroke="url(#bluePurpleGrad)"
-            strokeWidth="1.8"
+            strokeWidth="2"
             strokeDasharray="14 10 6 10"
             strokeLinecap="round"
-            opacity="0.85"
+            opacity="0.9"
           />
           <defs>
             <linearGradient id="bluePurpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -285,7 +347,7 @@ export default function CustomCursor() {
           </defs>
         </svg>
 
-        {/* Dynamic Context Label (e.g. 'VIEW' on portfolio cards) */}
+        {/* Dynamic Context Label ('VIEW ↗' on portfolio cards) */}
         {cursorText && (
           <span
             ref={textRef}
@@ -297,16 +359,16 @@ export default function CustomCursor() {
         )}
       </div>
 
-      {/* Inner Responsive Core Dot */}
+      {/* 4. Inner Responsive Core Dot */}
       <div
         ref={dotRef}
-        className="pointer-events-none fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-gradient-to-tr from-sky-400 to-indigo-300 will-change-transform"
+        aria-hidden="true"
+        className="fixed top-0 left-0 pointer-events-none z-[999999] w-2 h-2 rounded-full bg-gradient-to-tr from-sky-400 to-indigo-300 will-change-transform opacity-0"
         style={{
           boxShadow:
-            "0 0 8px rgba(56, 189, 248, 0.9), 0 0 16px rgba(139, 92, 246, 0.6)",
+            "0 0 10px rgba(56, 189, 248, 0.95), 0 0 20px rgba(139, 92, 246, 0.7)",
         }}
       />
-    </div>
+    </>
   );
 }
-
