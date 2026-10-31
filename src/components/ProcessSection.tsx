@@ -1,134 +1,125 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import {
-  Search,
-  FileSpreadsheet,
-  Palette,
-  Code2,
-  CheckCircle,
-  Rocket,
-  ArrowRight,
-} from "lucide-react";
-import { ScrollReveal, StaggerGrid, StaggerItem } from "@/components/ScrollMotion";
+import React, { useState } from "react";
+import { Search, Users, RefreshCw, Rocket, ChevronDown, ChevronUp } from "lucide-react";
+import { ScrollReveal } from "@/components/ScrollMotion";
 
-const steps = [
+interface ProcessStep {
+  number: string;
+  title: string;
+  description: string;
+  icon: React.ComponentType<{ className?: string }>;
+  iconColor: string;
+}
+
+const steps: ProcessStep[] = [
   {
     number: "01",
-    title: "Discovery",
-    icon: Search,
+    title: "Optimized production process",
     description:
-      "Deep-dive consultation to understand your business objectives, target audience, competitive landscape, and technical specifications.",
+      "A decade-refined workflow keeps production clear, efficient, on time, and within budget.",
+    icon: Search,
+    iconColor: "text-[#1E88E5]",
   },
   {
     number: "02",
-    title: "Planning",
-    icon: FileSpreadsheet,
+    title: "Collaborative approach",
     description:
-      "Formulating clear architectural blueprints, user journey wireframes, timeline milestones, and data integration diagrams.",
+      "You get a dedicated project manager and a smooth partnership where every detail stays aligned.",
+    icon: Users,
+    iconColor: "text-[#FF8F00]",
   },
   {
     number: "03",
-    title: "Design",
-    icon: Palette,
+    title: "Flexibility for revisions",
     description:
-      "Crafting high-fidelity UI designs with custom color harmony, glassmorphism aesthetics, responsive layouts, and interactive motion states.",
+      "We welcome stakeholder feedback and refine the draft until it is ready for confident production.",
+    icon: RefreshCw,
+    iconColor: "text-[#1E88E5]",
   },
   {
     number: "04",
-    title: "Development",
-    icon: Code2,
+    title: "Personalized client support",
     description:
-      "Clean, scalable engineering using Next.js, TypeScript, Tailwind CSS, or custom WordPress themes with semantic HTML and security best practices.",
-  },
-  {
-    number: "05",
-    title: "Testing",
-    icon: CheckCircle,
-    description:
-      "Comprehensive multi-device QA, cross-browser verification (Chrome, Safari, Edge, Firefox), performance benchmarking, and SEO checks.",
-  },
-  {
-    number: "06",
-    title: "Launch",
+      "Our team gives hands-on support at every stage, from kickoff through delivery and beyond.",
     icon: Rocket,
-    description:
-      "Production deployment, custom domain DNS configuration, SSL provisioning, Google Search Console indexing, and client handover.",
+    iconColor: "text-[#FF8F00]",
   },
 ];
 
 export default function ProcessSection() {
-  return (
-    <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-[#060813] overflow-hidden" id="process">
-      {/* Background radial accent */}
-      <div className="absolute top-1/2 right-1/4 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[140px] pointer-events-none" />
+  const [showAllMobile, setShowAllMobile] = useState(false);
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header (Matches Pic 5 Exactly) */}
-        <ScrollReveal variant="pop-up">
-          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <div className="text-amber-400 font-extrabold text-xs sm:text-sm uppercase tracking-widest mb-2">
+  return (
+    <section
+      id="process"
+      className="dark-preserve w-full py-20 sm:py-24 relative overflow-hidden transition-colors duration-300 shadow-2xl bg-gradient-to-br from-[#070B14] via-[#0B132B] to-[#050A15] text-white border-y border-slate-800/80"
+    >
+      {/* Ambient background glows */}
+      <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-[#1E88E5]/15 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] bg-[#FF8F00]/15 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
+        {/* Section Header (Matches Uploaded Screenshot Exactly) */}
+        <ScrollReveal variant="pop-up" className="mb-12 lg:mb-16">
+          <div>
+            <span className="text-xs font-mono font-bold tracking-widest text-[#FF8F00] uppercase block mb-3">
               MY PROCESS
-            </div>
-            <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-3">
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
               From Idea to Impact
             </h2>
-            <p className="text-gray-400 text-xs sm:text-base leading-relaxed">
-              From initial strategy to final deployment, every project follows a predictable, transparent 6-stage engineering roadmap.
-            </p>
           </div>
         </ScrollReveal>
 
-        {/* 6 Step Process Cards Grid with 3D Stagger Wave */}
-        <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.1}>
-          {steps.map((step) => {
+        {/* 4-Step Process Grid (Matches Screenshot Exactly 1:1) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-8">
+          {steps.map((step, idx) => {
             const Icon = step.icon;
+            const isHiddenOnMobile = idx >= 2 && !showAllMobile;
 
             return (
-              <StaggerItem key={step.number}>
-                <div className="h-full relative group p-7 rounded-2xl glass-card border border-white/10 hover:border-purple-500/40 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_0_30px_rgba(139,92,246,0.25)] flex flex-col justify-between">
-                  <div>
-                    {/* Step Number Watermark */}
-                    <span className="absolute top-5 right-6 font-heading text-3xl font-black text-white/5 group-hover:text-purple-500/15 transition-colors pointer-events-none">
-                      {step.number}
-                    </span>
-
-                    <div className="w-12 h-12 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-300 mb-5 group-hover:scale-110 group-hover:bg-purple-600/30 transition-all duration-300">
-                      <Icon className="w-6 h-6" />
-                    </div>
-
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-extrabold text-[10px] tracking-wide shadow-sm">
-                        {step.number}
-                      </span>
-                      <h3 className="font-heading text-lg font-bold text-white group-hover:text-purple-300 transition-colors">
-                        {step.title}
-                      </h3>
-                    </div>
-
-                    <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
-                      {step.description}
-                    </p>
+              <div
+                key={step.number}
+                className={`flex-col items-start group h-full transition-all duration-300 ${
+                  isHiddenOnMobile ? "hidden sm:flex" : "flex"
+                }`}
+              >
+                {/* Round Icon Container with Top-Right Orange Badge */}
+                <div className="relative mb-6">
+                  <div className="w-16 h-16 rounded-full border shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform bg-slate-900 border-slate-700">
+                    <Icon className={`w-6 h-6 ${step.iconColor}`} />
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[#FF8F00] text-white font-mono font-bold text-xs flex items-center justify-center shadow-md border-2 border-slate-900">
+                    {step.number}
                   </div>
                 </div>
-              </StaggerItem>
+
+                {/* Step Title */}
+                <h3 className="text-xl font-extrabold text-white mb-3 leading-snug group-hover:text-[#90CAF9] transition-colors">
+                  {step.title}
+                </h3>
+
+                {/* Step Description */}
+                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-xs">
+                  {step.description}
+                </p>
+              </div>
             );
           })}
-        </StaggerGrid>
+        </div>
 
-        {/* Bottom Process Link */}
-        <ScrollReveal variant="pop-up" delay={0.2}>
-          <div className="mt-14 text-center">
-            <Link
-              href="/process"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-purple-400 hover:text-purple-300 transition-colors group"
-            >
-              <span>Learn More About Project Milestones & Deliverables</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-        </ScrollReveal>
+        {/* Mobile Toggle to view all 4 steps or keep compact */}
+        <div className="sm:hidden mt-8 text-center">
+          <button
+            type="button"
+            onClick={() => setShowAllMobile(!showAllMobile)}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-slate-300 hover:text-white text-xs font-semibold tracking-wide transition-all cursor-pointer"
+          >
+            <span>{showAllMobile ? "Show Less" : "View All 4 Steps (Revisions & Support)"}</span>
+            {showAllMobile ? <ChevronUp className="w-3.5 h-3.5 text-[#FF8F00]" /> : <ChevronDown className="w-3.5 h-3.5 text-[#FF8F00]" />}
+          </button>
+        </div>
       </div>
     </section>
   );

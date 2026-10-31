@@ -10,52 +10,81 @@ export interface PortfolioProject {
   liveUrl?: string;
   isRealClient: boolean;
   statusBadge: string;
+  badgeType?: "Full Stack" | "WordPress" | string;
+  performanceBadge?: string;
   highlights: string[];
   technologies: string[];
 }
 
 export const portfolioProjects: PortfolioProject[] = [
   {
+    id: "ai-by-faraz",
+    slug: "ai-by-faraz",
+    title: "AI by Faraz – AI Agent & Workflow Platform",
+    category: "Full Stack AI Portfolio & Workflow Systems",
+    badgeType: "Full Stack",
+    developer: "Faraz Ahmed",
+    projectType: "Full Stack AI Platform & Client Portal",
+    description:
+      "Designed & engineered a modern portfolio web platform for Faraz Ahmad featuring interactive AI chatbot, dynamic review system, and ultra-fast Next.js architecture.",
+    image: "/images/website-reference-hd.jpg",
+    liveUrl: "https://aibyfaraz.com/",
+    isRealClient: true,
+    statusBadge: "Live Production Platform",
+    performanceBadge: "Performance: Sub-1s Load",
+    highlights: [
+      "Sub-1s PageSpeed load optimization",
+      "Interactive Gemini & OpenAI RAG assistant",
+      "Live Supabase verified review vault",
+      "Tailwind CSS custom glassmorphism design system",
+    ],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "AI Agent Showcase", "Workflow Automation"],
+  },
+  {
+    id: "stn-trucking-ltd",
+    slug: "stn-trucking-ltd",
+    title: "STN Trucking Ltd. – Commercial Fleet Portal",
+    category: "Commercial Logistics & Transport Web Platform",
+    badgeType: "Full Stack",
+    developer: "Faraz Ahmed",
+    projectType: "Commercial Fleet Website & Quote Platform",
+    description:
+      "Engineered a high-converting commercial trucking, moving, and heavy flatbed hauling platform for STN Trucking Ltd. across Surrey, Vancouver, and Lower Mainland, BC—featuring instant freight quote capture.",
+    image: "/images/stn-trucking.webp",
+    liveUrl: "https://infostntrucking.ca/",
+    isRealClient: true,
+    statusBadge: "Verified Client Project",
+    performanceBadge: "Performance: 98% PageSpeed",
+    highlights: [
+      "Interactive live fleet & heavy flatbed showcase carousel",
+      "Instant freight, moving & hauling quote request workflow",
+      "Local SEO architecture targeting Surrey, Vancouver & Lower Mainland BC",
+      "Executive high-contrast responsive UI across mobile & desktop",
+    ],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Local SEO", "Lead Capture"],
+  },
+  {
     id: "elite-class-limo",
     slug: "elite-class-limo",
-    title: "Elite Class Limo",
-    category: "Luxury Transportation Website",
+    title: "Elite Class Limo – Luxury Chauffeur Platform",
+    category: "Luxury Chauffeur & VIP Transportation",
+    badgeType: "WordPress",
     developer: "Faraz Ahmed",
-    projectType: "Client Website Development",
+    projectType: "Custom Client Website & Booking Experience",
     description:
-      "Designed and developed a professional website for Elite Class Limo, a luxury transportation business, with a focus on presenting its services through a polished digital experience.",
+      "Designed and developed a professional luxury website for Elite Class Limo, featuring executive fleet presentation, instant VIP reservation inquiries, and smooth responsive design.",
     image: "/images/elite-class-limo.jpg",
     liveUrl: "https://eliteclasslimo.ca/",
     isRealClient: true,
     statusBadge: "Verified Client Project",
+    performanceBadge: "Verified Client Deliverable",
     highlights: [
       "Polished luxury visual presentation",
       "Comprehensive fleet & service showcase",
       "Responsive layout optimized for mobile bookings",
       "Executive aesthetic with high contrast & typography",
     ],
-    technologies: ["React", "Next.js", "Tailwind CSS", "SEO Optimization"],
-  },
-  {
-    id: "stn-trucking-ltd",
-    slug: "stn-trucking-ltd",
-    title: "STN Trucking Ltd.",
-    category: "Commercial Trucking, Moving & Logistics Website",
-    developer: "Faraz Ahmed",
-    projectType: "Client Website & Quote Platform",
-    description:
-      "Engineered a high-converting commercial trucking, moving, and heavy flatbed hauling platform for STN Trucking Ltd. across Surrey, Vancouver, and the Lower Mainland, BC—featuring an interactive live fleet showcase and instant freight quote capture.",
-    image: "/images/stn-trucking.webp",
-    liveUrl: "https://infostntrucking.ca/",
-    isRealClient: true,
-    statusBadge: "Verified Client Project",
-    highlights: [
-      "Interactive live fleet & heavy flatbed showcase carousel",
-      "Instant freight, moving & hauling quote request workflow",
-      "Local SEO architecture targeting Surrey, Vancouver & Lower Mainland BC",
-      "Executive high-contrast dark & gold responsive UI across mobile & desktop",
-    ],
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Local SEO", "Lead Capture"],
+    technologies: ["WordPress", "Next.js", "Tailwind CSS", "SEO Optimization", "Mobile Bookings"],
   },
   {
     id: "concept-ai-agent-mesh",

@@ -1,219 +1,166 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { portfolioProjects } from "@/data/portfolio";
-import { ExternalLink, ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
-import { ScrollReveal, StaggerGrid, StaggerItem } from "@/components/ScrollMotion";
+import { ExternalLink, ArrowUpRight, Sparkles } from "lucide-react";
+import { ScrollReveal } from "@/components/ScrollMotion";
+
+type CategoryFilter = "All" | "Full Stack" | "WordPress";
 
 export default function PortfolioPreview() {
-  const realProjects = portfolioProjects.filter((p) => p.isRealClient);
-  const conceptProjects = portfolioProjects.filter((p) => !p.isRealClient).slice(0, 2);
+  const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>("All");
+
+  const categories: CategoryFilter[] = ["All", "Full Stack", "WordPress"];
+
+  const filteredProjects = portfolioProjects.filter((p) => {
+    if (selectedCategory === "All") return true;
+    if (selectedCategory === "Full Stack") {
+      return p.badgeType === "Full Stack" || p.category.toLowerCase().includes("full stack");
+    }
+    if (selectedCategory === "WordPress") {
+      return p.badgeType === "WordPress" || p.category.toLowerCase().includes("wordpress");
+    }
+    return true;
+  });
 
   return (
-    <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-[#060813] overflow-hidden" id="portfolio">
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header */}
-        <ScrollReveal variant="pop-up">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-            <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Verified Client Deliverables</span>
-              </div>
-              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-                Featured <span className="gradient-text-purple">Client Portfolio</span>
-              </h2>
-              <p className="text-gray-400 text-sm sm:text-base mt-3">
-                Explore authentic commercial websites and digital platforms engineered by Faraz Ahmed—designed for luxury presentation, rapid load speeds, and real customer lead conversion.
-              </p>
-            </div>
+    <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#F8FAFC] dark:bg-[#060813] overflow-hidden transition-colors duration-300" id="portfolio">
+      {/* Background Ambient Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[380px] bg-purple-300/20 dark:bg-purple-900/15 rounded-full blur-[140px] pointer-events-none" />
 
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-purple-400 hover:text-purple-300 transition-colors group"
-            >
-              <span>View All Portfolio Entries</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section Header (Matches Uploaded Screenshot Exactly) */}
+        <ScrollReveal variant="pop-up" className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+          {/* Top Pill Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 dark:bg-white/5 border border-purple-200/80 dark:border-white/10 text-purple-700 dark:text-sky-300 text-[11px] font-semibold uppercase tracking-wider mb-3.5 shadow-sm">
+            <span>SELECTED WORK</span>
+          </div>
+
+          {/* Main Section Headline */}
+          <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-6">
+            Featured Projects &amp; <span className="gradient-text-purple">Solutions</span>
+          </h2>
+
+          {/* Filter Tabs (All | Full Stack | WordPress) */}
+          <div className="inline-flex items-center p-1 rounded-full bg-slate-200/70 dark:bg-[#0f142e] border border-slate-300/60 dark:border-white/10 shadow-inner gap-1">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                  selectedCategory === cat
+                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-600/30"
+                    : "text-slate-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-white"
+                }`}
+              >
+                <span>{cat}</span>
+              </button>
+            ))}
           </div>
         </ScrollReveal>
 
-        {/* Mobile Swipe Hint */}
-        <div className="sm:hidden text-center text-xs font-semibold text-gray-400 mb-3 flex items-center justify-center gap-1.5 animate-pulse">
-          <span>&larr; Swipe to explore projects &rarr;</span>
-        </div>
-
-        {/* Featured Real Client Projects (Swipeable on Mobile, Stacked on Desktop) */}
-        <div className="flex sm:block overflow-x-auto snap-x snap-mandatory pb-4 sm:pb-0 sm:space-y-12 mb-10 sm:mb-16 gap-4 no-scrollbar">
-          {realProjects.map((project, idx) => (
+        {/* Swipeable Projects Track (Side-by-Side sliding on Mobile, Responsive Grid on Tablet/Desktop) */}
+        <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 px-1 gap-4 sm:gap-6 no-scrollbar sm:grid sm:grid-cols-2 lg:grid-cols-3">
+          {filteredProjects.map((project, idx) => (
             <div
               key={project.id}
-              className="min-w-[88vw] sm:min-w-0 snap-center shrink-0 sm:shrink"
+              className="w-[86vw] max-w-[360px] sm:w-auto snap-center shrink-0 flex flex-col justify-between rounded-3xl bg-white dark:bg-[#0f142e] border border-slate-200/90 dark:border-white/10 shadow-[0_10px_30px_rgba(15,23,42,0.06)] dark:shadow-none overflow-hidden transition-all duration-300 hover:border-purple-400/50 dark:hover:border-purple-500/40 hover:-translate-y-1 hover:shadow-xl group"
+              data-cursor="portfolio"
             >
-              <ScrollReveal
-                variant={idx % 2 === 0 ? "card-3d" : "zoom-pop"}
-                delay={0.1}
-              >
-                <div
-                  data-cursor="portfolio"
-                  className="rounded-3xl glass-card border border-purple-500/30 overflow-hidden shadow-2xl shadow-purple-950/30 hover:border-purple-400/50 transition-all duration-500 h-full flex flex-col justify-between"
-                >
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 sm:p-10 lg:p-12">
-                    {/* Project Image Preview */}
-                    <div className={`dark-preserve lg:col-span-7 relative group rounded-2xl overflow-hidden aspect-[16/10] border border-white/10 bg-black/60 shadow-xl ${idx % 2 === 1 ? "lg:order-2" : ""}`}>
-                      <Image
-                        src={project.image}
-                        alt={`${project.title} Website Screenshot`}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-700"
-                        priority={idx === 0}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-500" />
+              {/* Top Image Preview with Verified Badges */}
+              <div className="relative aspect-[16/10] overflow-hidden bg-black/40">
+                <Image
+                  src={project.image}
+                  alt={`${project.title} Screenshot`}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  priority={idx === 0}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
 
-                      <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
-                        <span className="px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-semibold backdrop-blur-md flex items-center gap-1.5 shadow-lg">
-                          <ShieldCheck className="w-3.5 h-3.5" />
-                          <span>{project.statusBadge}</span>
-                        </span>
-                      </div>
+                {/* Top-Left Category Badge */}
+                <div className="absolute top-3.5 left-3.5 z-10">
+                  <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10.5px] font-mono font-bold flex items-center gap-1.5 shadow-md">
+                    <span>{project.badgeType === "WordPress" ? "🌐 WordPress" : "</> Full Stack"}</span>
+                  </span>
+                </div>
 
-                      {project.liveUrl && (
-                        <div className="absolute bottom-4 right-4 z-10">
-                          <span className="px-3 py-1 rounded-full bg-black/70 border border-white/20 text-gray-300 text-[11px] font-medium backdrop-blur-md flex items-center gap-1.5">
-                            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                            <span>Live In Production</span>
-                          </span>
-                        </div>
-                      )}
-                    </div>
+                {/* Top-Right Live Site Pill */}
+                {project.liveUrl && (
+                  <div className="absolute top-3.5 right-3.5 z-10">
+                    <span className="px-2.5 py-1 rounded-full bg-emerald-500/90 backdrop-blur-md text-white text-[10.5px] font-bold flex items-center gap-1 shadow-md">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                      <span>Live Site</span>
+                    </span>
+                  </div>
+                )}
 
-                    {/* Project Details */}
-                    <div className={`lg:col-span-5 flex flex-col justify-center ${idx % 2 === 1 ? "lg:order-1" : ""}`}>
-                      <span className="text-xs font-semibold tracking-wider uppercase text-purple-400 mb-2">
-                        {project.category}
+                {/* Bottom-Right Performance Metric */}
+                <div className="absolute bottom-3 right-3.5 z-10">
+                  <span className="px-2.5 py-0.5 rounded-md bg-black/75 backdrop-blur-md border border-white/10 text-amber-300 text-[10px] font-mono flex items-center gap-1">
+                    <span className="text-amber-400">↗</span>
+                    <span>{project.performanceBadge || "Performance: Sub-1s Load"}</span>
+                  </span>
+                </div>
+              </div>
+
+              {/* Card Body */}
+              <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="font-heading font-extrabold text-base sm:text-lg text-slate-900 dark:text-white mb-1.5 line-clamp-1 group-hover:text-purple-600 dark:group-hover:text-purple-300 transition-colors">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-gray-400 line-clamp-2 leading-relaxed mb-4">
+                    {project.description}
+                  </p>
+
+                  {/* Technology Tags */}
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {project.technologies.slice(0, 5).map((tech, i) => (
+                      <span
+                        key={i}
+                        className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 text-[10.5px] text-slate-700 dark:text-gray-300 font-medium"
+                      >
+                        {tech}
                       </span>
-
-                      <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-white mb-3">
-                        {project.title}
-                      </h3>
-
-                      <div className="flex flex-wrap items-center gap-3 text-xs text-gray-400 mb-4 pb-4 border-b border-white/10">
-                        <span>Developer: <strong className="text-white">{project.developer}</strong></span>
-                        <span>•</span>
-                        <span>{project.projectType}</span>
-                      </div>
-
-                      <p className="text-sm text-gray-300 leading-relaxed mb-6">
-                        {project.description}
-                      </p>
-
-                      {/* Verified Highlights */}
-                      <div className="space-y-2 mb-6">
-                        {project.highlights.map((item, i) => (
-                          <div key={i} className="flex items-center gap-2 text-xs text-gray-300">
-                            <span className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0" />
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Tech Badges */}
-                      <div className="flex flex-wrap gap-2 mb-7">
-                        {project.technologies.map((tech, i) => (
-                          <span
-                            key={i}
-                            className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[11px] text-gray-300 font-medium"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* Action Buttons */}
-                      <div className="flex flex-wrap items-center gap-4">
-                        {project.liveUrl && (
-                          <a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            id={`portfolio-${project.id}-live-btn`}
-                            className="px-6 py-3 rounded-full bg-gradient-to-r from-[#8B5CF6] to-[#A855F7] text-white text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-[0_0_20px_rgba(139,92,246,0.5)] hover:shadow-[0_0_30px_rgba(139,92,246,0.8)] transition-all hover:scale-105"
-                          >
-                            <span>Visit Live Website</span>
-                            <ExternalLink className="w-3.5 h-3.5" />
-                          </a>
-                        )}
-                        <Link
-                          href="/portfolio"
-                          className="px-5 py-3 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-white text-xs sm:text-sm font-medium hover:bg-white/10 transition-colors"
-                        >
-                          Read Case Details
-                        </Link>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
-              </ScrollReveal>
+
+                {/* Dual Action Buttons (Case Study ↗ & Live ↗) */}
+                <div className="flex items-center gap-2 pt-3 border-t border-slate-100 dark:border-white/10">
+                  <Link
+                    href={`/portfolio`}
+                    className="flex-1 py-2.5 rounded-xl border border-slate-200 dark:border-white/15 bg-slate-50 hover:bg-slate-100 dark:bg-white/5 dark:hover:bg-white/10 text-amber-600 dark:text-amber-400 font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
+                  >
+                    <span>Case Study</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </Link>
+
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-blue-600/30 transition-all hover:scale-105 active:scale-95"
+                    >
+                      <span>Live</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                </div>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Concept Architecture Prototypes Grid (Desktop Only) */}
-        <div className="hidden lg:block">
-          <ScrollReveal variant="pop-up" delay={0.1}>
-            <div className="mb-6 flex items-center justify-between">
-              <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-purple-400" />
-                <span>Advanced Engineering Prototypes</span>
-              </h3>
-              <span className="text-xs text-gray-400">R&D & High-Scale Systems</span>
-            </div>
-          </ScrollReveal>
-
-          <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 gap-8" staggerDelay={0.15}>
-            {conceptProjects.map((concept) => (
-              <StaggerItem key={concept.id}>
-                <div
-                  data-cursor="portfolio"
-                  className="h-full rounded-2xl p-6 glass-card border border-white/10 hover:border-purple-500/40 hover:shadow-xl hover:shadow-purple-950/20 transition-all duration-500 flex flex-col justify-between group"
-                >
-                  <div>
-                    <div className="dark-preserve relative rounded-xl overflow-hidden aspect-[16/9] mb-5 border border-white/10 bg-black/40">
-                      <Image
-                        src={concept.image}
-                        alt={concept.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
-                      <div className="absolute top-3 left-3">
-                        <span className="px-3 py-1 rounded-full bg-indigo-950/80 border border-indigo-400/40 text-indigo-300 text-[11px] font-semibold backdrop-blur-md flex items-center gap-1.5">
-                          <Sparkles className="w-3 h-3" />
-                          <span>{concept.statusBadge}</span>
-                        </span>
-                      </div>
-                    </div>
-
-                    <span className="text-[11px] font-semibold tracking-wider uppercase text-gray-400">
-                      {concept.category}
-                    </span>
-                    <h4 className="font-heading text-lg font-bold text-white mt-1 mb-2 group-hover:text-purple-300 transition-colors">
-                      {concept.title}
-                    </h4>
-                    <p className="text-xs text-gray-400 leading-relaxed mb-4">
-                      {concept.description}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs text-gray-400">
-                    <span>Developer: Faraz Ahmed</span>
-                    <span className="text-purple-400 font-medium">Concept Architecture</span>
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerGrid>
+        {/* Mobile Swipe Hint at Bottom (Matching Uploaded Screenshot Exactly) */}
+        <div className="sm:hidden text-center text-xs font-semibold text-slate-500 dark:text-gray-400 mt-5 flex items-center justify-center gap-1.5 animate-pulse">
+          <span>&larr; Swipe to explore projects &rarr;</span>
         </div>
       </div>
     </section>

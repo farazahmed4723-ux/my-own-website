@@ -2,12 +2,12 @@ import React from "react";
 import type { Metadata } from "next";
 import HeroSection from "@/components/HeroSection";
 import AboutPreview from "@/components/AboutPreview";
-import WhyChooseMeSection from "@/components/WhyChooseMeSection";
-import ServicesPreview from "@/components/ServicesPreview";
 import PortfolioPreview from "@/components/PortfolioPreview";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import TechProficiencySection from "@/components/TechProficiencySection";
+import WhyChooseMeSection from "@/components/WhyChooseMeSection";
 import ProcessSection from "@/components/ProcessSection";
+import ServicesPreview from "@/components/ServicesPreview";
+import TechProficiencySection from "@/components/TechProficiencySection";
 import FAQSection from "@/components/FAQSection";
 import FounderJourneyCard from "@/components/FounderJourneyCard";
 import CustomerReviewSection from "@/components/CustomerReviewSection";
@@ -37,16 +37,16 @@ export default function HomePage() {
       {/* 2. Stats Strip + About Faraz (Matches Pic 2) */}
       <AboutPreview />
 
-      {/* 3. Why Clients Choose My Digital Solutions (Matches Pic 3 & 5) */}
-      <WhyChooseMeSection />
-
-      {/* 4. Client Portfolio: STN Trucking Ltd. + Elite Class Limo (Matches Pic 4 user instruction) */}
+      {/* 3. Featured Projects & Solutions (Horizontal Swipe Carousel, Matches Pic 6) */}
       <PortfolioPreview />
 
-      {/* 4b. Client Reviews & Real Chat Proofs (Matches Pic 4) */}
+      {/* 4. Client Reviews & Real Chat Proofs (Matches Pic 4) */}
       <TestimonialsSection />
 
-      {/* 5. 6-Step Development Process: From Idea to Impact (Matches Pic 5) */}
+      {/* 5. Why Clients Choose My Digital Solutions (Matches Pic 3 & Latest Screenshot) */}
+      <WhyChooseMeSection />
+
+      {/* 6. Development Process: From Idea to Impact (Matches Latest Screenshot) */}
       <ProcessSection />
 
       {/* Desktop Deep-Dive Engineering & Specialized Services (Preserved for Desktop) */}
