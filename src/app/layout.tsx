@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingSocialBar from "@/components/FloatingSocialBar";
 import AIChatBot from "@/components/AIChatBot";
+import CustomCursor from "@/components/CustomCursor";
 import { ScrollProgressBar } from "@/components/ScrollMotion";
 import { buildGlobalGraphJsonLd, SITE_NAME, SITE_URL, FOUNDER_NAME } from "@/lib/seo";
 
@@ -131,6 +132,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} ${caveat.variable} font-sans bg-[#060813] text-[#F8FAFC] antialiased selection:bg-purple-600/30 selection:text-white min-h-screen flex flex-col transition-colors duration-300`}
       >
+        <CustomCursor />
         <ScrollProgressBar />
         <Navbar />
         <main className="flex-1">{children}</main>

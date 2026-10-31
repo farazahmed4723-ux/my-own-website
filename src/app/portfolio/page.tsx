@@ -87,7 +87,8 @@ export default function PortfolioPage() {
             {realProjects.map((project) => (
               <div
                 key={project.id}
-                className="rounded-3xl glass-card border border-purple-500/30 overflow-hidden shadow-2xl shadow-purple-950/20"
+                data-cursor="portfolio"
+                className="rounded-3xl glass-card border border-purple-500/30 overflow-hidden shadow-2xl shadow-purple-950/20 hover:border-purple-400/50 transition-colors"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 p-6 sm:p-10 lg:p-12 items-center">
                   {/* Left: Real Website Screenshot */}

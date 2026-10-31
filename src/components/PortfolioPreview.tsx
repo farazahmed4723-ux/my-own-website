@@ -48,7 +48,10 @@ export default function PortfolioPreview() {
               variant={idx % 2 === 0 ? "card-3d" : "zoom-pop"}
               delay={0.1}
             >
-              <div className="rounded-3xl glass-card border border-purple-500/30 overflow-hidden shadow-2xl shadow-purple-950/30 hover:border-purple-400/50 transition-all duration-500">
+              <div
+                data-cursor="portfolio"
+                className="rounded-3xl glass-card border border-purple-500/30 overflow-hidden shadow-2xl shadow-purple-950/30 hover:border-purple-400/50 transition-all duration-500"
+              >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 sm:p-10 lg:p-12">
                   {/* Project Image Preview */}
                   <div className={`dark-preserve lg:col-span-7 relative group rounded-2xl overflow-hidden aspect-[16/10] border border-white/10 bg-black/60 shadow-xl ${idx % 2 === 1 ? "lg:order-2" : ""}`}>
@@ -162,7 +165,10 @@ export default function PortfolioPreview() {
         <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 gap-8" staggerDelay={0.15}>
           {conceptProjects.map((concept) => (
             <StaggerItem key={concept.id}>
-              <div className="h-full rounded-2xl p-6 glass-card border border-white/10 hover:border-purple-500/40 hover:shadow-xl hover:shadow-purple-950/20 transition-all duration-500 flex flex-col justify-between group">
+              <div
+                data-cursor="portfolio"
+                className="h-full rounded-2xl p-6 glass-card border border-white/10 hover:border-purple-500/40 hover:shadow-xl hover:shadow-purple-950/20 transition-all duration-500 flex flex-col justify-between group"
+              >
                 <div>
                   <div className="dark-preserve relative rounded-xl overflow-hidden aspect-[16/9] mb-5 border border-white/10 bg-black/40">
                     <Image
