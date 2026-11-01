@@ -40,6 +40,15 @@ export default function CustomCursor() {
 
     if (prefersReducedMotion) return;
 
+    // Completely disable animated cursor on mobile screens and touch devices
+    const isMobileOrTouch =
+      typeof window !== "undefined" &&
+      (window.innerWidth < 1024 ||
+        window.matchMedia("(pointer: coarse)").matches ||
+        window.matchMedia("(max-width: 1023px)").matches);
+
+    if (isMobileOrTouch) return;
+
     const dot = dotRef.current;
     const ring = ringRef.current;
     const rotatingRing = rotatingRingRef.current;
@@ -291,7 +300,7 @@ export default function CustomCursor() {
   if (!mounted) return null;
 
   return (
-    <>
+    <div className="hidden lg:block pointer-events-none select-none" aria-hidden="true">
       {/* 1. Click Ripple Expansion Wave */}
       <div
         ref={clickWaveRef}
@@ -369,6 +378,6 @@ export default function CustomCursor() {
             "0 0 10px rgba(56, 189, 248, 0.95), 0 0 20px rgba(139, 92, 246, 0.7)",
         }}
       />
-    </>
+    </div>
   );
 }

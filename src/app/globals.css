@@ -41,13 +41,20 @@ body {
 button,
 [role="button"],
 #process,
+#process *,
 #services,
 #portfolio,
 #testimonials,
 #why-choose {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  user-select: none;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+
+#process *::selection,
+#process::selection {
+  background: transparent !important;
+  color: inherit !important;
 }
 
 /* Custom Scrollbar */

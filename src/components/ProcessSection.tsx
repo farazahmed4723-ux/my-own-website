@@ -82,12 +82,18 @@ export default function ProcessSection() {
             return (
               <div
                 key={step.number}
+                draggable={false}
+                style={{ WebkitUserSelect: "none", userSelect: "none", WebkitTouchCallout: "none" }}
                 className={`flex-col items-start group h-full transition-all duration-300 select-none cursor-default ${
                   isHiddenOnMobile ? "hidden sm:flex" : "flex"
                 }`}
               >
                 {/* Round Icon Container with Top-Right Orange Badge */}
-                <div className="relative mb-6 select-none pointer-events-none">
+                <div
+                  draggable={false}
+                  style={{ WebkitUserSelect: "none", userSelect: "none" }}
+                  className="relative mb-6 select-none pointer-events-none"
+                >
                   <div className="w-16 h-16 rounded-full border shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform bg-slate-900 border-slate-700 select-none">
                     <Icon className={`w-6 h-6 ${step.iconColor}`} />
                   </div>
@@ -97,12 +103,20 @@ export default function ProcessSection() {
                 </div>
 
                 {/* Step Title */}
-                <h3 className="text-xl font-extrabold text-white mb-3 leading-snug group-hover:text-[#90CAF9] transition-colors select-none">
+                <h3
+                  draggable={false}
+                  style={{ WebkitUserSelect: "none", userSelect: "none" }}
+                  className="text-xl font-extrabold text-white mb-3 leading-snug group-hover:text-[#90CAF9] transition-colors select-none"
+                >
                   {step.title}
                 </h3>
 
                 {/* Step Description */}
-                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-xs select-none">
+                <p
+                  draggable={false}
+                  style={{ WebkitUserSelect: "none", userSelect: "none" }}
+                  className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-xs select-none"
+                >
                   {step.description}
                 </p>
               </div>
