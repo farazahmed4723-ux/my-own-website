@@ -36,25 +36,57 @@ body {
   color: #ffffff;
 }
 
-/* Prevent accidental text highlight / selection glitch on mobile tap & swipe */
+/* Prevent accidental text highlight / selection glitch and drag ghosts across interactive sections */
 .select-none,
 button,
 [role="button"],
 #process,
 #process *,
 #services,
+#services *,
 #portfolio,
+#portfolio *,
 #testimonials,
-#why-choose {
+#testimonials *,
+#why-choose,
+#why-choose *,
+#why-hire-me,
+#why-hire-me *,
+#about,
+#about * {
   -webkit-touch-callout: none !important;
   -webkit-user-select: none !important;
   user-select: none !important;
+  -webkit-user-drag: none !important;
 }
 
 #process *::selection,
-#process::selection {
+#process::selection,
+#services *::selection,
+#services::selection,
+#portfolio *::selection,
+#portfolio::selection,
+#testimonials *::selection,
+#testimonials::selection,
+#why-choose *::selection,
+#why-choose::selection,
+#why-hire-me *::selection,
+#why-hire-me::selection,
+#about *::selection,
+#about::selection {
   background: transparent !important;
   color: inherit !important;
+}
+
+/* On touch devices (hover: none), prevent sticky hover elevations, shadows and stuck borders */
+@media (hover: none) {
+  #services article:hover,
+  #services article:focus,
+  #process .group:hover,
+  #process .group:focus {
+    transform: none !important;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  }
 }
 
 /* Custom Scrollbar */

@@ -83,6 +83,7 @@ export default function ProcessSection() {
               <div
                 key={step.number}
                 draggable={false}
+                onDragStart={(e) => e.preventDefault()}
                 style={{ WebkitUserSelect: "none", userSelect: "none", WebkitTouchCallout: "none" }}
                 className={`flex-col items-start group h-full transition-all duration-300 select-none cursor-default ${
                   isHiddenOnMobile ? "hidden sm:flex" : "flex"
@@ -91,10 +92,11 @@ export default function ProcessSection() {
                 {/* Round Icon Container with Top-Right Orange Badge */}
                 <div
                   draggable={false}
+                  onDragStart={(e) => e.preventDefault()}
                   style={{ WebkitUserSelect: "none", userSelect: "none" }}
                   className="relative mb-6 select-none pointer-events-none"
                 >
-                  <div className="w-16 h-16 rounded-full border shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform bg-slate-900 border-slate-700 select-none">
+                  <div className="w-16 h-16 rounded-full border shadow-lg flex items-center justify-center sm:group-hover:scale-110 transition-transform bg-slate-900 border-slate-700 select-none">
                     <Icon className={`w-6 h-6 ${step.iconColor}`} />
                   </div>
                   <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[#FF8F00] text-white font-mono font-bold text-xs flex items-center justify-center shadow-md border-2 border-slate-900 select-none">
@@ -106,7 +108,7 @@ export default function ProcessSection() {
                 <h3
                   draggable={false}
                   style={{ WebkitUserSelect: "none", userSelect: "none" }}
-                  className="text-xl font-extrabold text-white mb-3 leading-snug group-hover:text-[#90CAF9] transition-colors select-none"
+                  className="text-xl font-extrabold text-white mb-3 leading-snug sm:group-hover:text-[#90CAF9] transition-colors select-none"
                 >
                   {step.title}
                 </h3>

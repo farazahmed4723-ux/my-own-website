@@ -86,21 +86,26 @@ export default function ServicesPreview() {
   return (
     <section
       id="services"
-      className="dark-preserve w-full py-16 sm:py-24 relative overflow-hidden transition-colors duration-300 shadow-2xl bg-gradient-to-br from-[#070B14] via-[#0B132B] to-[#050A15] text-white border-y border-slate-800/80"
+      className="dark-preserve w-full py-16 sm:py-24 relative overflow-hidden transition-colors duration-300 shadow-2xl bg-gradient-to-br from-[#070B14] via-[#0B132B] to-[#050A15] text-white border-y border-slate-800/80 select-none touch-manipulation"
+      style={{
+        WebkitTouchCallout: "none",
+        WebkitUserSelect: "none",
+        userSelect: "none",
+      }}
     >
       {/* Ambient background glows */}
-      <div className="absolute -top-20 -right-20 w-[500px] h-[500px] bg-[#1E88E5]/20 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-[#FF8F00]/20 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute -top-20 -right-20 w-[500px] h-[500px] bg-[#1E88E5]/20 rounded-full blur-[140px] pointer-events-none select-none" />
+      <div className="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-[#FF8F00]/20 rounded-full blur-[140px] pointer-events-none select-none" />
 
-      <div className="max-w-[1400px] mx-auto px-3 sm:px-8 lg:px-12 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-3 sm:px-8 lg:px-12 relative z-10 select-none">
         {/* Section Header (Matches Uploaded Screenshot Exactly 1:1) */}
         <ScrollReveal variant="pop-up">
-          <div className="flex flex-col items-center justify-center text-center mb-10 sm:mb-12 lg:mb-16 gap-4 sm:gap-6">
-            <div className="max-w-2xl mx-auto">
-              <span className="text-xs font-mono font-bold tracking-widest text-[#FF8F00] uppercase block mb-2 sm:mb-3">
+          <div className="flex flex-col items-center justify-center text-center mb-10 sm:mb-12 lg:mb-16 gap-4 sm:gap-6 select-none">
+            <div className="max-w-2xl mx-auto select-none">
+              <span className="text-xs font-mono font-bold tracking-widest text-[#FF8F00] uppercase block mb-2 sm:mb-3 select-none">
                 SERVICES
               </span>
-              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight select-none">
                 What I Can Do For You
               </h2>
             </div>
@@ -108,9 +113,10 @@ export default function ServicesPreview() {
             <Link
               href="/services"
               id="view-all-services-btn"
-              className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl border border-white/30 text-white font-bold text-xs hover:border-[#FF8F00] hover:text-[#FF8F00] hover:bg-white/10 shrink-0 cursor-pointer shadow-sm transition-all"
+              draggable={false}
+              className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl border border-white/30 text-white font-bold text-xs hover:border-[#FF8F00] hover:text-[#FF8F00] hover:bg-white/10 shrink-0 cursor-pointer shadow-sm transition-all select-none"
             >
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-2 select-none">
                 <span>View All Services</span>
                 <span className="text-[#FF8F00]">↗</span>
               </span>
@@ -119,7 +125,7 @@ export default function ServicesPreview() {
         </ScrollReveal>
 
         {/* 2-Column Mobile Grid, 3-Column Desktop Grid (Matches Screenshot Exactly) */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8 select-none">
           {services.map((item, idx) => {
             const Icon = item.icon;
             const isHiddenOnMobile = idx >= 4 && !showAllMobile;
@@ -127,23 +133,48 @@ export default function ServicesPreview() {
             return (
               <div
                 key={item.id}
-                className={`transition-all duration-300 ${
+                draggable={false}
+                onDragStart={(e) => e.preventDefault()}
+                style={{
+                  WebkitUserSelect: "none",
+                  userSelect: "none",
+                  WebkitTouchCallout: "none",
+                }}
+                className={`transition-all duration-300 select-none cursor-default ${
                   isHiddenOnMobile ? "hidden sm:block" : "block"
                 }`}
               >
-                <article className="rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 md:p-8 text-center border shadow-md hover:shadow-2xl hover:-translate-y-1.5 hover:border-[#FF8F00] dark:hover:border-[#FF8F00] transition-all duration-300 flex flex-col items-center justify-center group h-full bg-white dark:bg-[#0F172A]/90 border-slate-200/90 dark:border-slate-800">
+                <article
+                  draggable={false}
+                  onDragStart={(e) => e.preventDefault()}
+                  style={{
+                    WebkitUserSelect: "none",
+                    userSelect: "none",
+                    WebkitTouchCallout: "none",
+                  }}
+                  className="rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 md:p-8 text-center border shadow-md sm:hover:shadow-2xl sm:hover:-translate-y-1.5 sm:hover:border-[#FF8F00] dark:sm:hover:border-[#FF8F00] active:scale-[0.98] transition-all duration-300 flex flex-col items-center justify-center group h-full bg-white dark:bg-[#0F172A]/90 border-slate-200/90 dark:border-slate-800 select-none cursor-default"
+                >
                   {/* Round Icon Container */}
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border flex items-center justify-center mb-3 sm:mb-4 md:mb-6 group-hover:scale-110 group-hover:border-[#1E88E5] transition-all shadow-sm shrink-0 bg-slate-100 dark:bg-slate-900 border-slate-200 dark:border-slate-700">
+                  <div
+                    draggable={false}
+                    className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border flex items-center justify-center mb-3 sm:mb-4 md:mb-6 sm:group-hover:scale-110 sm:group-hover:border-[#1E88E5] transition-all shadow-sm shrink-0 bg-slate-100 dark:bg-slate-900 border-slate-200 dark:border-slate-700 select-none pointer-events-none"
+                  >
                     <Icon className={`w-5 h-5 sm:w-6 sm:h-6 ${item.iconColor}`} />
                   </div>
 
                   {/* Service Title */}
-                  <h3 className="text-xs sm:text-base md:text-xl font-bold sm:font-extrabold mb-1.5 sm:mb-3 group-hover:text-[#1E88E5] transition-colors leading-snug text-slate-900 dark:text-white">
+                  <h3
+                    draggable={false}
+                    className="text-xs sm:text-base md:text-xl font-bold sm:font-extrabold mb-1.5 sm:mb-3 sm:group-hover:text-[#1E88E5] transition-colors leading-snug text-slate-900 dark:text-white select-none"
+                  >
                     {item.title}
                   </h3>
 
                   {/* Short Description */}
-                  <p className="text-[10px] sm:text-xs md:text-sm leading-tight sm:leading-relaxed max-w-xs mx-auto text-slate-600 dark:text-slate-300">
+                  <p
+                    draggable={false}
+                    className="text-[10px] sm:text-xs md:text-sm leading-tight sm:leading-relaxed max-w-xs mx-auto text-slate-600 dark:text-slate-300 select-none"
+                  >
                     {item.description}
                   </p>
                 </article>
@@ -153,17 +184,20 @@ export default function ServicesPreview() {
         </div>
 
         {/* Mobile Toggle to view remaining 2 services (Digital Solutions & SEO) */}
-        <div className="sm:hidden mt-6 text-center">
+        <div className="sm:hidden mt-6 text-center select-none">
           <button
             type="button"
+            draggable={false}
             onClick={() => setShowAllMobile(!showAllMobile)}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-slate-300 hover:text-white text-xs font-semibold tracking-wide transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 active:bg-white/20 border border-white/15 text-slate-300 hover:text-white text-xs font-semibold tracking-wide transition-all cursor-pointer select-none touch-manipulation"
           >
-            <span>{showAllMobile ? "Show Less" : "+ View More Services (Cloud & SEO)"}</span>
+            <span className="select-none">
+              {showAllMobile ? "Show Less" : "+ View More Services (Cloud & SEO)"}
+            </span>
             {showAllMobile ? (
-              <ChevronUp className="w-3.5 h-3.5 text-[#FF8F00]" />
+              <ChevronUp className="w-3.5 h-3.5 text-[#FF8F00] select-none" />
             ) : (
-              <ChevronDown className="w-3.5 h-3.5 text-[#FF8F00]" />
+              <ChevronDown className="w-3.5 h-3.5 text-[#FF8F00] select-none" />
             )}
           </button>
         </div>
