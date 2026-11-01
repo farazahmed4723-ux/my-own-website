@@ -46,6 +46,21 @@ export const verifiedReviewsData: VerifiedReview[] = [
     publishedDate: "2026-09-05",
   },
   {
+    id: "tabreed-riyadh-review",
+    clientName: "Tabreed & Takeef Operations",
+    role: "Service & Fleet Management",
+    company: "تبريد وتكييف الرياض (Riyadh, KSA)",
+    companyUrl: "https://xn-----dtdablc2brf0dwhzar8c3afaf.com/",
+    initials: "TR",
+    projectType: "Arabic HVAC & Home Appliance Web Platform",
+    quote:
+      "Faraz engineered an exceptional Arabic platform for our AC and home appliance maintenance workshop in Riyadh. The direct WhatsApp dispatch and instant calling buttons have doubled our daily repair inquiries from Al-Zahra and across Riyadh.",
+    rating: 5,
+    highlight: "Daily customer repair inquiries doubled via WhatsApp",
+    verified: true,
+    publishedDate: "2026-10-24",
+  },
+  {
     id: "saima-review",
     clientName: "Saima",
     role: "Founder & Creative Director",

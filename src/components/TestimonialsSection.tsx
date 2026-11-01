@@ -248,7 +248,7 @@ export default function TestimonialsSection() {
 
         {/* Tab 2: Verified WhatsApp Chat & Payment Proofs */}
         {activeTab === "proofs" && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto py-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto py-4">
             {/* Proof Card 1: STN Trucking Ltd. Deliverable */}
             <div className="rounded-2xl p-6 glass-card border border-emerald-500/30 bg-white/95 dark:bg-[#0e142e]/90 flex flex-col justify-between shadow-lg">
               <div>
@@ -303,6 +303,35 @@ export default function TestimonialsSection() {
                   className="text-purple-600 dark:text-purple-300 font-semibold hover:underline"
                 >
                   eliteclasslimo.ca ↗
+                </a>
+              </div>
+            </div>
+
+            {/* Proof Card 3: Tabreed & Takeef Al Riyadh */}
+            <div className="rounded-2xl p-6 glass-card border border-amber-500/30 bg-white/95 dark:bg-[#0e142e]/90 flex flex-col justify-between shadow-lg">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-2">
+                    <MessageCircle className="w-4 h-4 text-amber-500 dark:text-amber-400" />
+                    <span className="text-xs font-bold text-slate-900 dark:text-white">تبريد وتكييف الرياض — Riyadh, KSA</span>
+                  </div>
+                  <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-600 dark:text-emerald-300 text-[10px] font-bold">
+                    100% Shipped
+                  </span>
+                </div>
+                <p className="text-xs text-slate-700 dark:text-gray-300 leading-relaxed mb-4">
+                  &ldquo;Faraz delivered our Arabic cooling &amp; appliance maintenance portal with instant WhatsApp dispatch. Our customer inquiries from Al-Zahra and greater Riyadh have surged!&rdquo;
+                </p>
+              </div>
+              <div className="pt-3 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11px] text-slate-500 dark:text-gray-400">
+                <span>Client: Riyadh Branch Operations</span>
+                <a
+                  href="https://xn-----dtdablc2brf0dwhzar8c3afaf.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-amber-600 dark:text-amber-400 font-semibold hover:underline"
+                >
+                  تبريد-وتكييف-الرياض.com ↗
                 </a>
               </div>
             </div>
