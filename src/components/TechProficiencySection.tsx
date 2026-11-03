@@ -97,12 +97,12 @@ export default function TechProficiencySection({
       className={
         embedded
           ? "relative mb-20"
-          : "relative py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#060813] overflow-hidden"
+          : "relative py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0a0e24] via-[#0d1332] to-[#0a0e24] overflow-hidden"
       }
     >
       {/* Subtle ambient background glow */}
       {!embedded && (
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[450px] bg-purple-900/10 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-purple-600/20 rounded-full blur-[140px] pointer-events-none" />
       )}
 
       <div className="max-w-7xl mx-auto relative z-10">

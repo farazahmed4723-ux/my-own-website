@@ -154,11 +154,12 @@ export default function TestimonialsSection() {
 
   return (
     <section
-      className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/60 dark:bg-[#070711] overflow-hidden transition-colors duration-300"
+      className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/60 dark:bg-gradient-to-b dark:from-[#0a0e24] dark:via-[#0e1330] dark:to-[#0a0e24] overflow-hidden transition-colors duration-300"
       id="testimonials"
     >
-      {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[450px] rounded-full bg-purple-500/10 dark:bg-purple-950/20 blur-[140px] pointer-events-none" />
+      {/* Ambient background studio lighting */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[500px] rounded-full bg-purple-500/15 dark:bg-purple-600/25 blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 -right-20 w-[500px] h-[500px] rounded-full bg-sky-500/18 dark:block hidden blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Mobile Live Sliding Hint */}

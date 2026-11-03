@@ -31,7 +31,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#060813" },
+    { media: "(prefers-color-scheme: dark)", color: "#0A0E24" },
     { media: "(prefers-color-scheme: light)", color: "#F8FAFC" },
   ],
 };
@@ -130,12 +130,27 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} ${caveat.variable} font-sans bg-[#060813] text-[#F8FAFC] antialiased selection:bg-purple-600/30 selection:text-white min-h-screen flex flex-col transition-colors duration-300`}
+        className={`${inter.variable} ${spaceGrotesk.variable} ${caveat.variable} font-sans bg-[#0A0E24] text-[#F8FAFC] antialiased selection:bg-purple-600/30 selection:text-white min-h-screen flex flex-col transition-colors duration-300 relative`}
       >
+        {/* Global Ambient Studio Lighting Mesh (Elevates atmosphere & softens darkness) */}
+        <div
+          className="fixed inset-0 pointer-events-none z-0 overflow-hidden dark:block hidden"
+          aria-hidden="true"
+        >
+          {/* Top Radial Flare behind Nav and Hero */}
+          <div className="absolute -top-36 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-gradient-to-b from-[#8B5CF6]/30 via-[#38bdf8]/18 to-transparent rounded-full blur-[140px]" />
+          {/* Mid-page Left Glow */}
+          <div className="absolute top-[28%] -left-36 w-[650px] h-[650px] bg-gradient-to-tr from-[#38bdf8]/18 via-[#6366f1]/20 to-transparent rounded-full blur-[150px]" />
+          {/* Mid-page Right Glow */}
+          <div className="absolute top-[55%] -right-36 w-[700px] h-[700px] bg-gradient-to-bl from-[#a855f7]/20 via-[#8b5cf6]/18 to-transparent rounded-full blur-[150px]" />
+          {/* Lower Bottom Glow */}
+          <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-t from-[#8B5CF6]/25 via-[#38bdf8]/15 to-transparent rounded-full blur-[140px]" />
+        </div>
+
         <CustomCursor />
         <ScrollProgressBar />
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 relative z-10">{children}</main>
         <Footer />
         <FloatingSocialBar />
         <AIChatBot />

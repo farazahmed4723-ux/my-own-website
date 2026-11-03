@@ -75,19 +75,60 @@ export default function ContactPageClient() {
     setReferenceCode(null);
 
     try {
-      const res = await fetch("/api/contact", {
+      // 1. Submit directly to Formspree
+      const formspreePromise = fetch("https://formspree.io/f/xnpporkq", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || "Not provided",
+          service: formData.service,
+          budget: formData.budget || "Not specified",
+          message: formData.description,
+          description: formData.description,
+          _subject: `New Project Inquiry: ${formData.name} — ${formData.service}`,
+        }),
+      });
+
+      // 2. Submit to internal API (Supabase vault & PostgreSQL persistence)
+      const internalPromise = fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      const data = await res.json();
+      const [formspreeRes, internalRes] = await Promise.allSettled([
+        formspreePromise,
+        internalPromise,
+      ]);
 
-      if (res.ok && data.success) {
+      const isFormspreeOk =
+        formspreeRes.status === "fulfilled" && formspreeRes.value.ok;
+
+      let internalRefCode: string | null = null;
+      let internalMsg: string | null = null;
+      if (internalRes.status === "fulfilled" && internalRes.value.ok) {
+        try {
+          const internalData = await internalRes.value.json();
+          internalRefCode = internalData.referenceCode || null;
+          internalMsg = internalData.message || null;
+        } catch {}
+      }
+
+      if (isFormspreeOk || internalRefCode) {
         setStatus("success");
-        setResponseMessage(data.message);
-        setReferenceCode(data.referenceCode || null);
-        setIsLiveDelivery(Boolean(data.isLiveDelivery));
+        setResponseMessage(
+          internalMsg ||
+            `Thank you, ${formData.name}! Your inquiry has been delivered directly to Faraz Ahmed via Formspree. Expect a personal reply within 24 hours.`
+        );
+        setReferenceCode(
+          internalRefCode || `FSP-${Date.now().toString(36).toUpperCase()}`
+        );
+        setIsLiveDelivery(true);
         setFormData({
           name: "",
           email: "",
@@ -99,7 +140,9 @@ export default function ContactPageClient() {
         });
       } else {
         setStatus("error");
-        setResponseMessage(data.error || "Failed to submit inquiry. Please try again.");
+        setResponseMessage(
+          "Failed to submit inquiry. Please try again or reach out directly on WhatsApp."
+        );
       }
     } catch {
       setStatus("error");
@@ -112,8 +155,13 @@ export default function ContactPageClient() {
   )}`;
 
   return (
-    <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-[#060813]">
-      <div className="max-w-6xl mx-auto">
+    <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0e1330] via-[#0b0f24] to-[#080b1c] relative overflow-hidden">
+      {/* Ambient Lighting Orbs */}
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-b from-purple-600/30 via-sky-500/18 to-transparent rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 -left-32 w-[550px] h-[550px] bg-indigo-600/18 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 -right-32 w-[600px] h-[600px] bg-purple-600/18 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
@@ -332,7 +380,13 @@ export default function ContactPageClient() {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-6" id="project-inquiry-form">
+              <form
+                action="https://formspree.io/f/xnpporkq"
+                method="POST"
+                onSubmit={handleSubmit}
+                className="space-y-6"
+                id="project-inquiry-form"
+              >
                 {/* Honeypot hidden input for spam bots */}
                 <input
                   type="text"

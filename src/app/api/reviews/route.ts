@@ -147,6 +147,26 @@ export async function POST(request: Request) {
       quote: quote.trim(),
     });
 
+    // Notify Faraz via Formspree (non-blocking)
+    try {
+      fetch("https://formspree.io/f/xnpporkq", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          clientName: clientName.trim(),
+          company: company.trim(),
+          role: role || "Verified Client",
+          rating: `${parsedRating} / 5 Stars`,
+          reviewQuote: quote.trim(),
+          projectType: projectType || "Web & AI Engineering",
+          _subject: `New Customer Review (${parsedRating}★): ${clientName.trim()} (${company.trim()})`,
+        }),
+      }).catch(() => {});
+    } catch {}
+
     return NextResponse.json({
       success: true,
       saved: result.saved,

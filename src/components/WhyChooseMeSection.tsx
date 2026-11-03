@@ -41,9 +41,10 @@ const reasons = [
 
 export default function WhyChooseMeSection() {
   return (
-    <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#F8FAFC] dark:bg-[#060813] overflow-hidden transition-colors duration-300" id="why-hire-me">
-      {/* Background Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-purple-300/20 dark:bg-purple-900/15 rounded-full blur-[130px] pointer-events-none" />
+    <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#F8FAFC] dark:bg-gradient-to-b dark:from-[#0a0e24] dark:via-[#0d1332] dark:to-[#0a0e24] overflow-hidden transition-colors duration-300" id="why-hire-me">
+      {/* Background Ambient Studio Lighting */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-purple-300/20 dark:bg-purple-600/25 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/3 -right-20 w-[500px] h-[500px] bg-sky-500/18 dark:block hidden rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header (Matching Reference Pic 3 Exactly) */}

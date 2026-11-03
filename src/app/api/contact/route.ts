@@ -92,7 +92,33 @@ export async function POST(request: Request) {
       },
     });
 
-    // 4. Optional live email notification via Resend
+    // 4. Live form delivery via Formspree (https://formspree.io/f/xnpporkq)
+    let formspreeSent = false;
+    try {
+      const formspreeRes = await fetch("https://formspree.io/f/xnpporkq", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: sanitizedData.name,
+          email: sanitizedData.email,
+          phone: sanitizedData.phone || "Not provided",
+          service: sanitizedData.service,
+          budget: sanitizedData.budget,
+          message: sanitizedData.description,
+          description: sanitizedData.description,
+          referenceCode: supabaseResult.referenceCode,
+          _subject: `[${supabaseResult.referenceCode}] Project Inquiry: ${sanitizedData.name} — ${sanitizedData.service}`,
+        }),
+      });
+      formspreeSent = formspreeRes.ok;
+    } catch (err) {
+      console.error("Formspree dispatch error:", err);
+    }
+
+    // 5. Optional live email notification via Resend
     let emailSent = false;
     if (process.env.RESEND_API_KEY) {
       try {
@@ -126,7 +152,7 @@ export async function POST(request: Request) {
       }
     }
 
-    if (supabaseResult.saved || emailSent) {
+    if (supabaseResult.saved || emailSent || formspreeSent) {
       return NextResponse.json({
         success: true,
         isLiveDelivery: true,
@@ -134,9 +160,10 @@ export async function POST(request: Request) {
         storage: {
           postgres: supabaseResult.storedInPostgres,
           vault: supabaseResult.storedInVault,
+          formspree: formspreeSent,
           email: emailSent,
         },
-        message: `Thank you, ${sanitizedData.name}! Your inquiry (${supabaseResult.referenceCode}) has been securely saved to Faraz Ahmed's backend. Expect a personal reply within 24 hours.`,
+        message: `Thank you, ${sanitizedData.name}! Your inquiry (${supabaseResult.referenceCode}) has been received via Formspree & saved to Faraz Ahmed's backend. Expect a personal reply within 24 hours.`,
       });
     }
 

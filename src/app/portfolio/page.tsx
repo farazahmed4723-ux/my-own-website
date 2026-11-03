@@ -41,7 +41,11 @@ export default function PortfolioPage() {
   const portfolioJsonLd = buildPortfolioCollectionJsonLd();
 
   return (
-    <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-[#060813]">
+    <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0e1330] via-[#0b0f24] to-[#080b1c] relative overflow-hidden">
+      {/* Ambient Lighting Orbs */}
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-b from-purple-600/30 via-sky-500/18 to-transparent rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 -left-32 w-[550px] h-[550px] bg-indigo-600/18 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 -right-32 w-[600px] h-[600px] bg-purple-600/18 rounded-full blur-[140px] pointer-events-none" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}

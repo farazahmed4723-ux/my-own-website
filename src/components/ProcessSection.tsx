@@ -53,12 +53,12 @@ export default function ProcessSection() {
   return (
     <section
       id="process"
-      className="dark-preserve w-full py-20 sm:py-24 relative overflow-hidden transition-colors duration-300 shadow-2xl bg-gradient-to-br from-[#070B14] via-[#0B132B] to-[#050A15] text-white border-y border-slate-800/80 select-none touch-manipulation"
+      className="dark-preserve w-full py-20 sm:py-24 relative overflow-hidden transition-colors duration-300 shadow-2xl bg-gradient-to-br from-[#0c122c] via-[#121a3f] to-[#0a0f26] text-white border-y border-slate-700/60 select-none touch-manipulation"
       style={{ WebkitTouchCallout: "none", WebkitUserSelect: "none", userSelect: "none" }}
     >
-      {/* Ambient background glows */}
-      <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-[#1E88E5]/15 rounded-full blur-[140px] pointer-events-none select-none" />
-      <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] bg-[#FF8F00]/15 rounded-full blur-[140px] pointer-events-none select-none" />
+      {/* Ambient background studio lighting */}
+      <div className="absolute -top-20 -left-20 w-[550px] h-[550px] bg-[#1E88E5]/25 rounded-full blur-[140px] pointer-events-none select-none" />
+      <div className="absolute -bottom-20 -right-20 w-[550px] h-[550px] bg-[#FF8F00]/22 rounded-full blur-[140px] pointer-events-none select-none" />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10 select-none">
         {/* Section Header */}

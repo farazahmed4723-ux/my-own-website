@@ -63,11 +63,12 @@ export default function HeroSection() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-[94vh] pt-24 sm:pt-28 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden flex flex-col justify-between bg-[#070711]"
+      className="relative min-h-[94vh] pt-24 sm:pt-28 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden flex flex-col justify-between bg-gradient-to-b from-[#0c102a] via-[#090d22] to-[#0a0e24]"
     >
-      {/* Controlled Radial Tech Glow (Localized behind right side, not flooding whole screen) */}
-      <div className="absolute top-1/4 right-[8%] w-[550px] h-[550px] rounded-full bg-gradient-to-tr from-[#7C3AED]/22 via-[#8B5CF6]/15 to-transparent blur-[120px] pointer-events-none" />
-      <div className="absolute -top-20 left-10 w-[380px] h-[380px] rounded-full bg-indigo-950/20 blur-[130px] pointer-events-none" />
+      {/* Studio Radial Tech Glow & Atmospheric Lighting */}
+      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[900px] h-[450px] rounded-full bg-gradient-to-b from-[#A855F7]/30 via-[#38bdf8]/18 to-transparent blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 right-[5%] w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-[#7C3AED]/30 via-[#8B5CF6]/22 to-[#38bdf8]/20 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 -left-20 w-[450px] h-[450px] rounded-full bg-indigo-600/22 blur-[130px] pointer-events-none" />
 
       {/* Subtle Ambient Grid Layer */}
       <div

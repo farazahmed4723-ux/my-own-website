@@ -7,13 +7,13 @@ import { ScrollReveal } from "@/components/ScrollMotion";
 
 export default function ContactCTA() {
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-[#060813] overflow-hidden">
+    <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0a0e24] via-[#0d1332] to-[#0a0e24] overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         <ScrollReveal variant="zoom-pop">
-          <div className="relative rounded-3xl p-6 sm:p-14 lg:p-16 overflow-hidden border border-purple-500/40 bg-gradient-to-b from-[#141938] via-[#0e122b] to-[#070918] shadow-2xl shadow-purple-950/40 text-center">
+          <div className="relative rounded-3xl p-6 sm:p-14 lg:p-16 overflow-hidden border border-purple-500/50 bg-gradient-to-b from-[#192147] via-[#121838] to-[#0d122b] shadow-2xl shadow-purple-950/40 text-center">
             {/* Ambient Lighting Accents */}
-            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[400px] h-[250px] bg-purple-600/30 blur-[100px] pointer-events-none" />
-            <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[400px] h-[250px] bg-indigo-600/20 blur-[100px] pointer-events-none" />
+            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[550px] h-[300px] bg-purple-500/38 blur-[90px] pointer-events-none" />
+            <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[500px] h-[280px] bg-indigo-500/30 blur-[90px] pointer-events-none" />
 
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-purple-900/40 border border-purple-400/40 text-purple-200 text-[11px] sm:text-xs font-semibold uppercase tracking-wider mb-5 sm:mb-6">
