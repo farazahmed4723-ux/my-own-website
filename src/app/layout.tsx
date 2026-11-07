@@ -1,13 +1,21 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk, Caveat } from "next/font/google";
+import dynamic from "next/dynamic";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingSocialBar from "@/components/FloatingSocialBar";
-import AIChatBot from "@/components/AIChatBot";
-import CustomCursor from "@/components/CustomCursor";
 import { ScrollProgressBar } from "@/components/ScrollMotion";
+import { AuthProvider } from "@/context/AuthContext";
 import { buildGlobalGraphJsonLd, SITE_NAME, SITE_URL, FOUNDER_NAME } from "@/lib/seo";
+
+// Dynamically import client-only heavy interactive widgets to reduce initial mobile JS bundle
+const CustomCursor = dynamic(() => import("@/components/CustomCursor"), {
+  ssr: false,
+});
+const AIChatBot = dynamic(() => import("@/components/AIChatBot"), {
+  ssr: false,
+});
 
 const inter = Inter({
   subsets: ["latin"],
@@ -117,43 +125,49 @@ export default function RootLayout({
   const jsonLd = buildGlobalGraphJsonLd();
 
   return (
-    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="light scroll-smooth" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('faraz-theme');if(t==='light'){document.documentElement.classList.remove('dark');document.documentElement.classList.add('light');document.documentElement.style.colorScheme='light';}else{document.documentElement.classList.add('dark');document.documentElement.classList.remove('light');document.documentElement.style.colorScheme='dark';}}catch(e){}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('faraz-theme-v2');if(t==='dark'){document.documentElement.classList.add('dark');document.documentElement.classList.remove('light');document.documentElement.style.colorScheme='dark';}else{document.documentElement.classList.remove('dark');document.documentElement.classList.add('light');document.documentElement.style.colorScheme='light';}}catch(e){}})();`,
           }}
         />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <meta
+          name="google-signin-client_id"
+          content="127413910597-81l5uo9epfr168ino5llvjetqumad4kq.apps.googleusercontent.com"
+        />
       </head>
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} ${caveat.variable} font-sans bg-[#0A0E24] text-[#F8FAFC] antialiased selection:bg-purple-600/30 selection:text-white min-h-screen flex flex-col transition-colors duration-300 relative`}
+        className={`${inter.variable} ${spaceGrotesk.variable} ${caveat.variable} font-sans bg-[#F4F8FF] dark:bg-[#0D1B3E] text-[#0F172A] dark:text-[#F8FAFC] antialiased selection:bg-purple-600/30 selection:text-white min-h-screen flex flex-col transition-colors duration-300 relative`}
       >
-        {/* Global Ambient Studio Lighting Mesh (Elevates atmosphere & softens darkness) */}
+        {/* Global Ambient Studio Lighting Mesh */}
         <div
-          className="fixed inset-0 pointer-events-none z-0 overflow-hidden dark:block hidden"
+          className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
           aria-hidden="true"
         >
           {/* Top Radial Flare behind Nav and Hero */}
-          <div className="absolute -top-36 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-gradient-to-b from-[#8B5CF6]/30 via-[#38bdf8]/18 to-transparent rounded-full blur-[140px]" />
-          {/* Mid-page Left Glow */}
-          <div className="absolute top-[28%] -left-36 w-[650px] h-[650px] bg-gradient-to-tr from-[#38bdf8]/18 via-[#6366f1]/20 to-transparent rounded-full blur-[150px]" />
-          {/* Mid-page Right Glow */}
-          <div className="absolute top-[55%] -right-36 w-[700px] h-[700px] bg-gradient-to-bl from-[#a855f7]/20 via-[#8b5cf6]/18 to-transparent rounded-full blur-[150px]" />
-          {/* Lower Bottom Glow */}
-          <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-t from-[#8B5CF6]/25 via-[#38bdf8]/15 to-transparent rounded-full blur-[140px]" />
+          <div className="absolute -top-36 left-1/2 -translate-x-1/2 w-[360px] sm:w-[1200px] h-[300px] sm:h-[600px] bg-gradient-to-b from-[#38bdf8]/15 sm:from-[#38bdf8]/20 via-[#8B5CF6]/10 sm:via-[#8B5CF6]/15 to-transparent dark:from-[#1E88E5]/30 sm:dark:from-[#1E88E5]/35 dark:via-[#8B5CF6]/20 sm:dark:via-[#8B5CF6]/25 rounded-full blur-[60px] sm:blur-[140px]" />
+          {/* Mid-page Left Glow - Desktop only for 60fps mobile scrolling */}
+          <div className="hidden sm:block absolute top-[28%] -left-36 w-[650px] h-[650px] bg-gradient-to-tr from-[#38bdf8]/15 via-[#6366f1]/12 to-transparent dark:from-[#38bdf8]/25 dark:via-[#6366f1]/25 rounded-full blur-[150px]" />
+          {/* Mid-page Right Glow - Desktop only for 60fps mobile scrolling */}
+          <div className="hidden sm:block absolute top-[55%] -right-36 w-[700px] h-[700px] bg-gradient-to-bl from-[#a855f7]/14 via-[#38bdf8]/12 to-transparent dark:from-[#a855f7]/25 dark:via-[#1E88E5]/22 rounded-full blur-[150px]" />
+          {/* Lower Bottom Glow - Desktop only for 60fps mobile scrolling */}
+          <div className="hidden sm:block absolute -bottom-24 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-t from-[#38bdf8]/15 via-[#8B5CF6]/10 to-transparent dark:from-[#1E88E5]/30 dark:via-[#8B5CF6]/20 rounded-full blur-[140px]" />
         </div>
 
-        <CustomCursor />
-        <ScrollProgressBar />
-        <Navbar />
-        <main className="flex-1 relative z-10">{children}</main>
-        <Footer />
-        <FloatingSocialBar />
-        <AIChatBot />
+        <AuthProvider>
+          <CustomCursor />
+          <ScrollProgressBar />
+          <Navbar />
+          <main className="flex-1 relative z-10">{children}</main>
+          <Footer />
+          <FloatingSocialBar />
+          <AIChatBot />
+        </AuthProvider>
       </body>
     </html>
   );

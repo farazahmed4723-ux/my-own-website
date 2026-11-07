@@ -25,11 +25,11 @@ function ReviewCard({ item }: { item: VerifiedReview }) {
             <span className="text-amber-500 font-mono font-black text-base sm:text-lg select-none group-hover/card:scale-110 transition-transform">
               {"//"}
             </span>
-            <div className="flex items-center gap-0.5">
+            <div className="flex items-center gap-0.5 text-amber-400">
               {[...Array(item.rating || 5)].map((_, i) => (
                 <Star
                   key={i}
-                  className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-amber-400 text-amber-400 drop-shadow-[0_0_5px_rgba(245,158,11,0.45)]"
+                  className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current"
                 />
               ))}
             </div>
@@ -236,8 +236,8 @@ export default function TestimonialsSection() {
               </div>
             </div>
 
-            {/* Row 2: Sliding Right */}
-            <div className="flex overflow-hidden group">
+            {/* Row 2: Sliding Right (Tablet & Desktop only for fast mobile performance) */}
+            <div className="hidden sm:flex overflow-hidden group">
               <div className="animate-marquee-right flex gap-3 sm:gap-5 group-hover:[animation-play-state:paused] py-1">
                 {[...reviews.slice().reverse(), ...reviews.slice().reverse()].map((item, idx) => (
                   <ReviewCard key={`track2-${item.id}-${idx}`} item={item} />

@@ -22,6 +22,7 @@ export default function Footer() {
                     src="/images/logo.jpg"
                     alt="AI by Faraz Logo"
                     fill
+                    sizes="40px"
                     className="object-cover"
                   />
                 </div>

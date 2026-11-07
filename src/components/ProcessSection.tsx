@@ -53,12 +53,12 @@ export default function ProcessSection() {
   return (
     <section
       id="process"
-      className="dark-preserve w-full py-20 sm:py-24 relative overflow-hidden transition-colors duration-300 shadow-2xl bg-gradient-to-br from-[#0c122c] via-[#121a3f] to-[#0a0f26] text-white border-y border-slate-700/60 select-none touch-manipulation"
+      className="dark-preserve w-full py-20 sm:py-24 relative overflow-hidden transition-colors duration-300 shadow-2xl bg-gradient-to-br from-[#0B469C] via-[#0E2A60] to-[#0F1B3D] text-white border-y border-blue-400/25 select-none touch-manipulation"
       style={{ WebkitTouchCallout: "none", WebkitUserSelect: "none", userSelect: "none" }}
     >
       {/* Ambient background studio lighting */}
-      <div className="absolute -top-20 -left-20 w-[550px] h-[550px] bg-[#1E88E5]/25 rounded-full blur-[140px] pointer-events-none select-none" />
-      <div className="absolute -bottom-20 -right-20 w-[550px] h-[550px] bg-[#FF8F00]/22 rounded-full blur-[140px] pointer-events-none select-none" />
+      <div className="absolute -top-20 -left-20 w-[600px] h-[600px] bg-[#2563EB]/38 rounded-full blur-[140px] pointer-events-none select-none" />
+      <div className="absolute -bottom-20 -right-20 w-[550px] h-[550px] bg-[#FF8F00]/26 rounded-full blur-[140px] pointer-events-none select-none" />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10 select-none">
         {/* Section Header */}
@@ -96,10 +96,10 @@ export default function ProcessSection() {
                   style={{ WebkitUserSelect: "none", userSelect: "none" }}
                   className="relative mb-6 select-none pointer-events-none"
                 >
-                  <div className="w-16 h-16 rounded-full border shadow-lg flex items-center justify-center sm:group-hover:scale-110 transition-transform bg-slate-900 border-slate-700 select-none">
+                  <div className="w-16 h-16 rounded-full border shadow-lg flex items-center justify-center sm:group-hover:scale-110 transition-transform bg-[#0F2350]/90 border-blue-400/35 select-none">
                     <Icon className={`w-6 h-6 ${step.iconColor}`} />
                   </div>
-                  <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[#FF8F00] text-white font-mono font-bold text-xs flex items-center justify-center shadow-md border-2 border-slate-900 select-none">
+                  <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[#FF8F00] text-white font-mono font-bold text-xs flex items-center justify-center shadow-md border-2 border-[#0F2350] select-none">
                     {step.number}
                   </div>
                 </div>

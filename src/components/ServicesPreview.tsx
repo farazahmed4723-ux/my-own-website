@@ -86,7 +86,7 @@ export default function ServicesPreview() {
   return (
     <section
       id="services"
-      className="dark-preserve w-full py-16 sm:py-24 relative overflow-hidden transition-colors duration-300 shadow-2xl bg-gradient-to-br from-[#0c122c] via-[#121a3f] to-[#0a0f26] text-white border-y border-slate-700/60 select-none touch-manipulation"
+      className="dark-preserve w-full py-16 sm:py-24 relative overflow-hidden transition-colors duration-300 shadow-2xl bg-gradient-to-br from-[#0B469C] via-[#0E2A60] to-[#0F1B3D] text-white border-y border-blue-400/25 select-none touch-manipulation"
       style={{
         WebkitTouchCallout: "none",
         WebkitUserSelect: "none",
@@ -94,8 +94,8 @@ export default function ServicesPreview() {
       }}
     >
       {/* Ambient background studio lighting */}
-      <div className="absolute -top-20 -right-20 w-[550px] h-[550px] bg-[#1E88E5]/30 rounded-full blur-[130px] pointer-events-none select-none" />
-      <div className="absolute -bottom-20 -left-20 w-[550px] h-[550px] bg-[#FF8F00]/25 rounded-full blur-[130px] pointer-events-none select-none" />
+      <div className="absolute -top-20 -right-20 w-[600px] h-[600px] bg-[#2563EB]/40 rounded-full blur-[130px] pointer-events-none select-none" />
+      <div className="absolute -bottom-20 -left-20 w-[550px] h-[550px] bg-[#FF8F00]/28 rounded-full blur-[130px] pointer-events-none select-none" />
 
       <div className="max-w-[1400px] mx-auto px-3 sm:px-8 lg:px-12 relative z-10 select-none">
         {/* Section Header (Matches Uploaded Screenshot Exactly 1:1) */}

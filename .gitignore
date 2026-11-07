@@ -21,6 +21,7 @@ yarn-error.log*
 /scratch/
 /*-screen.png
 /homepage*.png
+*.orig
 
 # vercel
 .vercel

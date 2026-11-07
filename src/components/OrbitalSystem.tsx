@@ -9,11 +9,11 @@ export default function OrbitalSystem() {
       {/* Ambient Radial Tech Aura behind Faraz */}
       <div className="absolute w-[450px] sm:w-[580px] h-[450px] sm:h-[580px] rounded-full bg-gradient-to-tr from-[#7C3AED]/25 via-[#8B5CF6]/15 to-[#38BDF8]/10 blur-[110px]" />
 
-      {/* Primary Outer Orbital Ellipse (Tilted clockwise) */}
+      {/* Primary Outer Orbital Ellipse (Tilted clockwise - Desktop & Tablet) */}
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 48, repeat: Infinity, ease: "linear" }}
-        className="absolute w-[440px] sm:w-[620px] lg:w-[720px] h-[280px] sm:h-[380px] lg:h-[430px] rounded-[50%] border border-purple-500/25 shadow-[0_0_20px_rgba(139,92,246,0.15)] -rotate-12"
+        className="hidden sm:block absolute w-[440px] sm:w-[620px] lg:w-[720px] h-[280px] sm:h-[380px] lg:h-[430px] rounded-[50%] border border-purple-500/25 shadow-[0_0_20px_rgba(139,92,246,0.15)] -rotate-12"
       >
         {/* Node 1: Purple Glowing Pulse Node */}
         <div className="absolute -top-1.5 left-1/4 w-3 h-3 rounded-full bg-[#A855F7] shadow-[0_0_12px_#A855F7]">
@@ -24,11 +24,11 @@ export default function OrbitalSystem() {
         <div className="absolute -bottom-1.5 right-1/4 w-2.5 h-2.5 rounded-full bg-[#38BDF8] shadow-[0_0_12px_#38BDF8]" />
       </motion.div>
 
-      {/* Secondary Middle Orbital Ellipse (Tilted counter-clockwise) */}
+      {/* Secondary Middle Orbital Ellipse (Tilted counter-clockwise - Desktop & Tablet) */}
       <motion.div
         animate={{ rotate: -360 }}
         transition={{ duration: 34, repeat: Infinity, ease: "linear" }}
-        className="absolute w-[360px] sm:w-[500px] lg:w-[580px] h-[220px] sm:h-[300px] lg:h-[340px] rounded-[50%] border border-cyan-400/20 shadow-[0_0_15px_rgba(56,189,248,0.1)] rotate-[18deg]"
+        className="hidden sm:block absolute w-[360px] sm:w-[500px] lg:w-[580px] h-[220px] sm:h-[300px] lg:h-[340px] rounded-[50%] border border-cyan-400/20 shadow-[0_0_15px_rgba(56,189,248,0.1)] rotate-[18deg]"
       >
         {/* Node 3: Bright White-Cyan Particle */}
         <div className="absolute top-1/2 -right-1.5 w-2.5 h-2.5 rounded-full bg-cyan-200 shadow-[0_0_10px_#38BDF8]">

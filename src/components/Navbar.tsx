@@ -4,8 +4,9 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Send, Menu, X, Sun, Moon } from "lucide-react";
+import { Send, Menu, X, Sun, Moon, User as UserIcon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAuth } from "@/context/AuthContext";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -20,14 +21,15 @@ const navLinks = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
   const pathname = usePathname();
+  const { user } = useAuth();
 
   useEffect(() => {
     if (typeof document !== "undefined") {
-      const savedTheme = localStorage.getItem("faraz-theme");
+      const savedTheme = localStorage.getItem("faraz-theme-v2");
       const currentlyDark = savedTheme
-        ? savedTheme !== "light"
+        ? savedTheme === "dark"
         : document.documentElement.classList.contains("dark");
       setIsDark(currentlyDark);
     }
@@ -59,7 +61,7 @@ export default function Navbar() {
         root.style.colorScheme = "light";
       }
       try {
-        localStorage.setItem("faraz-theme", nextDark ? "dark" : "light");
+        localStorage.setItem("faraz-theme-v2", nextDark ? "dark" : "light");
       } catch {
         // Ignore storage errors in restricted environments
       }
@@ -70,7 +72,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-3 sm:px-8 ${
         isScrolled
-          ? "py-2.5 sm:py-3.5 bg-[#070711]/90 backdrop-blur-md border-b border-white/[0.08] shadow-lg shadow-black/30"
+          ? "py-2.5 sm:py-3.5 bg-[#0D1B3E]/90 backdrop-blur-md border-b border-white/[0.1] shadow-lg shadow-blue-950/25"
           : "py-3 sm:py-4 bg-transparent"
       }`}
     >
@@ -87,6 +89,7 @@ export default function Navbar() {
                 src="/images/logo.jpg"
                 alt="AI by Faraz Official Logo"
                 fill
+                sizes="44px"
                 className="object-cover"
                 priority
               />
@@ -106,8 +109,8 @@ export default function Navbar() {
         <nav
           className={`hidden lg:flex items-center gap-1 xl:gap-2 px-5 py-2 rounded-full transition-all duration-300 ${
             isScrolled
-              ? "bg-[#070711]/85 backdrop-blur-xl border border-white/10 shadow-2xl shadow-purple-950/25"
-              : "bg-[#0e122b]/65 backdrop-blur-md border border-white/[0.08]"
+              ? "bg-[#0D1B3E]/85 backdrop-blur-xl border border-white/10 shadow-2xl shadow-purple-950/25"
+              : "bg-[#122452]/70 backdrop-blur-md border border-white/[0.1]"
           }`}
           aria-label="Main Navigation"
         >
@@ -141,7 +144,30 @@ export default function Navbar() {
         </nav>
 
         {/* Right Action Buttons */}
-        <div className="flex items-center gap-2.5 sm:gap-4 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          {/* Client Portal / Firebase Auth User Button */}
+          <Link
+            href="/login"
+            id="nav-login-btn"
+            title={user ? `Signed in as ${user.email}` : "Client & Admin Login Portal"}
+            className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#10142A]/80 hover:bg-[#181d3f] border border-white/10 hover:border-purple-500/40 text-[#94A3B8] hover:text-white flex items-center justify-center transition-all duration-300 focus:outline-none cursor-pointer group"
+          >
+            {user ? (
+              <div className="relative w-full h-full rounded-full flex items-center justify-center overflow-hidden">
+                {user.photoURL ? (
+                  <Image src={user.photoURL} alt="User" fill className="object-cover" />
+                ) : (
+                  <span className="text-xs font-bold text-purple-300">
+                    {user.email ? user.email.charAt(0).toUpperCase() : "U"}
+                  </span>
+                )}
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border border-black animate-pulse" />
+              </div>
+            ) : (
+              <UserIcon className="w-4 h-4 text-[#94A3B8] group-hover:text-purple-300 transition-colors" />
+            )}
+          </Link>
+
           {/* Light/Dark Theme Toggle Button */}
           <button
             type="button"
@@ -208,6 +234,19 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
+
+              <Link
+                href="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`px-4 py-2.5 rounded-2xl text-sm font-medium transition-colors flex items-center justify-between ${
+                  pathname === "/login"
+                    ? "bg-purple-600/20 text-purple-200 border border-purple-500/30"
+                    : "text-gray-300 hover:text-white hover:bg-white/5"
+                }`}
+              >
+                <span>{user ? "Client Portal (Signed In)" : "Client Login Portal"}</span>
+                <UserIcon className="w-4 h-4 text-purple-400" />
+              </Link>
               <div className="pt-3 mt-1 border-t border-white/10 flex flex-col gap-2">
                 <Link
                   href="/contact"

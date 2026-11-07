@@ -63,12 +63,12 @@ export default function HeroSection() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-[94vh] pt-24 sm:pt-28 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden flex flex-col justify-between bg-gradient-to-b from-[#0c102a] via-[#090d22] to-[#0a0e24]"
+      className="relative min-h-[94vh] pt-24 sm:pt-28 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden flex flex-col justify-between bg-gradient-to-b from-[#E8F1FF] via-[#F3F8FF] to-[#F8FAFC] dark:from-[#0D1B3E] dark:via-[#132654] dark:to-[#0F1E42]"
     >
       {/* Studio Radial Tech Glow & Atmospheric Lighting */}
-      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[900px] h-[450px] rounded-full bg-gradient-to-b from-[#A855F7]/30 via-[#38bdf8]/18 to-transparent blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/4 right-[5%] w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-[#7C3AED]/30 via-[#8B5CF6]/22 to-[#38bdf8]/20 blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/3 -left-20 w-[450px] h-[450px] rounded-full bg-indigo-600/22 blur-[130px] pointer-events-none" />
+      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[340px] sm:w-[900px] h-[300px] sm:h-[450px] rounded-full bg-gradient-to-b from-[#3B82F6]/18 sm:from-[#3B82F6]/22 via-[#8B5CF6]/14 sm:via-[#8B5CF6]/18 to-transparent dark:from-[#A855F7]/25 sm:dark:from-[#A855F7]/35 dark:via-[#38bdf8]/18 sm:dark:via-[#38bdf8]/22 blur-[60px] sm:blur-[120px] pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/4 right-[5%] w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-[#6366F1]/18 via-[#8B5CF6]/15 to-[#38bdf8]/18 dark:from-[#7C3AED]/32 dark:via-[#8B5CF6]/25 dark:to-[#38bdf8]/22 blur-[120px] pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/3 -left-20 w-[450px] h-[450px] rounded-full bg-sky-400/20 dark:bg-indigo-500/25 blur-[130px] pointer-events-none" />
 
       {/* Subtle Ambient Grid Layer */}
       <div
@@ -274,7 +274,7 @@ export default function HeroSection() {
             >
               <div className="relative w-full h-full">
                 <Image
-                  src="/images/faraz-portrait.webp?v=2"
+                  src="/images/faraz-portrait.webp?v=3"
                   alt="Faraz Ahmed - Web Developer & AI Solutions Specialist"
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 640px"
@@ -286,7 +286,7 @@ export default function HeroSection() {
 
               {/* Desk Bottom Warm Gold Reflection Beam (Matches reference image) */}
               <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#F59E0B]/50 to-transparent pointer-events-none" />
-              <div className="absolute bottom-0 inset-x-0 h-6 bg-gradient-to-t from-[#070711] to-transparent pointer-events-none" />
+              <div className="absolute bottom-0 inset-x-0 h-6 bg-gradient-to-t from-[#0F1B3D] to-transparent pointer-events-none" />
 
               {/* Mobile-Only Dual Floating Skill Badges (Matches Pic 1 Exactly) */}
               <div className="lg:hidden absolute bottom-3 left-1 z-20 flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-[#0f142e]/90 border border-white/15 backdrop-blur-md shadow-lg">
@@ -312,9 +312,9 @@ export default function HeroSection() {
               {/* Floating Glowing Brand Logo Bubble with Online Dot (Matches Pic 1) */}
               <div className="lg:hidden absolute -bottom-1 right-0 z-30 w-10 h-10 rounded-full p-[2px] bg-gradient-to-tr from-[#38bdf8] via-[#818cf8] to-[#f59e0b] shadow-[0_0_15px_rgba(56,189,248,0.5)] flex items-center justify-center">
                 <div className="relative w-full h-full rounded-full overflow-hidden bg-black">
-                  <Image src="/images/logo.jpg" alt="Logo" fill className="object-cover" />
+                  <Image src="/images/logo.jpg" alt="Logo" fill sizes="40px" className="object-cover" />
                 </div>
-                <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-[#070711] animate-pulse" />
+                <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-[#0F1B3D] animate-pulse" />
               </div>
             </motion.div>
           </div>

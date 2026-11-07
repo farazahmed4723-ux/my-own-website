@@ -27,7 +27,7 @@ export const portfolioProjects: PortfolioProject[] = [
     projectType: "Custom Client Website & Booking Experience",
     description:
       "Designed and developed a professional luxury website for Elite Class Limo, featuring executive fleet presentation, instant VIP reservation inquiries, and smooth responsive design.",
-    image: "/images/elite-class-limo.jpg",
+    image: "/images/elite-class-limo.webp",
     liveUrl: "https://eliteclasslimo.ca/",
     isRealClient: true,
     statusBadge: "Verified Client Project",
@@ -73,7 +73,7 @@ export const portfolioProjects: PortfolioProject[] = [
     projectType: "Commercial HVAC Platform & WhatsApp Dispatch",
     description:
       "Designed and developed a high-converting Arabic web platform for Tabreed & Takeef in Al-Zahra, Riyadh—featuring 24/7 instant WhatsApp service dispatch, free home inspection booking, circuit board repair showcase, and local Riyadh SEO.",
-    image: "/images/tabreed-riyadh.jpg",
+    image: "/images/tabreed-riyadh.webp",
     liveUrl: "https://xn-----dtdablc2brf0dwhzar8c3afaf.com/",
     isRealClient: true,
     statusBadge: "Verified Client Project",
@@ -96,7 +96,7 @@ export const portfolioProjects: PortfolioProject[] = [
     projectType: "Full Stack AI Platform & Client Portal",
     description:
       "Designed & engineered a modern portfolio web platform for Faraz Ahmad featuring interactive AI chatbot, dynamic review system, and ultra-fast Next.js architecture.",
-    image: "/images/website-reference-hd.jpg",
+    image: "/images/website-reference-hd.webp",
     liveUrl: "https://aibyfaraz.com/",
     isRealClient: true,
     statusBadge: "Live Production Platform",
@@ -118,7 +118,7 @@ export const portfolioProjects: PortfolioProject[] = [
     projectType: "Architecture Concept & Prototype",
     description:
       "A conceptual architecture demonstrating multi-agent workflow routing, autonomous customer inquiry classification, and live CRM synchronization.",
-    image: "/images/concepts/concept-aiagent.jpg",
+    image: "/images/concepts/concept-aiagent.webp",
     isRealClient: false,
     statusBadge: "Concept Prototype",
     highlights: [
@@ -137,7 +137,7 @@ export const portfolioProjects: PortfolioProject[] = [
     projectType: "UI/UX & Frontend Concept",
     description:
       "A prototype concept for real-time cloud operations and performance monitoring with modular glassmorphism data widgets and theme switching.",
-    image: "/images/concepts/concept-webdev.jpg",
+    image: "/images/concepts/concept-webdev.webp",
     isRealClient: false,
     statusBadge: "Concept Prototype",
     highlights: [
@@ -156,7 +156,7 @@ export const portfolioProjects: PortfolioProject[] = [
     projectType: "Design Concept",
     description:
       "An experimental visual brand design exploration featuring metallic gold textures, high-contrast dark surfaces, and typography guidelines.",
-    image: "/images/concepts/concept-graphic.jpg",
+    image: "/images/concepts/concept-graphic.webp",
     isRealClient: false,
     statusBadge: "Concept Prototype",
     highlights: [

@@ -1,18 +1,21 @@
 import React from "react";
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import HeroSection from "@/components/HeroSection";
 import AboutPreview from "@/components/AboutPreview";
 import ServicesPreview from "@/components/ServicesPreview";
-import PortfolioPreview from "@/components/PortfolioPreview";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import WhyChooseMeSection from "@/components/WhyChooseMeSection";
-import ProcessSection from "@/components/ProcessSection";
-import TechProficiencySection from "@/components/TechProficiencySection";
-import FAQSection from "@/components/FAQSection";
-import FounderJourneyCard from "@/components/FounderJourneyCard";
-import CustomerReviewSection from "@/components/CustomerReviewSection";
-import ContactCTA from "@/components/ContactCTA";
 import { buildFaqJsonLd, SITE_URL } from "@/lib/seo";
+
+// Code-split below-the-fold and desktop-only sections to dramatically reduce mobile initial JS bundle
+const PortfolioPreview = dynamic(() => import("@/components/PortfolioPreview"));
+const TestimonialsSection = dynamic(() => import("@/components/TestimonialsSection"));
+const WhyChooseMeSection = dynamic(() => import("@/components/WhyChooseMeSection"));
+const ProcessSection = dynamic(() => import("@/components/ProcessSection"));
+const TechProficiencySection = dynamic(() => import("@/components/TechProficiencySection"));
+const FAQSection = dynamic(() => import("@/components/FAQSection"));
+const FounderJourneyCard = dynamic(() => import("@/components/FounderJourneyCard"));
+const CustomerReviewSection = dynamic(() => import("@/components/CustomerReviewSection"));
+const ContactCTA = dynamic(() => import("@/components/ContactCTA"));
 
 export const metadata: Metadata = {
   alternates: {

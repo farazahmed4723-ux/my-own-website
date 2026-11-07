@@ -87,7 +87,7 @@ export default function AboutPreview() {
               <div className="relative mx-auto mb-4 w-28 h-28 rounded-full p-[3px] bg-gradient-to-tr from-[#38bdf8] via-[#8B5CF6] to-[#A855F7] shadow-[0_0_25px_rgba(56,189,248,0.35)]">
                 <div className="relative w-full h-full rounded-full overflow-hidden bg-[#070918]">
                   <Image
-                    src="/images/faraz-profile.jpg"
+                    src="/images/faraz-profile.webp"
                     alt="Faraz Ahmed"
                     fill
                     className="object-cover"
