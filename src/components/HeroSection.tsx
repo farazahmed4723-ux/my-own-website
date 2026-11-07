@@ -274,7 +274,7 @@ export default function HeroSection() {
             >
               <div className="relative w-full h-full">
                 <Image
-                  src="/images/faraz-portrait.webp?v=3"
+                  src="/images/faraz-portrait.webp?v=4"
                   alt="Faraz Ahmed - Web Developer & AI Solutions Specialist"
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 640px"
