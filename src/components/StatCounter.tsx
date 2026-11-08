@@ -19,55 +19,70 @@ export default function StatCounter({
 }: StatCounterProps) {
   const [count, setCount] = useState(0);
   const [done, setDone] = useState(false);
+  const [active, setActive] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const hasAnimated = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    let rafId = 0;
-
-    const startAnimation = () => {
-      if (hasAnimated.current) return;
-      hasAnimated.current = true;
-      const startTime = performance.now();
-
-      const tick = (now: number) => {
-        const elapsed = now - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        // Smooth cubic ease-out: fast start, gentle deceleration to final number
-        const easeOut = 1 - Math.pow(1 - progress, 3);
-        setCount(Math.round(easeOut * target));
-
-        if (progress < 1) {
-          rafId = requestAnimationFrame(tick);
-        } else {
-          setCount(target);
-          setDone(true);
-        }
-      };
-
-      rafId = requestAnimationFrame(tick);
-    };
-
-    const observer = new IntersectionObserver(
+    const enterObserver = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
-          startAnimation();
-          observer.disconnect();
+          setActive(true);
         }
       },
-      { threshold: 0.25 }
+      { threshold: 0.35 }
     );
 
-    observer.observe(el);
+    const exitObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => !entry.isIntersecting)) {
+          setActive(false);
+        }
+      },
+      { threshold: 0, rootMargin: "40px 0px 40px 0px" }
+    );
+
+    enterObserver.observe(el);
+    exitObserver.observe(el);
 
     return () => {
-      observer.disconnect();
+      enterObserver.disconnect();
+      exitObserver.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!active) {
+      setCount(0);
+      setDone(false);
+      return;
+    }
+
+    let rafId = 0;
+    const startTime = performance.now();
+
+    const tick = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Smooth cubic ease-out: fast start, gentle deceleration to final number
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(easeOut * target));
+
+      if (progress < 1) {
+        rafId = requestAnimationFrame(tick);
+      } else {
+        setCount(target);
+        setDone(true);
+      }
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => {
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [target, duration]);
+  }, [active, target, duration]);
 
   return (
     <div ref={ref} className="flex flex-col">

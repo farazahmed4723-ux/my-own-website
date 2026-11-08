@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, Users, Globe, Briefcase, Sparkles } from "lucide-react";
 import FounderShowcaseCard from "@/components/FounderShowcaseCard";
 import { ScrollReveal, StaggerGrid, StaggerItem } from "@/components/ScrollMotion";
@@ -14,7 +15,9 @@ const stats = [
     suffix: "+",
     label: "Satisfied Clients",
     color: "text-sky-400",
-    duration: 2200,
+    duration: 2400,
+    delayMs: 140,
+    floatDelay: 0,
   },
   {
     icon: Globe,
@@ -22,7 +25,9 @@ const stats = [
     suffix: "+",
     label: "Web Apps & WordPress",
     color: "text-amber-400",
-    duration: 2000,
+    duration: 2200,
+    delayMs: 260,
+    floatDelay: 0.4,
   },
   {
     icon: Briefcase,
@@ -30,7 +35,9 @@ const stats = [
     suffix: "+",
     label: "Projects Completed",
     color: "text-purple-400",
-    duration: 1800,
+    duration: 2000,
+    delayMs: 380,
+    floatDelay: 0.8,
   },
 ];
 
@@ -38,52 +45,68 @@ function AnimatedStatValue({
   target,
   suffix,
   duration,
+  delayMs = 150,
   active,
 }: {
   target: number;
   suffix: string;
   duration: number;
+  delayMs?: number;
   active: boolean;
 }) {
   const [count, setCount] = useState(0);
   const [finished, setFinished] = useState(false);
 
   useEffect(() => {
-    if (!active) return;
+    if (!active) {
+      setCount(0);
+      setFinished(false);
+      return;
+    }
 
     let rafId = 0;
-    const startTime = performance.now();
+    let timerId: ReturnType<typeof setTimeout> | null = null;
 
-    const tick = (now: number) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // Smooth cubic ease-out so numbers count briskly then ease gently to a stop
-      const easeOut = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.round(easeOut * target));
+    timerId = setTimeout(() => {
+      const startTime = performance.now();
 
-      if (progress < 1) {
-        rafId = requestAnimationFrame(tick);
-      } else {
-        setCount(target);
-        setFinished(true);
-      }
-    };
+      const tick = (now: number) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Smooth cubic ease-out: lively visible count-up that eases gently to a stop
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        setCount(Math.round(easeOut * target));
 
-    rafId = requestAnimationFrame(tick);
+        if (progress < 1) {
+          rafId = requestAnimationFrame(tick);
+        } else {
+          setCount(target);
+          setFinished(true);
+        }
+      };
+
+      rafId = requestAnimationFrame(tick);
+    }, delayMs);
+
     return () => {
+      if (timerId) clearTimeout(timerId);
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [active, target, duration]);
+  }, [active, target, duration, delayMs]);
 
   return (
-    <span
-      className={`font-heading font-extrabold text-base sm:text-2xl lg:text-3xl text-white tracking-tight tabular-nums inline-block transition-transform duration-300 ${
-        finished ? "scale-100" : "scale-[0.97]"
-      }`}
+    <motion.span
+      animate={
+        finished
+          ? { scale: [1.12, 1], y: [0, -2, 0] }
+          : { scale: 1, y: 0 }
+      }
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      className="font-heading font-extrabold text-base sm:text-2xl lg:text-3xl text-white tracking-tight tabular-nums inline-flex items-baseline"
     >
-      {count}
-      {suffix}
-    </span>
+      <span>{count}</span>
+      <span className="text-[#A855F7] ml-0.5">{suffix}</span>
+    </motion.span>
   );
 }
 
@@ -114,18 +137,32 @@ export default function AboutPreview() {
     const el = statsRef.current;
     if (!el) return;
 
-    const observer = new IntersectionObserver(
+    // Trigger ONLY when the card is clearly inside the visible screen (not barely peeking behind the bottom browser bar)
+    const enterObserver = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
           setStatsVisible(true);
-          observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.45, rootMargin: "0px 0px -55px 0px" }
     );
 
-    observer.observe(el);
-    return () => observer.disconnect();
+    // Reset ONLY when the card has scrolled completely off-screen so re-scrolling replays the count-up smoothly
+    const exitObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => !entry.isIntersecting)) {
+          setStatsVisible(false);
+        }
+      },
+      { threshold: 0, rootMargin: "40px 0px 40px 0px" }
+    );
+
+    enterObserver.observe(el);
+    exitObserver.observe(el);
+    return () => {
+      enterObserver.disconnect();
+      exitObserver.disconnect();
+    };
   }, []);
 
   return (
@@ -135,7 +172,7 @@ export default function AboutPreview() {
       <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-sky-500/18 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Top 3-Stat Horizontal Card with Smooth Count-Up Motion */}
+        {/* Top 3-Stat Horizontal Card with Smooth Count-Up & Floating Motion */}
         <ScrollReveal variant="pop-up" className="mb-10 sm:mb-14">
           <div
             ref={statsRef}
@@ -145,20 +182,32 @@ export default function AboutPreview() {
               {stats.map((st) => {
                 const Icon = st.icon;
                 return (
-                  <div key={st.label} className="px-2 sm:px-4 flex flex-col items-center">
+                  <motion.div
+                    key={st.label}
+                    animate={{ y: [-2.5, 2.5, -2.5] }}
+                    transition={{
+                      duration: 4.6,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: st.floatDelay,
+                    }}
+                    whileHover={{ scale: 1.05, y: -3 }}
+                    className="px-2 sm:px-4 flex flex-col items-center cursor-default"
+                  >
                     <div className="flex items-center justify-center gap-1.5 mb-1">
                       <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${st.color} shrink-0`} />
                       <AnimatedStatValue
                         target={st.target}
                         suffix={st.suffix}
                         duration={st.duration}
+                        delayMs={st.delayMs}
                         active={statsVisible}
                       />
                     </div>
                     <span className="text-[9.5px] sm:text-xs font-semibold text-gray-400 uppercase tracking-wider leading-tight">
                       {st.label}
                     </span>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
