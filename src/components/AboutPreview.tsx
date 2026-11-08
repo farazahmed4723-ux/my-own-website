@@ -4,8 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle, Users, Globe, Briefcase, Sparkles } from "lucide-react";
-import FounderShowcaseCard from "@/components/FounderShowcaseCard";
+import { ArrowRight, Check, Users, Globe, Briefcase, Sparkles } from "lucide-react";
 import { ScrollReveal, StaggerGrid, StaggerItem } from "@/components/ScrollMotion";
 
 const stats = [
@@ -110,23 +109,11 @@ function AnimatedStatValue({
   );
 }
 
-const corePrinciples = [
-  {
-    title: "Modern Clean Architecture",
-    desc: "Semantic code, fast SSR/SSG, responsive layouts, and zero bloat.",
-  },
-  {
-    title: "Pragmatic AI Integration",
-    desc: "Tested AI agents and chatbots tailored to specific business operations.",
-  },
-  {
-    title: "Direct Communication",
-    desc: "Work directly with Faraz—no middlemen, no account executive delays.",
-  },
-  {
-    title: "End-to-End Ownership",
-    desc: "From discovery and design to testing, domain deployment, and handover.",
-  },
+const desktopHighlights = [
+  "7+ Years Full Stack & AI Experience",
+  "50+ Successfully Delivered Projects",
+  "React, TypeScript & Custom WordPress",
+  "Context-Aware RAG AI Chatbots",
 ];
 
 export default function AboutPreview() {
@@ -172,8 +159,8 @@ export default function AboutPreview() {
       <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-sky-500/18 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Top 3-Stat Horizontal Card with Smooth Count-Up & Floating Motion */}
-        <ScrollReveal variant="pop-up" className="mb-10 sm:mb-14">
+        {/* Top 3-Stat Horizontal Card (Mobile & Tablet < lg; Desktop Hero already displays key stats) */}
+        <ScrollReveal variant="pop-up" className="lg:hidden mb-10 sm:mb-14">
           <div
             ref={statsRef}
             className="rounded-2xl sm:rounded-3xl glass-card border border-white/10 bg-[#0e122b]/80 p-4 sm:p-6 shadow-xl max-w-4xl mx-auto"
@@ -266,75 +253,80 @@ export default function AboutPreview() {
           </ScrollReveal>
         </div>
 
-        {/* Desktop Layout (Preserved 1:1 on Desktop >= lg) */}
-        <div className="hidden lg:grid grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Interactive Founder Showcase Bento Card */}
+        {/* Laptop & Desktop Layout (>= lg): Executive Portrait Frame + Bio & 2x2 Highlights */}
+        <div className="hidden lg:grid grid-cols-12 gap-12 xl:gap-16 items-center">
+          {/* Left Column: Tall Blue-Bordered Executive Portrait Frame + Overlapping Nameplate */}
           <ScrollReveal
             variant="slide-left"
             className="lg:col-span-5 relative flex justify-center items-center"
           >
-            <FounderShowcaseCard subtitle="Web Developer & AI Solutions Specialist" />
-          </ScrollReveal>
-
-          {/* Right Column: Bio & Core Philosophy */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
-            <ScrollReveal variant="slide-right">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4 w-fit">
-                Meet The Developer
+            <div className="relative w-full max-w-[395px] xl:max-w-[425px] mx-auto pb-7 select-none group">
+              {/* Vertical Studio Portrait Card */}
+              <div className="dark-preserve relative w-full aspect-[896/1090] rounded-[2.6rem] overflow-hidden border border-[#2563EB]/65 bg-[#152338] shadow-[0_24px_60px_rgba(2,6,23,0.62)] transition-colors duration-300 group-hover:border-[#38BDF8]/80">
+                <Image
+                  src="/images/faraz-about-standing.webp"
+                  alt="Faraz Ahmed - Freelance Full Stack Developer & AI Engineer"
+                  fill
+                  sizes="(max-width: 1280px) 395px, 425px"
+                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                />
+                {/* Subtle bottom vignette into nameplate */}
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#090f1d]/85 via-[#090f1d]/30 to-transparent" />
               </div>
 
-              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-6">
-                Engineering Intelligent Systems That{" "}
-                <span className="gradient-text-purple">Help Businesses Scale</span>
+              {/* Overlapping Wide Bottom Nameplate Dock */}
+              <div className="dark-preserve absolute -inset-x-3 xl:-inset-x-5 bottom-0 z-20 rounded-2xl bg-[#0B1120]/95 border border-white/10 backdrop-blur-md py-4 px-6 text-center shadow-[0_18px_42px_rgba(0,0,0,0.65)]">
+                <h3 className="font-heading text-xl xl:text-[22px] font-extrabold text-white tracking-tight">
+                  Faraz Ahmed
+                </h3>
+                <p className="text-xs xl:text-[13px] font-medium text-[#60A5FA] mt-0.5">
+                  Full Stack Developer &amp; AI Solutions Specialist
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Right Column: Bold Headline, Bio Paragraphs & 2x2 Feature Pill Grid */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            <ScrollReveal variant="slide-right">
+              <h2 className="font-heading text-4xl lg:text-[44px] xl:text-[52px] font-extrabold text-white leading-[1.13] tracking-tight mb-7">
+                <span className="block">Crafting High-Performance</span>
+                <span className="block">
+                  Web Apps &amp;{" "}
+                  <span className="bg-gradient-to-r from-[#3B82F6] via-[#7B979C] to-[#BA9B6B] bg-clip-text text-transparent">
+                    Intelligent AI
+                  </span>
+                </span>
+                <span className="block bg-gradient-to-r from-[#9E8F68] via-[#DF921A] to-[#F59E0B] bg-clip-text text-transparent">
+                  Workflows
+                </span>
               </h2>
 
-              <div className="space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed mb-8">
+              <div className="space-y-5 text-[15px] xl:text-[16.5px] text-gray-300 leading-[1.78] mb-9 max-w-2xl">
                 <p>
-                  Hello, I&apos;m <strong>Faraz Ahmed</strong>. I am an independent web developer and AI solutions specialist dedicated to engineering digital experiences that marry clean architecture with high conversion.
+                  I am <strong className="font-bold text-white">Faraz Ahmed</strong>, a passionate Freelance Full Stack Developer, Custom WordPress Specialist, and AI Engineer. Over the past 7+ years, I have engineered modern web systems, custom themes, RAG AI chatbots, and automated workflows that transform business operations.
                 </p>
                 <p>
-                  My focus centers on developing modern websites using <strong>WordPress</strong> and <strong>Next.js</strong>, crafting intelligent <strong>AI chatbots</strong> trained on proprietary business data, building <strong>automation workflows</strong> that eliminate manual repetition, and delivering tailored digital systems.
-                </p>
-                <p>
-                  Rather than treating web development as an isolated design exercise, I approach every project with an engineer&apos;s mindset: high performance, bulletproof security, rock-solid technical SEO, and practical business utility.
+                  My goal is simple: deliver agency-level visual elegance and clean code architecture with rapid execution, helping founders and teams scale with confidence.
                 </p>
               </div>
             </ScrollReveal>
 
-            {/* Core Values / Work Principles */}
-            <StaggerGrid className="grid grid-cols-2 gap-4 mb-8">
-              {corePrinciples.map((item) => (
-                <StaggerItem key={item.title}>
-                  <div className="flex items-start gap-3 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-purple-500/35 transition-colors h-full">
-                    <CheckCircle className="w-5 h-5 text-purple-400 mt-0.5 shrink-0" />
-                    <div>
-                      <h4 className="font-heading text-sm font-semibold text-white">
-                        {item.title}
-                      </h4>
-                      <p className="text-xs text-gray-400 mt-0.5">{item.desc}</p>
-                    </div>
+            {/* 2x2 Highlight Cards with Circular Blue Checkmark Badges */}
+            <StaggerGrid className="grid grid-cols-2 gap-4 max-w-2xl">
+              {desktopHighlights.map((label) => (
+                <StaggerItem key={label}>
+                  <div className="flex items-center gap-3.5 px-5 py-4 rounded-2xl bg-[#0e142e]/90 border border-[#1e293b] hover:border-[#38bdf8]/45 transition-all duration-300 shadow-[0_8px_24px_rgba(2,6,23,0.32)] h-full">
+                    <span className="w-7 h-7 rounded-full bg-[#102444] border border-[#1d4ed8]/35 flex items-center justify-center text-[#38bdf8] shrink-0">
+                      <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                    </span>
+                    <span className="font-heading text-[14px] xl:text-[15px] font-bold text-white leading-snug">
+                      {label}
+                    </span>
                   </div>
                 </StaggerItem>
               ))}
             </StaggerGrid>
-
-            <ScrollReveal variant="pop-up" delay={0.1}>
-              <div className="flex flex-wrap items-center gap-4">
-                <Link
-                  href="/about"
-                  className="px-6 py-3 rounded-full bg-gradient-to-r from-[#8B5CF6] to-[#A855F7] text-white text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-[0_0_20px_rgba(139,92,246,0.4)] hover:shadow-[0_0_30px_rgba(139,92,246,0.7)] transition-all hover:scale-105 active:scale-95"
-                >
-                  <span>Read Full Biography & Background</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="/contact"
-                  className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-white text-xs sm:text-sm font-medium hover:bg-white/10 hover:scale-105 active:scale-95 transition-all"
-                >
-                  Discuss A Project
-                </Link>
-              </div>
-            </ScrollReveal>
           </div>
         </div>
       </div>
