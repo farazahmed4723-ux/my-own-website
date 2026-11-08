@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, CheckCircle, Users, Globe, Briefcase, Sparkles } from "lucide-react";
@@ -10,23 +10,82 @@ import { ScrollReveal, StaggerGrid, StaggerItem } from "@/components/ScrollMotio
 const stats = [
   {
     icon: Users,
-    value: "100+",
+    target: 100,
+    suffix: "+",
     label: "Satisfied Clients",
     color: "text-sky-400",
+    duration: 2200,
   },
   {
     icon: Globe,
-    value: "50+",
+    target: 50,
+    suffix: "+",
     label: "Web Apps & WordPress",
     color: "text-amber-400",
+    duration: 2000,
   },
   {
     icon: Briefcase,
-    value: "20+",
+    target: 20,
+    suffix: "+",
     label: "Projects Completed",
     color: "text-purple-400",
+    duration: 1800,
   },
 ];
+
+function AnimatedStatValue({
+  target,
+  suffix,
+  duration,
+  active,
+}: {
+  target: number;
+  suffix: string;
+  duration: number;
+  active: boolean;
+}) {
+  const [count, setCount] = useState(0);
+  const [finished, setFinished] = useState(false);
+
+  useEffect(() => {
+    if (!active) return;
+
+    let rafId = 0;
+    const startTime = performance.now();
+
+    const tick = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Smooth cubic ease-out so numbers count briskly then ease gently to a stop
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(easeOut * target));
+
+      if (progress < 1) {
+        rafId = requestAnimationFrame(tick);
+      } else {
+        setCount(target);
+        setFinished(true);
+      }
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, [active, target, duration]);
+
+  return (
+    <span
+      className={`font-heading font-extrabold text-base sm:text-2xl lg:text-3xl text-white tracking-tight tabular-nums inline-block transition-transform duration-300 ${
+        finished ? "scale-100" : "scale-[0.97]"
+      }`}
+    >
+      {count}
+      {suffix}
+    </span>
+  );
+}
 
 const corePrinciples = [
   {
@@ -48,6 +107,27 @@ const corePrinciples = [
 ];
 
 export default function AboutPreview() {
+  const statsRef = useRef<HTMLDivElement>(null);
+  const [statsVisible, setStatsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = statsRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setStatsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden" id="about">
       {/* Ambient background lighting */}
@@ -55,9 +135,12 @@ export default function AboutPreview() {
       <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-sky-500/18 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Top 3-Stat Horizontal Card (Matches Pic 2 Exactly) */}
+        {/* Top 3-Stat Horizontal Card with Smooth Count-Up Motion */}
         <ScrollReveal variant="pop-up" className="mb-10 sm:mb-14">
-          <div className="rounded-2xl sm:rounded-3xl glass-card border border-white/10 bg-[#0e122b]/80 p-4 sm:p-6 shadow-xl max-w-4xl mx-auto">
+          <div
+            ref={statsRef}
+            className="rounded-2xl sm:rounded-3xl glass-card border border-white/10 bg-[#0e122b]/80 p-4 sm:p-6 shadow-xl max-w-4xl mx-auto"
+          >
             <div className="grid grid-cols-3 divide-x divide-white/10 text-center items-center">
               {stats.map((st) => {
                 const Icon = st.icon;
@@ -65,9 +148,12 @@ export default function AboutPreview() {
                   <div key={st.label} className="px-2 sm:px-4 flex flex-col items-center">
                     <div className="flex items-center justify-center gap-1.5 mb-1">
                       <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${st.color} shrink-0`} />
-                      <span className="font-heading font-extrabold text-base sm:text-2xl lg:text-3xl text-white tracking-tight">
-                        {st.value}
-                      </span>
+                      <AnimatedStatValue
+                        target={st.target}
+                        suffix={st.suffix}
+                        duration={st.duration}
+                        active={statsVisible}
+                      />
                     </div>
                     <span className="text-[9.5px] sm:text-xs font-semibold text-gray-400 uppercase tracking-wider leading-tight">
                       {st.label}
