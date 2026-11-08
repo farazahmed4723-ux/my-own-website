@@ -1,75 +1,29 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { motion, useMotionValue, useSpring } from "framer-motion";
-import {
-  ArrowRight,
-  MessageCircle,
-  Code2,
-  Bot,
-  Zap,
-  ShoppingBag,
-  Sparkles,
-  Cpu,
-  Globe,
-} from "lucide-react";
-import OrbitalSystem from "@/components/OrbitalSystem";
-import FloatingServiceCard from "@/components/FloatingServiceCard";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Sparkles } from "lucide-react";
+import HeroOrbitalShowcase from "@/components/HeroOrbitalShowcase";
 import StatCounter from "@/components/StatCounter";
 import { ScrollReveal } from "@/components/ScrollMotion";
 import HireMeModal from "@/components/HireMeModal";
 
 export default function HeroSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [isDmModalOpen, setIsDmModalOpen] = useState(false);
 
-  // Smooth Spring-based cursor parallax motion values
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { damping: 25, stiffness: 120 };
-  const smoothMouseX = useSpring(mouseX, springConfig);
-  const smoothMouseY = useSpring(mouseY, springConfig);
-
   useEffect(() => {
-    // Detect touch device or reduced motion
-    const isTouch =
-      typeof window !== "undefined" &&
-      ("ontouchstart" in window || navigator.maxTouchPoints > 0);
-    setIsTouchDevice(isTouch);
-
     const handleOpenDm = () => setIsDmModalOpen(true);
     window.addEventListener("open-faraz-dm-modal", handleOpenDm);
     return () => window.removeEventListener("open-faraz-dm-modal", handleOpenDm);
   }, []);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isTouchDevice || !containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
-    const y = (e.clientY - rect.top) / rect.height - 0.5; // -0.5 to 0.5
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
-
   return (
     <section
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
       className="relative min-h-[94vh] pt-24 sm:pt-28 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden flex flex-col justify-between bg-transparent"
     >
       {/* Studio Radial Tech Glow & Atmospheric Lighting */}
-      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[340px] sm:w-[900px] h-[300px] sm:h-[450px] rounded-full bg-gradient-to-b from-[#3B82F6]/20 sm:from-[#3B82F6]/20 via-[#8B5CF6]/15 sm:via-[#8B5CF6]/20 to-transparent dark:from-[#A855F7]/25 sm:dark:from-[#A855F7]/35 dark:via-[#38bdf8]/20 sm:dark:via-[#38bdf8]/20 blur-[60px] sm:blur-[120px] pointer-events-none" />
-      <div className="hidden sm:block absolute top-1/4 right-[5%] w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-[#6366F1]/20 via-[#8B5CF6]/15 to-[#38bdf8]/20 dark:from-[#7C3AED]/30 dark:via-[#8B5CF6]/25 dark:to-[#38bdf8]/20 blur-[120px] pointer-events-none" />
+      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[340px] sm:w-[900px] h-[300px] sm:h-[450px] rounded-full bg-gradient-to-b from-[#3B82F6]/15 sm:from-[#3B82F6]/15 via-[#8B5CF6]/10 sm:via-[#8B5CF6]/15 to-transparent dark:from-[#A855F7]/20 sm:dark:from-[#A855F7]/25 dark:via-[#38bdf8]/15 sm:dark:via-[#38bdf8]/15 blur-[60px] sm:blur-[120px] pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/4 right-[5%] w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-[#6366F1]/10 via-[#8B5CF6]/10 to-[#38bdf8]/10 dark:from-[#7C3AED]/15 dark:via-[#8B5CF6]/10 dark:to-[#38bdf8]/10 blur-[120px] pointer-events-none" />
       <div className="hidden sm:block absolute top-1/3 -left-20 w-[450px] h-[450px] rounded-full bg-sky-400/20 dark:bg-indigo-500/25 blur-[130px] pointer-events-none" />
 
       {/* Subtle Ambient Grid Layer */}
@@ -200,167 +154,10 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-                {/* Right Column: Seamless Theme-Adaptive Desk Portrait, Animated Orbits, & Floating Service Cards */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.94, y: 24 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 200, damping: 22, delay: 0.16 }}
-          className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[340px] sm:min-h-[540px] lg:min-h-[600px]"
-        >
-          <div className="hero-studio-stage relative w-full h-full min-h-[340px] sm:min-h-[540px] lg:min-h-[600px] flex items-end justify-center overflow-visible pt-6 sm:pt-4">
-            {/* 1. Theme-Adaptive Animated Orbital Rings & Glowing Particles */}
-            <OrbitalSystem />
-
-            {/* 2. Mobile-Only Symmetrical Skill Chips (Clear of Head & Face, Light/Dark Adaptive) */}
-            <Link
-              href="/services/website-development"
-              className="sm:hidden absolute top-1 left-0 z-30 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-white/95 dark:bg-[#0d1330]/90 border border-indigo-200/80 dark:border-purple-400/30 backdrop-blur-md shadow-md"
-            >
-              <span className="dark-preserve w-5 h-5 rounded-full bg-gradient-to-tr from-[#2563EB] to-[#38BDF8] flex items-center justify-center text-white font-mono text-[9px] font-bold">
-                &lt;/&gt;
-              </span>
-              <span className="text-[10.5px] font-bold text-slate-900 dark:text-white leading-none pr-0.5">
-                Full Stack Dev
-              </span>
-            </Link>
-
-            <Link
-              href="/services/wordpress-development"
-              className="sm:hidden absolute top-1 right-0 z-30 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-white/95 dark:bg-[#0d1330]/90 border border-indigo-200/80 dark:border-purple-400/30 backdrop-blur-md shadow-md"
-            >
-              <span className="dark-preserve w-5 h-5 rounded-full bg-gradient-to-tr from-[#0284C7] to-[#38BDF8] flex items-center justify-center text-white">
-                <Globe className="w-3 h-3" />
-              </span>
-              <span className="text-[10.5px] font-bold text-slate-900 dark:text-white leading-none pr-0.5">
-                WordPress Expert
-              </span>
-            </Link>
-
-            <Link
-              href="/services/ai-chatbots"
-              className="sm:hidden absolute top-[39%] left-0 z-30 flex items-center gap-1.5 px-2 py-1 rounded-full bg-white/95 dark:bg-[#0d1330]/90 border border-indigo-200/80 dark:border-purple-400/30 backdrop-blur-md shadow-md"
-            >
-              <span className="dark-preserve w-4 h-4 rounded-full bg-gradient-to-tr from-[#0891B2] to-[#6366F1] flex items-center justify-center text-white">
-                <Bot className="w-2.5 h-2.5" />
-              </span>
-              <span className="text-[9.5px] font-bold text-slate-900 dark:text-white leading-none pr-0.5">
-                AI Chatbots
-              </span>
-            </Link>
-
-            <Link
-              href="/services/ai-agents"
-              className="sm:hidden absolute top-[39%] right-0 z-30 flex items-center gap-1.5 px-2 py-1 rounded-full bg-white/95 dark:bg-[#0d1330]/90 border border-indigo-200/80 dark:border-purple-400/30 backdrop-blur-md shadow-md"
-            >
-              <span className="dark-preserve w-4 h-4 rounded-full bg-gradient-to-tr from-[#7C3AED] to-[#A855F7] flex items-center justify-center text-white">
-                <Cpu className="w-2.5 h-2.5" />
-              </span>
-              <span className="text-[9.5px] font-bold text-slate-900 dark:text-white leading-none pr-0.5">
-                AI Automation
-              </span>
-            </Link>
-
-            {/* 3. Seamless Desk Studio Portrait Cutout (Edge-Feathered, Theme-Adaptive Floor Blend) */}
-            <motion.div
-              style={{
-                x: isTouchDevice ? 0 : smoothMouseX,
-                y: isTouchDevice ? 0 : smoothMouseY,
-              }}
-              className="relative z-10 w-full max-w-[440px] sm:max-w-[560px] lg:max-w-[620px] aspect-[1024/936] flex items-end justify-center"
-            >
-              <div className="relative w-full h-full">
-                <Image
-                  src="/images/faraz-portrait.webp?v=8"
-                  alt="Faraz Ahmed - Web Developer & AI Solutions Specialist"
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 55vw, 620px"
-                  className="object-contain object-bottom drop-shadow-[0_18px_38px_rgba(15,23,42,0.18)] dark:drop-shadow-[0_22px_48px_rgba(0,0,0,0.55)]"
-                  priority
-                  unoptimized
-                />
-              </div>
-
-              {/* Subtle Electric Cyan-Violet Desk Front Edge Reflection */}
-              <div className="absolute bottom-[4%] inset-x-[12%] h-[2px] bg-gradient-to-r from-transparent via-[#38BDF8]/70 to-transparent dark:via-[#60A5FA]/75 blur-[0.5px] pointer-events-none" />
-
-              {/* Interactive Centered "Available for Hire" Desk Status Pill (Matches Reference & Opens Hire Modal) */}
-              <button
-                type="button"
-                onClick={() => setIsDmModalOpen(true)}
-                className="group absolute bottom-1.5 sm:bottom-2.5 left-1/2 -translate-x-1/2 z-30 inline-flex items-center gap-2 sm:gap-2.5 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full bg-white/95 dark:bg-[#0d1330]/95 border border-indigo-200/90 dark:border-purple-400/40 shadow-[0_12px_30px_rgba(37,99,235,0.18)] dark:shadow-[0_12px_32px_rgba(0,0,0,0.68)] backdrop-blur-xl hover:scale-105 active:scale-95 transition-all cursor-pointer whitespace-nowrap"
-              >
-                <span className="relative flex h-2.5 w-2.5 items-center justify-center">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-                </span>
-                <span className="font-heading text-xs sm:text-sm font-bold tracking-tight text-slate-900 dark:text-white">
-                  Available for Hire
-                </span>
-              </button>
-            </motion.div>
-          </div>
-
-          {/* 4. Four Symmetrical Theme-Adaptive Floating Service Cards (Tablet & Desktop >= sm) */}
-          {/* Top-Left: Full Stack Dev */}
-          <FloatingServiceCard
-            title="Full Stack Dev"
-            subtitle="Next.js, React & APIs"
-            icon={<Code2 className="w-4 h-4 sm:w-5 sm:h-5 text-white" />}
-            accentGradient="from-[#2563EB] via-[#3B82F6] to-[#38BDF8]"
-            className="hidden sm:block absolute top-6 lg:top-10 left-0 lg:-left-3 z-30"
-            floatDuration={5.8}
-            floatDelay={0}
-            mouseX={smoothMouseX}
-            mouseY={smoothMouseY}
-            parallaxDepth={14}
-            href="/services/website-development"
-          />
-
-          {/* Top-Right: WordPress Expert */}
-          <FloatingServiceCard
-            title="WordPress Expert"
-            subtitle="Custom Themes & Plugins"
-            icon={<Globe className="w-4 h-4 sm:w-5 sm:h-5 text-white" />}
-            accentGradient="from-[#0284C7] via-[#0EA5E9] to-[#38BDF8]"
-            className="hidden sm:block absolute top-6 lg:top-10 right-0 lg:-right-3 z-30"
-            floatDuration={6.4}
-            floatDelay={0.6}
-            mouseX={smoothMouseX}
-            mouseY={smoothMouseY}
-            parallaxDepth={12}
-            href="/services/wordpress-development"
-          />
-
-          {/* Mid-Left: AI Chatbots */}
-          <FloatingServiceCard
-            title="AI Chatbots"
-            subtitle="RAG & Gemini Bots"
-            icon={<Bot className="w-4 h-4 sm:w-5 sm:h-5 text-white" />}
-            accentGradient="from-[#0891B2] via-[#3B82F6] to-[#6366F1]"
-            className="hidden sm:block absolute top-[43%] left-0 lg:-left-5 z-30"
-            floatDuration={6.8}
-            floatDelay={1.1}
-            mouseX={smoothMouseX}
-            mouseY={smoothMouseY}
-            parallaxDepth={10}
-            href="/services/ai-chatbots"
-          />
-
-          {/* Mid-Right: AI Automation */}
-          <FloatingServiceCard
-            title="AI Automation"
-            subtitle="n8n, Make & Zapier"
-            icon={<Cpu className="w-4 h-4 sm:w-5 sm:h-5 text-white" />}
-            accentGradient="from-[#7C3AED] via-[#8B5CF6] to-[#A855F7]"
-            className="hidden sm:block absolute top-[45%] right-0 lg:-right-4 z-30"
-            floatDuration={6.2}
-            floatDelay={1.5}
-            mouseX={smoothMouseX}
-            mouseY={smoothMouseY}
-            parallaxDepth={15}
-            href="/services/ai-agents"
-          />
-        </motion.div>
+        {/* Right Column: Stationary Portrait + Interactive 3D Orbital System */}
+        <div className="lg:col-span-6 relative flex items-center justify-center">
+          <HeroOrbitalShowcase />
+        </div>
       </div>
 
       {/* 5. Bottom Technologies Strip Dock (Desktop/Tablet Only to keep mobile concise like Pic 1 & 2) */}
