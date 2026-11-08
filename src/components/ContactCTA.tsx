@@ -7,7 +7,7 @@ import { ScrollReveal } from "@/components/ScrollMotion";
 
 export default function ContactCTA() {
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0a0e24] via-[#0d1332] to-[#0a0e24] overflow-hidden">
+    <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         <ScrollReveal variant="zoom-pop">
           <div className="relative rounded-3xl p-6 sm:p-14 lg:p-16 overflow-hidden border border-purple-500/50 bg-gradient-to-b from-[#192147] via-[#121838] to-[#0d122b] shadow-2xl shadow-purple-950/40 text-center">

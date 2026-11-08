@@ -63,7 +63,7 @@ export default function HeroSection() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-[94vh] pt-24 sm:pt-28 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden flex flex-col justify-between bg-gradient-to-b from-[#E8F1FF] via-[#F3F8FF] to-[#F8FAFC] dark:from-[#0D1B3E] dark:via-[#132654] dark:to-[#0F1E42]"
+      className="relative min-h-[94vh] pt-24 sm:pt-28 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden flex flex-col justify-between bg-transparent"
     >
       {/* Studio Radial Tech Glow & Atmospheric Lighting */}
       <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[340px] sm:w-[900px] h-[300px] sm:h-[450px] rounded-full bg-gradient-to-b from-[#3B82F6]/18 sm:from-[#3B82F6]/22 via-[#8B5CF6]/14 sm:via-[#8B5CF6]/18 to-transparent dark:from-[#A855F7]/25 sm:dark:from-[#A855F7]/35 dark:via-[#38bdf8]/18 sm:dark:via-[#38bdf8]/22 blur-[60px] sm:blur-[120px] pointer-events-none" />
@@ -274,7 +274,7 @@ export default function HeroSection() {
             >
               <div className="relative w-full h-full">
                 <Image
-                  src="/images/faraz-portrait.webp?v=5"
+                  src="/images/faraz-portrait.webp?v=6"
                   alt="Faraz Ahmed - Web Developer & AI Solutions Specialist"
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 640px"

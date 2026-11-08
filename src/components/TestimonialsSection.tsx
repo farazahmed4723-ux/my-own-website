@@ -154,7 +154,7 @@ export default function TestimonialsSection() {
 
   return (
     <section
-      className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/60 dark:bg-gradient-to-b dark:from-[#0a0e24] dark:via-[#0e1330] dark:to-[#0a0e24] overflow-hidden transition-colors duration-300"
+      className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden transition-colors duration-300"
       id="testimonials"
     >
       {/* Ambient background studio lighting */}

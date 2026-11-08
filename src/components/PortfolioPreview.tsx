@@ -26,7 +26,7 @@ export default function PortfolioPreview() {
   });
 
   return (
-    <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#F8FAFC] dark:bg-gradient-to-b dark:from-[#0a0e24] dark:via-[#0e1434] dark:to-[#0a0e24] overflow-hidden transition-colors duration-300" id="portfolio">
+    <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden transition-colors duration-300" id="portfolio">
       {/* Background Ambient Studio Lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-purple-400/20 dark:bg-purple-600/22 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute top-1/3 -left-20 w-[550px] h-[550px] bg-sky-500/18 dark:block hidden rounded-full blur-[140px] pointer-events-none" />

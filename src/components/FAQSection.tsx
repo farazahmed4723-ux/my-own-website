@@ -15,7 +15,7 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-[#070918] overflow-hidden" id="faq">
+    <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden" id="faq">
       {/* Background radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-purple-900/10 rounded-full blur-[150px] pointer-events-none" />
 

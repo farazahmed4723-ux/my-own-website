@@ -49,7 +49,7 @@ const corePrinciples = [
 
 export default function AboutPreview() {
   return (
-    <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0a0e24] via-[#0e1434] to-[#0a0e24] overflow-hidden" id="about">
+    <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden" id="about">
       {/* Ambient background lighting */}
       <div className="absolute top-1/3 left-10 w-[600px] h-[600px] bg-gradient-to-r from-purple-600/25 via-indigo-500/20 to-transparent rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-sky-500/18 rounded-full blur-[140px] pointer-events-none" />

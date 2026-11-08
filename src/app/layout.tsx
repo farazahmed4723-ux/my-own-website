@@ -142,21 +142,11 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} ${caveat.variable} font-sans bg-[#F4F8FF] dark:bg-[#0D1B3E] text-[#0F172A] dark:text-[#F8FAFC] antialiased selection:bg-purple-600/30 selection:text-white min-h-screen flex flex-col transition-colors duration-300 relative`}
+        className={`${inter.variable} ${spaceGrotesk.variable} ${caveat.variable} font-sans bg-[#F7F8FF] dark:bg-[#070B1F] text-[#0F172A] dark:text-[#F8FAFC] antialiased selection:bg-purple-600/30 selection:text-white min-h-screen flex flex-col transition-colors duration-300 relative`}
       >
-        {/* Global Ambient Studio Lighting Mesh */}
-        <div
-          className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
-          aria-hidden="true"
-        >
-          {/* Top Radial Flare behind Nav and Hero */}
-          <div className="absolute -top-36 left-1/2 -translate-x-1/2 w-[360px] sm:w-[1200px] h-[300px] sm:h-[600px] bg-gradient-to-b from-[#38bdf8]/15 sm:from-[#38bdf8]/20 via-[#8B5CF6]/10 sm:via-[#8B5CF6]/15 to-transparent dark:from-[#1E88E5]/30 sm:dark:from-[#1E88E5]/35 dark:via-[#8B5CF6]/20 sm:dark:via-[#8B5CF6]/25 rounded-full blur-[60px] sm:blur-[140px]" />
-          {/* Mid-page Left Glow - Desktop only for 60fps mobile scrolling */}
-          <div className="hidden sm:block absolute top-[28%] -left-36 w-[650px] h-[650px] bg-gradient-to-tr from-[#38bdf8]/15 via-[#6366f1]/12 to-transparent dark:from-[#38bdf8]/25 dark:via-[#6366f1]/25 rounded-full blur-[150px]" />
-          {/* Mid-page Right Glow - Desktop only for 60fps mobile scrolling */}
-          <div className="hidden sm:block absolute top-[55%] -right-36 w-[700px] h-[700px] bg-gradient-to-bl from-[#a855f7]/14 via-[#38bdf8]/12 to-transparent dark:from-[#a855f7]/25 dark:via-[#1E88E5]/22 rounded-full blur-[150px]" />
-          {/* Lower Bottom Glow - Desktop only for 60fps mobile scrolling */}
-          <div className="hidden sm:block absolute -bottom-24 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-t from-[#38bdf8]/15 via-[#8B5CF6]/10 to-transparent dark:from-[#1E88E5]/30 dark:via-[#8B5CF6]/20 rounded-full blur-[140px]" />
+        {/* Premium Site-wide Backdrop (aurora mesh + dot grid + film grain, GPU-cheap) */}
+        <div className="premium-backdrop" aria-hidden="true">
+          <div className="premium-aurora" />
         </div>
 
         <AuthProvider>

@@ -132,7 +132,7 @@ export default function CustomerReviewSection() {
   return (
     <section
       id="write-review"
-      className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#060813] overflow-hidden"
+      className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden"
     >
       {/* Ambient Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[420px] rounded-full bg-purple-900/15 blur-[140px] pointer-events-none" />

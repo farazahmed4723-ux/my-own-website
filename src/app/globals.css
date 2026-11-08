@@ -33,14 +33,90 @@ body {
 }
 
 html.dark body {
-  background-color: #0A0E24;
-  background-image:
-    radial-gradient(ellipse 90% 55% at 50% -10%, rgba(139, 92, 246, 0.28), transparent 70%),
-    radial-gradient(ellipse 65% 45% at 88% 22%, rgba(56, 189, 248, 0.18), transparent 60%),
-    radial-gradient(ellipse 60% 40% at 12% 42%, rgba(168, 85, 247, 0.16), transparent 60%),
-    radial-gradient(ellipse 80% 50% at 50% 68%, rgba(99, 102, 241, 0.16), transparent 65%),
-    radial-gradient(ellipse 70% 40% at 90% 92%, rgba(56, 189, 248, 0.18), transparent 60%);
-  background-attachment: fixed;
+  background-color: #070B1F;
+}
+
+/* ============================================================
+   Premium Site-wide Backdrop (fixed layer, GPU-cheap: no CSS blur filters,
+   no background-attachment:fixed — smooth on iOS / Android too)
+   ============================================================ */
+.premium-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 45% at 50% -8%, rgba(124, 58, 237, 0.34), transparent 70%),
+    radial-gradient(ellipse 45% 35% at 95% 18%, rgba(34, 211, 238, 0.16), transparent 70%),
+    radial-gradient(ellipse 45% 40% at 0% 55%, rgba(192, 38, 211, 0.14), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 100% 85%, rgba(56, 189, 248, 0.14), transparent 70%),
+    linear-gradient(180deg, #070B1F 0%, #0A0F2E 45%, #080C24 100%);
+}
+
+/* Fine tech dot-grid that fades out from the top */
+.premium-backdrop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1.2px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, #000 25%, transparent 78%);
+  mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, #000 25%, transparent 78%);
+}
+
+/* Subtle film grain for a premium, non-flat finish */
+.premium-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Slow drifting aurora ribbon (desktop only for battery / scroll smoothness) */
+.premium-aurora {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(ellipse 35% 22% at 30% 35%, rgba(168, 85, 247, 0.16), transparent 70%),
+    radial-gradient(ellipse 30% 20% at 70% 60%, rgba(34, 211, 238, 0.12), transparent 70%),
+    radial-gradient(ellipse 28% 18% at 45% 80%, rgba(244, 63, 94, 0.08), transparent 70%);
+  display: none;
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .premium-aurora {
+    display: block;
+    will-change: transform;
+    animation: aurora-drift 32s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes aurora-drift {
+  0% { transform: translate3d(-4%, -2%, 0) rotate(0deg); }
+  50% { transform: translate3d(3%, 3%, 0) rotate(4deg); }
+  100% { transform: translate3d(5%, -3%, 0) rotate(-3deg); }
+}
+
+/* Day mode: soft pearl backdrop with gentle lavender / sky light */
+html:not(.dark) .premium-backdrop {
+  background:
+    radial-gradient(ellipse 70% 45% at 50% -8%, rgba(139, 92, 246, 0.16), transparent 70%),
+    radial-gradient(ellipse 45% 35% at 95% 18%, rgba(56, 189, 248, 0.14), transparent 70%),
+    radial-gradient(ellipse 45% 40% at 0% 55%, rgba(232, 121, 249, 0.10), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 100% 85%, rgba(99, 102, 241, 0.10), transparent 70%),
+    linear-gradient(180deg, #F7F8FF 0%, #F4F6FD 50%, #F8FAFC 100%);
+}
+
+html:not(.dark) .premium-backdrop::before {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.07) 1px, transparent 1.2px);
+}
+
+html:not(.dark) .premium-backdrop::after {
+  opacity: 0.04;
+  mix-blend-mode: multiply;
 }
 
 ::selection {
