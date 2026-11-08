@@ -180,17 +180,17 @@ export default function HeroOrbitalShowcase() {
 
   const [stageDims, setStageDims] = useState<{ w: number; h: number; pTop: number; pw: number; ph: number }>({
     w: 600,
-    h: 520,
-    pTop: 92,
-    pw: 545,
-    ph: 428,
+    h: 470,
+    pTop: 77,
+    pw: 500,
+    ph: 393,
   });
   const [isMobile, setIsMobile] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
 
   // Mutable animation state (zero React re-renders during 60fps loop)
-  const dimsRef = useRef({ w: 600, h: 520, pTop: 92, pw: 545, ph: 428, isMobile: false });
+  const dimsRef = useRef({ w: 600, h: 470, pTop: 77, pw: 500, ph: 393, isMobile: false });
   const hoverStateRef = useRef<{ stageHovered: boolean; cardHovered: boolean }>({
     stageHovered: false,
     cardHovered: false,
@@ -226,8 +226,8 @@ export default function HeroOrbitalShowcase() {
       const sRect = el.getBoundingClientRect();
       const w = Math.max(280, Math.round(sRect.width));
       const h = Math.max(260, Math.round(sRect.height));
-      let pw = Math.min(w, 545);
-      let ph = Math.round((pw * 805) / 1024);
+      let pw = Math.min(w, 500);
+      let ph = Math.round((pw * 393) / 500);
       let pTop = Math.max(0, h - ph);
 
       if (portraitRef.current) {
@@ -464,7 +464,7 @@ export default function HeroOrbitalShowcase() {
         ref={stageRef}
         onMouseMove={handleStageMouseMove}
         onMouseLeave={handleStageMouseLeave}
-        className="relative w-full min-h-[290px] sm:min-h-[465px] lg:min-h-[500px] flex items-end justify-center select-none overflow-visible"
+        className="relative w-full min-h-[275px] sm:min-h-[435px] lg:min-h-[470px] flex items-end justify-center select-none overflow-visible"
       >
         {/* Subtle Restrained Studio Depth Glow (matches existing dark navy/purple palette, no heavy bloom) */}
         <div
@@ -540,7 +540,7 @@ export default function HeroOrbitalShowcase() {
         {/* PORTRAIT ANCHOR STAGE (non-isolated wrapper so z-10 background ring & z-20 static portrait stack cleanly) */}
         <div
           ref={portraitRef}
-          className="relative w-full max-w-[360px] sm:max-w-[490px] lg:max-w-[545px] aspect-[1024/805] flex items-end justify-center pointer-events-none"
+          className="relative w-full max-w-[335px] sm:max-w-[450px] lg:max-w-[500px] aspect-[500/393] flex items-end justify-center pointer-events-none"
         >
           {/* BACKGROUND 360° ROTATING WHITE CIRCULAR RING (z-10: strictly BEHIND portrait, chair & laptop; partially visible around left & right sides) */}
           <div
@@ -633,14 +633,15 @@ export default function HeroOrbitalShowcase() {
             </div>
           </div>
 
-          {/* STATIONARY CENTRAL FOREGROUND PORTRAIT (z-20: completely static in front of background ring, untouched identity & quality) */}
-          <div className="relative z-20 w-full h-full pointer-events-none">
+          {/* STATIONARY CENTRAL FOREGROUND PORTRAIT (z-20: completely static in front of background ring, natural photographic resolution) */}
+          <div className="relative z-20 w-full h-full pointer-events-none flex items-end justify-center">
             <Image
-              src="/images/faraz-hero-portrait.webp"
+              src="/images/faraz-hero-portrait.webp?v=2"
               alt="Faraz Ahmed - Full Stack Developer & AI Solutions Specialist"
-              fill
-              sizes="(max-width: 640px) 92vw, (max-width: 1024px) 52vw, 545px"
-              className="object-contain object-bottom drop-shadow-[0_18px_36px_rgba(3,6,20,0.45)]"
+              width={500}
+              height={393}
+              unoptimized
+              className="w-full h-full object-contain object-bottom drop-shadow-[0_14px_28px_rgba(4,8,24,0.48)]"
               priority
             />
           </div>
