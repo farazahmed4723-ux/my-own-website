@@ -173,7 +173,6 @@ export default function HeroOrbitalShowcase() {
   const stageRef = useRef<HTMLDivElement>(null);
   const portraitRef = useRef<HTMLDivElement>(null);
   const backSvgGroupRefs = useRef<(SVGGElement | null)[]>([]);
-  const frontSvgGroupRefs = useRef<(SVGGElement | null)[]>([]);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const sphereRefs = useRef<(HTMLDivElement | null)[]>([]);
   const cursorGlowRef = useRef<HTMLDivElement>(null);
@@ -285,16 +284,14 @@ export default function HeroOrbitalShowcase() {
       const { w, pTop, pw, ph, isMobile: mob } = dimsRef.current;
       const tracks = computeTracks(w, pTop, pw, ph, mob);
 
-      // 1. Subtle parallax on back/front SVG dotted elliptical tracks (portrait stays 100% stationary)
+      // 1. Subtle parallax on background SVG dotted elliptical tracks (portrait stays 100% stationary)
       for (let tIdx = 0; tIdx < 3; tIdx++) {
         const tr = tracks[tIdx];
         const tx = (tr.cx + parallaxX * tr.parallaxFactor).toFixed(2);
         const ty = (tr.cy + parallaxY * tr.parallaxFactor).toFixed(2);
         const svgTransform = `translate(${tx}, ${ty}) rotate(${tr.tiltDeg})`;
         const backG = backSvgGroupRefs.current[tIdx];
-        const frontG = frontSvgGroupRefs.current[tIdx];
         if (backG) backG.setAttribute("transform", svgTransform);
-        if (frontG) frontG.setAttribute("transform", svgTransform);
       }
 
       // 2. Update 4 physically orbiting upright service cards (Desktop & Tablet >= 640px)
@@ -320,7 +317,7 @@ export default function HeroOrbitalShowcase() {
         }
       }
 
-      // 3. Update 12 independent colorful luminous orbiting spheres
+      // 3. Update 12 independent colorful luminous orbiting spheres (strictly z-10 behind portrait/chair/laptop)
       for (let i = 0; i < ORBIT_SPHERES.length; i++) {
         const spEl = sphereRefs.current[i];
         if (!spEl) continue;
@@ -332,11 +329,10 @@ export default function HeroOrbitalShowcase() {
         const normDepth = (depth + 1) * 0.5;
         const scale = 0.66 + 0.42 * normDepth;
         const opacity = 0.42 + 0.54 * normDepth;
-        const zIdx = depth < 0 ? 10 : 26;
 
         spEl.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) translate(-50%, -50%) scale(${scale.toFixed(3)})`;
         spEl.style.opacity = opacity.toFixed(3);
-        spEl.style.zIndex = String(zIdx);
+        spEl.style.zIndex = "10";
       }
     };
 
@@ -503,7 +499,7 @@ export default function HeroOrbitalShowcase() {
                   cursorMoteRefs.current[idx] = el;
                 }}
                 aria-hidden="true"
-                className="pointer-events-none absolute top-0 left-0 rounded-full opacity-0 z-[27] will-change-transform"
+                className="pointer-events-none absolute top-0 left-0 rounded-full opacity-0 z-[15] will-change-transform"
                 style={{
                   width: `${mote.size}px`,
                   height: `${mote.size}px`,
@@ -515,7 +511,7 @@ export default function HeroOrbitalShowcase() {
           </>
         )}
 
-        {/* BACK HALF of the 3 Dotted Elliptical Tracks (z-10: passes BEHIND Faraz's portrait) */}
+        {/* BACK HALF of the 3 Dotted Elliptical Tracks (z-10: passes strictly BEHIND Faraz's portrait, chair & laptop) */}
         <svg
           aria-hidden="true"
           viewBox={`0 0 ${stageDims.w} ${stageDims.h}`}
@@ -541,48 +537,116 @@ export default function HeroOrbitalShowcase() {
           ))}
         </svg>
 
-        {/* STATIONARY CENTRAL FOREGROUND PORTRAIT (z-20: completely still, untouched identity & proportions) */}
+        {/* PORTRAIT ANCHOR STAGE (non-isolated wrapper so z-10 background ring & z-20 static portrait stack cleanly) */}
         <div
           ref={portraitRef}
-          className="relative z-20 w-full max-w-[360px] sm:max-w-[490px] lg:max-w-[545px] aspect-[1024/805] flex items-end justify-center pointer-events-none"
+          className="relative w-full max-w-[360px] sm:max-w-[490px] lg:max-w-[545px] aspect-[1024/805] flex items-end justify-center pointer-events-none"
         >
-          <Image
-            src="/images/faraz-hero-portrait.webp"
-            alt="Faraz Ahmed - Full Stack Developer & AI Solutions Specialist"
-            fill
-            sizes="(max-width: 640px) 92vw, (max-width: 1024px) 52vw, 545px"
-            className="object-contain object-bottom drop-shadow-[0_18px_36px_rgba(3,6,20,0.45)]"
-            priority
-          />
+          {/* BACKGROUND 360° ROTATING WHITE CIRCULAR RING (z-10: strictly BEHIND portrait, chair & laptop; partially visible around left & right sides) */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-[52.5%] -translate-x-1/2 -translate-y-1/2 w-[72%] aspect-square z-10 flex items-center justify-center"
+          >
+            {/* Primary Smooth Continuous 360° Rotating Thick White Circular Ring */}
+            <div
+              className="orbit-spin w-full h-full flex items-center justify-center"
+              style={{
+                animationName: "orbit-spin-cw",
+                animationDuration: "16s",
+              }}
+            >
+              <svg
+                viewBox="0 0 400 400"
+                className="w-full h-full overflow-visible"
+                style={{
+                  filter:
+                    "drop-shadow(0 0 14px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 28px rgba(139, 92, 246, 0.18))",
+                }}
+              >
+                <defs>
+                  <linearGradient id="heroWhiteRingBase" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.92" />
+                    <stop offset="35%" stopColor="#F1F5F9" stopOpacity="0.58" />
+                    <stop offset="70%" stopColor="#BAE6FD" stopOpacity="0.28" />
+                    <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.65" />
+                  </linearGradient>
+                  <linearGradient id="heroWhiteRingArc" x1="0%" y1="50%" x2="100%" y2="50%">
+                    <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.15" />
+                    <stop offset="50%" stopColor="#FFFFFF" stopOpacity="1" />
+                    <stop offset="100%" stopColor="#E0F2FE" stopOpacity="0.2" />
+                  </linearGradient>
+                </defs>
+
+                {/* Soft outer ambient halo rim */}
+                <circle
+                  cx="200"
+                  cy="200"
+                  r="186"
+                  fill="none"
+                  stroke="rgba(255, 255, 255, 0.14)"
+                  strokeWidth="14"
+                />
+
+                {/* Continuous thick white circular ring body */}
+                <circle
+                  cx="200"
+                  cy="200"
+                  r="186"
+                  fill="none"
+                  stroke="url(#heroWhiteRingBase)"
+                  strokeWidth="7"
+                />
+
+                {/* Opposing sculpted bright white specular arcs so 360° continuous rotation is crisp & unmistakable */}
+                <circle
+                  cx="200"
+                  cy="200"
+                  r="186"
+                  fill="none"
+                  stroke="url(#heroWhiteRingArc)"
+                  strokeWidth="8.5"
+                  strokeDasharray="155 429 105 479"
+                  strokeLinecap="round"
+                />
+
+                {/* Luminous orbital accent nodes traveling smoothly 360° along the white ring */}
+                <circle cx="200" cy="14" r="5.5" fill="#FFFFFF" />
+                <circle cx="200" cy="386" r="4.5" fill="#E0F2FE" opacity="0.9" />
+                <circle cx="14" cy="200" r="4" fill="#FFFFFF" opacity="0.85" />
+              </svg>
+            </div>
+
+            {/* Secondary Concentric Counter-Rotating Inner Depth Ring */}
+            <div className="orbit-spin orbit-spin-reverse absolute w-[89%] h-[89%] flex items-center justify-center">
+              <svg viewBox="0 0 400 400" className="w-full h-full overflow-visible">
+                <circle
+                  cx="200"
+                  cy="200"
+                  r="186"
+                  fill="none"
+                  stroke="rgba(255, 255, 255, 0.28)"
+                  strokeWidth="2"
+                  strokeDasharray="8 14"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+          </div>
+
+          {/* STATIONARY CENTRAL FOREGROUND PORTRAIT (z-20: completely static in front of background ring, untouched identity & quality) */}
+          <div className="relative z-20 w-full h-full pointer-events-none">
+            <Image
+              src="/images/faraz-hero-portrait.webp"
+              alt="Faraz Ahmed - Full Stack Developer & AI Solutions Specialist"
+              fill
+              sizes="(max-width: 640px) 92vw, (max-width: 1024px) 52vw, 545px"
+              className="object-contain object-bottom drop-shadow-[0_18px_36px_rgba(3,6,20,0.45)]"
+              priority
+            />
+          </div>
         </div>
 
-        {/* FRONT HALF of the 3 Dotted Elliptical Tracks (z-[25]: sweeps IN FRONT across lower laptop/desk, never near face) */}
-        <svg
-          aria-hidden="true"
-          viewBox={`0 0 ${stageDims.w} ${stageDims.h}`}
-          className="pointer-events-none absolute inset-0 w-full h-full overflow-visible z-[25]"
-        >
-          {tracksForSvg.map((tr, idx) => (
-            <g
-              key={`front-${idx}`}
-              ref={(el) => {
-                frontSvgGroupRefs.current[idx] = el;
-              }}
-              transform={`translate(${tr.cx}, ${tr.cy}) rotate(${tr.tiltDeg})`}
-            >
-              <path
-                d={`M ${-tr.rx} 0 A ${tr.rx} ${tr.ry} 0 0 0 ${tr.rx} 0`}
-                fill="none"
-                stroke={trackStrokes[idx].front}
-                strokeWidth="1.25"
-                strokeDasharray={trackStrokes[idx].dash}
-                strokeLinecap="round"
-              />
-            </g>
-          ))}
-        </svg>
-
-        {/* 12 Depth-Layered Luminous Orbiting Spheres (dynamically switch z-10 behind / z-[26] in front) */}
+        {/* 12 Depth-Layered Luminous Orbiting Spheres (z-10 strictly behind portrait, chair & laptop) */}
         {ORBIT_SPHERES.map((sp, idx) => (
           <div
             key={`sphere-${idx}`}
