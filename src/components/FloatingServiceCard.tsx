@@ -8,6 +8,7 @@ interface FloatingServiceCardProps {
   title: string;
   subtitle: string;
   icon: React.ReactNode;
+  accentGradient?: string;
   className?: string;
   floatDuration?: number;
   floatDelay?: number;
@@ -22,6 +23,7 @@ export default function FloatingServiceCard({
   title,
   subtitle,
   icon,
+  accentGradient = "from-[#7C3AED] via-[#8B5CF6] to-[#A855F7]",
   className = "",
   floatDuration = 6,
   floatDelay = 0,
@@ -35,14 +37,13 @@ export default function FloatingServiceCard({
   const fallbackY = useMotionValue(0);
   const [isClicked, setIsClicked] = useState(false);
 
-  // 3D Parallax offset based on cursor position
   const activeMouseX = mouseX || fallbackX;
   const activeMouseY = mouseY || fallbackY;
 
   const x = useTransform(activeMouseX, (val: number) => val * parallaxDepth);
   const y = useTransform(activeMouseY, (val: number) => val * parallaxDepth);
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = () => {
     setIsClicked(true);
     setTimeout(() => setIsClicked(false), 500);
     if (onClick) {
@@ -53,9 +54,9 @@ export default function FloatingServiceCard({
   const cardContent = (
     <motion.div
       animate={{
-        y: [-6, 6, -6],
-        rotate: [-0.6, 0.6, -0.6],
-        scale: isClicked ? [1, 1.08, 0.95, 1.03, 1] : 1,
+        y: [-5, 5, -5],
+        rotate: [-0.5, 0.5, -0.5],
+        scale: isClicked ? [1, 1.06, 0.96, 1.02, 1] : 1,
       }}
       transition={{
         y: {
@@ -76,52 +77,40 @@ export default function FloatingServiceCard({
         },
       }}
       whileHover={{
-        scale: 1.08,
-        y: -4,
-        boxShadow: "0 20px 45px -8px rgba(139, 92, 246, 0.55)",
-        borderColor: "rgba(168, 85, 247, 0.7)",
+        scale: 1.06,
+        y: -3,
       }}
       whileTap={{
-        scale: 0.92,
-        y: 4,
+        scale: 0.95,
       }}
       onClick={handleClick}
-      className="group cursor-pointer rounded-2xl border border-white/15 bg-[#0e122b]/90 p-2.5 sm:p-3 shadow-[0_15px_35px_rgba(0,0,0,0.65)] backdrop-blur-xl transition-all duration-300"
+      className="dark-preserve-exempt group cursor-pointer rounded-full sm:rounded-2xl border border-indigo-200/80 dark:border-purple-400/25 bg-white/95 dark:bg-[#0d1330]/90 px-3 py-2 sm:px-3.5 sm:py-2.5 shadow-[0_14px_34px_-6px_rgba(37,99,235,0.16)] dark:shadow-[0_16px_38px_rgba(0,0,0,0.62)] hover:border-purple-400/70 dark:hover:border-purple-400/60 backdrop-blur-xl transition-all duration-300"
     >
-      <div className="flex items-center gap-2.5 sm:gap-3">
-        {/* Purple Gradient Icon Container with Interactive Kinetic Reaction */}
+      <div className="flex items-center gap-2.5">
+        {/* Theme-harmonized Gradient Icon Badge */}
         <motion.div
-          animate={isClicked ? { rotate: [0, -15, 15, -5, 0], scale: [1, 1.2, 1] } : {}}
+          animate={isClicked ? { rotate: [0, -12, 12, -4, 0], scale: [1, 1.15, 1] } : {}}
           transition={{ duration: 0.4 }}
-          className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-[#7C3AED] via-[#8B5CF6] to-[#A855F7] text-white shadow-[0_0_15px_rgba(139,92,246,0.45)] group-hover:scale-110 group-hover:shadow-[0_0_25px_rgba(168,85,247,0.7)] transition-all duration-300"
+          className={`dark-preserve flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full sm:rounded-xl bg-gradient-to-tr ${accentGradient} text-white shadow-md group-hover:scale-110 transition-transform duration-300`}
         >
           {icon}
         </motion.div>
 
-        {/* Card Copy */}
-        <div className="flex flex-col pr-1 sm:pr-2">
-          <span className="font-heading text-xs sm:text-sm font-semibold tracking-tight text-white group-hover:text-purple-200 transition-colors">
+        {/* Card Copy — adapts cleanly between Light Mode & Dark Mode */}
+        <div className="flex flex-col pr-1">
+          <span className="font-heading text-xs sm:text-[13px] font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
             {title}
           </span>
-          <span className="text-[10px] sm:text-xs font-medium text-[#94A3B8]">
+          <span className="text-[10px] sm:text-[11px] font-medium text-slate-500 dark:text-[#94A3B8] leading-tight mt-0.5">
             {subtitle}
           </span>
-        </div>
-
-        {/* Live Active Beacon Indicator */}
-        <div className="relative ml-auto flex h-2 w-2 items-center justify-center">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
         </div>
       </div>
     </motion.div>
   );
 
   return (
-    <motion.div
-      style={{ x, y }}
-      className={`select-none ${className}`}
-    >
+    <motion.div style={{ x, y }} className={`select-none ${className}`}>
       {href ? (
         <Link href={href} className="block">
           {cardContent}

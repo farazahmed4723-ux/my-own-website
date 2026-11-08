@@ -372,25 +372,11 @@ html:not(.dark) ::-webkit-scrollbar-thumb:hover {
   animation-duration: 24s;
 }
 
-/* Standard, clean studio card behind the portrait on mobile (both Day & Night mode) */
-@media (max-width: 639px) {
-  .hero-studio-stage {
-    background: radial-gradient(circle at 50% 40%, #2a1d5e 0%, #161339 48%, #0b0e26 100%);
-    border: 1px solid rgba(139, 92, 246, 0.28);
-    border-radius: 1.5rem;
-    box-shadow: 0 20px 45px -18px rgba(5, 8, 25, 0.7), 0 0 30px -12px rgba(139, 92, 246, 0.35);
-    overflow: hidden;
-  }
-}
-
-/* Studio Portrait Showcase Frame in Day Mode (seamless dark-lit studio stage) */
-html:not(.dark) .hero-studio-stage {
-  align-items: flex-end;
-  background: radial-gradient(circle at 52% 36%, #26184f 0%, #110d26 55%, #070711 95%);
-  border-radius: 2rem;
-  border: 1px solid rgba(139, 92, 246, 0.28);
-  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.24), 0 0 40px -10px rgba(139, 92, 246, 0.2);
-  overflow: hidden;
+/* Seamless Hero Portrait Stage — blends directly into Dark & Light theme backgrounds without rectangular borders */
+.hero-studio-stage {
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 /* Day Mode Glassmorphism Surfaces */
@@ -445,14 +431,19 @@ html:not(.dark) [class~="bg-[#050711]"]:not(.dark-preserve):not(.dark-preserve *
 }
 
 /* Day Mode Navbar, Cards, Floating Service Cards, Buttons, Chatbot & Form Inputs */
-html:not(.dark) [class~="bg-[#070711]/90"]:not(.dark-preserve):not(.dark-preserve *) {
-  background-color: rgba(248, 250, 252, 0.9);
+html:not(.dark) [class~="bg-[#070711]/90"]:not(.dark-preserve):not(.dark-preserve *),
+html:not(.dark) [class~="bg-[#0D1B3E]/90"]:not(.dark-preserve):not(.dark-preserve *) {
+  background-color: rgba(248, 250, 252, 0.92);
+  border-color: rgba(139, 92, 246, 0.16);
 }
 
 html:not(.dark) [class~="bg-[#070711]/85"]:not(.dark-preserve):not(.dark-preserve *),
+html:not(.dark) [class~="bg-[#0D1B3E]/85"]:not(.dark-preserve):not(.dark-preserve *),
+html:not(.dark) [class~="bg-[#122452]/70"]:not(.dark-preserve):not(.dark-preserve *),
 html:not(.dark) [class~="bg-[#0e122b]/65"]:not(.dark-preserve):not(.dark-preserve *) {
-  background-color: rgba(255, 255, 255, 0.88);
-  border-color: rgba(139, 92, 246, 0.18);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(139, 92, 246, 0.2);
+  box-shadow: 0 10px 28px -8px rgba(15, 23, 42, 0.08);
 }
 
 html:not(.dark) [class~="bg-[#0e122b]/90"]:not(.dark-preserve):not(.dark-preserve *) {
@@ -785,6 +776,8 @@ html:not(.dark) [class*="from-[#8B5CF6]"][class~="text-white"],
 html:not(.dark) [class*="from-[#8B5CF6]"] [class~="text-white"],
 html:not(.dark) [class*="from-[#7C3AED]"][class~="text-white"],
 html:not(.dark) [class*="from-[#7C3AED]"] [class~="text-white"],
+html:not(.dark) [class*="from-[#1d4ed8]"][class~="text-white"],
+html:not(.dark) [class*="from-[#1d4ed8]"] [class~="text-white"],
 html:not(.dark) [class*="from-emerald-"][class~="text-white"],
 html:not(.dark) [class*="from-emerald-"] [class~="text-white"],
 html:not(.dark) [id^="floating-social-"][class~="text-white"],

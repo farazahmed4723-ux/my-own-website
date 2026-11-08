@@ -12,6 +12,8 @@ import {
   Zap,
   ShoppingBag,
   Sparkles,
+  Cpu,
+  Globe,
 } from "lucide-react";
 import OrbitalSystem from "@/components/OrbitalSystem";
 import FloatingServiceCard from "@/components/FloatingServiceCard";
@@ -66,8 +68,8 @@ export default function HeroSection() {
       className="relative min-h-[94vh] pt-24 sm:pt-28 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden flex flex-col justify-between bg-transparent"
     >
       {/* Studio Radial Tech Glow & Atmospheric Lighting */}
-      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[340px] sm:w-[900px] h-[300px] sm:h-[450px] rounded-full bg-gradient-to-b from-[#3B82F6]/18 sm:from-[#3B82F6]/22 via-[#8B5CF6]/14 sm:via-[#8B5CF6]/18 to-transparent dark:from-[#A855F7]/25 sm:dark:from-[#A855F7]/35 dark:via-[#38bdf8]/18 sm:dark:via-[#38bdf8]/22 blur-[60px] sm:blur-[120px] pointer-events-none" />
-      <div className="hidden sm:block absolute top-1/4 right-[5%] w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-[#6366F1]/18 via-[#8B5CF6]/15 to-[#38bdf8]/18 dark:from-[#7C3AED]/32 dark:via-[#8B5CF6]/25 dark:to-[#38bdf8]/22 blur-[120px] pointer-events-none" />
+      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[340px] sm:w-[900px] h-[300px] sm:h-[450px] rounded-full bg-gradient-to-b from-[#3B82F6]/20 sm:from-[#3B82F6]/20 via-[#8B5CF6]/15 sm:via-[#8B5CF6]/20 to-transparent dark:from-[#A855F7]/25 sm:dark:from-[#A855F7]/35 dark:via-[#38bdf8]/20 sm:dark:via-[#38bdf8]/20 blur-[60px] sm:blur-[120px] pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/4 right-[5%] w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-[#6366F1]/20 via-[#8B5CF6]/15 to-[#38bdf8]/20 dark:from-[#7C3AED]/30 dark:via-[#8B5CF6]/25 dark:to-[#38bdf8]/20 blur-[120px] pointer-events-none" />
       <div className="hidden sm:block absolute top-1/3 -left-20 w-[450px] h-[450px] rounded-full bg-sky-400/20 dark:bg-indigo-500/25 blur-[130px] pointer-events-none" />
 
       {/* Subtle Ambient Grid Layer */}
@@ -120,7 +122,7 @@ export default function HeroSection() {
             <a
               href="#portfolio"
               id="hero-view-my-work-btn"
-              className="group px-3.5 sm:px-7 py-3 sm:py-3.5 rounded-xl sm:rounded-full bg-gradient-to-r from-[#1d4ed8] via-[#2563eb] to-[#3b82f6] text-white font-semibold text-xs sm:text-base flex items-center justify-center gap-1.5 sm:gap-2.5 shadow-[0_0_20px_rgba(37,99,235,0.45)] hover:shadow-[0_0_35px_rgba(37,99,235,0.7)] transition-all duration-300 hover:scale-105 active:scale-95"
+              className="dark-preserve group px-3.5 sm:px-7 py-3 sm:py-3.5 rounded-xl sm:rounded-full bg-gradient-to-r from-[#1d4ed8] via-[#2563eb] to-[#3b82f6] text-white font-semibold text-xs sm:text-base flex items-center justify-center gap-1.5 sm:gap-2.5 shadow-[0_0_20px_rgba(37,99,235,0.45)] hover:shadow-[0_0_35px_rgba(37,99,235,0.7)] transition-all duration-300 hover:scale-105 active:scale-95"
             >
               <span>View My Work</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -198,134 +200,114 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Right Column: Sharp Portrait, Orbital Rings, 4 Floating Cards, Parallax */}
+                {/* Right Column: Seamless Theme-Adaptive Desk Portrait, Animated Orbits, & Floating Service Cards */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 28 }}
+          initial={{ opacity: 0, scale: 0.94, y: 24 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 200, damping: 22, delay: 0.18 }}
-          className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[300px] sm:min-h-[560px] lg:min-h-[620px]"
+          transition={{ type: "spring", stiffness: 200, damping: 22, delay: 0.16 }}
+          className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[340px] sm:min-h-[540px] lg:min-h-[600px]"
         >
-          <div className="hero-studio-stage dark-preserve relative w-full h-full min-h-[300px] sm:min-h-[560px] lg:min-h-[620px] flex items-end sm:items-center justify-center rounded-3xl sm:rounded-none overflow-hidden sm:overflow-visible pt-4 sm:pt-0">
-            {/* 1. Animated Orbital System (behind portrait) */}
+          <div className="hero-studio-stage relative w-full h-full min-h-[340px] sm:min-h-[540px] lg:min-h-[600px] flex items-end justify-center overflow-visible pt-6 sm:pt-4">
+            {/* 1. Theme-Adaptive Animated Orbital Rings & Glowing Particles */}
             <OrbitalSystem />
 
-            {/* Mobile-Only Non-Overlapping Corner Status Pills */}
-            <div className="sm:hidden absolute top-3 left-3 z-20 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0e132e]/85 border border-white/15 backdrop-blur-md">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[10px] font-semibold text-gray-200">
-                Available Now
+            {/* 2. Mobile-Only Symmetrical Skill Chips (Clear of Head & Face, Light/Dark Adaptive) */}
+            <Link
+              href="/services/website-development"
+              className="sm:hidden absolute top-1 left-0 z-30 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-white/95 dark:bg-[#0d1330]/90 border border-indigo-200/80 dark:border-purple-400/30 backdrop-blur-md shadow-md"
+            >
+              <span className="dark-preserve w-5 h-5 rounded-full bg-gradient-to-tr from-[#2563EB] to-[#38BDF8] flex items-center justify-center text-white font-mono text-[9px] font-bold">
+                &lt;/&gt;
               </span>
-            </div>
-            <div className="sm:hidden absolute top-3 right-3 z-20 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#0e132e]/85 border border-purple-500/30 backdrop-blur-md">
-              <span className="text-[10px] font-bold text-purple-200">
-                ★ 50+ Shipped
+              <span className="text-[10.5px] font-bold text-slate-900 dark:text-white leading-none pr-0.5">
+                Full Stack Dev
               </span>
-            </div>
+            </Link>
 
-            {/* 2. Handwritten Script Annotations */}
-            {/* Top-left: "Faraz Ahmed" with curved arrow pointing to him */}
-            <div className="absolute top-12 sm:top-16 left-8 sm:left-14 z-20 hidden sm:flex flex-col items-center pointer-events-none select-none">
-              <span className="font-script text-2xl sm:text-3xl text-purple-200/90 -rotate-12 tracking-wide drop-shadow-[0_0_10px_rgba(168,85,247,0.4)]">
-                Faraz Ahmed
+            <Link
+              href="/services/wordpress-development"
+              className="sm:hidden absolute top-1 right-0 z-30 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-white/95 dark:bg-[#0d1330]/90 border border-indigo-200/80 dark:border-purple-400/30 backdrop-blur-md shadow-md"
+            >
+              <span className="dark-preserve w-5 h-5 rounded-full bg-gradient-to-tr from-[#0284C7] to-[#38BDF8] flex items-center justify-center text-white">
+                <Globe className="w-3 h-3" />
               </span>
-              <svg
-                className="w-14 h-7 text-purple-300/80 -mt-0.5 ml-6 -rotate-12"
-                viewBox="0 0 60 25"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              >
-                <path d="M 4 18 C 20 12, 36 8, 52 5" />
-                <path d="M 45 2 L 53 5 L 47 11" />
-              </svg>
-            </div>
+              <span className="text-[10.5px] font-bold text-slate-900 dark:text-white leading-none pr-0.5">
+                WordPress Expert
+              </span>
+            </Link>
 
-            {/* Lower-Right (below AI Agents, above MacBook): "Ideas \n Automation \n Growth" */}
-            <div className="absolute right-2 sm:right-5 bottom-28 sm:bottom-36 z-20 hidden md:flex flex-col items-start pointer-events-none select-none -rotate-6">
-              <span className="font-script text-xl sm:text-2xl text-purple-200/95 tracking-wider leading-tight drop-shadow-[0_0_12px_rgba(168,85,247,0.4)]">
-                Ideas
+            <Link
+              href="/services/ai-chatbots"
+              className="sm:hidden absolute top-[39%] left-0 z-30 flex items-center gap-1.5 px-2 py-1 rounded-full bg-white/95 dark:bg-[#0d1330]/90 border border-indigo-200/80 dark:border-purple-400/30 backdrop-blur-md shadow-md"
+            >
+              <span className="dark-preserve w-4 h-4 rounded-full bg-gradient-to-tr from-[#0891B2] to-[#6366F1] flex items-center justify-center text-white">
+                <Bot className="w-2.5 h-2.5" />
               </span>
-              <span className="font-script text-xl sm:text-2xl text-amber-100/95 tracking-wider leading-tight drop-shadow-[0_0_12px_rgba(245,158,11,0.3)]">
-                Automation
+              <span className="text-[9.5px] font-bold text-slate-900 dark:text-white leading-none pr-0.5">
+                AI Chatbots
               </span>
-              <span className="font-script text-xl sm:text-2xl text-purple-200/95 tracking-wider leading-tight">
-                Growth
-              </span>
-              <svg
-                className="w-24 h-4 text-purple-400/80 -mt-1"
-                viewBox="0 0 100 16"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              >
-                <path d="M 4 12 Q 50 4, 94 6" />
-              </svg>
-            </div>
+            </Link>
 
-            {/* 3. Founder Portrait Showcase (Studio-integrated natural photo, seamless vignette blending) */}
+            <Link
+              href="/services/ai-agents"
+              className="sm:hidden absolute top-[39%] right-0 z-30 flex items-center gap-1.5 px-2 py-1 rounded-full bg-white/95 dark:bg-[#0d1330]/90 border border-indigo-200/80 dark:border-purple-400/30 backdrop-blur-md shadow-md"
+            >
+              <span className="dark-preserve w-4 h-4 rounded-full bg-gradient-to-tr from-[#7C3AED] to-[#A855F7] flex items-center justify-center text-white">
+                <Cpu className="w-2.5 h-2.5" />
+              </span>
+              <span className="text-[9.5px] font-bold text-slate-900 dark:text-white leading-none pr-0.5">
+                AI Automation
+              </span>
+            </Link>
+
+            {/* 3. Seamless Desk Studio Portrait Cutout (Edge-Feathered, Theme-Adaptive Floor Blend) */}
             <motion.div
               style={{
                 x: isTouchDevice ? 0 : smoothMouseX,
                 y: isTouchDevice ? 0 : smoothMouseY,
               }}
-              className="relative z-10 w-full max-w-[500px] sm:max-w-[580px] lg:max-w-[640px] aspect-[1.14/1] flex items-end justify-center"
+              className="relative z-10 w-full max-w-[440px] sm:max-w-[560px] lg:max-w-[620px] aspect-[1024/936] flex items-end justify-center"
             >
               <div className="relative w-full h-full">
                 <Image
-                  src="/images/faraz-portrait.webp?v=6"
+                  src="/images/faraz-portrait.webp?v=8"
                   alt="Faraz Ahmed - Web Developer & AI Solutions Specialist"
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 640px"
-                  className="object-contain object-bottom"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 55vw, 620px"
+                  className="object-contain object-bottom drop-shadow-[0_18px_38px_rgba(15,23,42,0.18)] dark:drop-shadow-[0_22px_48px_rgba(0,0,0,0.55)]"
                   priority
                   unoptimized
                 />
               </div>
 
-              {/* Desk Bottom Warm Gold Reflection Beam (Matches reference image) */}
-              <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#F59E0B]/50 to-transparent pointer-events-none" />
-              <div className="absolute bottom-0 inset-x-0 h-6 bg-gradient-to-t from-[#0F1B3D] to-transparent pointer-events-none" />
+              {/* Subtle Electric Cyan-Violet Desk Front Edge Reflection */}
+              <div className="absolute bottom-[4%] inset-x-[12%] h-[2px] bg-gradient-to-r from-transparent via-[#38BDF8]/70 to-transparent dark:via-[#60A5FA]/75 blur-[0.5px] pointer-events-none" />
 
-              {/* Mobile-Only Dual Floating Skill Badges (Matches Pic 1 Exactly) */}
-              <div className="lg:hidden absolute bottom-3 left-1 z-20 flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-[#0f142e]/90 border border-white/15 backdrop-blur-md shadow-lg">
-                <div className="w-6 h-6 rounded-lg bg-sky-500/20 border border-sky-400/40 flex items-center justify-center text-sky-300 font-mono text-[10px] font-bold">
-                  &lt;/&gt;
-                </div>
-                <div className="text-left">
-                  <div className="text-[10px] font-bold text-white leading-tight">Full Stack Dev</div>
-                  <div className="text-[8px] text-gray-400">React, Node &amp; APIs</div>
-                </div>
-              </div>
-
-              <div className="lg:hidden absolute bottom-3 right-12 z-20 flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-[#0f142e]/90 border border-white/15 backdrop-blur-md shadow-lg">
-                <div className="w-6 h-6 rounded-lg bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-300 text-[10px]">
-                  🌐
-                </div>
-                <div className="text-left">
-                  <div className="text-[10px] font-bold text-white leading-tight">WordPress Expert</div>
-                  <div className="text-[8px] text-gray-400">Custom Themes &amp; Woo</div>
-                </div>
-              </div>
-
-              {/* Floating Glowing Brand Logo Bubble with Online Dot (Matches Pic 1) */}
-              <div className="lg:hidden absolute -bottom-1 right-0 z-30 w-10 h-10 rounded-full p-[2px] bg-gradient-to-tr from-[#38bdf8] via-[#818cf8] to-[#f59e0b] shadow-[0_0_15px_rgba(56,189,248,0.5)] flex items-center justify-center">
-                <div className="relative w-full h-full rounded-full overflow-hidden bg-black">
-                  <Image src="/images/logo.jpg" alt="Logo" fill sizes="40px" className="object-cover" />
-                </div>
-                <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-[#0F1B3D] animate-pulse" />
-              </div>
+              {/* Interactive Centered "Available for Hire" Desk Status Pill (Matches Reference & Opens Hire Modal) */}
+              <button
+                type="button"
+                onClick={() => setIsDmModalOpen(true)}
+                className="group absolute bottom-1.5 sm:bottom-2.5 left-1/2 -translate-x-1/2 z-30 inline-flex items-center gap-2 sm:gap-2.5 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full bg-white/95 dark:bg-[#0d1330]/95 border border-indigo-200/90 dark:border-purple-400/40 shadow-[0_12px_30px_rgba(37,99,235,0.18)] dark:shadow-[0_12px_32px_rgba(0,0,0,0.68)] backdrop-blur-xl hover:scale-105 active:scale-95 transition-all cursor-pointer whitespace-nowrap"
+              >
+                <span className="relative flex h-2.5 w-2.5 items-center justify-center">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                </span>
+                <span className="font-heading text-xs sm:text-sm font-bold tracking-tight text-slate-900 dark:text-white">
+                  Available for Hire
+                </span>
+              </button>
             </motion.div>
           </div>
 
-          {/* 4. Four Independent Floating Service Cards (Tablet & Desktop >= sm) */}
-          {/* Card 1: Modern Websites (Top Right) */}
+          {/* 4. Four Symmetrical Theme-Adaptive Floating Service Cards (Tablet & Desktop >= sm) */}
+          {/* Top-Left: Full Stack Dev */}
           <FloatingServiceCard
-            title="Modern Websites"
-            subtitle="WordPress | Next.js"
-            icon={<Code2 className="w-5 h-5 text-white" />}
-            className="hidden sm:block absolute top-3 sm:top-5 -right-1 sm:right-1 z-30"
+            title="Full Stack Dev"
+            subtitle="Next.js, React & APIs"
+            icon={<Code2 className="w-4 h-4 sm:w-5 sm:h-5 text-white" />}
+            accentGradient="from-[#2563EB] via-[#3B82F6] to-[#38BDF8]"
+            className="hidden sm:block absolute top-6 lg:top-10 left-0 lg:-left-3 z-30"
             floatDuration={5.8}
             floatDelay={0}
             mouseX={smoothMouseX}
@@ -334,48 +316,50 @@ export default function HeroSection() {
             href="/services/website-development"
           />
 
-          {/* Card 2: AI Chatbots (Middle-Upper Right) */}
+          {/* Top-Right: WordPress Expert */}
+          <FloatingServiceCard
+            title="WordPress Expert"
+            subtitle="Custom Themes & Plugins"
+            icon={<Globe className="w-4 h-4 sm:w-5 sm:h-5 text-white" />}
+            accentGradient="from-[#0284C7] via-[#0EA5E9] to-[#38BDF8]"
+            className="hidden sm:block absolute top-6 lg:top-10 right-0 lg:-right-3 z-30"
+            floatDuration={6.4}
+            floatDelay={0.6}
+            mouseX={smoothMouseX}
+            mouseY={smoothMouseY}
+            parallaxDepth={12}
+            href="/services/wordpress-development"
+          />
+
+          {/* Mid-Left: AI Chatbots */}
           <FloatingServiceCard
             title="AI Chatbots"
-            subtitle="Smart Automation"
-            icon={<Bot className="w-5 h-5 text-white" />}
-            className="hidden sm:block absolute top-24 sm:top-28 right-1 sm:right-5 z-30"
+            subtitle="RAG & Gemini Bots"
+            icon={<Bot className="w-4 h-4 sm:w-5 sm:h-5 text-white" />}
+            accentGradient="from-[#0891B2] via-[#3B82F6] to-[#6366F1]"
+            className="hidden sm:block absolute top-[43%] left-0 lg:-left-5 z-30"
             floatDuration={6.8}
-            floatDelay={0.8}
+            floatDelay={1.1}
             mouseX={smoothMouseX}
             mouseY={smoothMouseY}
             parallaxDepth={10}
             href="/services/ai-chatbots"
           />
 
-          {/* Card 3: AI Agents (Middle-Lower Right, above Ideas/Automation/Growth) */}
+          {/* Mid-Right: AI Automation */}
           <FloatingServiceCard
-            title="AI Agents"
-            subtitle="Custom Solutions"
-            icon={<Zap className="w-5 h-5 text-white" />}
-            className="hidden sm:block absolute top-44 sm:top-52 -right-2 sm:right-0 z-30"
+            title="AI Automation"
+            subtitle="n8n, Make & Zapier"
+            icon={<Cpu className="w-4 h-4 sm:w-5 sm:h-5 text-white" />}
+            accentGradient="from-[#7C3AED] via-[#8B5CF6] to-[#A855F7]"
+            className="hidden sm:block absolute top-[45%] right-0 lg:-right-4 z-30"
             floatDuration={6.2}
-            floatDelay={1.4}
+            floatDelay={1.5}
             mouseX={smoothMouseX}
             mouseY={smoothMouseY}
-            parallaxDepth={16}
+            parallaxDepth={15}
             href="/services/ai-agents"
           />
-
-          {/* Card 4: E-commerce (Lower Left - over suit jacket) */}
-          <FloatingServiceCard
-            title="E-commerce"
-            subtitle="Shopify | WooCommerce"
-            icon={<ShoppingBag className="w-5 h-5 text-white" />}
-            className="hidden sm:block absolute bottom-16 sm:bottom-24 lg:bottom-[150px] left-2 sm:left-8 lg:left-[86px] z-30"
-            floatDuration={7.2}
-            floatDelay={0.4}
-            mouseX={smoothMouseX}
-            mouseY={smoothMouseY}
-            parallaxDepth={8}
-            href="/services/ecommerce-solutions"
-          />
-
         </motion.div>
       </div>
 
