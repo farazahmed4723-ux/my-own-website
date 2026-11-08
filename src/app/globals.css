@@ -260,6 +260,53 @@ html:not(.dark) ::-webkit-scrollbar-thumb:hover {
   background: #8B5CF6;
 }
 
+/* Hero Orbital Rings — GPU-accelerated CSS rotation (works on mobile + desktop) */
+@keyframes orbit-spin-cw {
+  from { transform: rotate(var(--orbit-start, 0deg)); }
+  to { transform: rotate(calc(var(--orbit-start, 0deg) + 360deg)); }
+}
+
+@keyframes orbit-spin-ccw {
+  from { transform: rotate(var(--orbit-start, 0deg)); }
+  to { transform: rotate(calc(var(--orbit-start, 0deg) - 360deg)); }
+}
+
+.orbit-spin {
+  will-change: transform;
+  backface-visibility: hidden;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.orbit-spin-slow {
+  --orbit-start: -12deg;
+  animation-name: orbit-spin-cw;
+  animation-duration: 48s;
+}
+
+.orbit-spin-reverse {
+  --orbit-start: 18deg;
+  animation-name: orbit-spin-ccw;
+  animation-duration: 34s;
+}
+
+.orbit-spin-fast {
+  --orbit-start: -5deg;
+  animation-name: orbit-spin-cw;
+  animation-duration: 24s;
+}
+
+/* Standard, clean studio card behind the portrait on mobile (both Day & Night mode) */
+@media (max-width: 639px) {
+  .hero-studio-stage {
+    background: radial-gradient(circle at 50% 40%, #2a1d5e 0%, #161339 48%, #0b0e26 100%);
+    border: 1px solid rgba(139, 92, 246, 0.28);
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 45px -18px rgba(5, 8, 25, 0.7), 0 0 30px -12px rgba(139, 92, 246, 0.35);
+    overflow: hidden;
+  }
+}
+
 /* Studio Portrait Showcase Frame in Day Mode (seamless dark-lit studio stage) */
 html:not(.dark) .hero-studio-stage {
   align-items: flex-end;
@@ -678,5 +725,11 @@ html:not(.dark) [class~="bg-black/80"] [class~="text-white"] {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /* Keep the very slow, gentle hero orbit rotation (matches desktop behaviour) */
+  .orbit-spin {
+    animation-duration: 60s !important;
+    animation-iteration-count: infinite !important;
   }
 }
