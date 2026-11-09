@@ -43,6 +43,7 @@ import {
   buildPageMetadata,
   buildServiceDetailJsonLd,
 } from "@/lib/seo";
+import VideoPortfolioGallery from "@/components/VideoPortfolioGallery";
 
 export async function generateStaticParams() {
   return servicesData.map((service) => ({
@@ -162,6 +163,13 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
             </div>
           </div>
         </div>
+
+        {/* Live Video Editing Portfolio Showcase (Rendered on /services/video-editing) */}
+        {service.slug === "video-editing" && (
+          <div className="mb-16">
+            <VideoPortfolioGallery />
+          </div>
+        )}
 
         {/* Features & Deliverables Grid */}
         <div className="mb-16">

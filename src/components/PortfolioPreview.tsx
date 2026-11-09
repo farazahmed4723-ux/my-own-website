@@ -4,13 +4,15 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { portfolioProjects } from "@/data/portfolio";
-import { ExternalLink, ArrowUpRight, Sparkles } from "lucide-react";
+import { ExternalLink, ArrowUpRight, Play } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollMotion";
+import VideoPortfolioGallery from "@/components/VideoPortfolioGallery";
 
 type CategoryFilter = "All" | "Full Stack" | "WordPress" | "Video Editing";
 
 export default function PortfolioPreview() {
   const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>("All");
+  const [playingInlineId, setPlayingInlineId] = useState<string | null>(null);
 
   const categories: CategoryFilter[] = ["All", "Full Stack", "WordPress", "Video Editing"];
 
@@ -66,6 +68,13 @@ export default function PortfolioPreview() {
           </div>
         </ScrollReveal>
 
+        {/* Dedicated 9:16 Video Editing Gallery when "Video Editing" tab is selected, or standard project grid */}
+        {selectedCategory === "Video Editing" ? (
+          <div className="mt-2">
+            <VideoPortfolioGallery compactHeader />
+          </div>
+        ) : (
+        <>
         {/* Swipeable Projects Track (Side-by-Side sliding on Mobile, Responsive Grid on Tablet/Desktop) */}
         <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 px-1 gap-4 sm:gap-6 no-scrollbar sm:grid sm:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project, idx) => (
@@ -76,14 +85,15 @@ export default function PortfolioPreview() {
             >
               {/* Top Image / Video Preview with Verified Badges */}
               <div className="relative aspect-[16/10] overflow-hidden bg-black/40">
-                {project.videoUrl ? (
+                {project.videoUrl && playingInlineId === project.id ? (
                   <video
                     src={project.videoUrl}
                     poster={project.image}
+                    autoPlay
                     controls
                     playsInline
                     preload="metadata"
-                    className="w-full h-full object-cover relative z-20"
+                    className="w-full h-full object-contain bg-[#070A1A] relative z-20"
                   />
                 ) : (
                   <>
@@ -96,6 +106,19 @@ export default function PortfolioPreview() {
                       priority={idx === 0}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+                    {project.videoUrl && (
+                      <button
+                        type="button"
+                        onClick={() => setPlayingInlineId(project.id)}
+                        aria-label={`Play ${project.title}`}
+                        className="absolute inset-0 z-20 flex items-center justify-center cursor-pointer group/play"
+                      >
+                        <span className="relative flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-tr from-[#2563EB] via-[#7C3AED] to-[#EC4899] text-white shadow-[0_0_28px_rgba(124,58,237,0.65)] group-hover/play:scale-110 transition-transform duration-300">
+                          <span className="absolute inset-0 rounded-full bg-purple-500/40 animate-ping opacity-60" />
+                          <Play className="w-6 h-6 fill-white ml-0.5 relative z-10" />
+                        </span>
+                      </button>
+                    )}
                   </>
                 )}
 
@@ -165,7 +188,16 @@ export default function PortfolioPreview() {
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </Link>
 
-                  {project.liveUrl && (
+                  {project.videoUrl ? (
+                    <button
+                      type="button"
+                      onClick={() => setSelectedCategory("Video Editing")}
+                      className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-blue-600/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                    >
+                      <Play className="w-3.5 h-3.5 fill-white" />
+                      <span>Watch Gallery</span>
+                    </button>
+                  ) : project.liveUrl ? (
                     <a
                       href={project.liveUrl}
                       target="_blank"
@@ -175,7 +207,7 @@ export default function PortfolioPreview() {
                       <span>Live</span>
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
-                  )}
+                  ) : null}
                 </div>
               </div>
             </div>
@@ -186,6 +218,8 @@ export default function PortfolioPreview() {
         <div className="sm:hidden text-center text-xs font-semibold text-slate-500 dark:text-gray-400 mt-5 flex items-center justify-center gap-1.5 animate-pulse">
           <span>&larr; Swipe to explore projects &rarr;</span>
         </div>
+        </>
+        )}
       </div>
     </section>
   );

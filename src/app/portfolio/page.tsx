@@ -17,6 +17,7 @@ import {
   buildPageMetadata,
   buildPortfolioCollectionJsonLd,
 } from "@/lib/seo";
+import VideoPortfolioGallery from "@/components/VideoPortfolioGallery";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Portfolio & Verified Client Case Studies",
@@ -95,7 +96,7 @@ export default function PortfolioPage() {
                 className="rounded-3xl glass-card border border-purple-500/30 overflow-hidden shadow-2xl shadow-purple-950/20 hover:border-purple-400/50 transition-colors"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 p-6 sm:p-10 lg:p-12 items-center">
-                  {/* Left: Real Website Screenshot or Video Showcase */}
+                    {/* Left: Real Website Screenshot or Video Showcase */}
                   <div className="dark-preserve lg:col-span-7 relative rounded-2xl overflow-hidden aspect-[16/10] border border-white/10 bg-black/60 shadow-xl group">
                     {project.videoUrl ? (
                       <video
@@ -104,7 +105,7 @@ export default function PortfolioPage() {
                         controls
                         playsInline
                         preload="metadata"
-                        className="w-full h-full object-cover relative z-20"
+                        className="w-full h-full object-contain bg-[#070A1A] relative z-20"
                       />
                     ) : (
                       <Image
@@ -183,6 +184,11 @@ export default function PortfolioPage() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Section 1B: Dedicated Video Editing & Motion Graphics Gallery */}
+        <div className="mb-20" id="video-editing-portfolio">
+          <VideoPortfolioGallery />
         </div>
 
         {/* Section 2: Clearly Labeled Concept Prototypes */}
