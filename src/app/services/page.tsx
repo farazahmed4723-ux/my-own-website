@@ -9,6 +9,9 @@ import {
   Zap,
   ShoppingBag,
   Terminal,
+  Globe,
+  Layers,
+  Film,
   ArrowRight,
   CheckCircle2,
   Sparkles,
@@ -37,6 +40,9 @@ const iconMap: Record<string, React.ElementType> = {
   Zap,
   ShoppingBag,
   Terminal,
+  Globe,
+  Layers,
+  Film,
 };
 
 export default function ServicesPage() {

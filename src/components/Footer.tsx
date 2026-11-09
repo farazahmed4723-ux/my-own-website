@@ -203,6 +203,15 @@ export default function Footer() {
                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/services/video-editing"
+                  className="hover:text-purple-300 transition-colors flex items-center gap-1 group"
+                >
+                  <span>Video Editing</span>
+                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </Link>
+              </li>
             </ul>
           </div>
 

@@ -311,4 +311,37 @@ export const servicesData: ServiceItem[] = [
     ],
     technologies: ["TypeScript", "Next.js", "Node.js", "Express", "PostgreSQL", "Supabase", "Tailwind CSS"],
   },
+  {
+    id: "video-editing",
+    slug: "video-editing",
+    title: "Video Editing & Motion Graphics",
+    tagline: "High-Retention Commercial Edits, Reels, YouTube & Brand Storytelling",
+    shortDescription:
+      "Cinematic video editing, high-retention Instagram Reels/TikToks, promotional commercials, dynamic captions, color grading, and motion graphics.",
+    fullDescription:
+      "Capture attention in the first 3 seconds and turn viewers into loyal clients. Faraz delivers studio-grade video editing and motion graphics for brands, creators, and businesses — combining crisp pacing, dynamic typography, seamless transitions, sound design, and color grading tailored for YouTube, Instagram Reels, TikTok, and commercial ad campaigns.",
+    icon: "Film",
+    badge: "Creative Post-Production",
+    features: [
+      "High-retention short-form edits (Instagram Reels, TikTok, YouTube Shorts)",
+      "Commercial brand promos, product showcases, and social media video ads",
+      "Dynamic animated captions, kinetic typography, and custom motion graphics",
+      "Professional color grading, audio cleanup, and immersive SFX sound design",
+      "Smooth speed ramps, b-roll storytelling, and beat-synced transitions",
+      "Multi-format delivery optimized for 9:16 vertical, 16:9 widescreen, and 1:1 feeds",
+    ],
+    useCases: [
+      "Personal brand and founder authority Reels designed for maximum organic reach",
+      "High-converting promotional video ads for e-commerce products and services",
+      "YouTube long-form episodes, tutorials, and documentary-style storytelling",
+      "Corporate event highlights, client testimonials, and SaaS explainer videos",
+    ],
+    process: [
+      { step: "01", title: "Footage & Script Review", desc: "Analyzing raw clips, brand tone, target platform, and hook strategy." },
+      { step: "02", title: "Rough Cut & Pacing", desc: "Assembling the narrative arc with tight cuts and high-retention pacing." },
+      { step: "03", title: "VFX, Captions & Sound", desc: "Adding motion graphics, dynamic subtitles, SFX layers, and color grading." },
+      { step: "04", title: "Final Master Export", desc: "Delivering crisp 4K/1080p masters formatted for every social platform." },
+    ],
+    technologies: ["Premiere Pro", "After Effects", "CapCut Pro", "DaVinci Resolve", "Motion Graphics", "Sound Design"],
+  },
 ];

@@ -12,6 +12,7 @@ import {
   Terminal,
   Globe,
   Layers,
+  Film,
   CheckCircle2,
   ArrowRight,
   Sparkles,
@@ -34,6 +35,7 @@ const iconMap: Record<string, React.ElementType> = {
   Terminal,
   Globe,
   Layers,
+  Film,
 };
 
 import {

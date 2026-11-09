@@ -9,6 +9,7 @@ import {
   Cpu,
   Layers,
   Zap,
+  Film,
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
@@ -77,6 +78,15 @@ const services: ServiceItem[] = [
     icon: Zap,
     iconColor: "text-[#FF8F00]",
     slug: "seo-performance",
+  },
+  {
+    id: "video-editing",
+    title: "Video Editing & Motion Graphics",
+    description:
+      "High-retention Instagram Reels, TikToks, YouTube edits, promotional commercials, dynamic captions, sound design, and color grading.",
+    icon: Film,
+    iconColor: "text-[#1E88E5]",
+    slug: "video-editing",
   },
 ];
 
@@ -192,7 +202,7 @@ export default function ServicesPreview() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 active:bg-white/20 border border-white/15 text-slate-300 hover:text-white text-xs font-semibold tracking-wide transition-all cursor-pointer select-none touch-manipulation"
           >
             <span className="select-none">
-              {showAllMobile ? "Show Less" : "+ View More Services (Cloud & SEO)"}
+              {showAllMobile ? "Show Less" : "+ View More Services (Cloud, SEO & Video Editing)"}
             </span>
             {showAllMobile ? (
               <ChevronUp className="w-3.5 h-3.5 text-[#FF8F00] select-none" />

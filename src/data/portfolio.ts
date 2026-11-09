@@ -7,10 +7,11 @@ export interface PortfolioProject {
   projectType: string;
   description: string;
   image: string;
+  videoUrl?: string;
   liveUrl?: string;
   isRealClient: boolean;
   statusBadge: string;
-  badgeType?: "Full Stack" | "WordPress" | string;
+  badgeType?: "Full Stack" | "WordPress" | "Video Editing" | string;
   performanceBadge?: string;
   highlights: string[];
   technologies: string[];
@@ -108,6 +109,28 @@ export const portfolioProjects: PortfolioProject[] = [
       "Tailwind CSS custom glassmorphism design system",
     ],
     technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "AI Agent Showcase", "Workflow Automation"],
+  },
+  {
+    id: "faraz-video-editing-showcase",
+    slug: "faraz-video-editing-showcase",
+    title: "Commercial & High-Retention Video Editing Reel",
+    category: "Video Editing & Motion Graphics",
+    badgeType: "Video Editing",
+    developer: "Faraz Ahmed",
+    projectType: "Commercial Video Edit, Motion Graphics & Sound Design",
+    description:
+      "Cinematic video editing showcase by Faraz Ahmed featuring high-retention pacing, dynamic motion graphics, kinetic typography, seamless transitions, and immersive sound design.",
+    image: "/images/video-editing-cover.webp",
+    isRealClient: true,
+    statusBadge: "Featured Video Edit",
+    performanceBadge: "Format: 4K / 60fps Master",
+    highlights: [
+      "High-retention hook pacing & beat-synced transitions",
+      "Custom motion graphics & dynamic animated captions",
+      "Cinematic color grading & studio SFX sound design",
+      "Optimized for Reels, TikTok, YouTube & brand commercials",
+    ],
+    technologies: ["Premiere Pro", "After Effects", "CapCut Pro", "Motion Graphics", "Color Grading", "Sound Design"],
   },
   {
     id: "concept-ai-agent-mesh",

@@ -95,16 +95,27 @@ export default function PortfolioPage() {
                 className="rounded-3xl glass-card border border-purple-500/30 overflow-hidden shadow-2xl shadow-purple-950/20 hover:border-purple-400/50 transition-colors"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 p-6 sm:p-10 lg:p-12 items-center">
-                  {/* Left: Real Website Screenshot */}
+                  {/* Left: Real Website Screenshot or Video Showcase */}
                   <div className="dark-preserve lg:col-span-7 relative rounded-2xl overflow-hidden aspect-[16/10] border border-white/10 bg-black/60 shadow-xl group">
-                    <Image
-                      src={project.image}
-                      alt={`${project.title} Screenshot`}
-                      fill
-                      className="object-cover group-hover:scale-103 transition-transform duration-700"
-                      priority
-                    />
-                    <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
+                    {project.videoUrl ? (
+                      <video
+                        src={project.videoUrl}
+                        poster={project.image}
+                        controls
+                        playsInline
+                        preload="metadata"
+                        className="w-full h-full object-cover relative z-20"
+                      />
+                    ) : (
+                      <Image
+                        src={project.image}
+                        alt={`${project.title} Screenshot`}
+                        fill
+                        className="object-cover group-hover:scale-103 transition-transform duration-700"
+                        priority
+                      />
+                    )}
+                    <div className="absolute top-4 left-4 z-30 pointer-events-none flex items-center gap-2">
                       <span className="px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-semibold backdrop-blur-md flex items-center gap-1.5">
                         <ShieldCheck className="w-3.5 h-3.5" />
                         <span>{project.statusBadge}</span>

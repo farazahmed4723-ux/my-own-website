@@ -21,6 +21,7 @@ const serviceOptions = [
   { value: "AI Agents", label: "AI Agents (Autonomous Task & Integration Agents)" },
   { value: "E-commerce Solutions", label: "E-commerce Solutions (Shopify / WooCommerce)" },
   { value: "Custom Software Development", label: "Custom Software Development (Web Apps & APIs)" },
+  { value: "Video Editing", label: "Video Editing & Motion Graphics (Reels, Ads & YouTube)" },
   { value: "General Consultation", label: "General Project Consultation / Inquiry" },
 ];
 

@@ -7,12 +7,12 @@ import { portfolioProjects } from "@/data/portfolio";
 import { ExternalLink, ArrowUpRight, Sparkles } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollMotion";
 
-type CategoryFilter = "All" | "Full Stack" | "WordPress";
+type CategoryFilter = "All" | "Full Stack" | "WordPress" | "Video Editing";
 
 export default function PortfolioPreview() {
   const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>("All");
 
-  const categories: CategoryFilter[] = ["All", "Full Stack", "WordPress"];
+  const categories: CategoryFilter[] = ["All", "Full Stack", "WordPress", "Video Editing"];
 
   const filteredProjects = portfolioProjects.filter((p) => {
     if (selectedCategory === "All") return true;
@@ -21,6 +21,9 @@ export default function PortfolioPreview() {
     }
     if (selectedCategory === "WordPress") {
       return p.badgeType === "WordPress" || p.category.toLowerCase().includes("wordpress");
+    }
+    if (selectedCategory === "Video Editing") {
+      return p.badgeType === "Video Editing" || p.category.toLowerCase().includes("video");
     }
     return true;
   });
@@ -71,22 +74,41 @@ export default function PortfolioPreview() {
               className="w-[86vw] max-w-[360px] sm:w-auto snap-center shrink-0 flex flex-col justify-between rounded-3xl bg-white dark:bg-[#0f142e] border border-slate-200/90 dark:border-white/10 shadow-[0_10px_30px_rgba(15,23,42,0.06)] dark:shadow-none overflow-hidden transition-all duration-300 hover:border-purple-400/50 dark:hover:border-purple-500/40 hover:-translate-y-1 hover:shadow-xl group"
               data-cursor="portfolio"
             >
-              {/* Top Image Preview with Verified Badges */}
+              {/* Top Image / Video Preview with Verified Badges */}
               <div className="relative aspect-[16/10] overflow-hidden bg-black/40">
-                <Image
-                  src={project.image}
-                  alt={`${project.title} Screenshot`}
-                  fill
-                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 380px"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  priority={idx === 0}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+                {project.videoUrl ? (
+                  <video
+                    src={project.videoUrl}
+                    poster={project.image}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-full object-cover relative z-20"
+                  />
+                ) : (
+                  <>
+                    <Image
+                      src={project.image}
+                      alt={`${project.title} Screenshot`}
+                      fill
+                      sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 380px"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      priority={idx === 0}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+                  </>
+                )}
 
                 {/* Top-Left Category Badge */}
-                <div className="absolute top-3.5 left-3.5 z-10">
+                <div className="absolute top-3.5 left-3.5 z-30 pointer-events-none">
                   <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10.5px] font-mono font-bold flex items-center gap-1.5 shadow-md">
-                    <span>{project.badgeType === "WordPress" ? "🌐 WordPress" : "</> Full Stack"}</span>
+                    <span>
+                      {project.badgeType === "WordPress"
+                        ? "🌐 WordPress"
+                        : project.badgeType === "Video Editing"
+                          ? "🎬 Video Editing"
+                          : "</> Full Stack"}
+                    </span>
                   </span>
                 </div>
 
