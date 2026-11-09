@@ -120,7 +120,7 @@ export const portfolioProjects: PortfolioProject[] = [
     projectType: "9:16 Viral Reel, 3D Rotoscoping, VFX & Motion Graphics",
     description:
       "High-retention vertical video edit by Faraz Ahmed featuring 3D rotoscoped depth titles behind the subject, flying cash particle VFX, custom neon motion graphics B-roll, and dynamic captions.",
-    image: "/images/video-editing-cover.webp",
+    image: "/images/video-editing-cover.webp?v=2",
     videoUrl: "/videos/faraz-reel-master.mp4",
     isRealClient: true,
     statusBadge: "Featured Video Edit",

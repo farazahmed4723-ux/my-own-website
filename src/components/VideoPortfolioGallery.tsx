@@ -27,7 +27,7 @@ export const VIDEO_PORTFOLIO_REELS: VideoReelItem[] = [
     duration: "0:55",
     resolution: "1080×1920 • 60fps",
     videoUrl: "/videos/faraz-reel-master.mp4",
-    posterUrl: "/images/videos/thumb-master.webp",
+    posterUrl: "/images/videos/thumb-master.webp?v=2",
     highlights: [
       "3D Rotoscoped Depth Typography",
       "Flying Cash Particle VFX",
@@ -312,3 +312,4 @@ export default function VideoPortfolioGallery({
     </div>
   );
 }
+
