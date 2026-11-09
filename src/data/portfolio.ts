@@ -113,13 +113,13 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     id: "faraz-video-editing-showcase",
     slug: "faraz-video-editing-showcase",
-    title: "Money ≠ Respect – Viral Brand Reel & VFX Edit",
+    title: "Video Editing with Motion Graphics & SFX",
     category: "Video Editing & Motion Graphics",
     badgeType: "Video Editing",
     developer: "Faraz Ahmed",
-    projectType: "9:16 Viral Reel, 3D Rotoscoping, VFX & Motion Graphics",
+    projectType: "All Types of Video Editing – Reels, YouTube, Ads, Motion Graphics & SFX",
     description:
-      "High-retention vertical video edit by Faraz Ahmed featuring 3D rotoscoped depth titles behind the subject, flying cash particle VFX, custom neon motion graphics B-roll, and dynamic captions.",
+      "Professional video editing with motion graphics, SFX & sound design, VFX, color grading, and dynamic captions — all types of editing including Reels, TikTok, YouTube, ads, and brand promos.",
     image: "/images/video-editing-cover.webp?v=2",
     videoUrl: "/videos/faraz-reel-master.mp4",
     isRealClient: true,
@@ -131,7 +131,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Custom neon vector motion graphics B-roll ('NO WORK IS SMALL')",
       "Bilingual kinetic captions, color grading & studio SFX",
     ],
-    technologies: ["Premiere Pro", "After Effects", "CapCut Pro", "3D Rotoscoping", "Motion Graphics", "Sound Design"],
+    technologies: ["Motion Graphics", "SFX & Sound Design", "VFX", "Color Grading", "All Types of Editing", "Premiere Pro", "After Effects"],
   },
   {
     id: "concept-ai-agent-mesh",
