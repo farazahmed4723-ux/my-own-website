@@ -41,12 +41,12 @@ export default function Footer() {
 
             <div className="flex flex-col gap-2 pt-2 text-xs text-gray-300">
               <a
-                href="mailto:faraz.ahmed4724@gmail.com"
+                href="mailto:faraz.ahmed4723@gmail.com"
                 className="flex items-center gap-2 hover:text-purple-300 transition-colors"
                 id="footer-email-link"
               >
                 <Mail className="w-4 h-4 text-purple-400" />
-                <span>faraz.ahmed4724@gmail.com</span>
+                <span>faraz.ahmed4723@gmail.com</span>
               </a>
               <a
                 href="https://wa.me/14374348789"
@@ -90,7 +90,7 @@ export default function Footer() {
                 <span className="font-bold text-xs">IG</span>
               </a>
               <a
-                href="mailto:faraz.ahmed4724@gmail.com"
+                href="mailto:faraz.ahmed4723@gmail.com"
                 aria-label="Email"
                 className="w-8 h-8 rounded-full bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-400 flex items-center justify-center border border-cyan-500/30 transition-all hover:scale-110"
               >

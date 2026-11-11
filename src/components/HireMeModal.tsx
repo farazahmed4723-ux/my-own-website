@@ -94,10 +94,10 @@ export default function HireMeModal({ isOpen, onClose }: HireMeModalProps) {
     {
       id: "email",
       title: "Direct Email",
-      handle: "faraz.ahmed4724@gmail.com",
+      handle: "faraz.ahmed4723@gmail.com",
       description: "Detailed RFQs, design briefs & architectural documents",
       actionText: "Send Direct Email",
-      url: "mailto:faraz.ahmed4724@gmail.com?subject=Project%20Inquiry%20-%20AI%20by%20Faraz",
+      url: "mailto:faraz.ahmed4723@gmail.com?subject=Project%20Inquiry%20-%20AI%20by%20Faraz",
       badge: "Official Inbox",
       badgeColor: "bg-purple-500/15 border-purple-500/30 text-purple-300",
       accentBg: "from-purple-600/20 to-transparent",

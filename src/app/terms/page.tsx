@@ -86,7 +86,7 @@ export default function TermsPage() {
             <section>
               <h2 className="font-heading text-lg font-bold text-white mb-2">6. Inquiries & Governance</h2>
               <p>
-                For contract inquiries or questions regarding these terms, reach Faraz Ahmed directly at faraz.ahmed4724@gmail.com or WhatsApp +1 (437) 434-8789.
+                For contract inquiries or questions regarding these terms, reach Faraz Ahmed directly at faraz.ahmed4723@gmail.com or WhatsApp +1 (437) 434-8789.
               </p>
             </section>
           </div>

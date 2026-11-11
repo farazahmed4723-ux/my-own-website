@@ -130,7 +130,7 @@ export async function POST(request: Request) {
           },
           body: JSON.stringify({
             from: process.env.EMAIL_FROM || "AI by Faraz <onboarding@resend.dev>",
-            to: process.env.EMAIL_TO || "faraz.ahmed4724@gmail.com",
+            to: process.env.EMAIL_TO || "faraz.ahmed4723@gmail.com",
             reply_to: sanitizedData.email,
             subject: `[${supabaseResult.referenceCode}] ${sanitizedData.name} — ${sanitizedData.service}`,
             text: [
@@ -172,7 +172,7 @@ export async function POST(request: Request) {
       isLiveDelivery: false,
       referenceCode: supabaseResult.referenceCode,
       message:
-        "Your inquiry details were validated! For immediate priority assistance, please also message Faraz directly on WhatsApp at +1 (437) 434-8789 or email faraz.ahmed4724@gmail.com.",
+        "Your inquiry details were validated! For immediate priority assistance, please also message Faraz directly on WhatsApp at +1 (437) 434-8789 or email faraz.ahmed4723@gmail.com.",
     });
   } catch (error) {
     console.error("Contact API Error:", error);

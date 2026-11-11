@@ -316,7 +316,7 @@ export default function AIChatBot() {
                 </a>
                 <span className="text-gray-600">•</span>
                 <a
-                  href="mailto:faraz.ahmed4724@gmail.com"
+                  href="mailto:faraz.ahmed4723@gmail.com"
                   className="text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-medium transition-colors"
                 >
                   <Mail className="w-3 h-3" />

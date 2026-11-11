@@ -208,11 +208,11 @@ export default function ContactPageClient() {
                       Direct Email
                     </span>
                     <a
-                      href="mailto:faraz.ahmed4724@gmail.com"
+                      href="mailto:faraz.ahmed4723@gmail.com"
                       id="contact-page-email-link"
                       className="text-sm sm:text-base font-semibold text-white hover:text-purple-300 transition-colors"
                     >
-                      faraz.ahmed4724@gmail.com
+                      faraz.ahmed4723@gmail.com
                     </a>
                     <p className="text-xs text-gray-400 mt-0.5">
                       Monitored daily with 24-hour turnaround.

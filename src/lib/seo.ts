@@ -98,7 +98,7 @@ export function buildGlobalGraphJsonLd() {
         jobTitle: "Full-Stack Web Developer & AI Solutions Specialist",
         url: SITE_URL,
         image: `${SITE_URL}/images/faraz-portrait.webp`,
-        email: "faraz.ahmed4724@gmail.com",
+        email: "faraz.ahmed4723@gmail.com",
         telephone: "+14374348789",
         sameAs: [
           "https://www.linkedin.com/in/faraz-ahmad-b11b36437/",
@@ -137,7 +137,7 @@ export function buildGlobalGraphJsonLd() {
         description:
           "AI by Faraz is a modern web engineering and AI automation studio led by Faraz Ahmed, delivering high-converting Next.js & WordPress websites, Shopify stores, custom 24/7 AI chatbots, autonomous AI agents, and CRM workflow automations.",
         telephone: "+14374348789",
-        email: "faraz.ahmed4724@gmail.com",
+        email: "faraz.ahmed4723@gmail.com",
         areaServed: [
           { "@type": "Country", name: "Canada" },
           { "@type": "Country", name: "United States" },
@@ -154,7 +154,7 @@ export function buildGlobalGraphJsonLd() {
           {
             "@type": "ContactPoint",
             telephone: "+1-437-434-8789",
-            email: "faraz.ahmed4724@gmail.com",
+            email: "faraz.ahmed4723@gmail.com",
             contactType: "customer service",
             availableLanguage: ["English", "Urdu"],
           },

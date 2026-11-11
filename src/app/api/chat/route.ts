@@ -178,7 +178,7 @@ function generateKnowledgeReply(
   ) {
     return {
       intent: "direct_contact",
-      text: "You can connect with Faraz Ahmed directly anytime:\n\n📱 WhatsApp: +1 (437) 434-8789\n✉️ Email: faraz.ahmed4724@gmail.com\n\nOr simply drop your email / WhatsApp number right here in this chat and I'll log it straight to his inbox!",
+      text: "You can connect with Faraz Ahmed directly anytime:\n\n📱 WhatsApp: +1 (437) 434-8789\n✉️ Email: faraz.ahmed4723@gmail.com\n\nOr simply drop your email / WhatsApp number right here in this chat and I'll log it straight to his inbox!",
       actions: [
         { label: "Open WhatsApp Now", url: "https://wa.me/14374348789", isExternal: true },
         { label: "Project Inquiry Form", url: "/contact" },
@@ -246,7 +246,7 @@ export async function POST(request: Request) {
               {
                 role: "system",
                 content:
-                  "You are the official AI Assistant for AI by Faraz (aibyfaraz.com), founded by Faraz Ahmed — a Full-Stack Web Developer & AI Solutions Specialist (Next.js, WordPress, Shopify, AI Chatbots, AI Agents, CRM Automation). Contact: WhatsApp +1 (437) 434-8789, Email faraz.ahmed4724@gmail.com. Keep replies concise, helpful, and invite visitors to share their email/WhatsApp or book a free consultation.",
+                  "You are the official AI Assistant for AI by Faraz (aibyfaraz.com), founded by Faraz Ahmed — a Full-Stack Web Developer & AI Solutions Specialist (Next.js, WordPress, Shopify, AI Chatbots, AI Agents, CRM Automation). Contact: WhatsApp +1 (437) 434-8789, Email faraz.ahmed4723@gmail.com. Keep replies concise, helpful, and invite visitors to share their email/WhatsApp or book a free consultation.",
               },
               { role: "user", content: message },
             ],

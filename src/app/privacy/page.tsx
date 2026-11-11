@@ -86,7 +86,7 @@ export default function PrivacyPage() {
                 If you have questions regarding this Privacy Policy, please contact Faraz Ahmed directly:
               </p>
               <p className="mt-2 text-purple-300 font-medium">
-                Email: faraz.ahmed4724@gmail.com | WhatsApp: +1 (437) 434-8789
+                Email: faraz.ahmed4723@gmail.com | WhatsApp: +1 (437) 434-8789
               </p>
             </section>
           </div>

@@ -4,7 +4,7 @@
 > **Owner & Lead Developer:** Faraz Ahmed  
 > **Title:** Web Developer & AI Solutions Specialist  
 > **Tagline:** Building Intelligent Websites & AI-Powered Solutions.  
-> **Direct Email:** [faraz.ahmed4724@gmail.com](mailto:faraz.ahmed4724@gmail.com)  
+> **Direct Email:** [faraz.ahmed4723@gmail.com](mailto:faraz.ahmed4723@gmail.com)  
 > **Direct WhatsApp:** [+1 (437) 434-8789](https://wa.me/14374348789)  
 
 ---
@@ -111,7 +111,7 @@ cp .env.example .env.local
 Configure your email credentials if you wish to enable live email delivery via Resend:
 ```env
 RESEND_API_KEY=re_your_api_key_here
-EMAIL_TO=faraz.ahmed4724@gmail.com
+EMAIL_TO=faraz.ahmed4723@gmail.com
 ```
 *(Note: If left unconfigured, inquiries are securely logged to the server terminal with a helpful message informing the user of development mode, ensuring no false success claims).*
 

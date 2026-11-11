@@ -46,11 +46,11 @@ export const farazSocialLinks: SocialLink[] = [
     id: "email",
     name: "Email",
     icon: "mail",
-    url: "mailto:faraz.ahmed4724@gmail.com",
+    url: "mailto:faraz.ahmed4723@gmail.com",
     color: "#0284C7",
     hoverGlow: "rgba(2, 132, 199, 0.5)",
     bgGradient: "bg-[#0284C7]",
-    tooltip: "Send Email (faraz.ahmed4724@gmail.com)",
+    tooltip: "Send Email (faraz.ahmed4723@gmail.com)",
   },
   {
     id: "instagram",
