@@ -5,6 +5,7 @@ import {
   Code2,
   Bot,
   ShoppingBag,
+  Film,
   CheckCircle2,
   Sparkles,
 } from "lucide-react";
@@ -60,6 +61,23 @@ const categories: SkillCategory[] = [
       { name: "n8n, Make & Zapier Workflows", tag: "Core", proficiency: 96 },
       { name: "CRM & WhatsApp Lead Automation", tag: "Core", proficiency: 95 },
       { name: "Prompt Architecture & Vector DBs", tag: "Core", proficiency: 92 },
+    ],
+  },
+  {
+    id: "video-editing",
+    tabLabel: "Video & Reels",
+    title: "Viral Video Editing & 3D Motion Graphics",
+    subtitle:
+      "Transforming raw mobile phone recordings into scroll-stopping Instagram Reels, TikToks and Shorts with 3D rotoscoping and studio audio.",
+    countLabel: "6 Core Skills",
+    icon: Film,
+    skills: [
+      { name: "After Effects & 3D Rotoscoping", tag: "Core", proficiency: 96 },
+      { name: "Premiere Pro & CapCut Pro", tag: "Core", proficiency: 97 },
+      { name: "Roman Urdu & English Captions", tag: "Core", proficiency: 98 },
+      { name: "Studio Audio Mastering & Denoise", tag: "Core", proficiency: 95 },
+      { name: "Sound Design & Beat-Synced SFX", tag: "Core", proficiency: 94 },
+      { name: "High-Retention Hook & Zoom Cuts", tag: "Core", proficiency: 96 },
     ],
   },
   {
@@ -119,9 +137,9 @@ export default function TechProficiencySection({
               </h2>
             </div>
 
-            {/* Interactive Discipline Switcher Pills (Clean 3-col single row on mobile, pill flex on sm+) */}
+            {/* Interactive Discipline Switcher Pills (Clean 2x2 grid on mobile, pill flex on sm+) */}
             <div
-              className="grid grid-cols-3 gap-1.5 w-full sm:w-auto sm:flex sm:flex-wrap sm:items-center sm:gap-2"
+              className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center gap-1.5 sm:gap-2 w-full sm:w-auto"
               role="tablist"
               aria-label="Engineering skill categories"
             >
@@ -133,6 +151,8 @@ export default function TechProficiencySection({
                     ? "Full Stack"
                     : cat.id === "ai-automation"
                     ? "AI & Agents"
+                    : cat.id === "video-editing"
+                    ? "Video & Reels"
                     : "E-Commerce";
                 return (
                   <button

@@ -188,6 +188,23 @@ export default function PortfolioPage() {
 
         {/* Section 1B: Dedicated Video Editing & Motion Graphics Gallery */}
         <div className="mb-20" id="video-editing-portfolio">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-white/10">
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-wider text-purple-400">
+                Creative Post-Production & Reels
+              </span>
+              <h2 className="font-heading text-2xl font-bold text-white mt-1">
+                Featured Video Editing & Viral Reels
+              </h2>
+            </div>
+            <Link
+              href="/video-editing"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#8B5CF6] to-[#A855F7] text-white text-xs font-bold hover:scale-105 transition-all shadow-md shadow-purple-900/30 w-fit"
+            >
+              <span>View Full Video Editing Showcase &amp; Pricing</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
           <VideoPortfolioGallery />
         </div>
 

@@ -44,30 +44,22 @@ export default function HeroSection() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#121634]/80 border border-purple-500/30 backdrop-blur-md w-fit mb-4 sm:mb-5 shadow-[0_0_20px_rgba(139,92,246,0.18)]">
             <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
             <span className="text-xs sm:text-sm font-medium text-purple-200 tracking-wide">
-              Full Stack Developer &amp; AI Specialist
+              Full Stack Web • AI Automation • Video Editing
             </span>
           </div>
 
-          {/* Main Headline (Matches Pic 1) */}
+          {/* Main Headline (Unified across mobile & desktop to eliminate hydration divergence) */}
           <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.18] sm:leading-[1.1] tracking-tight mb-4 sm:mb-5 max-w-2xl">
-            <span className="lg:hidden">
-              We simplify the complex with{" "}
-              <span className="bg-gradient-to-r from-[#38bdf8] via-[#818cf8] to-[#c084fc] bg-clip-text text-transparent">
-                stunning web &amp; AI solutions!
-              </span>
+            <span className="block">Building Intelligent</span>
+            <span className="block bg-gradient-to-r from-[#A855F7] via-[#8B5CF6] to-[#C084FC] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(168,85,247,0.35)]">
+              Websites &amp; AI-Powered
             </span>
-            <span className="hidden lg:inline">
-              <span className="block">Building Intelligent</span>
-              <span className="block bg-gradient-to-r from-[#A855F7] via-[#8B5CF6] to-[#C084FC] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(168,85,247,0.35)]">
-                Websites &amp; AI-Powered
-              </span>
-              <span className="block">Solutions.</span>
-            </span>
+            <span className="block">Solutions.</span>
           </h1>
 
           {/* Subheading (Matches Pic 1) */}
           <p className="text-xs sm:text-base lg:text-lg text-[#B9B9C9] leading-relaxed mb-6 sm:mb-8 max-w-xl font-normal">
-            Harnessing innovative React web apps, custom WordPress theme engineering, context-aware AI chatbots, and automated workflows to turn your vision into high-converting digital realities.
+            Harnessing innovative React web apps, custom WordPress engineering, AI automation &amp; chatbots, and viral video editing to turn your vision into high-converting digital realities.
           </p>
 
           {/* CTA Buttons Row (Matches Pic 1: View My Work ↗ & Hire Me Now ⚡ with WhatsApp, Insta & LinkedIn) */}

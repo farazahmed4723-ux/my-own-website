@@ -140,17 +140,17 @@ export default function ServicesPage() {
 
                 <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between">
                   <Link
-                    href={`/services/${service.slug}`}
+                    href={service.slug === "video-editing" ? "/video-editing" : `/services/${service.slug}`}
                     className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-purple-400 hover:text-purple-300 transition-colors"
                   >
-                    <span>View Full Service Page</span>
+                    <span>{service.slug === "video-editing" ? "Watch Video Showcase" : "View Full Service Page"}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                   <Link
-                    href={`/contact?service=${service.slug}`}
+                    href={service.slug === "video-editing" ? "/video-editing#pricing" : `/contact?service=${service.slug}`}
                     className="text-[11px] font-medium text-gray-400 hover:text-white transition-colors"
                   >
-                    Inquire Now
+                    {service.slug === "video-editing" ? "View Packages" : "Inquire Now"}
                   </Link>
                 </div>
               </div>

@@ -16,6 +16,7 @@ import { VerifiedReview } from "@/data/reviews";
 
 const projectTypeOptions = [
   "Website Development (Next.js / WordPress)",
+  "Video Editing & Viral Reels (Motion Graphics)",
   "E-Commerce Storefront (Shopify / WooCommerce)",
   "Custom AI Chatbot & Support Assistant",
   "AI Workflow & CRM Automation",

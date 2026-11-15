@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { portfolioProjects } from "@/data/portfolio";
-import { ExternalLink, ArrowUpRight, Play } from "lucide-react";
+import { ExternalLink, ArrowUpRight, Play, X, MessageCircle } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollMotion";
 import VideoPortfolioGallery from "@/components/VideoPortfolioGallery";
 
@@ -13,6 +13,7 @@ type CategoryFilter = "All" | "Full Stack" | "WordPress" | "Video Editing";
 export default function PortfolioPreview() {
   const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>("All");
   const [playingInlineId, setPlayingInlineId] = useState<string | null>(null);
+  const [modalProject, setModalProject] = useState<typeof portfolioProjects[0] | null>(null);
 
   const categories: CategoryFilter[] = ["All", "Full Stack", "WordPress", "Video Editing"];
 
@@ -49,14 +50,14 @@ export default function PortfolioPreview() {
             Featured Projects &amp; <span className="gradient-text-purple">Solutions</span>
           </h2>
 
-          {/* Filter Tabs (All | Full Stack | WordPress) */}
-          <div className="inline-flex items-center p-1 rounded-full bg-slate-200/70 dark:bg-[#0f142e] border border-slate-300/60 dark:border-white/10 shadow-inner gap-1">
+          {/* Filter Tabs (All | Full Stack | WordPress | Video Editing) */}
+          <div className="inline-flex max-w-full overflow-x-auto no-scrollbar items-center p-1 rounded-full bg-slate-200/70 dark:bg-[#0f142e] border border-slate-300/60 dark:border-white/10 shadow-inner gap-1 px-1.5">
             {categories.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                className={`shrink-0 px-3.5 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   selectedCategory === cat
                     ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-600/30"
                     : "text-slate-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-white"
@@ -71,6 +72,17 @@ export default function PortfolioPreview() {
         {/* Dedicated 9:16 Video Editing Gallery when "Video Editing" tab is selected, or standard project grid */}
         {selectedCategory === "Video Editing" ? (
           <div className="mt-2">
+            <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-purple-500/10 border border-purple-500/20">
+              <p className="text-xs sm:text-sm text-purple-700 dark:text-purple-300 font-medium">
+                Want to see the full before-and-after breakdown, pricing packages, and all viral reels?
+              </p>
+              <Link
+                href="/video-editing"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold transition-all shadow-md shrink-0 w-fit"
+              >
+                <span>See all video edits &amp; Before/After &rarr;</span>
+              </Link>
+            </div>
             <VideoPortfolioGallery compactHeader />
           </div>
         ) : (
@@ -109,7 +121,7 @@ export default function PortfolioPreview() {
                     {project.videoUrl && (
                       <button
                         type="button"
-                        onClick={() => setPlayingInlineId(project.id)}
+                        onClick={() => setModalProject(project)}
                         aria-label={`Play ${project.title}`}
                         className="absolute inset-0 z-20 flex items-center justify-center cursor-pointer group/play"
                       >
@@ -181,21 +193,21 @@ export default function PortfolioPreview() {
                 {/* Dual Action Buttons (Case Study ↗ & Live ↗) */}
                 <div className="flex items-center gap-2 pt-3 border-t border-slate-100 dark:border-white/10">
                   <Link
-                    href={`/portfolio`}
+                    href={project.videoUrl ? "/video-editing" : "/portfolio"}
                     className="flex-1 py-2.5 rounded-xl border border-slate-200 dark:border-white/15 bg-slate-50 hover:bg-slate-100 dark:bg-white/5 dark:hover:bg-white/10 text-amber-600 dark:text-amber-400 font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
                   >
-                    <span>Case Study</span>
+                    <span>{project.videoUrl ? "Full Showcase" : "Case Study"}</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </Link>
 
                   {project.videoUrl ? (
                     <button
                       type="button"
-                      onClick={() => setSelectedCategory("Video Editing")}
+                      onClick={() => setModalProject(project)}
                       className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-blue-600/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
                     >
                       <Play className="w-3.5 h-3.5 fill-white" />
-                      <span>Watch Gallery</span>
+                      <span>Watch Reel</span>
                     </button>
                   ) : project.liveUrl ? (
                     <a
@@ -214,13 +226,99 @@ export default function PortfolioPreview() {
           ))}
         </div>
 
-        {/* Mobile Swipe Hint at Bottom (Matching Uploaded Screenshot Exactly) */}
+        {/* Mobile Swipe Hint at Bottom */}
         <div className="sm:hidden text-center text-xs font-semibold text-slate-500 dark:text-gray-400 mt-5 flex items-center justify-center gap-1.5 animate-pulse">
           <span>&larr; Swipe to explore projects &rarr;</span>
+        </div>
+
+        {/* Dedicated Video Editing Link Band */}
+        <div className="mt-8 pt-6 border-t border-slate-200/60 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-gray-400">
+            Looking for high-retention viral video editing for Reels, TikTok &amp; YouTube Shorts?
+          </p>
+          <Link
+            href="/video-editing"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-purple-600/10 hover:bg-purple-600/20 text-purple-600 dark:text-purple-300 border border-purple-500/30 text-xs font-bold transition-all hover:scale-105"
+          >
+            <span>See all video edits, pricing &amp; Before/After &rarr;</span>
+          </Link>
         </div>
         </>
         )}
       </div>
+
+      {/* Accessible Mobile-Optimized Fullscreen Vertical Reel Modal */}
+      {modalProject && modalProject.videoUrl && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Playing ${modalProject.title}`}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-3 sm:p-6"
+          onClick={() => setModalProject(null)}
+        >
+          <div
+            className="relative w-full max-w-sm sm:max-w-md max-h-[92vh] bg-[#0c102a] rounded-3xl border border-white/15 overflow-hidden shadow-2xl flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-3.5 border-b border-white/10 bg-[#080b1e]">
+              <div className="flex items-center gap-2 overflow-hidden">
+                <span className="px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 text-[10px] font-mono font-bold shrink-0">
+                  🎬 HD 9:16
+                </span>
+                <h4 className="text-xs sm:text-sm font-bold text-white truncate">
+                  {modalProject.title}
+                </h4>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setModalProject(null)}
+                aria-label="Close video player"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer shrink-0 ml-2"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Video Player */}
+            <div className="relative aspect-[9/16] max-h-[66vh] bg-black flex items-center justify-center overflow-hidden">
+              <video
+                src={modalProject.videoUrl}
+                poster={modalProject.image}
+                autoPlay
+                controls
+                playsInline
+                className="w-full h-full object-contain"
+              />
+            </div>
+
+            {/* Modal Footer with WhatsApp CTA */}
+            <div className="p-3.5 sm:p-4 bg-[#080b1e] border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2.5">
+              <div className="text-left w-full sm:w-auto">
+                <span className="text-[11px] text-gray-400 block">
+                  Aisi high-retention reel chahiye?
+                </span>
+                <span className="text-xs font-bold text-white">
+                  Delivery in 24–48 hours
+                </span>
+              </div>
+
+              <a
+                href={`https://wa.me/14374348789?text=${encodeURIComponent(
+                  `Hi Faraz, I saw your video edit '${modalProject.title}' and want a similar high-retention reel edited.`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-black font-extrabold text-xs flex items-center justify-center gap-2 shadow-lg shadow-[#25D366]/20 transition-all hover:scale-105"
+              >
+                <MessageCircle className="w-4 h-4 fill-black" />
+                <span>Order on WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

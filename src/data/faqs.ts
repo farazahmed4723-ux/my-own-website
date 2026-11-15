@@ -41,4 +41,16 @@ export const faqsData: FAQItem[] = [
     answer:
       "Absolutely. Every completed project includes post-launch testing and warranty support. Flexible ongoing maintenance packages are also available for software updates, server monitoring, prompt tuning, and continuous enhancements.",
   },
+  {
+    category: "Video Editing",
+    question: "Do you edit viral short-form videos for Instagram Reels, TikTok, and YouTube Shorts?",
+    answer:
+      "Yes! Faraz edits high-retention vertical 9:16 videos tailored for founders, creators, and brands. Edits include dead pause elimination, dynamic Roman Urdu & English kinetic captions, custom animated B-roll, 3D text behind the subject, background noise removal, and studio SFX — ready to publish within 24 to 48 hours.",
+  },
+  {
+    category: "Video Editing",
+    question: "How do I send my video footage and how are revisions handled?",
+    answer:
+      "You can send raw phone recordings or clips via Google Drive, Dropbox, or directly over WhatsApp. Every video package includes revisions (with unlimited revisions on Pro and Monthly packs) so your captions, styling, and pacing match your exact vision before final HD delivery.",
+  },
 ];

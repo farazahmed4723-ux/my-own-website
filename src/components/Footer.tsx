@@ -151,6 +151,15 @@ export default function Footer() {
             <ul className="space-y-2.5 text-xs sm:text-sm text-gray-400">
               <li>
                 <Link
+                  href="/video-editing"
+                  className="hover:text-purple-300 transition-colors flex items-center gap-1 group text-purple-300 font-medium"
+                >
+                  <span>Video Editing &amp; Reels 🎬</span>
+                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/services/ai-automation"
                   className="hover:text-purple-300 transition-colors flex items-center gap-1 group"
                 >

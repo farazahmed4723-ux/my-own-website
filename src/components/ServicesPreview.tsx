@@ -44,15 +44,6 @@ const services: ServiceItem[] = [
     slug: "wordpress-development",
   },
   {
-    id: "ai-chatbots",
-    title: "AI Chatbot Development",
-    description:
-      "Custom conversational AI bots trained securely on your internal documentation, PDFs, or website using RAG and Gemini/OpenAI models.",
-    icon: Bot,
-    iconColor: "text-[#1E88E5]",
-    slug: "ai-chatbots",
-  },
-  {
     id: "ai-automation",
     title: "AI Automation Expert",
     description:
@@ -62,12 +53,30 @@ const services: ServiceItem[] = [
     slug: "ai-automation",
   },
   {
+    id: "video-editing",
+    title: "Video Editing & Viral Reels",
+    description:
+      "High-retention Instagram Reels, TikToks & Shorts. 3D text behind subject, Roman Urdu kinetic captions, clean audio & sound design.",
+    icon: Film,
+    iconColor: "text-[#1E88E5]",
+    slug: "video-editing",
+  },
+  {
+    id: "ai-chatbots",
+    title: "AI Chatbot Development",
+    description:
+      "Custom conversational AI bots trained securely on your internal documentation, PDFs, or website using RAG and Gemini/OpenAI models.",
+    icon: Bot,
+    iconColor: "text-[#1E88E5]",
+    slug: "ai-chatbots",
+  },
+  {
     id: "digital-solutions",
     title: "Digital Solutions Provider",
     description:
       "Full-stack digital architecture, serverless cloud setup on Vercel/AWS, Stripe payment integrations, and custom SaaS integrations.",
     icon: Layers,
-    iconColor: "text-[#1E88E5]",
+    iconColor: "text-[#FF8F00]",
     slug: "digital-solutions",
   },
   {
@@ -76,17 +85,8 @@ const services: ServiceItem[] = [
     description:
       "Google Search Console optimization, semantic Schema.org markup, Core Web Vitals speed tuning, and conversion-focused UX layouts.",
     icon: Zap,
-    iconColor: "text-[#FF8F00]",
-    slug: "seo-performance",
-  },
-  {
-    id: "video-editing",
-    title: "Video Editing & Motion Graphics",
-    description:
-      "High-retention Instagram Reels, TikToks, YouTube edits, promotional commercials, dynamic captions, sound design, and color grading.",
-    icon: Film,
     iconColor: "text-[#1E88E5]",
-    slug: "video-editing",
+    slug: "seo-performance",
   },
 ];
 
@@ -108,12 +108,12 @@ export default function ServicesPreview() {
       <div className="absolute -bottom-20 -left-20 w-[550px] h-[550px] bg-[#FF8F00]/28 rounded-full blur-[130px] pointer-events-none select-none" />
 
       <div className="max-w-[1400px] mx-auto px-3 sm:px-8 lg:px-12 relative z-10 select-none">
-        {/* Section Header (Matches Uploaded Screenshot Exactly 1:1) */}
+        {/* Section Header */}
         <ScrollReveal variant="pop-up">
           <div className="flex flex-col items-center justify-center text-center mb-10 sm:mb-12 lg:mb-16 gap-4 sm:gap-6 select-none">
             <div className="max-w-2xl mx-auto select-none">
               <span className="text-xs font-mono font-bold tracking-widest text-[#FF8F00] uppercase block mb-2 sm:mb-3 select-none">
-                SERVICES
+                WEB DEVELOPMENT • AI AUTOMATION • VIDEO EDITING
               </span>
               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight select-none">
                 What I Can Do For You
@@ -138,7 +138,7 @@ export default function ServicesPreview() {
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8 select-none">
           {services.map((item, idx) => {
             const Icon = item.icon;
-            const isHiddenOnMobile = idx >= 4 && !showAllMobile;
+            const isHiddenOnMobile = idx >= 6 && !showAllMobile;
 
             return (
               <div
@@ -154,46 +154,62 @@ export default function ServicesPreview() {
                   isHiddenOnMobile ? "hidden sm:block" : "block"
                 }`}
               >
-                <article
-                  draggable={false}
-                  onDragStart={(e) => e.preventDefault()}
-                  style={{
-                    WebkitUserSelect: "none",
-                    userSelect: "none",
-                    WebkitTouchCallout: "none",
-                  }}
-                  className="rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 md:p-8 text-center border shadow-md sm:hover:shadow-2xl sm:hover:-translate-y-1.5 sm:hover:border-[#FF8F00] dark:sm:hover:border-[#FF8F00] active:scale-[0.98] transition-all duration-300 flex flex-col items-center justify-center group h-full bg-white dark:bg-[#0F172A]/90 border-slate-200/90 dark:border-slate-800 select-none cursor-default"
+                <Link
+                  href={item.id === "video-editing" ? "/video-editing" : `/services/${item.slug}`}
+                  className="block h-full"
                 >
-                  {/* Round Icon Container */}
-                  <div
+                  <article
                     draggable={false}
-                    className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border flex items-center justify-center mb-3 sm:mb-4 md:mb-6 sm:group-hover:scale-110 sm:group-hover:border-[#1E88E5] transition-all shadow-sm shrink-0 bg-slate-100 dark:bg-slate-900 border-slate-200 dark:border-slate-700 select-none pointer-events-none"
+                    onDragStart={(e) => e.preventDefault()}
+                    style={{
+                      WebkitUserSelect: "none",
+                      userSelect: "none",
+                      WebkitTouchCallout: "none",
+                    }}
+                    className={`rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 md:p-8 text-center border shadow-md sm:hover:shadow-2xl sm:hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center justify-center group h-full bg-white dark:bg-[#0F172A]/90 border-slate-200/90 dark:border-slate-800 select-none cursor-pointer ${
+                      item.id === "video-editing"
+                        ? "border-purple-400/60 dark:border-purple-500/50 shadow-purple-950/20"
+                        : "sm:hover:border-[#FF8F00] dark:sm:hover:border-[#FF8F00]"
+                    }`}
                   >
-                    <Icon className={`w-5 h-5 sm:w-6 sm:h-6 ${item.iconColor}`} />
-                  </div>
+                    {/* Badge for Video Editing & AI Automation */}
+                    {item.id === "video-editing" && (
+                      <span className="px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-600 dark:text-purple-300 border border-purple-500/30 text-[9px] sm:text-[10px] font-mono font-bold mb-2">
+                        🎬 Viral Reels
+                      </span>
+                    )}
 
-                  {/* Service Title */}
-                  <h3
-                    draggable={false}
-                    className="text-xs sm:text-base md:text-xl font-bold sm:font-extrabold mb-1.5 sm:mb-3 sm:group-hover:text-[#1E88E5] transition-colors leading-snug text-slate-900 dark:text-white select-none"
-                  >
-                    {item.title}
-                  </h3>
+                    {/* Round Icon Container */}
+                    <div
+                      draggable={false}
+                      className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border flex items-center justify-center mb-3 sm:mb-4 md:mb-6 sm:group-hover:scale-110 sm:group-hover:border-[#1E88E5] transition-all shadow-sm shrink-0 bg-slate-100 dark:bg-slate-900 border-slate-200 dark:border-slate-700 select-none pointer-events-none"
+                    >
+                      <Icon className={`w-5 h-5 sm:w-6 sm:h-6 ${item.iconColor}`} />
+                    </div>
 
-                  {/* Short Description */}
-                  <p
-                    draggable={false}
-                    className="text-[10px] sm:text-xs md:text-sm leading-tight sm:leading-relaxed max-w-xs mx-auto text-slate-600 dark:text-slate-300 select-none"
-                  >
-                    {item.description}
-                  </p>
-                </article>
+                    {/* Service Title */}
+                    <h3
+                      draggable={false}
+                      className="text-xs sm:text-base md:text-xl font-bold sm:font-extrabold mb-1.5 sm:mb-3 sm:group-hover:text-[#1E88E5] transition-colors leading-snug text-slate-900 dark:text-white select-none"
+                    >
+                      {item.title}
+                    </h3>
+
+                    {/* Short Description */}
+                    <p
+                      draggable={false}
+                      className="text-[10px] sm:text-xs md:text-sm leading-tight sm:leading-relaxed max-w-xs mx-auto text-slate-600 dark:text-slate-300 select-none"
+                    >
+                      {item.description}
+                    </p>
+                  </article>
+                </Link>
               </div>
             );
           })}
         </div>
 
-        {/* Mobile Toggle to view remaining 2 services (Digital Solutions & SEO) */}
+        {/* Mobile Toggle to view remaining service */}
         <div className="sm:hidden mt-6 text-center select-none">
           <button
             type="button"
@@ -202,7 +218,7 @@ export default function ServicesPreview() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 active:bg-white/20 border border-white/15 text-slate-300 hover:text-white text-xs font-semibold tracking-wide transition-all cursor-pointer select-none touch-manipulation"
           >
             <span className="select-none">
-              {showAllMobile ? "Show Less" : "+ View More Services (Cloud, SEO & Video Editing)"}
+              {showAllMobile ? "Show Less" : "+ View Technical SEO"}
             </span>
             {showAllMobile ? (
               <ChevronUp className="w-3.5 h-3.5 text-[#FF8F00] select-none" />

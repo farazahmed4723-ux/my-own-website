@@ -234,11 +234,11 @@ export default function AboutPreview() {
               </h2>
 
               <p className="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
-                I am a passionate Freelance Full Stack Developer, WordPress Specialist, AI Chatbot Engineer, and Automation Expert. Over the past 7+ years, I have helped founders, startups, and decision-makers translate ambitious ideas into high-speed, secure, and user-centric web applications.
+                I am a passionate Freelance Full Stack Developer, WordPress Specialist, AI Chatbot Engineer, Automation Expert, and Viral Video Editor. Over the past 7+ years, I have helped founders, startups, and decision-makers translate ambitious ideas into high-speed web apps and high-retention video content.
               </p>
 
               <p className="text-xs sm:text-sm text-gray-400 leading-relaxed mb-6">
-                Whether you need a custom React web application, a pixel-perfect WordPress portal, an intelligent RAG chatbot, or automated n8n workflows—I deliver agency-level quality with individual dedication.
+                Whether you need a custom React web application, a pixel-perfect WordPress portal, an intelligent RAG chatbot, automated n8n workflows, or viral short-form video editing—I deliver agency-level quality with individual dedication.
               </p>
 
               <Link

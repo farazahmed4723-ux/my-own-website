@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Bot, Code2, Globe, Workflow } from "lucide-react";
+import { Bot, Code2, Globe, Workflow, Film } from "lucide-react";
 
 interface ServiceOrbitCard {
   id: string;
@@ -33,7 +33,7 @@ const SERVICE_CARDS: ServiceOrbitCard[] = [
     title: "Full Stack Developer",
     subtitle: "React • Next.js • APIs",
     href: "/services/website-development",
-    initialAngle: Math.PI * 0.2, // front-right
+    initialAngle: 0,
     iconColor: "text-[#60A5FA]",
     iconBg: "bg-[#3B82F6]/15",
     iconBorder: "border-[#3B82F6]/30",
@@ -44,33 +44,44 @@ const SERVICE_CARDS: ServiceOrbitCard[] = [
     title: "WordPress Expert",
     subtitle: "Custom Websites • WordPress",
     href: "/services/wordpress-development",
-    initialAngle: Math.PI * 0.7, // front-left
+    initialAngle: Math.PI * 0.4,
     iconColor: "text-[#38BDF8]",
     iconBg: "bg-[#0EA5E9]/15",
     iconBorder: "border-[#0EA5E9]/30",
     Icon: Globe,
   },
   {
-    id: "chatbots",
-    title: "AI Chatbots",
-    subtitle: "Smart Bots • AI Assistants",
-    href: "/services/ai-chatbots",
-    initialAngle: Math.PI * 1.2, // back-upper-left
-    iconColor: "text-[#2DD4BF]",
-    iconBg: "bg-[#14B8A6]/15",
-    iconBorder: "border-[#14B8A6]/30",
-    Icon: Bot,
-  },
-  {
     id: "automation",
     title: "AI Automation",
     subtitle: "n8n • Make • Workflows",
     href: "/services/ai-agents",
-    initialAngle: Math.PI * 1.7, // back-upper-right
+    initialAngle: Math.PI * 0.8,
     iconColor: "text-[#C4B5FD]",
     iconBg: "bg-[#8B5CF6]/15",
     iconBorder: "border-[#8B5CF6]/30",
     Icon: Workflow,
+  },
+  {
+    id: "video",
+    title: "Video Editing",
+    subtitle: "Viral Reels • 3D VFX",
+    href: "/video-editing",
+    initialAngle: Math.PI * 1.2,
+    iconColor: "text-[#F472B6]",
+    iconBg: "bg-[#EC4899]/15",
+    iconBorder: "border-[#EC4899]/30",
+    Icon: Film,
+  },
+  {
+    id: "chatbots",
+    title: "AI Chatbots",
+    subtitle: "Smart Bots • AI Assistants",
+    href: "/services/ai-chatbots",
+    initialAngle: Math.PI * 1.6,
+    iconColor: "text-[#2DD4BF]",
+    iconBg: "bg-[#14B8A6]/15",
+    iconBorder: "border-[#14B8A6]/30",
+    Icon: Bot,
   },
 ];
 
@@ -707,15 +718,24 @@ export default function HeroOrbitalShowcase() {
         })}
       </div>
 
-      {/* Mobile (< 640px): Compact, Accessible 2x2 Glassmorphism Service Card Grid (Zero Face Overlap, Zero Clipping) */}
-      <div className="sm:hidden grid grid-cols-2 gap-2.5 w-full max-w-md mt-3 px-0.5 relative z-30">
+      {/* Mobile (< 640px): Compact, Accessible Glassmorphism Service Cards */}
+      <div className="sm:hidden grid grid-cols-2 gap-2 w-full max-w-md mt-3 px-0.5 relative z-30">
         {SERVICE_CARDS.map((card) => {
           const Icon = card.Icon;
+          const isVideo = card.id === "video";
+          const isChatbot = card.id === "chatbots";
+
           return (
             <Link
               key={`mob-${card.id}`}
               href={card.href}
-              className="dark-preserve flex items-center gap-2 rounded-xl border border-white/[0.11] bg-[#0B102B]/85 px-2.5 py-2 backdrop-blur-md shadow-[0_8px_20px_rgba(3,6,20,0.42)] active:scale-[0.98] transition-transform"
+              className={`dark-preserve flex items-center gap-2 rounded-xl border backdrop-blur-md px-2.5 py-2 active:scale-[0.98] transition-transform ${
+                isChatbot
+                  ? "col-span-2 justify-center bg-[#0B102B]/85 border-white/[0.11] shadow-[0_8px_20px_rgba(3,6,20,0.42)]"
+                  : isVideo
+                  ? "border-purple-500/50 bg-gradient-to-r from-[#170C2E]/90 to-[#0B102B]/90 shadow-[0_0_15px_rgba(168,85,247,0.25)]"
+                  : "border-white/[0.11] bg-[#0B102B]/85 shadow-[0_8px_20px_rgba(3,6,20,0.42)]"
+              }`}
             >
               <span
                 className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border ${card.iconBg} ${card.iconBorder} ${card.iconColor}`}
@@ -723,10 +743,15 @@ export default function HeroOrbitalShowcase() {
                 <Icon className="w-3.5 h-3.5" />
               </span>
               <span className="flex flex-col min-w-0 leading-tight">
-                <span className="font-heading text-[11px] font-semibold text-white truncate">
-                  {card.title}
+                <span className="font-heading text-[11px] font-semibold text-white truncate flex items-center gap-1">
+                  <span>{card.title}</span>
+                  {isVideo && (
+                    <span className="px-1 py-0.2 rounded bg-purple-500/30 text-purple-200 text-[8.5px] font-mono font-bold">
+                      NEW 🎬
+                    </span>
+                  )}
                 </span>
-                <span className="text-[9.5px] font-medium text-[#94A3B8] truncate mt-0.5">
+                <span className={`text-[9.5px] font-medium truncate mt-0.5 ${isVideo ? "text-purple-300" : "text-[#94A3B8]"}`}>
                   {card.subtitle}
                 </span>
               </span>
