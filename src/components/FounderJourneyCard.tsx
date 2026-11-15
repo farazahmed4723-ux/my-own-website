@@ -38,7 +38,7 @@ export default function FounderJourneyCard({
       className={
         embedded
           ? "relative pt-4 pb-2 overflow-hidden"
-          : "relative py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#060813] overflow-hidden"
+          : "relative py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-transparent dark:bg-[#060813] overflow-hidden"
       }
       id="founder-journey"
     >
@@ -47,13 +47,13 @@ export default function FounderJourneyCard({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.65, ease: "easeOut" }}
-        className="founder-journey-card rounded-[2rem] sm:rounded-[2.5rem] border border-purple-500/30 bg-gradient-to-b from-[#131735] via-[#0e122b] to-[#080b1a] pt-7 sm:pt-12 pb-0 px-5 sm:px-12 shadow-2xl relative flex flex-col items-center text-center max-w-3xl mx-auto overflow-hidden transition-colors duration-300"
+        className="founder-journey-card rounded-[2rem] sm:rounded-[2.5rem] border border-purple-200 dark:border-purple-500/30 bg-white/95 dark:bg-gradient-to-b dark:from-[#131735] dark:via-[#0e122b] dark:to-[#080b1a] pt-7 sm:pt-12 pb-0 px-5 sm:px-12 shadow-xl dark:shadow-2xl relative flex flex-col items-center text-center max-w-3xl mx-auto overflow-hidden transition-colors duration-300"
       >
         {/* Ambient Center Multi-Tone Radial Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] bg-gradient-to-tr from-[#8B5CF6]/18 via-[#A855F7]/10 to-[#F59E0B]/15 rounded-full blur-[80px] pointer-events-none" />
 
         {/* Headline */}
-        <h2 className="font-heading text-xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-snug sm:leading-tight max-w-2xl mb-2.5 sm:mb-4 relative z-10 text-white">
+        <h2 className="font-heading text-xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-snug sm:leading-tight max-w-2xl mb-2.5 sm:mb-4 relative z-10 text-slate-900 dark:text-white">
           My journey is a testament to the power of{" "}
           <span className="bg-gradient-to-r from-[#8B5CF6] via-[#C084FC] to-[#F59E0B] bg-clip-text text-transparent block sm:inline">
             code, AI &amp; visual innovation
@@ -61,7 +61,7 @@ export default function FounderJourneyCard({
         </h2>
 
         {/* Subheading */}
-        <p className="text-xs sm:text-sm lg:text-[15px] leading-relaxed max-w-xl mb-5 sm:mb-7 relative z-10 text-gray-300">
+        <p className="text-xs sm:text-sm lg:text-[15px] leading-relaxed max-w-xl mb-5 sm:mb-7 relative z-10 text-slate-600 dark:text-gray-300">
           Join me in empowering your business to create clear, captivating web
           applications, custom WordPress portals, AI chatbots, and intelligent
           automations that inspire and convert.
@@ -87,7 +87,7 @@ export default function FounderJourneyCard({
 
         {/* Signature Founder Name */}
         <div className="relative z-10 flex flex-col items-center mb-1 sm:mb-2">
-          <span className="font-serif italic text-2xl sm:text-4xl font-extrabold text-purple-400 tracking-wide block drop-shadow-sm select-none">
+          <span className="font-serif italic text-2xl sm:text-4xl font-extrabold text-purple-600 dark:text-purple-400 tracking-wide block drop-shadow-sm select-none">
             Faraz Ahmed
           </span>
         </div>

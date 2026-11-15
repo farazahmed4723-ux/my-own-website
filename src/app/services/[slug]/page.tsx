@@ -81,11 +81,11 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
   const serviceJsonLd = buildServiceDetailJsonLd(service);
 
   return (
-    <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0e1330] via-[#0b0f24] to-[#080b1c] relative overflow-hidden">
+    <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-transparent text-slate-900 dark:text-white relative overflow-hidden transition-colors duration-300">
       {/* Ambient Lighting Orbs */}
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-b from-purple-600/30 via-sky-500/18 to-transparent rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/3 -left-32 w-[550px] h-[550px] bg-indigo-600/18 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 -right-32 w-[600px] h-[600px] bg-purple-600/18 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-b from-purple-600/15 via-sky-500/10 to-transparent dark:from-purple-600/30 dark:via-sky-500/18 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 -left-32 w-[550px] h-[550px] bg-indigo-500/10 dark:bg-indigo-600/18 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 -right-32 w-[600px] h-[600px] bg-purple-500/10 dark:bg-purple-600/18 rounded-full blur-[140px] pointer-events-none" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
@@ -99,46 +99,46 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
         <div className="flex items-center justify-between mb-8">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-gray-400 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to All Services</span>
           </Link>
 
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-purple-400">
-            <Link href="/" className="hover:text-white transition-colors">
+          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400">
+            <Link href="/" className="hover:text-slate-900 dark:hover:text-white transition-colors">
               Home
             </Link>
             <span>/</span>
-            <Link href="/services" className="hover:text-white transition-colors">
+            <Link href="/services" className="hover:text-slate-900 dark:hover:text-white transition-colors">
               Services
             </Link>
             <span>/</span>
-            <span className="text-gray-300">{service.title}</span>
+            <span className="text-slate-600 dark:text-gray-300">{service.title}</span>
           </div>
         </div>
 
         {/* Hero Section of Service */}
-        <div className="rounded-3xl p-8 sm:p-12 glass-card border border-purple-500/30 mb-14 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="rounded-3xl p-8 sm:p-12 glass-card border border-purple-200 dark:border-purple-500/30 mb-14 relative overflow-hidden shadow-lg">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/10 dark:bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-14 h-14 rounded-2xl bg-purple-600/30 border border-purple-500/40 flex items-center justify-center text-purple-300 shadow-lg shadow-purple-950/50">
+              <div className="w-14 h-14 rounded-2xl bg-purple-100 dark:bg-purple-600/30 border border-purple-200 dark:border-purple-500/40 flex items-center justify-center text-purple-600 dark:text-purple-300 shadow-md">
                 <Icon className="w-7 h-7" />
               </div>
-              <span className="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-wider text-purple-300">
+              <span className="px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold uppercase tracking-wider text-purple-700 dark:text-purple-300">
                 {service.badge}
               </span>
             </div>
 
-            <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4 leading-tight">
+            <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4 leading-tight">
               {service.title}
             </h1>
-            <p className="text-lg text-purple-300 font-medium mb-6">
+            <p className="text-lg text-purple-600 dark:text-purple-300 font-medium mb-6">
               {service.tagline}
             </p>
-            <p className="text-base text-gray-300 leading-relaxed max-w-3xl mb-8">
+            <p className="text-base text-slate-600 dark:text-gray-300 leading-relaxed max-w-3xl mb-8">
               {service.fullDescription}
             </p>
 
@@ -155,7 +155,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
                 href="https://wa.me/14374348789"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3.5 rounded-full bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 hover:text-white font-medium text-sm flex items-center gap-2 transition-all"
+                className="px-6 py-3.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-500/40 text-emerald-700 dark:text-emerald-300 hover:text-emerald-900 dark:hover:text-white font-medium text-sm flex items-center gap-2 transition-all shadow-sm"
               >
                 <Phone className="w-4 h-4" />
                 <span>Discuss on WhatsApp</span>
@@ -174,10 +174,10 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
         {/* Features & Deliverables Grid */}
         <div className="mb-16">
           <div className="mb-8">
-            <span className="text-xs font-semibold uppercase tracking-wider text-purple-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400">
               Scope of Capabilities
             </span>
-            <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mt-1">
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">
               What&apos;s Included In This Service
             </h2>
           </div>
@@ -186,10 +186,10 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
             {service.features.map((feature, idx) => (
               <div
                 key={idx}
-                className="p-5 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-start gap-3 hover:border-purple-500/30 transition-colors"
+                className="p-5 rounded-xl bg-white dark:bg-white/[0.03] border border-slate-200/90 dark:border-white/[0.08] flex items-start gap-3 hover:border-purple-500/40 transition-colors shadow-sm"
               >
-                <CheckCircle2 className="w-5 h-5 text-purple-400 mt-0.5 shrink-0" />
-                <span className="text-sm text-gray-200 font-medium leading-relaxed">
+                <CheckCircle2 className="w-5 h-5 text-purple-600 dark:text-purple-400 mt-0.5 shrink-0" />
+                <span className="text-sm text-slate-800 dark:text-gray-200 font-medium leading-relaxed">
                   {feature}
                 </span>
               </div>
@@ -200,21 +200,21 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
         {/* Real-World Use Cases */}
         <div className="mb-16">
           <div className="mb-8">
-            <span className="text-xs font-semibold uppercase tracking-wider text-purple-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400">
               Practical Applications
             </span>
-            <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mt-1">
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">
               Common Business Use Cases
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {service.useCases.map((useCase, idx) => (
-              <div key={idx} className="p-6 rounded-2xl glass-card border border-white/10">
-                <div className="w-8 h-8 rounded-lg bg-purple-900/30 border border-purple-500/30 flex items-center justify-center text-purple-300 font-bold text-xs mb-3">
+              <div key={idx} className="p-6 rounded-2xl glass-card border border-slate-200/90 dark:border-white/10 shadow-sm">
+                <div className="w-8 h-8 rounded-lg bg-purple-100 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-500/30 flex items-center justify-center text-purple-700 dark:text-purple-300 font-bold text-xs mb-3">
                   0{idx + 1}
                 </div>
-                <p className="text-sm text-gray-300 leading-relaxed font-medium">
+                <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed font-medium">
                   {useCase}
                 </p>
               </div>
@@ -225,25 +225,25 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
         {/* Development & Implementation Roadmap */}
         <div className="mb-16">
           <div className="mb-8">
-            <span className="text-xs font-semibold uppercase tracking-wider text-purple-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400">
               Execution Roadmap
             </span>
-            <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mt-1">
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">
               How Faraz Delivers {service.title}
             </h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {service.process.map((step, idx) => (
-              <div key={idx} className="p-6 rounded-2xl glass-card border border-white/10 flex flex-col justify-between">
+              <div key={idx} className="p-6 rounded-2xl glass-card border border-slate-200/90 dark:border-white/10 flex flex-col justify-between shadow-sm">
                 <div>
-                  <span className="text-xs font-bold text-purple-400 tracking-wider">
+                  <span className="text-xs font-bold text-purple-600 dark:text-purple-400 tracking-wider">
                     PHASE {step.step}
                   </span>
-                  <h3 className="font-heading text-base font-bold text-white mt-2 mb-2">
+                  <h3 className="font-heading text-base font-bold text-slate-900 dark:text-white mt-2 mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-xs text-gray-400 leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
                     {step.desc}
                   </p>
                 </div>
@@ -253,13 +253,13 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
         </div>
 
         {/* Technologies Employed */}
-        <div className="mb-16 p-7 rounded-2xl glass-card border border-white/10">
+        <div className="mb-16 p-7 rounded-2xl glass-card border border-slate-200/90 dark:border-white/10 shadow-sm">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h3 className="font-heading text-base font-bold text-white">
+              <h3 className="font-heading text-base font-bold text-slate-900 dark:text-white">
                 Technologies & Tooling Applied
               </h3>
-              <p className="text-xs text-gray-400 mt-1">
+              <p className="text-xs text-slate-600 dark:text-gray-400 mt-1">
                 Industry-standard libraries and infrastructure selected for performance and stability.
               </p>
             </div>
@@ -267,7 +267,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
               {service.technologies.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-3 py-1.5 rounded-lg bg-purple-900/20 border border-purple-500/30 text-purple-300 text-xs font-medium"
+                  className="px-3 py-1.5 rounded-lg bg-purple-100 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-500/30 text-purple-700 dark:text-purple-300 text-xs font-medium"
                 >
                   {tech}
                 </span>
@@ -277,11 +277,11 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
         </div>
 
         {/* Bottom CTA */}
-        <div className="rounded-3xl p-8 sm:p-12 glass-card border border-purple-500/40 text-center relative overflow-hidden">
-          <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-white mb-3">
+        <div className="rounded-3xl p-8 sm:p-12 glass-card border border-purple-200 dark:border-purple-500/40 text-center relative overflow-hidden shadow-lg">
+          <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-3">
             Ready to implement {service.title} for your business?
           </h2>
-          <p className="text-sm text-gray-300 max-w-xl mx-auto mb-8">
+          <p className="text-sm text-slate-600 dark:text-gray-300 max-w-xl mx-auto mb-8">
             Contact Faraz Ahmed today to discuss your project requirements, receive a clear milestone breakdown, and get transparent pricing.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -293,7 +293,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
             </Link>
             <Link
               href="/services"
-              className="px-7 py-3.5 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-white font-medium text-sm transition-colors"
+              className="px-7 py-3.5 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white font-medium text-sm transition-colors"
             >
               Browse Other Services
             </Link>

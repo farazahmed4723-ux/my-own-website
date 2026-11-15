@@ -10,23 +10,23 @@ export default function ContactCTA() {
     <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         <ScrollReveal variant="zoom-pop">
-          <div className="relative rounded-3xl p-6 sm:p-14 lg:p-16 overflow-hidden border border-purple-500/50 bg-gradient-to-b from-[#192147] via-[#121838] to-[#0d122b] shadow-2xl shadow-purple-950/40 text-center">
+          <div className="relative rounded-3xl p-6 sm:p-14 lg:p-16 overflow-hidden border border-purple-200 dark:border-purple-500/50 bg-gradient-to-b from-purple-50/90 via-slate-50/95 to-white dark:from-[#192147] dark:via-[#121838] dark:to-[#0d122b] shadow-xl shadow-purple-500/10 dark:shadow-2xl dark:shadow-purple-950/40 text-center">
             {/* Ambient Lighting Accents */}
-            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[550px] h-[300px] bg-purple-500/38 blur-[90px] pointer-events-none" />
-            <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[500px] h-[280px] bg-indigo-500/30 blur-[90px] pointer-events-none" />
+            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[550px] h-[300px] bg-purple-500/20 dark:bg-purple-500/38 blur-[90px] pointer-events-none" />
+            <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[500px] h-[280px] bg-indigo-500/15 dark:bg-indigo-500/30 blur-[90px] pointer-events-none" />
 
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-purple-900/40 border border-purple-400/40 text-purple-200 text-[11px] sm:text-xs font-semibold uppercase tracking-wider mb-5 sm:mb-6">
-              <Sparkles className="w-3.5 h-3.5 text-purple-300 shrink-0" />
+            <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/40 border border-purple-300 dark:border-purple-400/40 text-purple-700 dark:text-purple-200 text-[11px] sm:text-xs font-semibold uppercase tracking-wider mb-5 sm:mb-6">
+              <Sparkles className="w-3.5 h-3.5 text-purple-600 dark:text-purple-300 shrink-0" />
               <span>Let&apos;s Build Something Intelligent</span>
             </div>
 
             {/* Heading */}
-            <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4 sm:mb-6 max-w-3xl mx-auto leading-tight">
+            <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4 sm:mb-6 max-w-3xl mx-auto leading-tight">
               Ready To Launch Your Website Or <span className="gradient-text-purple">Deploy Custom AI?</span>
             </h2>
 
-            <p className="text-gray-300 text-sm sm:text-lg max-w-2xl mx-auto mb-7 sm:mb-10 leading-relaxed font-normal">
+            <p className="text-slate-600 dark:text-gray-300 text-sm sm:text-lg max-w-2xl mx-auto mb-7 sm:mb-10 leading-relaxed font-normal">
               Whether you need a high-converting WordPress or Next.js platform, a custom customer-facing AI chatbot, or automated business workflows, Faraz Ahmed is ready to engineer your solution.
             </p>
 
@@ -56,7 +56,7 @@ export default function ContactCTA() {
             </div>
 
             {/* Trust Guarantees */}
-            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-gray-400 pt-6 border-t border-white/[0.08]">
+            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-slate-600 dark:text-gray-400 pt-6 border-t border-slate-200 dark:border-white/[0.08]">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                 <span>Transparent Fixed Scope & Pricing</span>

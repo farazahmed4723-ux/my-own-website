@@ -96,7 +96,7 @@ export default function ServicesPreview() {
   return (
     <section
       id="services"
-      className="dark-preserve w-full py-16 sm:py-24 relative overflow-hidden transition-colors duration-300 shadow-2xl bg-gradient-to-br from-[#0B469C] via-[#0E2A60] to-[#0F1B3D] text-white border-y border-blue-400/25 select-none touch-manipulation"
+      className="w-full py-16 sm:py-24 relative overflow-hidden transition-colors duration-300 shadow-xl dark:shadow-2xl bg-gradient-to-b from-[#EEF2FF] via-[#E0E7FF]/70 to-[#F5F3FF] dark:bg-gradient-to-br dark:from-[#0B469C] dark:via-[#0E2A60] dark:to-[#0F1B3D] text-slate-900 dark:text-white border-y border-blue-200 dark:border-blue-400/25 select-none touch-manipulation"
       style={{
         WebkitTouchCallout: "none",
         WebkitUserSelect: "none",
@@ -104,8 +104,8 @@ export default function ServicesPreview() {
       }}
     >
       {/* Ambient background studio lighting */}
-      <div className="absolute -top-20 -right-20 w-[600px] h-[600px] bg-[#2563EB]/40 rounded-full blur-[130px] pointer-events-none select-none" />
-      <div className="absolute -bottom-20 -left-20 w-[550px] h-[550px] bg-[#FF8F00]/28 rounded-full blur-[130px] pointer-events-none select-none" />
+      <div className="absolute -top-20 -right-20 w-[600px] h-[600px] bg-[#2563EB]/25 dark:bg-[#2563EB]/40 rounded-full blur-[130px] pointer-events-none select-none" />
+      <div className="absolute -bottom-20 -left-20 w-[550px] h-[550px] bg-[#FF8F00]/20 dark:bg-[#FF8F00]/28 rounded-full blur-[130px] pointer-events-none select-none" />
 
       <div className="max-w-[1400px] mx-auto px-3 sm:px-8 lg:px-12 relative z-10 select-none">
         {/* Section Header */}
@@ -115,7 +115,7 @@ export default function ServicesPreview() {
               <span className="text-xs font-mono font-bold tracking-widest text-[#FF8F00] uppercase block mb-2 sm:mb-3 select-none">
                 WEB DEVELOPMENT • AI AUTOMATION • VIDEO EDITING
               </span>
-              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight select-none">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight select-none">
                 What I Can Do For You
               </h2>
             </div>
@@ -124,7 +124,7 @@ export default function ServicesPreview() {
               href="/services"
               id="view-all-services-btn"
               draggable={false}
-              className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl border border-white/30 text-white font-bold text-xs hover:border-[#FF8F00] hover:text-[#FF8F00] hover:bg-white/10 shrink-0 cursor-pointer shadow-sm transition-all select-none"
+              className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl border border-slate-300 dark:border-white/30 text-slate-800 dark:text-white font-bold text-xs hover:border-[#FF8F00] hover:text-[#FF8F00] hover:bg-slate-100 dark:hover:bg-white/10 shrink-0 cursor-pointer shadow-sm transition-all select-none"
             >
               <span className="flex items-center gap-2 select-none">
                 <span>View All Services</span>
@@ -215,7 +215,7 @@ export default function ServicesPreview() {
             type="button"
             draggable={false}
             onClick={() => setShowAllMobile(!showAllMobile)}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 active:bg-white/20 border border-white/15 text-slate-300 hover:text-white text-xs font-semibold tracking-wide transition-all cursor-pointer select-none touch-manipulation"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-200/80 hover:bg-slate-300 active:bg-slate-300/90 dark:bg-white/5 dark:hover:bg-white/10 dark:active:bg-white/20 border border-slate-300 dark:border-white/15 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white text-xs font-semibold tracking-wide transition-all cursor-pointer select-none touch-manipulation"
           >
             <span className="select-none">
               {showAllMobile ? "Show Less" : "+ View Technical SEO"}

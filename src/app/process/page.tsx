@@ -92,11 +92,11 @@ export default function ProcessPage() {
   const howToJsonLd = buildProcessHowToJsonLd(detailedSteps);
 
   return (
-    <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0e1330] via-[#0b0f24] to-[#080b1c] relative overflow-hidden">
+    <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-transparent text-slate-900 dark:text-white relative overflow-hidden transition-colors duration-300">
       {/* Ambient Lighting Orbs */}
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-b from-purple-600/30 via-sky-500/18 to-transparent rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/3 -left-32 w-[550px] h-[550px] bg-indigo-600/18 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 -right-32 w-[600px] h-[600px] bg-purple-600/18 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-b from-purple-600/15 via-sky-500/10 to-transparent dark:from-purple-600/30 dark:via-sky-500/18 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 -left-32 w-[550px] h-[550px] bg-indigo-500/10 dark:bg-indigo-600/18 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 -right-32 w-[600px] h-[600px] bg-purple-500/10 dark:bg-purple-600/18 rounded-full blur-[140px] pointer-events-none" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
@@ -107,24 +107,24 @@ export default function ProcessPage() {
       />
       <div className="max-w-5xl mx-auto">
         {/* Breadcrumb */}
-        <div className="mb-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-purple-400">
-          <Link href="/" className="hover:text-white transition-colors">
+        <div className="mb-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400">
+          <Link href="/" className="hover:text-slate-900 dark:hover:text-white transition-colors">
             Home
           </Link>
           <span>/</span>
-          <span className="text-gray-300">Development Process</span>
+          <span className="text-slate-600 dark:text-gray-300">Development Process</span>
         </div>
 
         {/* Header */}
         <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-500/30 text-purple-700 dark:text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Methodical Execution</span>
           </div>
-          <h1 className="font-heading text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          <h1 className="font-heading text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
             My 6-Stage <span className="gradient-text-purple">Development Process</span>
           </h1>
-          <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-600 dark:text-gray-300 leading-relaxed">
             Delivering exceptional websites and AI solutions requires discipline, transparency, and clear milestones. Here is the exact roadmap applied to every project Faraz Ahmed builds.
           </p>
         </div>
@@ -137,47 +137,47 @@ export default function ProcessPage() {
             return (
               <div
                 key={step.step}
-                className="rounded-3xl p-8 sm:p-10 glass-card border border-white/10 hover:border-purple-500/40 transition-all duration-300 relative overflow-hidden"
+                className="rounded-3xl p-8 sm:p-10 glass-card border border-slate-200/90 dark:border-white/10 hover:border-purple-500/40 transition-all duration-300 relative overflow-hidden shadow-sm"
               >
                 {/* Step Number Background Accent */}
-                <span className="absolute top-6 right-8 font-heading text-5xl font-black text-white/5 pointer-events-none">
+                <span className="absolute top-6 right-8 font-heading text-5xl font-black text-slate-200/80 dark:text-white/5 pointer-events-none">
                   {step.step}
                 </span>
 
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-300">
+                    <div className="w-12 h-12 rounded-2xl bg-purple-100 dark:bg-purple-600/20 border border-purple-200 dark:border-purple-500/30 flex items-center justify-center text-purple-600 dark:text-purple-300">
                       <Icon className="w-6 h-6" />
                     </div>
                     <div>
-                      <span className="text-xs font-bold text-purple-400 uppercase tracking-wider">
+                      <span className="text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider">
                         STAGE {step.step}
                       </span>
-                      <h2 className="font-heading text-2xl font-bold text-white">
+                      <h2 className="font-heading text-2xl font-bold text-slate-900 dark:text-white">
                         {step.title}
                       </h2>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300 font-medium w-fit">
-                    <Clock className="w-3.5 h-3.5 text-purple-400" />
+                  <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs text-slate-700 dark:text-gray-300 font-medium w-fit">
+                    <Clock className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
                     <span>Estimated: {step.duration}</span>
                   </div>
                 </div>
 
-                <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-6">
+                <p className="text-sm sm:text-base text-slate-600 dark:text-gray-300 leading-relaxed mb-6">
                   {step.desc}
                 </p>
 
                 {/* Deliverables Checklist */}
-                <div className="pt-6 border-t border-white/[0.08]">
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-purple-400 mb-3">
+                <div className="pt-6 border-t border-slate-200 dark:border-white/[0.08]">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400 mb-3">
                     Key Deliverables:
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {step.deliverables.map((item, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-xs text-gray-300">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <div key={idx} className="flex items-center gap-2 text-xs text-slate-700 dark:text-gray-300">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400 shrink-0" />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -189,14 +189,14 @@ export default function ProcessPage() {
         </div>
 
         {/* Client Guarantee & Transparency */}
-        <div className="p-8 sm:p-12 rounded-3xl glass-card border border-purple-500/30 text-center relative overflow-hidden">
-          <div className="w-14 h-14 rounded-2xl bg-emerald-600/20 border border-emerald-500/40 flex items-center justify-center text-emerald-300 mx-auto mb-6">
+        <div className="p-8 sm:p-12 rounded-3xl glass-card border border-purple-200 dark:border-purple-500/30 text-center relative overflow-hidden shadow-lg">
+          <div className="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-600 dark:text-emerald-300 mx-auto mb-6">
             <ShieldCheck className="w-7 h-7" />
           </div>
-          <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-white mb-3">
+          <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-3">
             Predictable Timelines & Fixed Scope
           </h2>
-          <p className="text-sm text-gray-300 max-w-xl mx-auto mb-8 leading-relaxed">
+          <p className="text-sm text-slate-600 dark:text-gray-300 max-w-xl mx-auto mb-8 leading-relaxed">
             You will always know what phase your project is in, what is being developed, and when to expect the next demonstration. Ready to discuss your project?
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -208,7 +208,7 @@ export default function ProcessPage() {
             </Link>
             <Link
               href="/portfolio"
-              className="px-7 py-3.5 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-white font-medium text-sm transition-colors"
+              className="px-7 py-3.5 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white font-medium text-sm transition-colors"
             >
               Review Client Case Studies
             </Link>

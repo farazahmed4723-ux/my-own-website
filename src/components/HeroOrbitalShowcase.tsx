@@ -697,7 +697,7 @@ export default function HeroOrbitalShowcase() {
             >
               <Link
                 href={card.href}
-                className="dark-preserve group flex items-center gap-2.5 rounded-2xl border border-white/[0.12] hover:border-[#8B5CF6]/55 bg-[#0B102B]/85 hover:bg-[#10173B]/95 px-3 py-2 lg:px-3.5 lg:py-2.5 backdrop-blur-md shadow-[0_10px_28px_rgba(3,6,20,0.52)] hover:shadow-[0_12px_32px_rgba(99,102,241,0.28)] transition-[border-color,background-color,box-shadow] duration-300 whitespace-nowrap"
+                className="group flex items-center gap-2.5 rounded-2xl border border-slate-200/90 dark:border-white/[0.12] hover:border-purple-500/60 dark:hover:border-[#8B5CF6]/55 bg-white/90 dark:bg-[#0B102B]/85 hover:bg-slate-50/95 dark:hover:bg-[#10173B]/95 px-3 py-2 lg:px-3.5 lg:py-2.5 backdrop-blur-md shadow-[0_8px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_28px_rgba(3,6,20,0.52)] hover:shadow-[0_12px_32px_rgba(99,102,241,0.28)] transition-[border-color,background-color,box-shadow] duration-300 whitespace-nowrap"
               >
                 <span
                   className={`flex h-8 w-8 lg:h-9 lg:w-9 shrink-0 items-center justify-center rounded-xl border ${card.iconBg} ${card.iconBorder} ${card.iconColor} group-hover:scale-105 transition-transform duration-200`}
@@ -705,10 +705,10 @@ export default function HeroOrbitalShowcase() {
                   <Icon className="w-4 h-4 lg:w-[18px] lg:h-[18px]" />
                 </span>
                 <span className="flex flex-col leading-tight">
-                  <span className="font-heading text-[12px] lg:text-[13px] font-semibold text-white tracking-tight">
+                  <span className="font-heading text-[12px] lg:text-[13px] font-semibold text-slate-900 dark:text-white tracking-tight">
                     {card.title}
                   </span>
-                  <span className="text-[10px] lg:text-[10.5px] font-medium text-[#94A3B8] mt-0.5">
+                  <span className="text-[10px] lg:text-[10.5px] font-medium text-slate-500 dark:text-[#94A3B8] mt-0.5">
                     {card.subtitle}
                   </span>
                 </span>
@@ -729,12 +729,12 @@ export default function HeroOrbitalShowcase() {
             <Link
               key={`mob-${card.id}`}
               href={card.href}
-              className={`dark-preserve flex items-center gap-2 rounded-xl border backdrop-blur-md px-2.5 py-2 active:scale-[0.98] transition-transform ${
+              className={`flex items-center gap-2 rounded-xl border backdrop-blur-md px-2.5 py-2 active:scale-[0.98] transition-transform ${
                 isChatbot
-                  ? "col-span-2 justify-center bg-[#0B102B]/85 border-white/[0.11] shadow-[0_8px_20px_rgba(3,6,20,0.42)]"
+                  ? "col-span-2 justify-center bg-white/95 dark:bg-[#0B102B]/85 border-slate-200/90 dark:border-white/[0.11] shadow-[0_4px_14px_rgba(0,0,0,0.05)] dark:shadow-[0_8px_20px_rgba(3,6,20,0.42)]"
                   : isVideo
-                  ? "border-purple-500/50 bg-gradient-to-r from-[#170C2E]/90 to-[#0B102B]/90 shadow-[0_0_15px_rgba(168,85,247,0.25)]"
-                  : "border-white/[0.11] bg-[#0B102B]/85 shadow-[0_8px_20px_rgba(3,6,20,0.42)]"
+                  ? "border-purple-300 dark:border-purple-500/50 bg-gradient-to-r from-purple-50 to-white dark:from-[#170C2E]/90 dark:to-[#0B102B]/90 shadow-[0_0_15px_rgba(168,85,247,0.15)] dark:shadow-[0_0_15px_rgba(168,85,247,0.25)]"
+                  : "border-slate-200/90 dark:border-white/[0.11] bg-white/95 dark:bg-[#0B102B]/85 shadow-[0_4px_14px_rgba(0,0,0,0.05)] dark:shadow-[0_8px_20px_rgba(3,6,20,0.42)]"
               }`}
             >
               <span
@@ -743,15 +743,15 @@ export default function HeroOrbitalShowcase() {
                 <Icon className="w-3.5 h-3.5" />
               </span>
               <span className="flex flex-col min-w-0 leading-tight">
-                <span className="font-heading text-[11px] font-semibold text-white truncate flex items-center gap-1">
+                <span className="font-heading text-[11px] font-semibold text-slate-900 dark:text-white truncate flex items-center gap-1">
                   <span>{card.title}</span>
                   {isVideo && (
-                    <span className="px-1 py-0.2 rounded bg-purple-500/30 text-purple-200 text-[8.5px] font-mono font-bold">
+                    <span className="px-1 py-0.2 rounded bg-purple-100 text-purple-700 dark:bg-purple-500/30 dark:text-purple-200 text-[8.5px] font-mono font-bold">
                       NEW 🎬
                     </span>
                   )}
                 </span>
-                <span className={`text-[9.5px] font-medium truncate mt-0.5 ${isVideo ? "text-purple-300" : "text-[#94A3B8]"}`}>
+                <span className={`text-[9.5px] font-medium truncate mt-0.5 ${isVideo ? "text-purple-700 dark:text-purple-300" : "text-slate-500 dark:text-[#94A3B8]"}`}>
                   {card.subtitle}
                 </span>
               </span>

@@ -163,9 +163,9 @@ export default function AboutPreview() {
         <ScrollReveal variant="pop-up" className="lg:hidden mb-10 sm:mb-14">
           <div
             ref={statsRef}
-            className="rounded-2xl sm:rounded-3xl glass-card border border-white/10 bg-[#0e122b]/80 p-4 sm:p-6 shadow-xl max-w-4xl mx-auto"
+            className="rounded-2xl sm:rounded-3xl glass-card border border-slate-200/90 dark:border-white/10 bg-white/95 dark:bg-[#0e122b]/80 p-4 sm:p-6 shadow-md dark:shadow-xl max-w-4xl mx-auto"
           >
-            <div className="grid grid-cols-3 divide-x divide-white/10 text-center items-center">
+            <div className="grid grid-cols-3 divide-x divide-slate-200 dark:divide-white/10 text-center items-center">
               {stats.map((st) => {
                 const Icon = st.icon;
                 return (
@@ -191,7 +191,7 @@ export default function AboutPreview() {
                         active={statsVisible}
                       />
                     </div>
-                    <span className="text-[9.5px] sm:text-xs font-semibold text-gray-400 uppercase tracking-wider leading-tight">
+                    <span className="text-[9.5px] sm:text-xs font-semibold text-slate-500 dark:text-gray-400 uppercase tracking-wider leading-tight">
                       {st.label}
                     </span>
                   </motion.div>
@@ -204,7 +204,7 @@ export default function AboutPreview() {
         {/* Mobile-Only Dedicated About Card (Matches Pic 2 Exactly 1:1) */}
         <div className="lg:hidden">
           <ScrollReveal variant="zoom-pop">
-            <div className="rounded-3xl glass-card border border-purple-500/30 bg-[#0e122b]/90 p-6 sm:p-8 text-center shadow-2xl relative overflow-hidden">
+            <div className="rounded-3xl glass-card border border-purple-200 dark:border-purple-500/30 bg-white/95 dark:bg-[#0e122b]/90 p-6 sm:p-8 text-center shadow-xl dark:shadow-2xl relative overflow-hidden">
               {/* Circular Framed Avatar with Glowing Ring */}
               <div className="relative mx-auto mb-4 w-28 h-28 rounded-full p-[3px] bg-gradient-to-tr from-[#38bdf8] via-[#8B5CF6] to-[#A855F7] shadow-[0_0_25px_rgba(56,189,248,0.35)]">
                 <div className="relative w-full h-full rounded-full overflow-hidden bg-[#070918]">
@@ -219,25 +219,25 @@ export default function AboutPreview() {
                 </div>
               </div>
 
-              <div className="text-[11px] font-bold uppercase tracking-widest text-gray-400 mb-2">
+              <div className="text-[11px] font-bold uppercase tracking-widest text-slate-500 dark:text-gray-400 mb-2">
                 ABOUT ME
               </div>
 
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4">
-                <Sparkles className="w-3.5 h-3.5 text-purple-300" />
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-500/30 text-purple-700 dark:text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4">
+                <Sparkles className="w-3.5 h-3.5 text-purple-600 dark:text-purple-300" />
                 <span>About Me</span>
               </div>
 
-              <h2 className="font-heading text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-4 leading-snug">
+              <h2 className="font-heading text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4 leading-snug">
                 Code & AI solutions that build{" "}
                 <span className="gradient-text-purple">trust, clarity, and rapid scale</span>
               </h2>
 
-              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-gray-300 leading-relaxed mb-4">
                 I am a passionate Freelance Full Stack Developer, WordPress Specialist, AI Chatbot Engineer, Automation Expert, and Viral Video Editor. Over the past 7+ years, I have helped founders, startups, and decision-makers translate ambitious ideas into high-speed web apps and high-retention video content.
               </p>
 
-              <p className="text-xs sm:text-sm text-gray-400 leading-relaxed mb-6">
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-gray-400 leading-relaxed mb-6">
                 Whether you need a custom React web application, a pixel-perfect WordPress portal, an intelligent RAG chatbot, automated n8n workflows, or viral short-form video editing—I deliver agency-level quality with individual dedication.
               </p>
 
@@ -262,7 +262,7 @@ export default function AboutPreview() {
           >
             <div className="relative w-full max-w-[395px] xl:max-w-[425px] mx-auto pb-7 select-none group">
               {/* Vertical Studio Portrait Card */}
-              <div className="dark-preserve relative w-full aspect-[896/1090] rounded-[2.6rem] overflow-hidden border border-[#2563EB]/65 bg-[#152338] shadow-[0_24px_60px_rgba(2,6,23,0.62)] transition-colors duration-300 group-hover:border-[#38BDF8]/80">
+              <div className="relative w-full aspect-[896/1090] rounded-[2.6rem] overflow-hidden border border-[#2563EB]/65 bg-[#152338] shadow-[0_24px_60px_rgba(2,6,23,0.32)] dark:shadow-[0_24px_60px_rgba(2,6,23,0.62)] transition-colors duration-300 group-hover:border-[#38BDF8]/80">
                 <Image
                   src="/images/faraz-about-standing.webp"
                   alt="Faraz Ahmed - Freelance Full Stack Developer & AI Engineer"
@@ -275,11 +275,11 @@ export default function AboutPreview() {
               </div>
 
               {/* Overlapping Wide Bottom Nameplate Dock */}
-              <div className="dark-preserve absolute -inset-x-3 xl:-inset-x-5 bottom-0 z-20 rounded-2xl bg-[#0B1120]/95 border border-white/10 backdrop-blur-md py-4 px-6 text-center shadow-[0_18px_42px_rgba(0,0,0,0.65)]">
-                <h3 className="font-heading text-xl xl:text-[22px] font-extrabold text-white tracking-tight">
+              <div className="absolute -inset-x-3 xl:-inset-x-5 bottom-0 z-20 rounded-2xl bg-white/95 dark:bg-[#0B1120]/95 border border-slate-200/90 dark:border-white/10 backdrop-blur-md py-4 px-6 text-center shadow-[0_18px_42px_rgba(0,0,0,0.08)] dark:shadow-[0_18px_42px_rgba(0,0,0,0.65)]">
+                <h3 className="font-heading text-xl xl:text-[22px] font-extrabold text-slate-900 dark:text-white tracking-tight">
                   Faraz Ahmed
                 </h3>
-                <p className="text-xs xl:text-[13px] font-medium text-[#60A5FA] mt-0.5">
+                <p className="text-xs xl:text-[13px] font-semibold text-blue-600 dark:text-[#60A5FA] mt-0.5">
                   Full Stack Developer &amp; AI Solutions Specialist
                 </p>
               </div>
@@ -289,7 +289,7 @@ export default function AboutPreview() {
           {/* Right Column: Bold Headline, Bio Paragraphs & 2x2 Feature Pill Grid */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             <ScrollReveal variant="slide-right">
-              <h2 className="font-heading text-4xl lg:text-[44px] xl:text-[52px] font-extrabold text-white leading-[1.13] tracking-tight mb-7">
+              <h2 className="font-heading text-4xl lg:text-[44px] xl:text-[52px] font-extrabold text-slate-900 dark:text-white leading-[1.13] tracking-tight mb-7">
                 <span className="block">Crafting High-Performance</span>
                 <span className="block">
                   Web Apps &amp;{" "}
@@ -302,9 +302,9 @@ export default function AboutPreview() {
                 </span>
               </h2>
 
-              <div className="space-y-5 text-[15px] xl:text-[16.5px] text-gray-300 leading-[1.78] mb-9 max-w-2xl">
+              <div className="space-y-5 text-[15px] xl:text-[16.5px] text-slate-600 dark:text-gray-300 leading-[1.78] mb-9 max-w-2xl">
                 <p>
-                  I am <strong className="font-bold text-white">Faraz Ahmed</strong>, a passionate Freelance Full Stack Developer, Custom WordPress Specialist, and AI Engineer. Over the past 7+ years, I have engineered modern web systems, custom themes, RAG AI chatbots, and automated workflows that transform business operations.
+                  I am <strong className="font-bold text-slate-900 dark:text-white">Faraz Ahmed</strong>, a passionate Freelance Full Stack Developer, Custom WordPress Specialist, and AI Engineer. Over the past 7+ years, I have engineered modern web systems, custom themes, RAG AI chatbots, and automated workflows that transform business operations.
                 </p>
                 <p>
                   My goal is simple: deliver agency-level visual elegance and clean code architecture with rapid execution, helping founders and teams scale with confidence.
@@ -316,11 +316,11 @@ export default function AboutPreview() {
             <StaggerGrid className="grid grid-cols-2 gap-4 max-w-2xl">
               {desktopHighlights.map((label) => (
                 <StaggerItem key={label}>
-                  <div className="flex items-center gap-3.5 px-5 py-4 rounded-2xl bg-[#0e142e]/90 border border-[#1e293b] hover:border-[#38bdf8]/45 transition-all duration-300 shadow-[0_8px_24px_rgba(2,6,23,0.32)] h-full">
-                    <span className="w-7 h-7 rounded-full bg-[#102444] border border-[#1d4ed8]/35 flex items-center justify-center text-[#38bdf8] shrink-0">
+                  <div className="flex items-center gap-3.5 px-5 py-4 rounded-2xl bg-white/90 dark:bg-[#0e142e]/90 border border-slate-200/90 dark:border-[#1e293b] hover:border-blue-400/50 dark:hover:border-[#38bdf8]/45 transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.05)] dark:shadow-[0_8px_24px_rgba(2,6,23,0.32)] h-full">
+                    <span className="w-7 h-7 rounded-full bg-blue-50 dark:bg-[#102444] border border-blue-200 dark:border-[#1d4ed8]/35 flex items-center justify-center text-blue-600 dark:text-[#38bdf8] shrink-0">
                       <Check className="w-3.5 h-3.5 stroke-[2.5]" />
                     </span>
-                    <span className="font-heading text-[14px] xl:text-[15px] font-bold text-white leading-snug">
+                    <span className="font-heading text-[14px] xl:text-[15px] font-bold text-slate-900 dark:text-white leading-snug">
                       {label}
                     </span>
                   </div>

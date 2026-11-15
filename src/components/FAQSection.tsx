@@ -23,13 +23,13 @@ export default function FAQSection() {
         {/* Header */}
         <ScrollReveal variant="pop-up">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-500/30 text-purple-700 dark:text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4">
               Answers & Clarity
             </div>
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
               Frequently Asked <span className="gradient-text-purple">Questions</span>
             </h2>
-            <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
+            <p className="text-slate-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
               Everything you need to know about working with Faraz Ahmed on your website, custom AI chatbots, or automation projects.
             </p>
           </div>
@@ -45,8 +45,8 @@ export default function FAQSection() {
                 <div
                   className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
                     isOpen
-                      ? "bg-[#111532]/90 border-purple-500/40 shadow-xl shadow-purple-950/20"
-                      : "bg-[#0b0e22]/60 border-white/[0.08] hover:border-white/20"
+                      ? "bg-purple-50/70 dark:bg-[#111532]/90 border-purple-300 dark:border-purple-500/40 shadow-md shadow-purple-500/10 dark:shadow-purple-950/20"
+                      : "bg-white/90 dark:bg-[#0b0e22]/60 border-slate-200/90 dark:border-white/[0.08] hover:border-purple-300 dark:hover:border-white/20 shadow-sm"
                   }`}
                 >
                   <button
@@ -56,17 +56,17 @@ export default function FAQSection() {
                     id={`faq-toggle-${index}`}
                   >
                     <div className="flex items-center gap-3.5">
-                      <span className="w-8 h-8 rounded-lg bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-300 shrink-0">
+                      <span className="w-8 h-8 rounded-lg bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-600 dark:text-purple-300 shrink-0">
                         <HelpCircle className="w-4 h-4" />
                       </span>
-                      <span className="font-heading font-bold text-base sm:text-lg text-white">
+                      <span className="font-heading font-bold text-base sm:text-lg text-slate-900 dark:text-white">
                         {faq.question}
                       </span>
                     </div>
 
                     <div
-                      className={`w-8 h-8 rounded-full flex items-center justify-center bg-white/5 shrink-0 transition-transform duration-300 ${
-                        isOpen ? "rotate-180 bg-purple-600/30 text-purple-200" : "text-gray-400"
+                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                        isOpen ? "rotate-180 bg-purple-600/20 dark:bg-purple-600/30 text-purple-700 dark:text-purple-200" : "bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-gray-400"
                       }`}
                     >
                       <ChevronDown className="w-4 h-4" />
@@ -81,7 +81,7 @@ export default function FAQSection() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                       >
-                        <div className="px-6 pb-6 pt-1 text-sm text-gray-300 leading-relaxed border-t border-white/[0.04]">
+                        <div className="px-6 pb-6 pt-1 text-sm text-slate-600 dark:text-gray-300 leading-relaxed border-t border-slate-100 dark:border-white/[0.04]">
                           {faq.answer}
                         </div>
                       </motion.div>
@@ -95,10 +95,10 @@ export default function FAQSection() {
 
         {/* Support CTA Callout */}
         <ScrollReveal variant="zoom-pop" delay={0.2}>
-          <div className="mt-12 p-6 rounded-2xl glass-card border border-white/10 text-center flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="mt-12 p-6 rounded-2xl glass-card border border-slate-200/90 dark:border-white/10 text-center flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm dark:shadow-none">
             <div className="text-left">
-              <h4 className="font-heading font-bold text-base text-white">Have a specific question not covered here?</h4>
-              <p className="text-xs text-gray-400 mt-1">Get an honest, transparent answer directly from Faraz.</p>
+              <h4 className="font-heading font-bold text-base text-slate-900 dark:text-white">Have a specific question not covered here?</h4>
+              <p className="text-xs text-slate-500 dark:text-gray-400 mt-1">Get an honest, transparent answer directly from Faraz.</p>
             </div>
             <Link
               href="/contact"

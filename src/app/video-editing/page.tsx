@@ -307,7 +307,7 @@ export default function VideoEditingPage() {
                 key={pkg.id}
                 className={`relative rounded-3xl p-7 flex flex-col justify-between transition-all duration-300 ${
                   pkg.isPopular
-                    ? "bg-purple-900/10 dark:bg-gradient-to-b dark:from-[#181c44] dark:to-[#0f1330] border-2 border-purple-500 shadow-xl shadow-purple-500/15 dark:shadow-[0_0_40px_rgba(139,92,246,0.35)] sm:-translate-y-2 dark-preserve"
+                    ? "bg-white dark:bg-gradient-to-b dark:from-[#181c44] dark:to-[#0f1330] border-2 border-purple-500 shadow-xl shadow-purple-500/15 dark:shadow-[0_0_40px_rgba(139,92,246,0.35)] sm:-translate-y-2"
                     : "bg-white dark:bg-[#0f142e] border border-slate-200/90 dark:border-white/10 shadow-sm dark:shadow-none hover:border-purple-400 dark:hover:border-purple-500/30"
                 }`}
               >

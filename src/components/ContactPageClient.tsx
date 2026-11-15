@@ -156,35 +156,35 @@ export default function ContactPageClient() {
   )}`;
 
   return (
-    <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0e1330] via-[#0b0f24] to-[#080b1c] relative overflow-hidden">
+    <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-transparent text-slate-900 dark:text-white relative overflow-hidden transition-colors duration-300">
       {/* Ambient Lighting Orbs */}
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-b from-purple-600/30 via-sky-500/18 to-transparent rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/3 -left-32 w-[550px] h-[550px] bg-indigo-600/18 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 -right-32 w-[600px] h-[600px] bg-purple-600/18 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-b from-purple-600/15 via-sky-500/10 to-transparent dark:from-purple-600/30 dark:via-sky-500/18 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 -left-32 w-[550px] h-[550px] bg-indigo-500/10 dark:bg-indigo-600/18 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 -right-32 w-[600px] h-[600px] bg-purple-500/10 dark:bg-purple-600/18 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
-          className="mb-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-purple-400"
+          className="mb-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400"
         >
-          <Link href="/" className="hover:text-white transition-colors">
+          <Link href="/" className="hover:text-slate-900 dark:hover:text-white transition-colors">
             Home
           </Link>
           <span>/</span>
-          <span className="text-gray-300">Contact</span>
+          <span className="text-slate-600 dark:text-gray-300">Contact</span>
         </nav>
 
         {/* Page Header */}
         <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-500/30 text-purple-700 dark:text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Direct Project Inquiry</span>
           </div>
-          <h1 className="font-heading text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          <h1 className="font-heading text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
             Let&apos;s Build <span className="gradient-text-purple">Together</span>
           </h1>
-          <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-600 dark:text-gray-300 leading-relaxed">
             Have an upcoming project, website redesign, AI chatbot requirement, or workflow automation idea? Connect with Faraz Ahmed directly.
           </p>
         </div>
@@ -192,29 +192,29 @@ export default function ContactPageClient() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           {/* Left Column: Direct Contact Details & WhatsApp Card */}
           <div className="lg:col-span-5 flex flex-col gap-6">
-            <div className="p-8 rounded-3xl glass-card border border-white/10">
-              <h2 className="font-heading text-xl font-bold text-white mb-6">
+            <div className="p-8 rounded-3xl glass-card border border-slate-200/90 dark:border-white/10 shadow-sm">
+              <h2 className="font-heading text-xl font-bold text-slate-900 dark:text-white mb-6">
                 Direct Contact Channels
               </h2>
 
               <div className="space-y-6">
                 {/* Email Item */}
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-300 shrink-0">
+                  <div className="w-12 h-12 rounded-2xl bg-purple-100 dark:bg-purple-600/20 border border-purple-200 dark:border-purple-500/30 flex items-center justify-center text-purple-600 dark:text-purple-300 shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-xs text-gray-400 uppercase tracking-wider font-semibold block">
+                    <span className="text-xs text-slate-500 dark:text-gray-400 uppercase tracking-wider font-semibold block">
                       Direct Email
                     </span>
                     <a
                       href="mailto:faraz.ahmed4723@gmail.com"
                       id="contact-page-email-link"
-                      className="text-sm sm:text-base font-semibold text-white hover:text-purple-300 transition-colors"
+                      className="text-sm sm:text-base font-semibold text-slate-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
                     >
                       faraz.ahmed4723@gmail.com
                     </a>
-                    <p className="text-xs text-gray-400 mt-0.5">
+                    <p className="text-xs text-slate-500 dark:text-gray-400 mt-0.5">
                       Monitored daily with 24-hour turnaround.
                     </p>
                   </div>
@@ -222,22 +222,22 @@ export default function ContactPageClient() {
 
                 {/* LinkedIn Channel */}
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-[#0A66C2]/20 border border-[#0A66C2]/30 flex items-center justify-center text-[#0A66C2] shrink-0 font-bold text-lg">
+                  <div className="w-12 h-12 rounded-2xl bg-[#0A66C2]/15 border border-[#0A66C2]/30 flex items-center justify-center text-[#0A66C2] shrink-0 font-bold text-lg">
                     in
                   </div>
                   <div>
-                    <span className="text-xs text-gray-400 uppercase tracking-wider font-semibold block">
+                    <span className="text-xs text-slate-500 dark:text-gray-400 uppercase tracking-wider font-semibold block">
                       LinkedIn
                     </span>
                     <a
                       href="https://www.linkedin.com/in/faraz-ahmad-b11b36437/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm sm:text-base font-semibold text-white hover:text-cyan-300 transition-colors"
+                      className="text-sm sm:text-base font-semibold text-slate-900 dark:text-white hover:text-cyan-600 dark:hover:text-cyan-300 transition-colors"
                     >
                       Faraz Ahmad on LinkedIn
                     </a>
-                    <p className="text-xs text-gray-400 mt-0.5">
+                    <p className="text-xs text-slate-500 dark:text-gray-400 mt-0.5">
                       Professional profile & network.
                     </p>
                   </div>
@@ -245,22 +245,22 @@ export default function ContactPageClient() {
 
                 {/* Instagram Channel */}
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#833AB4]/20 via-[#FD1D1D]/20 to-[#F77737]/20 border border-[#E1306C]/30 flex items-center justify-center text-[#E1306C] shrink-0 font-bold text-sm">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#833AB4]/15 via-[#FD1D1D]/15 to-[#F77737]/15 border border-[#E1306C]/30 flex items-center justify-center text-[#E1306C] shrink-0 font-bold text-sm">
                     IG
                   </div>
                   <div>
-                    <span className="text-xs text-gray-400 uppercase tracking-wider font-semibold block">
+                    <span className="text-xs text-slate-500 dark:text-gray-400 uppercase tracking-wider font-semibold block">
                       Instagram
                     </span>
                     <a
                       href="https://www.instagram.com/aibyfaraz"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm sm:text-base font-semibold text-white hover:text-rose-300 transition-colors"
+                      className="text-sm sm:text-base font-semibold text-slate-900 dark:text-white hover:text-rose-600 dark:hover:text-rose-300 transition-colors"
                     >
                       @aibyfaraz
                     </a>
-                    <p className="text-xs text-gray-400 mt-0.5">
+                    <p className="text-xs text-slate-500 dark:text-gray-400 mt-0.5">
                       Updates, design concepts & AI projects.
                     </p>
                   </div>
@@ -268,11 +268,11 @@ export default function ContactPageClient() {
 
                 {/* WhatsApp Item */}
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center text-emerald-300 shrink-0">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-600 dark:text-emerald-300 shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-xs text-gray-400 uppercase tracking-wider font-semibold block">
+                    <span className="text-xs text-slate-500 dark:text-gray-400 uppercase tracking-wider font-semibold block">
                       WhatsApp Direct
                     </span>
                     <a
@@ -280,11 +280,11 @@ export default function ContactPageClient() {
                       target="_blank"
                       rel="noopener noreferrer"
                       id="contact-page-whatsapp-link"
-                      className="text-sm sm:text-base font-semibold text-white hover:text-emerald-300 transition-colors"
+                      className="text-sm sm:text-base font-semibold text-slate-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-300 transition-colors"
                     >
                       +1 (437) 434-8789
                     </a>
-                    <p className="text-xs text-gray-400 mt-0.5">
+                    <p className="text-xs text-slate-500 dark:text-gray-400 mt-0.5">
                       Fastest channel for real-time discussions.
                     </p>
                   </div>
@@ -292,17 +292,17 @@ export default function ContactPageClient() {
 
                 {/* Hours & Location */}
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center text-indigo-300 shrink-0">
+                  <div className="w-12 h-12 rounded-2xl bg-indigo-500/15 border border-indigo-400/30 flex items-center justify-center text-indigo-600 dark:text-indigo-300 shrink-0">
                     <Clock className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-xs text-gray-400 uppercase tracking-wider font-semibold block">
+                    <span className="text-xs text-slate-500 dark:text-gray-400 uppercase tracking-wider font-semibold block">
                       Availability
                     </span>
-                    <span className="text-sm font-semibold text-white">
+                    <span className="text-sm font-semibold text-slate-900 dark:text-white">
                       Monday – Saturday (EST / Worldwide)
                     </span>
-                    <p className="text-xs text-gray-400 mt-0.5">
+                    <p className="text-xs text-slate-500 dark:text-gray-400 mt-0.5">
                       Working with clients across North America and internationally.
                     </p>
                   </div>
@@ -310,13 +310,13 @@ export default function ContactPageClient() {
               </div>
 
               {/* 1-Click WhatsApp Direct Dispatch */}
-              <div className="mt-8 pt-6 border-t border-white/[0.08]">
+              <div className="mt-8 pt-6 border-t border-slate-200 dark:border-white/[0.08]">
                 <a
                   href={whatsappDirectUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   id="contact-open-whatsapp-btn"
-                  className="w-full py-3.5 px-6 rounded-2xl bg-emerald-600/20 border border-emerald-500/40 text-emerald-300 font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 hover:bg-emerald-600/30 transition-all shadow-lg"
+                  className="w-full py-3.5 px-6 rounded-2xl bg-emerald-50 dark:bg-emerald-600/20 border border-emerald-300 dark:border-emerald-500/40 text-emerald-700 dark:text-emerald-300 font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 hover:bg-emerald-100 dark:hover:bg-emerald-600/30 transition-all shadow-sm"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>Start Live WhatsApp Chat Now</span>
@@ -325,13 +325,13 @@ export default function ContactPageClient() {
             </div>
 
             {/* Quality Commitment Box */}
-            <div className="p-6 rounded-2xl glass-panel border border-white/10 flex items-start gap-3.5">
-              <ShieldCheck className="w-6 h-6 text-purple-400 shrink-0 mt-0.5" />
+            <div className="p-6 rounded-2xl glass-panel border border-slate-200/90 dark:border-white/10 flex items-start gap-3.5 shadow-sm">
+              <ShieldCheck className="w-6 h-6 text-purple-600 dark:text-purple-400 shrink-0 mt-0.5" />
               <div>
-                <h3 className="font-heading text-sm font-bold text-white">
+                <h3 className="font-heading text-sm font-bold text-slate-900 dark:text-white">
                   Owner-Led Project Commitment
                 </h3>
-                <p className="text-xs text-gray-400 mt-1 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-gray-400 mt-1 leading-relaxed">
                   Every inquiry is encrypted in transit, stored securely in our Supabase backend, and reviewed personally by Faraz Ahmed within 24 hours.
                 </p>
               </div>
@@ -340,11 +340,11 @@ export default function ContactPageClient() {
 
           {/* Right Column: Live Supabase Project Inquiry Form */}
           <div className="lg:col-span-7">
-            <div className="p-8 sm:p-10 rounded-3xl glass-card border border-purple-500/30 shadow-2xl shadow-purple-950/20">
-              <h2 className="font-heading text-2xl font-bold text-white mb-2">
+            <div className="p-8 sm:p-10 rounded-3xl glass-card border border-purple-200 dark:border-purple-500/30 shadow-xl dark:shadow-2xl shadow-slate-200/50 dark:shadow-purple-950/20">
+              <h2 className="font-heading text-2xl font-bold text-slate-900 dark:text-white mb-2">
                 Project Inquiry Form
               </h2>
-              <p className="text-xs sm:text-sm text-gray-400 mb-8">
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-gray-400 mb-8">
                 Fill out the specifications below and Faraz will respond within 24 hours.
               </p>
 
@@ -353,18 +353,18 @@ export default function ContactPageClient() {
                 <div
                   className={`p-5 rounded-2xl mb-8 flex items-start gap-3.5 text-xs sm:text-sm leading-relaxed ${
                     isLiveDelivery
-                      ? "bg-emerald-950/40 border border-emerald-500/40 text-emerald-200"
-                      : "bg-purple-950/50 border border-purple-500/40 text-purple-200"
+                      ? "bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-500/40 text-emerald-800 dark:text-emerald-200"
+                      : "bg-purple-50 dark:bg-purple-950/50 border border-purple-300 dark:border-purple-500/40 text-purple-800 dark:text-purple-200"
                   }`}
                 >
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                   <div>
                     <div className="flex flex-wrap items-center gap-2 mb-1">
-                      <strong className="font-semibold text-white">
+                      <strong className="font-semibold text-slate-900 dark:text-white">
                         Inquiry Saved to Live Backend!
                       </strong>
                       {referenceCode && (
-                        <span className="px-2 py-0.5 rounded-md bg-emerald-500/20 border border-emerald-400/30 text-[11px] font-mono text-emerald-300">
+                        <span className="px-2 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-500/20 border border-emerald-300 dark:border-emerald-400/30 text-[11px] font-mono text-emerald-700 dark:text-emerald-300">
                           Ref: {referenceCode}
                         </span>
                       )}
@@ -375,8 +375,8 @@ export default function ContactPageClient() {
               )}
 
               {status === "error" && (
-                <div className="p-4 rounded-xl bg-rose-950/40 border border-rose-500/40 text-rose-200 text-xs sm:text-sm mb-6 flex items-start gap-3">
-                  <AlertCircle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
+                <div className="p-4 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-300 dark:border-rose-500/40 text-rose-800 dark:text-rose-200 text-xs sm:text-sm mb-6 flex items-start gap-3">
+                  <AlertCircle className="w-5 h-5 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
                   <span>{responseMessage}</span>
                 </div>
               )}
@@ -404,7 +404,7 @@ export default function ContactPageClient() {
                   <div>
                     <label
                       htmlFor="form-name"
-                      className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2"
+                      className="block text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-2"
                     >
                       Full Name *
                     </label>
@@ -416,7 +416,7 @@ export default function ContactPageClient() {
                       onChange={handleChange}
                       placeholder="e.g. Johnathan Davis"
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
                     />
                   </div>
 
@@ -424,7 +424,7 @@ export default function ContactPageClient() {
                   <div>
                     <label
                       htmlFor="form-email"
-                      className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2"
+                      className="block text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-2"
                     >
                       Email Address *
                     </label>
@@ -436,7 +436,7 @@ export default function ContactPageClient() {
                       onChange={handleChange}
                       placeholder="e.g. client@company.com"
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
                     />
                   </div>
                 </div>
@@ -446,7 +446,7 @@ export default function ContactPageClient() {
                   <div>
                     <label
                       htmlFor="form-phone"
-                      className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2"
+                      className="block text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-2"
                     >
                       WhatsApp / Phone (Optional)
                     </label>
@@ -457,7 +457,7 @@ export default function ContactPageClient() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="e.g. +1 (437) 555-0199"
-                      className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
                     />
                   </div>
 
@@ -465,7 +465,7 @@ export default function ContactPageClient() {
                   <div>
                     <label
                       htmlFor="form-budget"
-                      className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2"
+                      className="block text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-2"
                     >
                       Estimated Budget (Optional)
                     </label>
@@ -476,7 +476,7 @@ export default function ContactPageClient() {
                       value={formData.budget}
                       onChange={handleChange}
                       placeholder="e.g. $1,500 - $3,500 CAD"
-                      className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
                     />
                   </div>
                 </div>
@@ -485,7 +485,7 @@ export default function ContactPageClient() {
                 <div>
                   <label
                     htmlFor="form-service"
-                    className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2"
+                    className="block text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-2"
                   >
                     Required Service *
                   </label>
@@ -494,7 +494,7 @@ export default function ContactPageClient() {
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-[#090d1f] border border-white/10 text-white text-sm focus:outline-none focus:border-purple-500 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-[#090d1f] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-purple-500 transition-colors"
                   >
                     {serviceOptions.map((opt) => (
                       <option key={opt.value} value={opt.value}>
@@ -508,7 +508,7 @@ export default function ContactPageClient() {
                 <div>
                   <label
                     htmlFor="form-description"
-                    className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2"
+                    className="block text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-2"
                   >
                     Project Description *
                   </label>
@@ -520,7 +520,7 @@ export default function ContactPageClient() {
                     onChange={handleChange}
                     placeholder="Tell Faraz about your goals, existing website URL (if any), desired features, and expected timeline..."
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors resize-none"
                   />
                 </div>
 

@@ -140,21 +140,21 @@ export default function CustomerReviewSection() {
 
       <div className="max-w-4xl mx-auto relative z-10">
         <ScrollReveal variant="blur-zoom" className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4">
-            <MessageSquarePlus className="w-3.5 h-3.5 text-amber-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-500/30 text-purple-700 dark:text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4 shadow-sm">
+            <MessageSquarePlus className="w-3.5 h-3.5 text-purple-600 dark:text-amber-400" />
             <span>Share Your Feedback</span>
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-3">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
             Worked With Faraz?{" "}
             <span className="gradient-text-purple">Write a Review</span>
           </h2>
-          <p className="text-gray-400 text-xs sm:text-base leading-relaxed">
+          <p className="text-slate-600 dark:text-gray-400 text-xs sm:text-base leading-relaxed">
             Your feedback helps businesses partner with confidence. Share your project experience and publish your review live!
           </p>
         </ScrollReveal>
 
         <ScrollReveal variant="zoom-pop">
-          <div className="rounded-3xl p-6 sm:p-10 glass-card border border-purple-500/30 bg-gradient-to-b from-[#121633]/95 via-[#0d1026]/95 to-[#080b19]/95 shadow-2xl shadow-purple-950/30">
+          <div className="rounded-3xl p-6 sm:p-10 glass-card border border-purple-200 dark:border-purple-500/30 bg-white dark:bg-gradient-to-b dark:from-[#121633]/95 dark:via-[#0d1026]/95 dark:to-[#080b19]/95 shadow-xl dark:shadow-2xl dark:shadow-purple-950/30">
             {/* Live Success Celebration + Instant Review Card Preview */}
             <AnimatePresence>
               {status === "success" && (
@@ -228,12 +228,12 @@ export default function CustomerReviewSection() {
               />
 
               {/* Interactive 5-Star Rating Picker */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-black/30 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 dark:bg-black/30 border border-slate-200 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                  <span className="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1">
+                  <span className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-gray-300 mb-1">
                     Your Overall Rating *
                   </span>
-                  <span className="text-xs sm:text-sm font-semibold text-amber-300">
+                  <span className="text-xs sm:text-sm font-semibold text-amber-500 dark:text-amber-300">
                     {ratingLabels[activeStarValue]}
                   </span>
                 </div>
@@ -257,8 +257,8 @@ export default function CustomerReviewSection() {
                         aria-label={`Rate ${star} out of 5 stars`}
                         className={`p-1.5 rounded-xl transition-colors cursor-pointer focus:outline-none ${
                           isFilled
-                            ? "bg-amber-400/15 text-amber-400"
-                            : "bg-white/5 text-gray-500 hover:text-amber-300"
+                            ? "bg-amber-400/20 text-amber-500 dark:text-amber-400"
+                            : "bg-slate-200/60 dark:bg-white/5 text-slate-400 dark:text-gray-500 hover:text-amber-500 dark:hover:text-amber-300"
                         }`}
                       >
                         <Star
@@ -279,7 +279,7 @@ export default function CustomerReviewSection() {
                 <div>
                   <label
                     htmlFor="review-clientName"
-                    className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2"
+                    className="block text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-2"
                   >
                     Your Name *
                   </label>
@@ -291,14 +291,14 @@ export default function CustomerReviewSection() {
                     onChange={handleChange}
                     placeholder="e.g. Bilal Khan"
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="review-role"
-                    className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2"
+                    className="block text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-2"
                   >
                     Your Role / Title (Optional)
                   </label>
@@ -309,7 +309,7 @@ export default function CustomerReviewSection() {
                     value={formData.role}
                     onChange={handleChange}
                     placeholder="e.g. Founder & CEO"
-                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
                   />
                 </div>
               </div>
@@ -319,7 +319,7 @@ export default function CustomerReviewSection() {
                 <div>
                   <label
                     htmlFor="review-company"
-                    className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2"
+                    className="block text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-2"
                   >
                     Company / Business Name *
                   </label>
@@ -331,14 +331,14 @@ export default function CustomerReviewSection() {
                     onChange={handleChange}
                     placeholder="e.g. STN Trucking Ltd."
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="review-companyUrl"
-                    className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2"
+                    className="block text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-2"
                   >
                     Company Website (Optional)
                   </label>
@@ -349,7 +349,7 @@ export default function CustomerReviewSection() {
                     value={formData.companyUrl}
                     onChange={handleChange}
                     placeholder="e.g. https://yourwebsite.com"
-                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
                   />
                 </div>
               </div>
@@ -359,7 +359,7 @@ export default function CustomerReviewSection() {
                 <div>
                   <label
                     htmlFor="review-projectType"
-                    className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2"
+                    className="block text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-2"
                   >
                     Project / Service *
                   </label>
@@ -368,7 +368,7 @@ export default function CustomerReviewSection() {
                     name="projectType"
                     value={formData.projectType}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-[#090d1f] border border-white/10 text-white text-sm focus:outline-none focus:border-purple-500 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-[#090d1f] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-purple-500 transition-colors"
                   >
                     {projectTypeOptions.map((opt) => (
                       <option key={opt} value={opt}>
@@ -381,7 +381,7 @@ export default function CustomerReviewSection() {
                 <div>
                   <label
                     htmlFor="review-highlight"
-                    className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2"
+                    className="block text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-2"
                   >
                     Key Result / Highlight (Optional)
                   </label>
@@ -392,7 +392,7 @@ export default function CustomerReviewSection() {
                     value={formData.highlight}
                     onChange={handleChange}
                     placeholder="e.g. Fast delivery & 2x more online bookings"
-                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
                   />
                 </div>
               </div>
@@ -401,7 +401,7 @@ export default function CustomerReviewSection() {
               <div>
                 <label
                   htmlFor="review-quote"
-                  className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2"
+                  className="block text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-2"
                 >
                   Your Review *
                 </label>
@@ -413,7 +413,7 @@ export default function CustomerReviewSection() {
                   onChange={handleChange}
                   placeholder="Share how working with Faraz helped your website, store, or AI automation project..."
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors resize-none"
                 />
               </div>
 

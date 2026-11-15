@@ -115,7 +115,7 @@ export default function TechProficiencySection({
       className={
         embedded
           ? "relative mb-20"
-          : "relative py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0a0e24] via-[#0d1332] to-[#0a0e24] overflow-hidden"
+          : "relative py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-transparent dark:bg-gradient-to-b dark:from-[#0a0e24] dark:via-[#0d1332] dark:to-[#0a0e24] overflow-hidden transition-colors duration-300"
       }
     >
       {/* Subtle ambient background glow */}
@@ -128,11 +128,11 @@ export default function TechProficiencySection({
         <ScrollReveal variant="pop-up">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 sm:gap-6 mb-7 sm:mb-10">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-3">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-500/30 text-purple-700 dark:text-purple-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-3">
                 <Sparkles className="w-3.5 h-3.5 shrink-0" />
                 <span>Technical Proficiency &amp; Stack</span>
               </div>
-              <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+              <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
                 Core <span className="gradient-text-purple">Engineering Mastery</span>
               </h2>
             </div>
@@ -206,21 +206,21 @@ export default function TechProficiencySection({
 
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center justify-between gap-2">
-                        <h3 className="font-heading text-lg sm:text-2xl lg:text-[26px] font-extrabold text-white tracking-tight leading-snug">
+                        <h3 className="font-heading text-lg sm:text-2xl lg:text-[26px] font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug">
                           {activeCategory.title}
                         </h3>
-                        <span className="tech-count-pill sm:hidden px-2.5 py-1 rounded-full bg-purple-950/60 border border-purple-500/30 text-purple-300 text-[10px] font-bold tracking-wide shrink-0">
+                        <span className="tech-count-pill sm:hidden px-2.5 py-1 rounded-full bg-purple-100 dark:bg-purple-950/60 border border-purple-300 dark:border-purple-500/30 text-purple-700 dark:text-purple-300 text-[10px] font-bold tracking-wide shrink-0">
                           {activeCategory.countLabel}
                         </span>
                       </div>
-                      <p className="text-xs sm:text-sm text-gray-400 mt-1 leading-relaxed max-w-2xl">
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-gray-400 mt-1 leading-relaxed max-w-2xl">
                         {activeCategory.subtitle}
                       </p>
                     </div>
                   </div>
 
                   {/* Right Pill: "6 Core Techs" (sm+) */}
-                  <div className="tech-count-pill hidden sm:inline-flex self-center px-4 py-1.5 rounded-full bg-purple-950/60 border border-purple-500/30 text-purple-300 text-xs font-bold tracking-wide shrink-0">
+                  <div className="tech-count-pill hidden sm:inline-flex self-center px-4 py-1.5 rounded-full bg-purple-100 dark:bg-purple-950/60 border border-purple-300 dark:border-purple-500/30 text-purple-700 dark:text-purple-300 text-xs font-bold tracking-wide shrink-0">
                     {activeCategory.countLabel}
                   </div>
                 </div>
@@ -234,18 +234,18 @@ export default function TechProficiencySection({
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.35, delay: idx * 0.05 }}
-                      className="tech-skill-card group rounded-2xl p-4 sm:p-6 bg-[#151a3a]/75 border border-white/10 hover:border-purple-500/40 transition-all duration-300 flex flex-col justify-between"
+                      className="tech-skill-card group rounded-2xl p-4 sm:p-6 bg-white dark:bg-[#151a3a]/75 border border-slate-200/90 dark:border-white/10 hover:border-purple-500/40 transition-all duration-300 flex flex-col justify-between shadow-sm dark:shadow-none"
                     >
                       {/* Top Row: Check Icon + Skill Name + Core Badge */}
                       <div className="flex items-start justify-between gap-3 mb-3.5 sm:mb-6">
                         <div className="flex items-start gap-2.5">
                           <CheckCircle2 className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#8B5CF6] mt-0.5 shrink-0" />
-                          <h4 className="font-heading text-sm sm:text-[15px] font-bold text-white leading-snug">
+                          <h4 className="font-heading text-sm sm:text-[15px] font-bold text-slate-900 dark:text-white leading-snug">
                             {skill.name}
                           </h4>
                         </div>
 
-                        <span className="tech-core-badge px-2.5 py-0.5 rounded-md bg-amber-500/15 border border-amber-400/30 text-amber-300 text-[11px] font-mono font-bold tracking-tight shrink-0">
+                        <span className="tech-core-badge px-2.5 py-0.5 rounded-md bg-amber-500/15 border border-amber-400/30 text-amber-700 dark:text-amber-300 text-[11px] font-mono font-bold tracking-tight shrink-0">
                           {skill.tag}
                         </span>
                       </div>
@@ -253,7 +253,7 @@ export default function TechProficiencySection({
                       {/* Bottom Row: PROFICIENCY Label + % + Multi-Tone Progress Bar */}
                       <div>
                         <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-bold uppercase tracking-wider mb-2">
-                          <span className="text-[#94A3B8]">PROFICIENCY</span>
+                          <span className="text-slate-500 dark:text-[#94A3B8]">PROFICIENCY</span>
                           <span className="text-[#8B5CF6] tabular-nums">
                             {skill.proficiency}%
                           </span>

@@ -7,7 +7,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#050711] border-t border-white/[0.08] pt-16 pb-12 overflow-hidden">
+    <footer className="relative bg-slate-100/80 dark:bg-[#050711] border-t border-slate-200 dark:border-white/[0.08] pt-16 pb-12 overflow-hidden">
       {/* Ambient background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-purple-900/10 blur-3xl pointer-events-none" />
 
@@ -28,34 +28,34 @@ export default function Footer() {
                 </div>
               </div>
               <div>
-                <span className="font-heading font-bold text-lg text-white">AI by Faraz</span>
-                <p className="text-[10px] tracking-widest uppercase font-semibold text-gray-400">
+                <span className="font-heading font-bold text-lg text-slate-900 dark:text-white">AI by Faraz</span>
+                <p className="text-[10px] tracking-widest uppercase font-semibold text-slate-500 dark:text-gray-400">
                   FARAZ AHMED
                 </p>
               </div>
             </Link>
 
-            <p className="text-sm text-gray-400 max-w-sm leading-relaxed">
+            <p className="text-sm text-slate-600 dark:text-gray-400 max-w-sm leading-relaxed">
               Building intelligent websites, custom AI chatbots, business automation systems, and high-performance modern web applications tailored for real-world growth.
             </p>
 
-            <div className="flex flex-col gap-2 pt-2 text-xs text-gray-300">
+            <div className="flex flex-col gap-2 pt-2 text-xs text-slate-600 dark:text-gray-300">
               <a
                 href="mailto:faraz.ahmed4723@gmail.com"
-                className="flex items-center gap-2 hover:text-purple-300 transition-colors"
+                className="flex items-center gap-2 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
                 id="footer-email-link"
               >
-                <Mail className="w-4 h-4 text-purple-400" />
+                <Mail className="w-4 h-4 text-purple-600 dark:text-purple-400" />
                 <span>faraz.ahmed4723@gmail.com</span>
               </a>
               <a
                 href="https://wa.me/14374348789"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-emerald-300 transition-colors"
+                className="flex items-center gap-2 hover:text-emerald-600 dark:hover:text-emerald-300 transition-colors"
                 id="footer-whatsapp-link"
               >
-                <Phone className="w-4 h-4 text-emerald-400" />
+                <Phone className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 <span>WhatsApp: +1 (437) 434-8789</span>
               </a>
             </div>
@@ -101,42 +101,42 @@ export default function Footer() {
 
           {/* Column 2: Navigation */}
           <div>
-            <h4 className="font-heading text-sm font-semibold text-white uppercase tracking-wider mb-4">
+            <h4 className="font-heading text-sm font-semibold text-slate-900 dark:text-white uppercase tracking-wider mb-4">
               Navigation
             </h4>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-gray-400">
+            <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-gray-400">
               <li>
-                <Link href="/" className="hover:text-purple-300 transition-colors">
+                <Link href="/" className="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-purple-300 transition-colors">
+                <Link href="/about" className="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">
                   About Faraz
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-purple-300 transition-colors">
+                <Link href="/services" className="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">
                   All Services
                 </Link>
               </li>
               <li>
-                <Link href="/portfolio" className="hover:text-purple-300 transition-colors">
+                <Link href="/portfolio" className="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">
                   Client Portfolio
                 </Link>
               </li>
               <li>
-                <Link href="/process" className="hover:text-purple-300 transition-colors">
+                <Link href="/process" className="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">
                   Development Process
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-purple-300 transition-colors">
+                <Link href="/contact" className="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">
                   Contact & Inquiries
                 </Link>
               </li>
               <li>
-                <Link href="/#write-review" className="text-amber-300/90 hover:text-amber-200 transition-colors font-medium">
+                <Link href="/#write-review" className="text-amber-600 dark:text-amber-300/90 hover:text-amber-700 dark:hover:text-amber-200 transition-colors font-medium">
                   ★ Write a Review
                 </Link>
               </li>
@@ -145,14 +145,14 @@ export default function Footer() {
 
           {/* Column 3: The 6 Services */}
           <div>
-            <h4 className="font-heading text-sm font-semibold text-white uppercase tracking-wider mb-4">
+            <h4 className="font-heading text-sm font-semibold text-slate-900 dark:text-white uppercase tracking-wider mb-4">
               Services
             </h4>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-gray-400">
+            <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-gray-400">
               <li>
                 <Link
                   href="/video-editing"
-                  className="hover:text-purple-300 transition-colors flex items-center gap-1 group text-purple-300 font-medium"
+                  className="hover:text-purple-600 dark:hover:text-purple-300 transition-colors flex items-center gap-1 group text-purple-700 dark:text-purple-300 font-medium"
                 >
                   <span>Video Editing &amp; Reels 🎬</span>
                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -161,7 +161,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services/ai-automation"
-                  className="hover:text-purple-300 transition-colors flex items-center gap-1 group"
+                  className="hover:text-purple-600 dark:hover:text-purple-300 transition-colors flex items-center gap-1 group"
                 >
                   <span>AI Automation</span>
                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -170,7 +170,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services/ai-chatbots"
-                  className="hover:text-purple-300 transition-colors flex items-center gap-1 group"
+                  className="hover:text-purple-600 dark:hover:text-purple-300 transition-colors flex items-center gap-1 group"
                 >
                   <span>AI Chatbots</span>
                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -179,7 +179,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services/website-development"
-                  className="hover:text-purple-300 transition-colors flex items-center gap-1 group"
+                  className="hover:text-purple-600 dark:hover:text-purple-300 transition-colors flex items-center gap-1 group"
                 >
                   <span>Website Development</span>
                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -188,7 +188,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services/ai-agents"
-                  className="hover:text-purple-300 transition-colors flex items-center gap-1 group"
+                  className="hover:text-purple-600 dark:hover:text-purple-300 transition-colors flex items-center gap-1 group"
                 >
                   <span>AI Agents</span>
                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -197,7 +197,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services/ecommerce-solutions"
-                  className="hover:text-purple-300 transition-colors flex items-center gap-1 group"
+                  className="hover:text-purple-600 dark:hover:text-purple-300 transition-colors flex items-center gap-1 group"
                 >
                   <span>E-commerce Solutions</span>
                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -206,7 +206,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services/custom-software-development"
-                  className="hover:text-purple-300 transition-colors flex items-center gap-1 group"
+                  className="hover:text-purple-600 dark:hover:text-purple-300 transition-colors flex items-center gap-1 group"
                 >
                   <span>Custom Software</span>
                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -215,7 +215,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services/video-editing"
-                  className="hover:text-purple-300 transition-colors flex items-center gap-1 group"
+                  className="hover:text-purple-600 dark:hover:text-purple-300 transition-colors flex items-center gap-1 group"
                 >
                   <span>Video Editing</span>
                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -226,28 +226,28 @@ export default function Footer() {
 
           {/* Column 4: Quick CTA Box */}
           <div className="flex flex-col gap-3">
-            <h4 className="font-heading text-sm font-semibold text-white uppercase tracking-wider mb-2">
+            <h4 className="font-heading text-sm font-semibold text-slate-900 dark:text-white uppercase tracking-wider mb-2">
               Start A Project
             </h4>
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-slate-500 dark:text-gray-400">
               Have an upcoming project or need advice on website development and AI automation?
             </p>
             <Link
               href="/contact"
-              className="mt-2 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-purple-600/20 border border-purple-500/40 text-purple-300 text-xs font-semibold hover:bg-purple-600/30 transition-all shadow-lg shadow-purple-950/40"
+              className="mt-2 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-purple-100 dark:bg-purple-600/20 border border-purple-300 dark:border-purple-500/40 text-purple-800 dark:text-purple-300 text-xs font-semibold hover:bg-purple-200 dark:hover:bg-purple-600/30 transition-all shadow-md dark:shadow-purple-950/40"
             >
               <MessageSquare className="w-3.5 h-3.5" />
               <span>Request Free Consultation</span>
             </Link>
-            <div className="flex items-center gap-2 text-[11px] text-gray-500 mt-2">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+            <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-gray-500 mt-2">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400" />
               <span>Independent Developer | 100% Quality Guaranteed</span>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar: Copyright & Legal */}
-        <div className="pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+        <div className="pt-8 border-t border-slate-200 dark:border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-gray-500">
           <p>© {currentYear} AI by Faraz. All rights reserved. Owned by Faraz Ahmed.</p>
           <div className="flex items-center gap-6">
             <Link href="/privacy" className="hover:text-gray-300 transition-colors">

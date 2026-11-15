@@ -41,15 +41,15 @@ export default function HeroSection() {
         {/* Left Column: Heading, Subtitle, CTAs, Stats */}
         <div className="lg:col-span-6 flex flex-col justify-center items-center text-center lg:items-start lg:text-left pt-2 sm:pt-0">
           {/* Top Pill Badge (Matches Pic 1) */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#121634]/80 border border-purple-500/30 backdrop-blur-md w-fit mb-4 sm:mb-5 shadow-[0_0_20px_rgba(139,92,246,0.18)]">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-            <span className="text-xs sm:text-sm font-medium text-purple-200 tracking-wide">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100/90 dark:bg-[#121634]/80 border border-purple-300 dark:border-purple-500/30 backdrop-blur-md w-fit mb-4 sm:mb-5 shadow-sm dark:shadow-[0_0_20px_rgba(139,92,246,0.18)]">
+            <Sparkles className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400 shrink-0" />
+            <span className="text-xs sm:text-sm font-semibold text-purple-800 dark:text-purple-200 tracking-wide">
               Full Stack Web • AI Automation • Video Editing
             </span>
           </div>
 
           {/* Main Headline (Unified across mobile & desktop to eliminate hydration divergence) */}
-          <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.18] sm:leading-[1.1] tracking-tight mb-4 sm:mb-5 max-w-2xl">
+          <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-[1.18] sm:leading-[1.1] tracking-tight mb-4 sm:mb-5 max-w-2xl">
             <span className="block">Building Intelligent</span>
             <span className="block bg-gradient-to-r from-[#A855F7] via-[#8B5CF6] to-[#C084FC] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(168,85,247,0.35)]">
               Websites &amp; AI-Powered
@@ -58,7 +58,7 @@ export default function HeroSection() {
           </h1>
 
           {/* Subheading (Matches Pic 1) */}
-          <p className="text-xs sm:text-base lg:text-lg text-[#B9B9C9] leading-relaxed mb-6 sm:mb-8 max-w-xl font-normal">
+          <p className="text-xs sm:text-base lg:text-lg text-slate-600 dark:text-[#B9B9C9] leading-relaxed mb-6 sm:mb-8 max-w-xl font-normal">
             Harnessing innovative React web apps, custom WordPress engineering, AI automation &amp; chatbots, and viral video editing to turn your vision into high-converting digital realities.
           </p>
 
@@ -79,14 +79,14 @@ export default function HeroSection() {
               type="button"
               onClick={() => setIsDmModalOpen(true)}
               id="hero-hire-me-now-btn"
-              className="px-3 sm:px-6 py-3 sm:py-3.5 rounded-xl sm:rounded-full bg-white/10 hover:bg-white/15 border border-white/20 text-white font-medium text-xs sm:text-base flex items-center justify-center gap-1.5 sm:gap-2 backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 shadow-md cursor-pointer group"
+              className="px-3 sm:px-6 py-3 sm:py-3.5 rounded-xl sm:rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-white/10 dark:hover:bg-white/15 border border-slate-300 dark:border-white/20 text-slate-900 dark:text-white font-medium text-xs sm:text-base flex items-center justify-center gap-1.5 sm:gap-2 backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 shadow-sm dark:shadow-md cursor-pointer group"
               title="Hire & DM Faraz on WhatsApp, Instagram or LinkedIn"
             >
               <span>Hire Me Now</span>
-              <span className="text-amber-400">⚡</span>
+              <span className="text-amber-500 dark:text-amber-400">⚡</span>
 
               {/* Verified Mini Logos for WhatsApp, Instagram, LinkedIn */}
-              <span className="flex items-center gap-1 pl-1 sm:pl-1.5 border-l border-white/20">
+              <span className="flex items-center gap-1 pl-1 sm:pl-1.5 border-l border-slate-300 dark:border-white/20">
                 {/* WhatsApp */}
                 <span
                   title="WhatsApp"
@@ -158,10 +158,10 @@ export default function HeroSection() {
         <div className="glass-dock px-5 sm:px-10 py-4 sm:py-5 rounded-2xl sm:rounded-3xl border border-white/10 flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
           {/* Dock Label */}
           <div className="flex flex-col text-center md:text-left shrink-0">
-            <span className="font-heading font-semibold text-xs sm:text-base text-purple-200">
+            <span className="font-heading font-semibold text-xs sm:text-base text-purple-700 dark:text-purple-200">
               Technologies I Work With
             </span>
-            <span className="text-[11px] sm:text-xs text-[#94A3B8]">
+            <span className="text-[11px] sm:text-xs text-slate-500 dark:text-[#94A3B8]">
               Modern tools for modern solutions
             </span>
           </div>
