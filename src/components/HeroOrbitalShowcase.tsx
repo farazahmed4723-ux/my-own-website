@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Bot, Code2, Globe, Workflow, Film } from "lucide-react";
+import { Bot, Code2, Globe, Workflow, Film, Sparkles } from "lucide-react";
 
 interface ServiceOrbitCard {
   id: string;
@@ -29,11 +29,22 @@ interface OrbitSphere {
 
 const SERVICE_CARDS: ServiceOrbitCard[] = [
   {
+    id: "founder",
+    title: "Founder of AI by Faraz",
+    subtitle: "Based in Toronto, Canada",
+    href: "/about",
+    initialAngle: 0,
+    iconColor: "text-amber-500 dark:text-amber-400",
+    iconBg: "bg-amber-500/15",
+    iconBorder: "border-amber-500/30",
+    Icon: Sparkles,
+  },
+  {
     id: "fullstack",
     title: "Full Stack Developer",
     subtitle: "React • Next.js • APIs",
     href: "/services/website-development",
-    initialAngle: 0,
+    initialAngle: (Math.PI * 2) / 6 * 1,
     iconColor: "text-[#60A5FA]",
     iconBg: "bg-[#3B82F6]/15",
     iconBorder: "border-[#3B82F6]/30",
@@ -44,7 +55,7 @@ const SERVICE_CARDS: ServiceOrbitCard[] = [
     title: "WordPress Expert",
     subtitle: "Custom Websites • WordPress",
     href: "/services/wordpress-development",
-    initialAngle: Math.PI * 0.4,
+    initialAngle: (Math.PI * 2) / 6 * 2,
     iconColor: "text-[#38BDF8]",
     iconBg: "bg-[#0EA5E9]/15",
     iconBorder: "border-[#0EA5E9]/30",
@@ -55,7 +66,7 @@ const SERVICE_CARDS: ServiceOrbitCard[] = [
     title: "AI Automation",
     subtitle: "n8n • Make • Workflows",
     href: "/services/ai-agents",
-    initialAngle: Math.PI * 0.8,
+    initialAngle: (Math.PI * 2) / 6 * 3,
     iconColor: "text-[#C4B5FD]",
     iconBg: "bg-[#8B5CF6]/15",
     iconBorder: "border-[#8B5CF6]/30",
@@ -66,7 +77,7 @@ const SERVICE_CARDS: ServiceOrbitCard[] = [
     title: "Video Editing",
     subtitle: "Viral Reels • 3D VFX",
     href: "/video-editing",
-    initialAngle: Math.PI * 1.2,
+    initialAngle: (Math.PI * 2) / 6 * 4,
     iconColor: "text-[#F472B6]",
     iconBg: "bg-[#EC4899]/15",
     iconBorder: "border-[#EC4899]/30",
@@ -77,7 +88,7 @@ const SERVICE_CARDS: ServiceOrbitCard[] = [
     title: "AI Chatbots",
     subtitle: "Smart Bots • AI Assistants",
     href: "/services/ai-chatbots",
-    initialAngle: Math.PI * 1.6,
+    initialAngle: (Math.PI * 2) / 6 * 5,
     iconColor: "text-[#2DD4BF]",
     iconBg: "bg-[#14B8A6]/15",
     iconBorder: "border-[#14B8A6]/30",
@@ -722,6 +733,7 @@ export default function HeroOrbitalShowcase() {
       <div className="sm:hidden grid grid-cols-2 gap-2 w-full max-w-md mt-3 px-0.5 relative z-30">
         {SERVICE_CARDS.map((card) => {
           const Icon = card.Icon;
+          const isFounder = card.id === "founder";
           const isVideo = card.id === "video";
           const isChatbot = card.id === "chatbots";
 
@@ -730,7 +742,9 @@ export default function HeroOrbitalShowcase() {
               key={`mob-${card.id}`}
               href={card.href}
               className={`flex items-center gap-2 rounded-xl border backdrop-blur-md px-2.5 py-2 active:scale-[0.98] transition-transform ${
-                isChatbot
+                isFounder
+                  ? "col-span-2 justify-center border-amber-300 dark:border-amber-400/40 bg-gradient-to-r from-amber-50/90 via-purple-50/90 to-white dark:from-[#241705]/85 dark:via-[#16102E]/85 dark:to-[#0B102B]/85 shadow-[0_0_16px_rgba(245,158,11,0.2)]"
+                  : isChatbot
                   ? "col-span-2 justify-center bg-white/95 dark:bg-[#0B102B]/85 border-slate-200/90 dark:border-white/[0.11] shadow-[0_4px_14px_rgba(0,0,0,0.05)] dark:shadow-[0_8px_20px_rgba(3,6,20,0.42)]"
                   : isVideo
                   ? "border-purple-300 dark:border-purple-500/50 bg-gradient-to-r from-purple-50 to-white dark:from-[#170C2E]/90 dark:to-[#0B102B]/90 shadow-[0_0_15px_rgba(168,85,247,0.15)] dark:shadow-[0_0_15px_rgba(168,85,247,0.25)]"
@@ -745,13 +759,18 @@ export default function HeroOrbitalShowcase() {
               <span className="flex flex-col min-w-0 leading-tight">
                 <span className="font-heading text-[11px] font-semibold text-slate-900 dark:text-white truncate flex items-center gap-1">
                   <span>{card.title}</span>
+                  {isFounder && (
+                    <span className="px-1 py-0.2 rounded bg-amber-100 text-amber-800 dark:bg-amber-500/30 dark:text-amber-200 text-[8.5px] font-mono font-bold">
+                      TORONTO 🇨🇦
+                    </span>
+                  )}
                   {isVideo && (
                     <span className="px-1 py-0.2 rounded bg-purple-100 text-purple-700 dark:bg-purple-500/30 dark:text-purple-200 text-[8.5px] font-mono font-bold">
                       NEW 🎬
                     </span>
                   )}
                 </span>
-                <span className={`text-[9.5px] font-medium truncate mt-0.5 ${isVideo ? "text-purple-700 dark:text-purple-300" : "text-slate-500 dark:text-[#94A3B8]"}`}>
+                <span className={`text-[9.5px] font-medium truncate mt-0.5 ${isFounder ? "text-amber-700 dark:text-amber-300" : isVideo ? "text-purple-700 dark:text-purple-300" : "text-slate-500 dark:text-[#94A3B8]"}`}>
                   {card.subtitle}
                 </span>
               </span>

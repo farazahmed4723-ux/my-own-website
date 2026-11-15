@@ -44,7 +44,7 @@ export default function HeroSection() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100/90 dark:bg-[#121634]/80 border border-purple-300 dark:border-purple-500/30 backdrop-blur-md w-fit mb-4 sm:mb-5 shadow-sm dark:shadow-[0_0_20px_rgba(139,92,246,0.18)]">
             <Sparkles className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400 shrink-0" />
             <span className="text-xs sm:text-sm font-semibold text-purple-800 dark:text-purple-200 tracking-wide">
-              Full Stack Web • AI Automation • Video Editing
+              Based in Toronto, Canada • Founder of AI by Faraz
             </span>
           </div>
 

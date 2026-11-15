@@ -280,7 +280,7 @@ export default function AboutPreview() {
                   Faraz Ahmed
                 </h3>
                 <p className="text-xs xl:text-[13px] font-semibold text-blue-600 dark:text-[#60A5FA] mt-0.5">
-                  Full Stack Developer &amp; AI Solutions Specialist
+                  Founder of AI by Faraz • Based in Toronto, Canada
                 </p>
               </div>
             </div>
