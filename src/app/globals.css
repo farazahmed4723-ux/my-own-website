@@ -32,6 +32,20 @@ body {
   min-height: 100vh;
 }
 
+h1,
+h2,
+h3,
+h4,
+.font-heading {
+  font-family: var(--font-heading), var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.028em;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+h1 {
+  letter-spacing: -0.035em;
+}
+
 html.dark body {
   background-color: #070B1F;
 }

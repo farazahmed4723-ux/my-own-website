@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk, Caveat } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans, Caveat } from "next/font/google";
 import dynamic from "next/dynamic";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -23,9 +23,10 @@ const inter = Inter({
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-heading",
   display: "swap",
 });
 
@@ -142,7 +143,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} ${caveat.variable} font-sans bg-[#F7F8FF] dark:bg-[#070B1F] text-[#0F172A] dark:text-[#F8FAFC] antialiased selection:bg-purple-600/30 selection:text-white min-h-screen flex flex-col transition-colors duration-300 relative`}
+        className={`${inter.variable} ${plusJakartaSans.variable} ${caveat.variable} font-sans bg-[#F7F8FF] dark:bg-[#070B1F] text-[#0F172A] dark:text-[#F8FAFC] antialiased selection:bg-purple-600/30 selection:text-white min-h-screen flex flex-col transition-colors duration-300 relative`}
       >
         {/* Premium Site-wide Backdrop (aurora mesh + dot grid + film grain, GPU-cheap) */}
         <div className="premium-backdrop" aria-hidden="true">

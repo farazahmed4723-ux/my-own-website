@@ -115,8 +115,8 @@ export default function ServicesPreview() {
               <span className="text-xs font-mono font-bold tracking-widest text-[#FF8F00] uppercase block mb-2 sm:mb-3 select-none">
                 WEB DEVELOPMENT • AI AUTOMATION • VIDEO EDITING
               </span>
-              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight select-none">
-                What I Can Do For You
+              <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight select-none">
+                What I Can Do <span className="gradient-text-purple">For You</span>
               </h2>
             </div>
 
@@ -141,70 +141,74 @@ export default function ServicesPreview() {
             const isHiddenOnMobile = idx >= 6 && !showAllMobile;
 
             return (
-              <div
+              <ScrollReveal
                 key={item.id}
-                draggable={false}
-                onDragStart={(e) => e.preventDefault()}
-                style={{
-                  WebkitUserSelect: "none",
-                  userSelect: "none",
-                  WebkitTouchCallout: "none",
-                }}
-                className={`transition-all duration-300 select-none cursor-default ${
-                  isHiddenOnMobile ? "hidden sm:block" : "block"
-                }`}
+                variant="card-3d"
+                delay={(idx % 3) * 0.06}
+                className={`${isHiddenOnMobile ? "hidden sm:block" : "block"} h-full`}
               >
-                <Link
-                  href={item.id === "video-editing" ? "/video-editing" : `/services/${item.slug}`}
-                  className="block h-full"
+                <div
+                  draggable={false}
+                  onDragStart={(e) => e.preventDefault()}
+                  style={{
+                    WebkitUserSelect: "none",
+                    userSelect: "none",
+                    WebkitTouchCallout: "none",
+                  }}
+                  className="transition-all duration-300 select-none cursor-default h-full"
                 >
-                  <article
-                    draggable={false}
-                    onDragStart={(e) => e.preventDefault()}
-                    style={{
-                      WebkitUserSelect: "none",
-                      userSelect: "none",
-                      WebkitTouchCallout: "none",
-                    }}
-                    className={`rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 md:p-8 text-center border shadow-md sm:hover:shadow-2xl sm:hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center justify-center group h-full bg-white dark:bg-[#0F172A]/90 border-slate-200/90 dark:border-slate-800 select-none cursor-pointer ${
-                      item.id === "video-editing"
-                        ? "border-purple-400/60 dark:border-purple-500/50 shadow-purple-950/20"
-                        : "sm:hover:border-[#FF8F00] dark:sm:hover:border-[#FF8F00]"
-                    }`}
+                  <Link
+                    href={item.id === "video-editing" ? "/video-editing" : `/services/${item.slug}`}
+                    className="block h-full"
                   >
-                    {/* Badge for Video Editing & AI Automation */}
-                    {item.id === "video-editing" && (
-                      <span className="px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-600 dark:text-purple-300 border border-purple-500/30 text-[9px] sm:text-[10px] font-mono font-bold mb-2">
-                        🎬 Viral Reels
-                      </span>
-                    )}
-
-                    {/* Round Icon Container */}
-                    <div
+                    <article
                       draggable={false}
-                      className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border flex items-center justify-center mb-3 sm:mb-4 md:mb-6 sm:group-hover:scale-110 sm:group-hover:border-[#1E88E5] transition-all shadow-sm shrink-0 bg-slate-100 dark:bg-slate-900 border-slate-200 dark:border-slate-700 select-none pointer-events-none"
+                      onDragStart={(e) => e.preventDefault()}
+                      style={{
+                        WebkitUserSelect: "none",
+                        userSelect: "none",
+                        WebkitTouchCallout: "none",
+                      }}
+                      className={`rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 md:p-8 text-center border shadow-md sm:hover:shadow-2xl sm:hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center justify-center group h-full bg-white dark:bg-[#0F172A]/90 border-slate-200/90 dark:border-slate-800 select-none cursor-pointer ${
+                        item.id === "video-editing"
+                          ? "border-purple-400/60 dark:border-purple-500/50 shadow-purple-950/20"
+                          : "sm:hover:border-[#FF8F00] dark:sm:hover:border-[#FF8F00]"
+                      }`}
                     >
-                      <Icon className={`w-5 h-5 sm:w-6 sm:h-6 ${item.iconColor}`} />
-                    </div>
+                      {/* Badge for Video Editing & AI Automation */}
+                      {item.id === "video-editing" && (
+                        <span className="px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-600 dark:text-purple-300 border border-purple-500/30 text-[9px] sm:text-[10px] font-mono font-bold mb-2">
+                          🎬 Viral Reels
+                        </span>
+                      )}
 
-                    {/* Service Title */}
-                    <h3
-                      draggable={false}
-                      className="text-xs sm:text-base md:text-xl font-bold sm:font-extrabold mb-1.5 sm:mb-3 sm:group-hover:text-[#1E88E5] transition-colors leading-snug text-slate-900 dark:text-white select-none"
-                    >
-                      {item.title}
-                    </h3>
+                      {/* Round Icon Container */}
+                      <div
+                        draggable={false}
+                        className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border flex items-center justify-center mb-3 sm:mb-4 md:mb-6 sm:group-hover:scale-110 sm:group-hover:border-[#1E88E5] transition-all shadow-sm shrink-0 bg-slate-100 dark:bg-slate-900 border-slate-200 dark:border-slate-700 select-none pointer-events-none"
+                      >
+                        <Icon className={`w-5 h-5 sm:w-6 sm:h-6 ${item.iconColor}`} />
+                      </div>
 
-                    {/* Short Description */}
-                    <p
-                      draggable={false}
-                      className="text-[10px] sm:text-xs md:text-sm leading-tight sm:leading-relaxed max-w-xs mx-auto text-slate-600 dark:text-slate-300 select-none"
-                    >
-                      {item.description}
-                    </p>
-                  </article>
-                </Link>
-              </div>
+                      {/* Service Title */}
+                      <h3
+                        draggable={false}
+                        className="font-heading text-xs sm:text-base md:text-xl font-bold sm:font-extrabold mb-1.5 sm:mb-3 sm:group-hover:text-[#1E88E5] transition-colors leading-snug text-slate-900 dark:text-white select-none"
+                      >
+                        {item.title}
+                      </h3>
+
+                      {/* Short Description */}
+                      <p
+                        draggable={false}
+                        className="text-[10px] sm:text-xs md:text-sm leading-tight sm:leading-relaxed max-w-xs mx-auto text-slate-600 dark:text-slate-300 select-none"
+                      >
+                        {item.description}
+                      </p>
+                    </article>
+                  </Link>
+                </div>
+              </ScrollReveal>
             );
           })}
         </div>

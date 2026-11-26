@@ -49,9 +49,9 @@ export default function HeroSection() {
           </div>
 
           {/* Main Headline (Unified across mobile & desktop to eliminate hydration divergence) */}
-          <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-[1.18] sm:leading-[1.1] tracking-tight mb-4 sm:mb-5 max-w-2xl">
+          <h1 className="font-heading text-3xl sm:text-5xl lg:text-[58px] xl:text-[64px] font-extrabold text-slate-900 dark:text-white leading-[1.12] sm:leading-[1.06] tracking-[-0.035em] mb-4 sm:mb-5 max-w-2xl">
             <span className="block">Building Intelligent</span>
-            <span className="block bg-gradient-to-r from-[#A855F7] via-[#8B5CF6] to-[#C084FC] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(168,85,247,0.35)]">
+            <span className="block bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#38BDF8] dark:from-[#C084FC] dark:via-[#8B5CF6] dark:to-[#38BDF8] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(168,85,247,0.35)]">
               Websites &amp; AI-Powered
             </span>
             <span className="block">Solutions.</span>

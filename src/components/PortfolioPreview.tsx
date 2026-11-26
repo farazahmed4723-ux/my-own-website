@@ -88,7 +88,8 @@ export default function PortfolioPreview() {
         ) : (
         <>
         {/* Swipeable Projects Track (Side-by-Side sliding on Mobile, Responsive Grid on Tablet/Desktop) */}
-        <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 px-1 gap-4 sm:gap-6 no-scrollbar sm:grid sm:grid-cols-2 lg:grid-cols-3">
+        <ScrollReveal variant="pop-up" amount={0.04}>
+          <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 px-1 gap-4 sm:gap-6 no-scrollbar sm:grid sm:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project, idx) => (
             <div
               key={project.id}
@@ -224,7 +225,8 @@ export default function PortfolioPreview() {
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        </ScrollReveal>
 
         {/* Mobile Swipe Hint at Bottom */}
         <div className="sm:hidden text-center text-xs font-semibold text-slate-500 dark:text-gray-400 mt-5 flex items-center justify-center gap-1.5 animate-pulse">

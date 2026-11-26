@@ -29,7 +29,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "sans-serif"],
-        heading: ["var(--font-space-grotesk)", "sans-serif"],
+        heading: ["var(--font-heading)", "var(--font-inter)", "sans-serif"],
         script: ["var(--font-caveat)", "cursive"],
       },
       boxShadow: {

@@ -97,10 +97,10 @@ export default function Navbar() {
             </div>
           </div>
           <div className="flex flex-col">
-            <span className="font-heading font-bold text-sm sm:text-lg text-white tracking-tight group-hover:text-purple-300 transition-colors">
+            <span className="font-heading font-extrabold text-base sm:text-[19px] tracking-[-0.03em] bg-gradient-to-r from-slate-900 via-purple-800 to-indigo-900 dark:from-white dark:via-purple-100 dark:to-purple-300 bg-clip-text text-transparent group-hover:from-purple-600 group-hover:to-sky-500 dark:group-hover:from-purple-300 dark:group-hover:to-sky-300 transition-all duration-300">
               AI by Faraz
             </span>
-            <span className="text-[9px] sm:text-[10px] tracking-[0.2em] uppercase font-semibold text-[#94A3B8]">
+            <span className="font-heading text-[9px] sm:text-[10px] tracking-[0.24em] uppercase font-bold text-purple-700/80 dark:text-[#94A3B8]">
               FARAZ AHMED
             </span>
           </div>
@@ -108,7 +108,7 @@ export default function Navbar() {
 
         {/* Center Desktop Navigation Pill */}
         <nav
-          className={`hidden lg:flex items-center gap-1 xl:gap-2 px-5 py-2 rounded-full transition-all duration-300 ${
+          className={`hidden lg:flex items-center gap-1 xl:gap-1.5 px-4 py-1.5 rounded-full transition-all duration-300 ${
             isScrolled
               ? "bg-[#0D1B3E]/85 backdrop-blur-xl border border-white/10 shadow-2xl shadow-purple-950/25"
               : "bg-[#122452]/70 backdrop-blur-md border border-white/[0.1]"
@@ -127,15 +127,15 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`relative px-3.5 py-1.5 text-xs xl:text-sm font-medium transition-colors duration-200 rounded-full hover:text-white ${
-                  isActive ? "text-white" : "text-[#B9B9C9] hover:text-white"
+                className={`relative px-3.5 py-1.5 font-heading text-[13px] xl:text-[13.5px] font-semibold tracking-[-0.01em] transition-all duration-200 rounded-full hover:bg-purple-500/10 dark:hover:bg-white/[0.08] hover:text-white ${
+                  isActive ? "text-white bg-purple-500/10 dark:bg-white/[0.07]" : "text-[#B9B9C9] hover:text-white"
                 }`}
               >
                 {link.name}
                 {isActive && (
                   <motion.div
                     layoutId="activeNavIndicator"
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#8B5CF6] rounded-full shadow-[0_0_8px_#8B5CF6]"
+                    className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-4 h-[2.5px] bg-gradient-to-r from-[#8B5CF6] via-[#C084FC] to-[#38BDF8] rounded-full shadow-[0_0_10px_rgba(139,92,246,0.9)]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}

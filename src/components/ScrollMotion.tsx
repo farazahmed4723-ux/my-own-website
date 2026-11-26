@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   motion,
   useScroll,
@@ -28,48 +28,6 @@ interface ScrollRevealProps {
   hoverLift?: boolean;
 }
 
-const variantPresets: Record<
-  RevealVariant,
-  { hidden: Record<string, unknown>; visible: Record<string, unknown> }
-> = {
-  "pop-up": {
-    hidden: { opacity: 0, y: 38, scale: 0.93 },
-    visible: { opacity: 1, y: 0, scale: 1 },
-  },
-  "zoom-pop": {
-    hidden: { opacity: 0, y: 34, scale: 0.85 },
-    visible: { opacity: 1, y: 0, scale: 1 },
-  },
-  "card-3d": {
-    hidden: {
-      opacity: 0,
-      y: 42,
-      scale: 0.88,
-      rotateX: 10,
-      transformPerspective: 1100,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      rotateX: 0,
-      transformPerspective: 1100,
-    },
-  },
-  "blur-zoom": {
-    hidden: { opacity: 0, y: 26, scale: 0.91, filter: "blur(7px)" },
-    visible: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" },
-  },
-  "slide-left": {
-    hidden: { opacity: 0, x: -46, scale: 0.93 },
-    visible: { opacity: 1, x: 0, scale: 1 },
-  },
-  "slide-right": {
-    hidden: { opacity: 0, x: 46, scale: 0.93 },
-    visible: { opacity: 1, x: 0, scale: 1 },
-  },
-};
-
 /**
  * Top Viewport Glowing Scroll Progress Bar
  */
@@ -91,7 +49,11 @@ export function ScrollProgressBar() {
 }
 
 /**
- * Reusable Scroll-Triggered Pop-Up / Zoom-In / 3D Reveal Wrapper
+ * Bidirectional Scroll-Triggered Pop-Up (on scroll down) & Pop-Down (on scroll up) Wrapper
+ *
+ * Uses a viewport IntersectionObserver to detect whether an element exited
+ * above or below the viewport so re-entering from the top smoothly pops DOWN
+ * and entering from the bottom smoothly pops UP.
  */
 export function ScrollReveal({
   children,
@@ -99,28 +61,107 @@ export function ScrollReveal({
   delay = 0,
   className = "",
   once = false,
-  amount = 0.15,
+  amount = 0.06,
   hoverLift = false,
 }: ScrollRevealProps) {
   const prefersReducedMotion = useReducedMotion();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState<boolean>(true);
+  const [restEdge, setRestEdge] = useState<"bottom" | "top">("bottom");
+  const hasHydratedRef = useRef(false);
+
+  useEffect(() => {
+    if (prefersReducedMotion || typeof window === "undefined") return;
+    const el = containerRef.current;
+    if (!el) return;
+
+    // Evaluate initial viewport position without causing initial SSR flicker
+    const rect = el.getBoundingClientRect();
+    const vh = window.innerHeight || 900;
+    if (rect.top > vh * 0.96) {
+      setIsInView(false);
+      setRestEdge("bottom");
+    } else if (rect.bottom < 0) {
+      setIsInView(false);
+      setRestEdge("top");
+    } else {
+      setIsInView(true);
+    }
+    hasHydratedRef.current = true;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+            if (once) observer.unobserve(el);
+          } else if (!once) {
+            const top = entry.boundingClientRect.top;
+            const winH = window.innerHeight || 900;
+            // If element went off the top edge, rest it slightly above so scrolling UP pops it DOWN
+            setRestEdge(top < winH * 0.4 ? "top" : "bottom");
+            setIsInView(false);
+          }
+        }
+      },
+      {
+        threshold: Math.min(0.25, Math.max(0.02, amount)),
+        rootMargin: "-12px 0px -12px 0px",
+      }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [once, amount, prefersReducedMotion]);
 
   if (prefersReducedMotion) {
     return <div className={className}>{children}</div>;
   }
 
-  const preset = variantPresets[variant];
+  const hiddenY = restEdge === "top" ? -38 : 42;
+
+  const getHiddenTransform = () => {
+    switch (variant) {
+      case "zoom-pop":
+        return { opacity: 0, y: hiddenY * 0.8, scale: 0.87 };
+      case "card-3d":
+        return {
+          opacity: 0,
+          y: hiddenY,
+          scale: 0.89,
+          rotateX: restEdge === "top" ? -8 : 8,
+          transformPerspective: 1100,
+        };
+      case "blur-zoom":
+        return { opacity: 0, y: hiddenY * 0.7, scale: 0.92, filter: "blur(5px)" };
+      case "slide-left":
+        return { opacity: 0, x: -42, y: 0, scale: 0.94 };
+      case "slide-right":
+        return { opacity: 0, x: 42, y: 0, scale: 0.94 };
+      case "pop-up":
+      default:
+        return { opacity: 0, y: hiddenY, scale: 0.92 };
+    }
+  };
+
+  const visibleTransform =
+    variant === "card-3d"
+      ? { opacity: 1, y: 0, scale: 1, rotateX: 0, transformPerspective: 1100 }
+      : variant === "blur-zoom"
+      ? { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }
+      : { opacity: 1, x: 0, y: 0, scale: 1 };
 
   return (
     <motion.div
-      initial={preset.hidden as never}
-      whileInView={preset.visible as never}
-      viewport={{ once, amount, margin: "0px 0px -45px 0px" }}
+      ref={containerRef}
+      initial={false}
+      animate={(isInView ? visibleTransform : getHiddenTransform()) as never}
       transition={{
         type: "spring",
-        stiffness: 230,
-        damping: 21,
-        mass: 0.85,
-        delay,
+        stiffness: 250,
+        damping: 22,
+        mass: 0.82,
+        delay: isInView ? delay : 0,
       }}
       whileHover={
         hoverLift
@@ -139,15 +180,15 @@ export function ScrollReveal({
 }
 
 /**
- * Staggered Grid Container + Child Item for Cascading Card Pop-Up & Zoom-In Waves
+ * Staggered Grid Container + Child Item for Cascading Card Pop-Up & Pop-Down Waves
  */
 export function StaggerGrid({
   children,
   className = "",
-  stagger = 0.085,
+  stagger = 0.075,
   staggerDelay,
   once = false,
-  amount = 0.1,
+  amount = 0.05,
 }: {
   children: React.ReactNode;
   className?: string;
@@ -169,7 +210,7 @@ export function StaggerGrid({
     visible: {
       transition: {
         staggerChildren: effectiveStagger,
-        delayChildren: 0.04,
+        delayChildren: 0.03,
       },
     },
   };
@@ -179,7 +220,7 @@ export function StaggerGrid({
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, amount, margin: "0px 0px -40px 0px" }}
+      viewport={{ once, amount, margin: "-12px 0px -12px 0px" }}
       className={className}
     >
       {children}
@@ -199,9 +240,9 @@ export function StaggerItem({
   const itemVariants: Variants = {
     hidden: {
       opacity: 0,
-      y: 40,
-      scale: 0.87,
-      rotateX: 8,
+      y: 36,
+      scale: 0.89,
+      rotateX: 7,
       transformPerspective: 1100,
     },
     visible: {
@@ -212,9 +253,9 @@ export function StaggerItem({
       transformPerspective: 1100,
       transition: {
         type: "spring",
-        stiffness: 235,
+        stiffness: 255,
         damping: 20,
-        mass: 0.85,
+        mass: 0.82,
       },
     },
   };
@@ -238,4 +279,3 @@ export function StaggerItem({
     </motion.div>
   );
 }
-

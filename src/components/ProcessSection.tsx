@@ -67,8 +67,8 @@ export default function ProcessSection() {
             <span className="text-xs font-mono font-bold tracking-widest text-[#FF8F00] uppercase block mb-3 select-none">
               MY PROCESS
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight select-none">
-              From Idea to Impact
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight select-none">
+              From Idea to <span className="gradient-text-purple">Impact</span>
             </h2>
           </div>
         </ScrollReveal>
@@ -80,48 +80,52 @@ export default function ProcessSection() {
             const isHiddenOnMobile = idx >= 2 && !showAllMobile;
 
             return (
-              <div
+              <ScrollReveal
                 key={step.number}
-                draggable={false}
-                onDragStart={(e) => e.preventDefault()}
-                style={{ WebkitUserSelect: "none", userSelect: "none", WebkitTouchCallout: "none" }}
-                className={`flex-col items-start group h-full transition-all duration-300 select-none cursor-default ${
-                  isHiddenOnMobile ? "hidden sm:flex" : "flex"
-                }`}
+                variant="pop-up"
+                delay={idx * 0.07}
+                className={isHiddenOnMobile ? "hidden sm:block" : "block"}
               >
-                {/* Round Icon Container with Top-Right Orange Badge */}
                 <div
                   draggable={false}
                   onDragStart={(e) => e.preventDefault()}
-                  style={{ WebkitUserSelect: "none", userSelect: "none" }}
-                  className="relative mb-6 select-none pointer-events-none"
+                  style={{ WebkitUserSelect: "none", userSelect: "none", WebkitTouchCallout: "none" }}
+                  className="flex flex-col items-start group h-full transition-all duration-300 select-none cursor-default"
                 >
-                  <div className="w-16 h-16 rounded-full border shadow-md dark:shadow-lg flex items-center justify-center sm:group-hover:scale-110 transition-transform bg-white dark:bg-[#0F2350]/90 border-blue-200 dark:border-blue-400/35 select-none">
-                    <Icon className={`w-6 h-6 ${step.iconColor}`} />
+                  {/* Round Icon Container with Top-Right Orange Badge */}
+                  <div
+                    draggable={false}
+                    onDragStart={(e) => e.preventDefault()}
+                    style={{ WebkitUserSelect: "none", userSelect: "none" }}
+                    className="relative mb-6 select-none pointer-events-none"
+                  >
+                    <div className="w-16 h-16 rounded-full border shadow-md dark:shadow-lg flex items-center justify-center sm:group-hover:scale-110 transition-transform bg-white dark:bg-[#0F2350]/90 border-blue-200 dark:border-blue-400/35 select-none">
+                      <Icon className={`w-6 h-6 ${step.iconColor}`} />
+                    </div>
+                    <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[#FF8F00] text-white font-mono font-bold text-xs flex items-center justify-center shadow-md border-2 border-white dark:border-[#0F2350] select-none">
+                      {step.number}
+                    </div>
                   </div>
-                  <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[#FF8F00] text-white font-mono font-bold text-xs flex items-center justify-center shadow-md border-2 border-white dark:border-[#0F2350] select-none">
-                    {step.number}
-                  </div>
+
+                  {/* Step Title */}
+                  <h3
+                    draggable={false}
+                    style={{ WebkitUserSelect: "none", userSelect: "none" }}
+                    className="font-heading text-xl font-extrabold text-slate-900 dark:text-white mb-3 leading-snug sm:group-hover:text-blue-600 dark:sm:group-hover:text-[#90CAF9] transition-colors select-none"
+                  >
+                    {step.title}
+                  </h3>
+
+                  {/* Step Description */}
+                  <p
+                    draggable={false}
+                    style={{ WebkitUserSelect: "none", userSelect: "none" }}
+                    className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed max-w-xs select-none"
+                  >
+                    {step.description}
+                  </p>
                 </div>
-
-                {/* Step Title */}
-                <h3
-                  draggable={false}
-                  style={{ WebkitUserSelect: "none", userSelect: "none" }}
-                  className="text-xl font-extrabold text-slate-900 dark:text-white mb-3 leading-snug sm:group-hover:text-blue-600 dark:sm:group-hover:text-[#90CAF9] transition-colors select-none"
-                >
-                  {step.title}
-                </h3>
-
-                {/* Step Description */}
-                <p
-                  draggable={false}
-                  style={{ WebkitUserSelect: "none", userSelect: "none" }}
-                  className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed max-w-xs select-none"
-                >
-                  {step.description}
-                </p>
-              </div>
+              </ScrollReveal>
             );
           })}
         </div>

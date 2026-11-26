@@ -45,7 +45,7 @@ export default function FounderJourneyCard({
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: false, amount: 0.12 }}
         transition={{ duration: 0.65, ease: "easeOut" }}
         className="founder-journey-card rounded-[2rem] sm:rounded-[2.5rem] border border-purple-200 dark:border-purple-500/30 bg-white/95 dark:bg-gradient-to-b dark:from-[#131735] dark:via-[#0e122b] dark:to-[#080b1a] pt-7 sm:pt-12 pb-0 px-5 sm:px-12 shadow-xl dark:shadow-2xl relative flex flex-col items-center text-center max-w-3xl mx-auto overflow-hidden transition-colors duration-300"
       >

@@ -24,6 +24,8 @@ export default function CustomCursor() {
   const rotatingRingRef = useRef<SVGSVGElement>(null);
   const trail1Ref = useRef<HTMLDivElement>(null);
   const trail2Ref = useRef<HTMLDivElement>(null);
+  const ambientLightRef = useRef<HTMLDivElement>(null);
+  const coreLightRef = useRef<HTMLDivElement>(null);
   const clickWaveRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
 
@@ -32,6 +34,10 @@ export default function CustomCursor() {
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
 
     // Respect reduced-motion accessibility settings
     const prefersReducedMotion =
@@ -40,26 +46,25 @@ export default function CustomCursor() {
 
     if (prefersReducedMotion) return;
 
-    // Completely disable animated cursor on mobile screens and touch devices
-    const isMobileOrTouch =
-      typeof window !== "undefined" &&
-      (window.innerWidth < 1024 ||
-        window.matchMedia("(pointer: coarse)").matches ||
-        window.matchMedia("(max-width: 1023px)").matches);
+    // Completely disable animated cursor on narrow mobile viewports (touch taps auto-hide on desktop too)
+    const isMobileViewport =
+      typeof window !== "undefined" && window.innerWidth < 1024;
 
-    if (isMobileOrTouch) return;
+    if (isMobileViewport) return;
 
     const dot = dotRef.current;
     const ring = ringRef.current;
     const rotatingRing = rotatingRingRef.current;
     const trail1 = trail1Ref.current;
     const trail2 = trail2Ref.current;
+    const ambientLight = ambientLightRef.current;
+    const coreLight = coreLightRef.current;
     const clickWave = clickWaveRef.current;
 
     if (!dot || !ring || !rotatingRing) return;
 
     // Set initial centering offsets in GSAP (prevents Tailwind translate clashes)
-    gsap.set([dot, ring, trail1, trail2, clickWave].filter(Boolean), {
+    gsap.set([dot, ring, trail1, trail2, ambientLight, coreLight, clickWave].filter(Boolean), {
       xPercent: -50,
       yPercent: -50,
       opacity: 0,
@@ -71,6 +76,12 @@ export default function CustomCursor() {
 
     const setRingX = gsap.quickTo(ring, "x", { duration: 0.32, ease: "power2.out" });
     const setRingY = gsap.quickTo(ring, "y", { duration: 0.32, ease: "power2.out" });
+
+    const setAmbientX = ambientLight ? gsap.quickTo(ambientLight, "x", { duration: 0.55, ease: "power3.out" }) : null;
+    const setAmbientY = ambientLight ? gsap.quickTo(ambientLight, "y", { duration: 0.55, ease: "power3.out" }) : null;
+
+    const setCoreX = coreLight ? gsap.quickTo(coreLight, "x", { duration: 0.22, ease: "power2.out" }) : null;
+    const setCoreY = coreLight ? gsap.quickTo(coreLight, "y", { duration: 0.22, ease: "power2.out" }) : null;
 
     const setTrail1X = trail1 ? gsap.quickTo(trail1, "x", { duration: 0.44, ease: "power3.out" }) : null;
     const setTrail1Y = trail1 ? gsap.quickTo(trail1, "y", { duration: 0.44, ease: "power3.out" }) : null;
@@ -95,7 +106,7 @@ export default function CustomCursor() {
       // If it is a touch tap, hide cursor and return
       if (e.pointerType === "touch") {
         if (isVisible) {
-          gsap.to([dot, ring, trail1, trail2].filter(Boolean), { opacity: 0, duration: 0.2 });
+          gsap.to([dot, ring, trail1, trail2, ambientLight, coreLight].filter(Boolean), { opacity: 0, duration: 0.2 });
           isVisible = false;
         }
         return;
@@ -103,9 +114,11 @@ export default function CustomCursor() {
 
       const { clientX: x, clientY: y } = e;
 
-      // Make cursor visible on first move
+      // Make cursor + ambient motion light visible on first move
       if (!isVisible) {
         gsap.to([dot, ring], { opacity: 1, duration: 0.25 });
+        if (ambientLight) gsap.to(ambientLight, { opacity: 1, duration: 0.4 });
+        if (coreLight) gsap.to(coreLight, { opacity: 0.9, duration: 0.3 });
         if (trail1) gsap.to(trail1, { opacity: 0.6, duration: 0.25 });
         if (trail2) gsap.to(trail2, { opacity: 0.35, duration: 0.25 });
         isVisible = true;
@@ -115,6 +128,14 @@ export default function CustomCursor() {
       setDotY(y);
       setRingX(x);
       setRingY(y);
+      if (setAmbientX && setAmbientY) {
+        setAmbientX(x);
+        setAmbientY(y);
+      }
+      if (setCoreX && setCoreY) {
+        setCoreX(x);
+        setCoreY(y);
+      }
       if (setTrail1X && setTrail1Y) {
         setTrail1X(x);
         setTrail1Y(y);
@@ -265,7 +286,7 @@ export default function CustomCursor() {
     };
 
     const handleMouseLeave = () => {
-      gsap.to([dot, ring, trail1, trail2].filter(Boolean), { opacity: 0, duration: 0.25 });
+      gsap.to([dot, ring, trail1, trail2, ambientLight, coreLight].filter(Boolean), { opacity: 0, duration: 0.25 });
       isVisible = false;
       if (activeMagnetic) {
         gsap.to(activeMagnetic, {
@@ -279,6 +300,7 @@ export default function CustomCursor() {
     };
 
     window.addEventListener("pointermove", handlePointerMove, { passive: true });
+    window.addEventListener("mousemove", handlePointerMove as unknown as EventListener, { passive: true });
     document.addEventListener("mouseover", handleMouseOver, { passive: true });
     window.addEventListener("pointerdown", handlePointerDown, { passive: true });
     window.addEventListener("pointerup", handlePointerUp, { passive: true });
@@ -286,6 +308,7 @@ export default function CustomCursor() {
 
     return () => {
       window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("mousemove", handlePointerMove as unknown as EventListener);
       document.removeEventListener("mouseover", handleMouseOver);
       window.removeEventListener("pointerdown", handlePointerDown);
       window.removeEventListener("pointerup", handlePointerUp);
@@ -295,12 +318,34 @@ export default function CustomCursor() {
         gsap.set(activeMagnetic, { x: 0, y: 0 });
       }
     };
-  }, []);
+  }, [mounted]);
 
   if (!mounted) return null;
 
   return (
     <div className="hidden lg:block pointer-events-none select-none" aria-hidden="true">
+      {/* 0. Ambient Motion Light Layer (Soft studio spotlight gliding beneath cursor everywhere) */}
+      <div
+        ref={ambientLightRef}
+        aria-hidden="true"
+        className="fixed top-0 left-0 pointer-events-none z-[35] w-[540px] h-[540px] rounded-full opacity-0 will-change-transform"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(139, 92, 246, 0.28) 0%, rgba(56, 189, 248, 0.18) 32%, rgba(192, 132, 252, 0.08) 56%, transparent 74%)",
+        }}
+      />
+
+      {/* 0b. Inner Focused Motion Light Halo directly under cursor */}
+      <div
+        ref={coreLightRef}
+        aria-hidden="true"
+        className="fixed top-0 left-0 pointer-events-none z-[35] w-[190px] h-[190px] rounded-full opacity-0 will-change-transform"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(56, 189, 248, 0.34) 0%, rgba(168, 85, 247, 0.24) 44%, transparent 74%)",
+        }}
+      />
+
       {/* 1. Click Ripple Expansion Wave */}
       <div
         ref={clickWaveRef}

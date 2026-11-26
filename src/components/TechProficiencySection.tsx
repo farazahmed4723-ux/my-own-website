@@ -232,7 +232,7 @@ export default function TechProficiencySection({
                       key={skill.name}
                       initial={{ opacity: 0, y: 14 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
+                      viewport={{ once: false, amount: 0.1 }}
                       transition={{ duration: 0.35, delay: idx * 0.05 }}
                       className="tech-skill-card group rounded-2xl p-4 sm:p-6 bg-white dark:bg-[#151a3a]/75 border border-slate-200/90 dark:border-white/10 hover:border-purple-500/40 transition-all duration-300 flex flex-col justify-between shadow-sm dark:shadow-none"
                     >
@@ -263,7 +263,7 @@ export default function TechProficiencySection({
                           <motion.div
                             initial={{ width: 0 }}
                             whileInView={{ width: `${skill.proficiency}%` }}
-                            viewport={{ once: true }}
+                            viewport={{ once: false, amount: 0.1 }}
                             transition={{
                               duration: 0.9,
                               delay: 0.1 + idx * 0.06,
