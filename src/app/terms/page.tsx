@@ -19,7 +19,7 @@ export default function TermsPage() {
   ]);
 
   return (
-    <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-[#060813]">
+    <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#060813]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}

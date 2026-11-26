@@ -237,20 +237,20 @@ export default function VideoPortfolioGallery({
           role="dialog"
           aria-modal="true"
           aria-label={`Playing ${modalReel.title}`}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-3 sm:p-6"
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-black/85 backdrop-blur-md p-3 sm:p-6"
           onClick={closeModal}
         >
           <div
-            className="relative w-full max-w-sm sm:max-w-md max-h-[92vh] bg-[#0c102a] rounded-3xl border border-white/15 overflow-hidden shadow-2xl flex flex-col"
+            className="relative w-full max-w-sm sm:max-w-md max-h-[92vh] bg-white dark:bg-[#0c102a] rounded-3xl border border-slate-200 dark:border-white/15 overflow-hidden shadow-2xl flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-3.5 border-b border-white/10 bg-[#080b1e]">
+            <div className="flex items-center justify-between p-3.5 border-b border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#080b1e]">
               <div className="flex items-center gap-2 overflow-hidden">
-                <span className="px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 text-[10px] font-mono font-bold shrink-0">
+                <span className="px-2 py-0.5 rounded bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 text-[10px] font-mono font-bold shrink-0">
                   {modalReel.duration}
                 </span>
-                <h4 className="text-xs sm:text-sm font-bold text-white truncate">
+                <h4 className="font-heading text-xs sm:text-sm font-bold text-slate-900 dark:text-white truncate">
                   {modalReel.title}
                 </h4>
               </div>
@@ -259,7 +259,7 @@ export default function VideoPortfolioGallery({
                 type="button"
                 onClick={closeModal}
                 aria-label="Close video player"
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer shrink-0 ml-2"
+                className="w-8 h-8 rounded-full bg-slate-200/80 hover:bg-slate-300 dark:bg-white/10 dark:hover:bg-white/20 text-slate-700 dark:text-white flex items-center justify-center transition-colors cursor-pointer shrink-0 ml-2"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -278,12 +278,12 @@ export default function VideoPortfolioGallery({
             </div>
 
             {/* Modal Footer with WhatsApp CTA */}
-            <div className="p-4 bg-[#080b1e] border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div className="p-4 bg-slate-50 dark:bg-[#080b1e] border-t border-slate-200 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
               <div className="text-left w-full sm:w-auto">
-                <span className="text-[11px] text-gray-400 block">
+                <span className="text-[11px] text-slate-600 dark:text-gray-400 block">
                   Aisi high-retention edit chahiye?
                 </span>
-                <span className="text-xs font-bold text-white">
+                <span className="text-xs font-bold text-slate-900 dark:text-white">
                   Get delivery in 24–48 hours
                 </span>
               </div>
