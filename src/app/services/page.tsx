@@ -20,9 +20,9 @@ import {
 import { buildBreadcrumbJsonLd, buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Web Development, AI Chatbots & Automation Services",
+  title: "Web Development, AI Chatbot & Automation Services in Toronto",
   description:
-    "Explore the 6 core engineering services by Faraz Ahmed: AI Automation, Custom 24/7 AI Chatbots, Next.js & WordPress Website Development, Autonomous AI Agents, Shopify/WooCommerce E-Commerce, and Custom Software.",
+    "Website development, WordPress, Shopify, AI chatbots, AI agents and automation services for Toronto and GTA businesses, by freelance developer Faraz Ahmed.",
   path: "/services",
   keywords: [
     "Web Development Services",

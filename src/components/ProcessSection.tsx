@@ -17,7 +17,7 @@ const steps: ProcessStep[] = [
     number: "01",
     title: "Optimized production process",
     description:
-      "A decade-refined workflow keeps production clear, efficient, on time, and within budget.",
+      "A proven, refined workflow keeps production clear, efficient, on time, and within budget.",
     icon: Search,
     iconColor: "text-[#1E88E5]",
   },

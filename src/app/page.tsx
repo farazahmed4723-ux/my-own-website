@@ -8,13 +8,11 @@ import { buildFaqJsonLd, SITE_URL } from "@/lib/seo";
 
 // Code-split below-the-fold and desktop-only sections to dramatically reduce mobile initial JS bundle
 const PortfolioPreview = dynamic(() => import("@/components/PortfolioPreview"));
-const TestimonialsSection = dynamic(() => import("@/components/TestimonialsSection"));
 const WhyChooseMeSection = dynamic(() => import("@/components/WhyChooseMeSection"));
 const ProcessSection = dynamic(() => import("@/components/ProcessSection"));
 const TechProficiencySection = dynamic(() => import("@/components/TechProficiencySection"));
 const FAQSection = dynamic(() => import("@/components/FAQSection"));
 const FounderJourneyCard = dynamic(() => import("@/components/FounderJourneyCard"));
-const CustomerReviewSection = dynamic(() => import("@/components/CustomerReviewSection"));
 const ContactCTA = dynamic(() => import("@/components/ContactCTA"));
 
 export const metadata: Metadata = {
@@ -46,8 +44,7 @@ export default function HomePage() {
       {/* 4. Featured Projects & Solutions (Horizontal Swipe Carousel, Matches Pic 6) */}
       <PortfolioPreview />
 
-      {/* 5. Client Reviews & Real Chat Proofs (Matches Pic 4) */}
-      <TestimonialsSection />
+      {/* 5. Client Reviews section turned off (Nov 2026). To restore: re-import TestimonialsSection and render it here. */}
 
       {/* 6. Why Clients Choose My Digital Solutions (Matches Pic 3) */}
       <WhyChooseMeSection />
@@ -64,8 +61,7 @@ export default function HomePage() {
       {/* Comprehensive FAQs */}
       <FAQSection />
 
-      {/* Client Review Submission ("Write a Review") */}
-      <CustomerReviewSection />
+      {/* "Write a Review" section turned off (Nov 2026). To restore: re-import CustomerReviewSection and render it here. */}
 
       {/* High-Conversion Contact CTA */}
       <ContactCTA />

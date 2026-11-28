@@ -135,11 +135,6 @@ export default function Footer() {
                   Contact & Inquiries
                 </Link>
               </li>
-              <li>
-                <Link href="/#write-review" className="text-amber-600 dark:text-amber-300/90 hover:text-amber-700 dark:hover:text-amber-200 transition-colors font-medium">
-                  ★ Write a Review
-                </Link>
-              </li>
             </ul>
           </div>
 

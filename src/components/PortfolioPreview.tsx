@@ -162,7 +162,7 @@ export default function PortfolioPreview() {
                 <div className="absolute bottom-3 right-3.5 z-10">
                   <span className="px-2.5 py-0.5 rounded-md bg-black/75 backdrop-blur-md border border-white/10 text-amber-300 text-[10px] font-mono flex items-center gap-1">
                     <span className="text-amber-400">↗</span>
-                    <span>{project.performanceBadge || "Performance: Sub-1s Load"}</span>
+                    <span>{project.performanceBadge || "Speed-Optimized Build"}</span>
                   </span>
                 </div>
               </div>

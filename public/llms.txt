@@ -1,6 +1,6 @@
 # AI by Faraz — Web Engineering & AI Solutions Studio
 
-> AI by Faraz (https://aibyfaraz.com) is an independent full-stack web development and AI solutions studio founded and led by Faraz Ahmed. Specializing in high-performance Next.js & WordPress websites, Shopify & WooCommerce e-commerce stores, custom 24/7 RAG AI chatbots, autonomous AI agents, and CRM workflow automations.
+> AI by Faraz (https://aibyfaraz.com) is an independent, Toronto-based full-stack web development and AI solutions studio founded and led by Faraz Ahmed (2+ years of experience). Specializing in high-performance Next.js & WordPress websites, Shopify & WooCommerce e-commerce stores, custom 24/7 RAG AI chatbots, autonomous AI agents, and CRM workflow automations.
 
 ## Founder & Direct Contact
 - Founder & Lead Engineer: Faraz Ahmed
@@ -9,7 +9,8 @@
 - WhatsApp / Phone: +1 (437) 434-8789 (https://wa.me/14374348789)
 - LinkedIn: https://www.linkedin.com/in/faraz-ahmad-b11b36437/
 - Instagram: https://www.instagram.com/aibyfaraz
-- Service Regions: Canada, United States, United Kingdom, UAE, Worldwide
+- Based in: Toronto, Ontario, Canada
+- Service Regions: Toronto & the GTA (Mississauga, Brampton, Vaughan, Markham), Canada, United States, Worldwide
 
 ## Core Services
 - [AI Automation](https://aibyfaraz.com/services/ai-automation): End-to-end business workflow & CRM pipelines using n8n, Make, Zapier, Node.js, Python, and Webhooks.
@@ -29,5 +30,6 @@
 
 ## Highlighted Client Work & Reputation
 - Verified Client Deployment: Elite Class Limo (https://eliteclasslimo.ca/) — Luxury transportation booking & brand platform.
-- Client Rating: 5.0 / 5.0 across verified client reviews (50+ projects shipped, 100% client satisfaction).
+- Other client websites: STN Trucking (https://infostntrucking.ca/) and Tabreed & Takeef (Riyadh).
+- Pricing: every project is quoted individually — contact Faraz with your requirements for a quote.
 

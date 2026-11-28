@@ -177,7 +177,7 @@ export default function FounderShowcaseCard({
             <div className="founder-telemetry-pill inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#0e132e]/80 border border-purple-500/25 backdrop-blur-md shadow-sm">
               <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
               <span className="text-[11px] font-bold text-purple-200">
-                50+ Shipped
+                3 Client Sites Live
               </span>
             </div>
           </div>

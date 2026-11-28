@@ -33,7 +33,7 @@ import VideoFaqAccordion from "@/components/VideoFaqAccordion";
 
 export const metadata: Metadata = buildPageMetadata({
   path: "/video-editing",
-  title: "Viral Video Editing & Motion Graphics",
+  title: "Video Editing Toronto — Reels, TikTok & YouTube Shorts",
   description:
     "Turn your raw phone recordings into scroll-stopping Instagram Reels, TikToks & YouTube Shorts. Bold Roman Urdu captions, 3D text behind subject, audio cleanup, and SFX.",
   keywords: [

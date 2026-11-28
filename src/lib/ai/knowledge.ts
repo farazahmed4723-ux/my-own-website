@@ -30,7 +30,7 @@ export const KNOWLEDGE_BASE: KnowledgeChunk[] = [
     priority: 10,
     content: `
 Faraz Ahmed is the Founder & Lead AI / Full-Stack Engineer behind AI by Faraz (aibyfaraz.com), based in Toronto, Ontario, Canada.
-• Hands-on production experience with 50+ shipped projects and 100% verified client satisfaction.
+• Live client work: 3 client websites — Elite Class Limo (eliteclasslimo.ca), STN Trucking (infostntrucking.ca) and Tabreed & Takeef in Riyadh — plus his own AI by Faraz platform with this AI assistant.
 • Core expertise: Blazing-fast Next.js React web apps, custom headless WordPress (Elementor Pro/Bricks/Gutenberg), 24/7 custom RAG AI chatbots, autonomous AI agents, Shopify/WooCommerce e-commerce stores, and end-to-end CRM workflow automation pipelines (n8n, Make, Zapier).
 • Also specializes in high-retention viral video editing & 3D motion graphics for founders and personal brands.
 • Location: Based in Toronto, Canada. Works with ambitious clients worldwide across Canada, the United States, the UK, Europe, UAE/Middle East, and Pakistan.
@@ -163,7 +163,6 @@ Service: Autonomous AI Agents (Page: /services/ai-agents)
 Service: E-Commerce Storefronts (Page: /services/ecommerce-solutions)
 • What it is: High-converting Shopify and WooCommerce online stores with custom UX, 1-click checkout optimization, and automated inventory sync.
 • Features: Custom Liquid themes, upsell & cross-sell popups, Stripe / PayPal / Apple Pay integration, automated abandoned cart recovery, 24/7 AI shopping assistant.
-• Case Study: Lumina Boutique fashion store achieved a 3.2x conversion rate increase and sub-2-second mobile load time.
 • Typical Timeline: 2 to 3 weeks.
     `.trim(),
   },
@@ -284,24 +283,26 @@ Payment Terms & Guarantee:
       "clients",
       "reviews",
       "elite class limo",
-      "lumina",
+      "stn",
+      "tabreed",
       "testimonials",
       "proof",
     ],
     priority: 9,
     content: `
-Verified Case Studies & Portfolio (Page: /portfolio):
-1. Elite Class Limo (eliteclasslimo.ca):
-   • Client: Premier luxury chauffeur & executive limousine service in Ontario & Toronto.
-   • Result: High-converting luxury Next.js website with instant ride quotation system, dynamic fleet showcase, and 98+ PageSpeed score. Client saw a notable surge in organic bookings within weeks of launch.
-2. Lumina Boutique:
-   • Client: Modern boutique fashion & lifestyle apparel brand.
-   • Result: Custom e-commerce storefront with 1-click cart slide-out, size guides, and 3.2x higher checkout completion.
-3. RAG AI Support Assistant:
-   • Built custom vector-indexed chatbot for business customer support that lowered tier-1 support tickets by 65%.
-4. Viral Personal Brand Video Editing:
-   • Crafted 3D rotoscoped vertical reels with kinetic Roman Urdu subtitles, exceeding 100k+ organic views on Instagram.
-• All projects come with 5-star verified client feedback and 100% on-time delivery track record.
+Client Projects & Portfolio (Page: /portfolio):
+1. Elite Class Limo (https://eliteclasslimo.ca/):
+   • Client: Luxury chauffeur & executive limousine service.
+   • Built: Luxury Next.js website with an instant ride quotation system and a fleet showcase.
+2. STN Trucking Ltd. (https://infostntrucking.ca/):
+   • Client: Commercial trucking, moving and flatbed hauling company in Surrey / Lower Mainland, BC.
+   • Built: Fleet and logistics website with instant freight quote capture.
+3. Tabreed & Takeef (Riyadh, Saudi Arabia):
+   • Client: HVAC & home appliance maintenance company.
+   • Built: Arabic (RTL) website with WhatsApp service dispatch and inspection booking.
+4. AI by Faraz (aibyfaraz.com): Faraz's own Next.js platform with this AI assistant.
+• Video editing samples are on /video-editing.
+• These are the only client projects to mention. Never invent other clients, case studies, reviews, or performance numbers.
     `.trim(),
   },
 

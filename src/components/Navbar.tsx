@@ -15,7 +15,6 @@ const navLinks = [
   { name: "Portfolio", href: "/portfolio" },
   { name: "Video Editing", href: "/video-editing" },
   { name: "Process", href: "/process" },
-  { name: "Testimonials", href: "/#testimonials" },
   { name: "FAQ", href: "/#faq" },
 ];
 

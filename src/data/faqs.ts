@@ -24,6 +24,12 @@ export const faqsData: FAQItem[] = [
       "Project timelines depend on the scope and complexity. A focused high-converting landing page or business website typically takes 1 to 2 weeks from discovery to launch. Custom AI chatbot integrations usually take 1 to 2 weeks. Full custom web applications or multi-step automation pipelines typically range from 2 to 4 weeks with weekly milestone reviews and staging demos.",
   },
   {
+    category: "Pricing",
+    question: "How much does a website cost in Toronto?",
+    answer:
+      "Every project is quoted individually, because the price depends on the number of pages, custom features such as booking forms, quote calculators or payments, integrations, and whether you need an AI chatbot or automation added. Send your requirements on WhatsApp or through the contact form and Faraz will reply with a clear quote and timeline — no hidden fees.",
+  },
+  {
     category: "Integrations",
     question: "Can you integrate AI and automated workflows into our existing tools?",
     answer:

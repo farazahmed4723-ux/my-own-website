@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { servicesData } from "@/data/services";
+import { servicesData, serviceSeo, serviceLocalContent } from "@/data/services";
 import {
   Cpu,
   Bot,
@@ -42,6 +42,7 @@ import {
   buildBreadcrumbJsonLd,
   buildPageMetadata,
   buildServiceDetailJsonLd,
+  SITE_URL,
 } from "@/lib/seo";
 import VideoPortfolioGallery from "@/components/VideoPortfolioGallery";
 
@@ -57,12 +58,23 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     return { title: "Service Not Found" };
   }
 
-  return buildPageMetadata({
-    title: `${service.title} — ${service.tagline}`,
-    description: `${service.shortDescription} Engineered by Faraz Ahmed (${service.technologies.slice(0, 4).join(", ")}).`,
+  const seo = serviceSeo[service.slug];
+  const metadata = buildPageMetadata({
+    title: seo?.title ?? `${service.title} Toronto — ${service.tagline}`,
+    description:
+      seo?.description ??
+      `${service.shortDescription} Toronto-based, engineered by Faraz Ahmed.`,
     path: `/services/${service.slug}`,
-    keywords: [service.title, service.badge, ...service.technologies],
+    keywords: [...(seo?.keywords ?? []), service.title, service.badge, ...service.technologies],
   });
+
+  // /video-editing is the main video page; point search engines there to avoid
+  // two pages competing for the same "video editing" searches.
+  if (service.slug === "video-editing") {
+    metadata.alternates = { canonical: `${SITE_URL}/video-editing` };
+  }
+
+  return metadata;
 }
 
 export default function ServiceDetailPage({ params }: ServicePageProps) {
@@ -79,6 +91,18 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
     { name: service.title, path: `/services/${service.slug}` },
   ]);
   const serviceJsonLd = buildServiceDetailJsonLd(service);
+  const local = serviceLocalContent[service.slug];
+  const serviceFaqJsonLd = local
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: local.faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+      }
+    : null;
 
   return (
     <div className="pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 bg-transparent text-slate-900 dark:text-white relative overflow-hidden transition-colors duration-300">
@@ -94,6 +118,12 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
+      {serviceFaqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceFaqJsonLd) }}
+        />
+      )}
       <div className="max-w-5xl mx-auto">
         {/* Back Link & Breadcrumbs */}
         <div className="flex items-center justify-between mb-8">
@@ -276,13 +306,96 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
           </div>
         </div>
 
+        {/* Toronto-focused service content (SEO) */}
+        {local && (
+          <div className="mb-16">
+            <div className="mb-8">
+              <span className="text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400">
+                Toronto &amp; the GTA
+              </span>
+              <h2 className="font-heading text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">
+                {local.heading}
+              </h2>
+            </div>
+
+            <div className="p-7 rounded-2xl glass-card border border-slate-200/90 dark:border-white/10 shadow-sm">
+              {local.paragraphs.map((para, idx) => (
+                <p
+                  key={idx}
+                  className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed mb-4 last:mb-0"
+                >
+                  {para}
+                </p>
+              ))}
+
+              {local.proof && local.proof.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-6">
+                  {local.proof.map((item, idx) =>
+                    item.href.startsWith("/") ? (
+                      <Link
+                        key={idx}
+                        href={item.href}
+                        className="px-3.5 py-2 rounded-lg bg-purple-100 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-500/30 text-purple-700 dark:text-purple-300 text-xs font-medium hover:border-purple-500/60 transition-colors inline-flex items-center gap-1.5"
+                      >
+                        <span>{item.label}</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    ) : (
+                      <a
+                        key={idx}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3.5 py-2 rounded-lg bg-purple-100 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-500/30 text-purple-700 dark:text-purple-300 text-xs font-medium hover:border-purple-500/60 transition-colors inline-flex items-center gap-1.5"
+                      >
+                        <span>{item.label}</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </a>
+                    )
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Service FAQ (SEO + FAQPage schema) */}
+        {local && local.faqs.length > 0 && (
+          <div className="mb-16">
+            <div className="mb-8">
+              <span className="text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400">
+                Answers &amp; Clarity
+              </span>
+              <h2 className="font-heading text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">
+                {service.title} — Frequently Asked Questions
+              </h2>
+            </div>
+
+            <div className="space-y-4">
+              {local.faqs.map((faq, idx) => (
+                <div
+                  key={idx}
+                  className="p-6 rounded-2xl glass-card border border-slate-200/90 dark:border-white/10 shadow-sm"
+                >
+                  <h3 className="font-heading text-base font-bold text-slate-900 dark:text-white mb-2">
+                    {faq.question}
+                  </h3>
+                  <p className="text-sm text-slate-600 dark:text-gray-400 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Bottom CTA */}
         <div className="rounded-3xl p-8 sm:p-12 glass-card border border-purple-200 dark:border-purple-500/40 text-center relative overflow-hidden shadow-lg">
           <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-3">
             Ready to implement {service.title} for your business?
           </h2>
           <p className="text-sm text-slate-600 dark:text-gray-300 max-w-xl mx-auto mb-8">
-            Contact Faraz Ahmed today to discuss your project requirements, receive a clear milestone breakdown, and get transparent pricing.
+            Contact Faraz Ahmed today to discuss your project requirements, receive a clear milestone breakdown, and get a personal quote for your project.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link

@@ -50,11 +50,11 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
   category: "technology",
   title: {
-    default: `${SITE_NAME} | Web Developer & AI Solutions Specialist (${FOUNDER_NAME})`,
+    default: `Web Developer Toronto | AI Chatbots & Automation | ${SITE_NAME}`,
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Official portfolio and digital engineering studio of Faraz Ahmed (AI by Faraz). Building high-converting Next.js & WordPress websites, Shopify stores, custom 24/7 AI chatbots, autonomous AI agents, and CRM workflow automations.",
+    "Toronto web developer Faraz Ahmed (AI by Faraz) builds fast Next.js & WordPress websites, Shopify stores, AI chatbots and automation for small businesses. Free quote.",
   keywords: [
     "AI by Faraz",
     "Faraz Ahmed",
@@ -69,6 +69,11 @@ export const metadata: Metadata = {
     "WooCommerce Developer",
     "Supabase Full-Stack Developer",
     "Toronto Web Developer",
+    "Web Developer Toronto",
+    "Website Development Toronto",
+    "AI Chatbot Development Toronto",
+    "AI Agent Development Toronto",
+    "Shopify Developer Toronto",
     "Canada AI Consultant",
   ],
   authors: [{ name: FOUNDER_NAME, url: SITE_URL }],
@@ -90,26 +95,26 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_CA",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} | Building Intelligent Websites & AI-Powered Solutions`,
+    title: `Web Developer Toronto | AI Chatbots & Automation | ${SITE_NAME}`,
     description:
-      "Modern Next.js & WordPress websites, custom 24/7 AI chatbots, Shopify storefronts, and automated workflows engineered by Faraz Ahmed.",
+      "Toronto web developer Faraz Ahmed builds fast Next.js & WordPress websites, AI chatbots, Shopify stores and automated workflows for small businesses.",
     images: [
       {
         url: `${SITE_URL}/images/website-reference.png`,
         width: 1200,
         height: 630,
-        alt: "AI by Faraz — Web Developer & AI Solutions Specialist",
+        alt: "AI by Faraz — Toronto Web Developer & AI Solutions Specialist",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} | Web Developer & AI Solutions Specialist`,
+    title: `Web Developer Toronto | AI Chatbots & Automation | ${SITE_NAME}`,
     description:
-      "Building intelligent Next.js & WordPress websites, AI chatbots, Shopify stores, and automated workflows that help businesses scale.",
+      "Toronto web developer building fast Next.js & WordPress websites, AI chatbots, Shopify stores and automated workflows for small businesses.",
     images: [`${SITE_URL}/images/website-reference.png`],
   },
   icons: {
@@ -126,7 +131,7 @@ export default function RootLayout({
   const jsonLd = buildGlobalGraphJsonLd();
 
   return (
-    <html lang="en" className="light scroll-smooth" suppressHydrationWarning>
+    <html lang="en-CA" className="light scroll-smooth" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

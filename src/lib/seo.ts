@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { servicesData, ServiceItem } from "@/data/services";
 import { faqsData } from "@/data/faqs";
-import { verifiedReviewsData } from "@/data/reviews";
 import { portfolioProjects } from "@/data/portfolio";
 
 const rawEnvUrl = process.env.NEXT_PUBLIC_APP_URL || "";
@@ -63,7 +62,7 @@ export function buildPageMetadata({
         },
     openGraph: {
       type: "website",
-      locale: "en_US",
+      locale: "en_CA",
       url: canonicalUrl,
       siteName: SITE_NAME,
       title: fullSocialTitle,
@@ -73,7 +72,7 @@ export function buildPageMetadata({
           url: `${SITE_URL}/images/website-reference.png`,
           width: 1200,
           height: 630,
-          alt: `${SITE_NAME} — ${FOUNDER_NAME} | Web Developer & AI Solutions Specialist`,
+          alt: `${SITE_NAME} — ${FOUNDER_NAME} | Toronto Web Developer & AI Solutions Specialist`,
         },
       ],
     },
@@ -96,6 +95,10 @@ export function buildGlobalGraphJsonLd() {
         name: FOUNDER_NAME,
         alternateName: "Faraz Ahmad",
         jobTitle: "Full-Stack Web Developer & AI Solutions Specialist",
+        homeLocation: {
+          "@type": "City",
+          name: "Toronto",
+        },
         url: SITE_URL,
         image: `${SITE_URL}/images/faraz-portrait.webp`,
         email: "faraz.ahmed4723@gmail.com",
@@ -135,10 +138,22 @@ export function buildGlobalGraphJsonLd() {
           "@id": `${SITE_URL}/#faraz`,
         },
         description:
-          "AI by Faraz is a modern web engineering and AI automation studio led by Faraz Ahmed, delivering high-converting Next.js & WordPress websites, Shopify stores, custom 24/7 AI chatbots, autonomous AI agents, and CRM workflow automations.",
+          "AI by Faraz is a Toronto-based web development and AI automation studio led by Faraz Ahmed, delivering high-converting Next.js & WordPress websites, Shopify stores, custom 24/7 AI chatbots, autonomous AI agents, and CRM workflow automations.",
         telephone: "+14374348789",
         email: "faraz.ahmed4723@gmail.com",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Toronto",
+          addressRegion: "ON",
+          addressCountry: "CA",
+        },
         areaServed: [
+          { "@type": "City", name: "Toronto" },
+          { "@type": "City", name: "Mississauga" },
+          { "@type": "City", name: "Brampton" },
+          { "@type": "City", name: "Vaughan" },
+          { "@type": "City", name: "Markham" },
+          { "@type": "AdministrativeArea", name: "Greater Toronto Area" },
           { "@type": "Country", name: "Canada" },
           { "@type": "Country", name: "United States" },
           { "@type": "Country", name: "United Kingdom" },
@@ -159,30 +174,6 @@ export function buildGlobalGraphJsonLd() {
             availableLanguage: ["English", "Urdu"],
           },
         ],
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "5.0",
-          bestRating: "5",
-          worstRating: "1",
-          ratingCount: String(verifiedReviewsData.length),
-          reviewCount: String(verifiedReviewsData.length),
-        },
-        review: verifiedReviewsData.map((rev) => ({
-          "@type": "Review",
-          author: {
-            "@type": "Person",
-            name: rev.clientName,
-          },
-          datePublished: rev.publishedDate,
-          reviewBody: rev.quote,
-          name: `${rev.company} — ${rev.projectType}`,
-          reviewRating: {
-            "@type": "Rating",
-            ratingValue: String(rev.rating),
-            bestRating: "5",
-            worstRating: "1",
-          },
-        })),
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "Web Engineering & AI Automation Services",
@@ -203,9 +194,9 @@ export function buildGlobalGraphJsonLd() {
         "@id": `${SITE_URL}/#website`,
         url: SITE_URL,
         name: SITE_NAME,
-        inLanguage: "en-US",
+        inLanguage: "en-CA",
         description:
-          "Official website of AI by Faraz — Next.js & WordPress Web Development, Custom AI Chatbots, Shopify Stores, and Intelligent Business Automation.",
+          "Official website of AI by Faraz — Toronto Next.js & WordPress Web Development, Custom AI Chatbots, Shopify Stores, and Intelligent Business Automation.",
         publisher: {
           "@id": `${SITE_URL}/#faraz`,
         },
@@ -254,7 +245,11 @@ export function buildServiceDetailJsonLd(service: ServiceItem) {
     provider: {
       "@id": `${SITE_URL}/#business`,
     },
-    areaServed: "Worldwide",
+    areaServed: [
+      { "@type": "City", name: "Toronto" },
+      { "@type": "AdministrativeArea", name: "Greater Toronto Area" },
+      { "@type": "Country", name: "Canada" },
+    ],
     termsOfService: `${SITE_URL}/terms`,
     hasOfferCatalog: {
       "@type": "OfferCatalog",

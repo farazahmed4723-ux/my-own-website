@@ -20,9 +20,9 @@ import {
 import VideoPortfolioGallery from "@/components/VideoPortfolioGallery";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Portfolio & Verified Client Case Studies",
+  title: "Web Development Portfolio — Real Client Websites",
   description:
-    "Explore real client deployments engineered by Faraz Ahmed — including Elite Class Limo — alongside high-converting Next.js web platforms and autonomous AI agent architectures.",
+    "Real client websites built by Toronto web developer Faraz Ahmed, including Elite Class Limo, STN Trucking and Tabreed & Takeef, plus AI chatbot and automation work.",
   path: "/portfolio",
   keywords: [
     "Faraz Ahmed Portfolio",

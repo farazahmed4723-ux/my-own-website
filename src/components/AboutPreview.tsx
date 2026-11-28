@@ -10,9 +10,9 @@ import { ScrollReveal, StaggerGrid, StaggerItem } from "@/components/ScrollMotio
 const stats = [
   {
     icon: Users,
-    target: 100,
-    suffix: "+",
-    label: "Satisfied Clients",
+    target: 3,
+    suffix: "",
+    label: "Client Websites Live",
     color: "text-sky-400",
     duration: 2400,
     delayMs: 140,
@@ -20,9 +20,9 @@ const stats = [
   },
   {
     icon: Globe,
-    target: 50,
-    suffix: "+",
-    label: "Web Apps & WordPress",
+    target: 2,
+    suffix: "",
+    label: "Countries Served",
     color: "text-amber-400",
     duration: 2200,
     delayMs: 260,
@@ -30,9 +30,9 @@ const stats = [
   },
   {
     icon: Briefcase,
-    target: 20,
-    suffix: "+",
-    label: "Projects Completed",
+    target: 10,
+    suffix: "",
+    label: "Services Offered",
     color: "text-purple-400",
     duration: 2000,
     delayMs: 380,
@@ -53,15 +53,20 @@ function AnimatedStatValue({
   delayMs?: number;
   active: boolean;
 }) {
-  const [count, setCount] = useState(0);
+  // Start at the real value so server-rendered HTML shows the true number to crawlers
+  const [count, setCount] = useState(target);
   const [finished, setFinished] = useState(false);
+  const hasActivated = useRef(false);
 
   useEffect(() => {
     if (!active) {
-      setCount(0);
-      setFinished(false);
+      if (hasActivated.current) {
+        setCount(0);
+        setFinished(false);
+      }
       return;
     }
+    hasActivated.current = true;
 
     let rafId = 0;
     let timerId: ReturnType<typeof setTimeout> | null = null;
@@ -110,8 +115,8 @@ function AnimatedStatValue({
 }
 
 const desktopHighlights = [
-  "7+ Years Full Stack & AI Experience",
-  "50+ Successfully Delivered Projects",
+  "2+ Years Full Stack & AI Experience",
+  "3 Live Client Websites (Canada & Saudi Arabia)",
   "React, TypeScript & Custom WordPress",
   "Context-Aware RAG AI Chatbots",
 ];
@@ -234,7 +239,7 @@ export default function AboutPreview() {
               </h2>
 
               <p className="text-xs sm:text-sm text-slate-600 dark:text-gray-300 leading-relaxed mb-4">
-                I am a passionate Freelance Full Stack Developer, WordPress Specialist, AI Chatbot Engineer, Automation Expert, and Viral Video Editor. Over the past 7+ years, I have helped founders, startups, and decision-makers translate ambitious ideas into high-speed web apps and high-retention video content.
+                I am a passionate Freelance Full Stack Developer, WordPress Specialist, AI Chatbot Engineer, Automation Expert, and Viral Video Editor. Over the past 2+ years, I have helped founders, startups, and decision-makers translate ambitious ideas into high-speed web apps and high-retention video content.
               </p>
 
               <p className="text-xs sm:text-sm text-slate-500 dark:text-gray-400 leading-relaxed mb-6">
@@ -304,7 +309,7 @@ export default function AboutPreview() {
 
               <div className="space-y-5 text-[15px] xl:text-[16.5px] text-slate-600 dark:text-gray-300 leading-[1.78] mb-9 max-w-2xl">
                 <p>
-                  I am <strong className="font-bold text-slate-900 dark:text-white">Faraz Ahmed</strong>, a passionate Freelance Full Stack Developer, Custom WordPress Specialist, and AI Engineer. Over the past 7+ years, I have engineered modern web systems, custom themes, RAG AI chatbots, and automated workflows that transform business operations.
+                  I am <strong className="font-bold text-slate-900 dark:text-white">Faraz Ahmed</strong>, a passionate Freelance Full Stack Developer, Custom WordPress Specialist, and AI Engineer. Over the past 2+ years, I have engineered modern web systems, custom themes, RAG AI chatbots, and automated workflows that transform business operations.
                 </p>
                 <p>
                   My goal is simple: deliver agency-level visual elegance and clean code architecture with rapid execution, helping founders and teams scale with confidence.

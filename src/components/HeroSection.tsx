@@ -54,7 +54,7 @@ export default function HeroSection() {
             <span className="block bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#38BDF8] dark:from-[#C084FC] dark:via-[#8B5CF6] dark:to-[#38BDF8] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(168,85,247,0.35)]">
               Websites &amp; AI-Powered
             </span>
-            <span className="block">Solutions.</span>
+            <span className="block">Solutions in Toronto.</span>
           </h1>
 
           {/* Subheading (Matches Pic 1) */}
@@ -132,9 +132,9 @@ export default function HeroSection() {
               duration={1600}
             />
             <StatCounter
-              target={50}
-              suffix="+"
-              label="Projects Completed"
+              target={3}
+              suffix=""
+              label="Client Websites Live"
               duration={1800}
             />
             <StatCounter

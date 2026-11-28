@@ -62,7 +62,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const serviceRoutes: MetadataRoute.Sitemap = servicesData.map((service) => ({
+  // /services/video-editing canonicalises to /video-editing, so it is left out here
+  const serviceRoutes: MetadataRoute.Sitemap = servicesData
+    .filter((service) => service.slug !== "video-editing")
+    .map((service) => ({
     url: `${SITE_URL}/services/${service.slug}`,
     lastModified: now,
     changeFrequency: "weekly",

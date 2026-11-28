@@ -32,7 +32,7 @@ export const portfolioProjects: PortfolioProject[] = [
     liveUrl: "https://eliteclasslimo.ca/",
     isRealClient: true,
     statusBadge: "Verified Client Project",
-    performanceBadge: "Performance: Sub-1s Load",
+    performanceBadge: "Speed-Optimized Build",
     highlights: [
       "Polished luxury visual presentation",
       "Comprehensive fleet & service showcase",
@@ -55,7 +55,7 @@ export const portfolioProjects: PortfolioProject[] = [
     liveUrl: "https://infostntrucking.ca/",
     isRealClient: true,
     statusBadge: "Verified Client Project",
-    performanceBadge: "Performance: 98% PageSpeed",
+    performanceBadge: "Speed-Optimized Build",
     highlights: [
       "Interactive live fleet & heavy flatbed showcase carousel",
       "Instant freight, moving & hauling quote request workflow",
@@ -78,7 +78,7 @@ export const portfolioProjects: PortfolioProject[] = [
     liveUrl: "https://xn-----dtdablc2brf0dwhzar8c3afaf.com/",
     isRealClient: true,
     statusBadge: "Verified Client Project",
-    performanceBadge: "Performance: 99% PageSpeed",
+    performanceBadge: "Speed-Optimized Build",
     highlights: [
       "Instant WhatsApp dispatch & direct calling emergency hotline",
       "Comprehensive AC, refrigeration & electronic circuit board repair showcase",
@@ -101,9 +101,9 @@ export const portfolioProjects: PortfolioProject[] = [
     liveUrl: "https://aibyfaraz.com/",
     isRealClient: true,
     statusBadge: "Live Production Platform",
-    performanceBadge: "Performance: Sub-1s Load",
+    performanceBadge: "Speed-Optimized Build",
     highlights: [
-      "Sub-1s PageSpeed load optimization",
+      "PageSpeed load optimization",
       "Interactive Gemini & OpenAI RAG assistant",
       "Live Supabase verified review vault",
       "Tailwind CSS custom glassmorphism design system",

@@ -17,7 +17,10 @@ export default function StatCounter({
   label,
   duration = 2000,
 }: StatCounterProps) {
-  const [count, setCount] = useState(0);
+  // Start at the real value so the server-rendered HTML (what crawlers read) shows
+  // e.g. "2+" instead of "0+". The count-up animation still runs once visible.
+  const [count, setCount] = useState(target);
+  const hasActivated = useRef(false);
   const [done, setDone] = useState(false);
   const [active, setActive] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -55,10 +58,13 @@ export default function StatCounter({
 
   useEffect(() => {
     if (!active) {
-      setCount(0);
-      setDone(false);
+      if (hasActivated.current) {
+        setCount(0);
+        setDone(false);
+      }
       return;
     }
+    hasActivated.current = true;
 
     let rafId = 0;
     const startTime = performance.now();
