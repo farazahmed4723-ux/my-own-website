@@ -48,7 +48,7 @@ function buildContextualActions(query: string, isLeadCaptured: boolean): ChatAct
   if (q.includes("service") || q.includes("what do you do") || q.includes("kya kaam")) {
     return [
       { label: "🚀 Explore All 6 Services", url: BOT_CONFIG.servicesUrl },
-      { label: "💰 Pricing Estimates", preset: "How much does a project cost?" },
+      { label: "💼 Request a Custom Quote", preset: "How do I get a custom project quote?" },
       { label: "💬 WhatsApp Chat", url: BOT_CONFIG.whatsappUrl, isExternal: true },
     ];
   }

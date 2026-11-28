@@ -66,7 +66,7 @@ export default function AIChatBot() {
     {
       id: "welcome-1",
       sender: "bot",
-      text: "Hi there! 👋 I'm Faraz Ahmed's AI Assistant.\n\nI can answer questions about Faraz's 50+ delivered projects, pricing estimates, Next.js / WordPress development, custom RAG AI chatbots, or viral video editing.",
+      text: "Hi there! 👋 I'm Faraz Ahmed's AI Assistant.\n\nI can answer questions about Faraz's Next.js & WordPress websites, Shopify stores, custom AI chatbots, automations, or video editing services — and help you request a custom quote.",
       time: "Just now",
     },
     {

@@ -225,7 +225,7 @@ export default function VideoPortfolioGallery({
             href="/video-editing"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#8B5CF6] to-[#A855F7] text-white text-xs font-bold hover:scale-105 transition-all shadow-md shadow-purple-900/30"
           >
-            <span>Explore All 5 Reels, Before/After &amp; Pricing Packages</span>
+            <span>Explore All 5 Reels, Before/After &amp; Editing Packages</span>
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>

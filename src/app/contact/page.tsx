@@ -4,9 +4,9 @@ import ContactPageClient from "@/components/ContactPageClient";
 import { buildBreadcrumbJsonLd, buildPageMetadata, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Contact a Toronto Web Developer — Get a Free Quote",
+  title: "Contact Toronto Web & AI Developer",
   description:
-    "Get a free quote from Toronto web developer Faraz Ahmed for a website, Shopify store, AI chatbot or automation. Message on WhatsApp or send your requirements.",
+    "Get a custom quote from Toronto web developer Faraz Ahmed for Next.js, WordPress, AI chatbots or automation. Send a message or chat on WhatsApp.",
   path: "/contact",
   keywords: [
     "Hire Faraz Ahmed",

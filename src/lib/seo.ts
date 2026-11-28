@@ -3,11 +3,13 @@ import { servicesData, ServiceItem } from "@/data/services";
 import { faqsData } from "@/data/faqs";
 import { portfolioProjects } from "@/data/portfolio";
 
-const rawEnvUrl = process.env.NEXT_PUBLIC_APP_URL || "";
+const rawEnvUrl = (process.env.NEXT_PUBLIC_APP_URL || "").trim().replace(/\/$/, "");
+const normalizedEnvUrl =
+  rawEnvUrl === "https://aibyfaraz.com" ? "https://www.aibyfaraz.com" : rawEnvUrl;
 export const SITE_URL =
-  rawEnvUrl.startsWith("http") && !rawEnvUrl.includes("localhost")
-    ? rawEnvUrl.replace(/\/$/, "")
-    : "https://aibyfaraz.com";
+  normalizedEnvUrl.startsWith("http") && !normalizedEnvUrl.includes("localhost")
+    ? normalizedEnvUrl
+    : "https://www.aibyfaraz.com";
 
 export const SITE_NAME = "AI by Faraz";
 export const FOUNDER_NAME = "Faraz Ahmed";
@@ -133,7 +135,6 @@ export function buildGlobalGraphJsonLd() {
         url: SITE_URL,
         logo: `${SITE_URL}/images/logo.jpg`,
         image: `${SITE_URL}/images/website-reference.png`,
-        priceRange: "$$",
         founder: {
           "@id": `${SITE_URL}/#faraz`,
         },

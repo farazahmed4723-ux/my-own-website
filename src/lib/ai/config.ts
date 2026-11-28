@@ -28,7 +28,7 @@ export const BOT_CONFIG = {
 export const INITIAL_SUGGESTIONS: ChatAction[] = [
   { label: "👤 Who is Faraz Ahmed?", preset: "Who is Faraz Ahmed and what is your experience?" },
   { label: "🚀 What services do you offer?", preset: "What services do you offer?" },
-  { label: "💰 Pricing & Cost Estimates", preset: "How much does a website or AI project cost?" },
+  { label: "💼 Request a Custom Quote", preset: "How do I get a custom project quote?" },
   { label: "🎬 Viral Video Editing", preset: "Tell me about your video editing and motion graphics packages." },
   { label: "💼 View Portfolio & Case Studies", preset: "What projects have you completed? Show me case studies." },
   { label: "💬 Chat on WhatsApp", url: BOT_CONFIG.whatsappUrl, isExternal: true },

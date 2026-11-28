@@ -29,12 +29,12 @@ export const KNOWLEDGE_BASE: KnowledgeChunk[] = [
     ],
     priority: 10,
     content: `
-Faraz Ahmed is the Founder & Lead AI / Full-Stack Engineer behind AI by Faraz (aibyfaraz.com), based in Toronto, Ontario, Canada.
+Faraz Ahmed is the Founder & Lead AI / Full-Stack Engineer behind AI by Faraz (www.aibyfaraz.com), based in Toronto, Ontario, Canada, with 2+ years of hands-on full-stack web & AI engineering experience.
 • Live client work: 3 client websites — Elite Class Limo (eliteclasslimo.ca), STN Trucking (infostntrucking.ca) and Tabreed & Takeef in Riyadh — plus his own AI by Faraz platform with this AI assistant.
 • Core expertise: Blazing-fast Next.js React web apps, custom headless WordPress (Elementor Pro/Bricks/Gutenberg), 24/7 custom RAG AI chatbots, autonomous AI agents, Shopify/WooCommerce e-commerce stores, and end-to-end CRM workflow automation pipelines (n8n, Make, Zapier).
 • Also specializes in high-retention viral video editing & 3D motion graphics for founders and personal brands.
-• Location: Based in Toronto, Canada. Works with ambitious clients worldwide across Canada, the United States, the UK, Europe, UAE/Middle East, and Pakistan.
-• Core philosophy: Agency-level visual elegance paired with clean, scalable code architecture, transparent milestone pricing, and rapid delivery.
+• Location: Based in Toronto, Canada. Works with ambitious clients across Toronto, the GTA, Canada, the United States, the UK, UAE/Middle East, and worldwide.
+• Core philosophy: Agency-level visual elegance paired with clean, scalable code architecture, clear milestone scopes, and rapid delivery.
     `.trim(),
   },
 
@@ -218,19 +218,16 @@ Service: Viral Video Editing & Motion Graphics (Page: /video-editing)
   4. Dynamic Camera Punch-Ins: Punch-in cuts and angle transitions so the footage never feels static.
   5. Studio SFX & Audio Clean: Wind and background room echo removed, voice mastered, punchy sound design.
 • Showcase Reels: "Canada vs Pakistan" 3D VFX reel, "Asal Kamyabi" Urdu storytelling reel, "Self-Reliance" neon animated reel.
-• Packages:
-  • Starter Pack: $150 CAD / 3 Reels (ideal for testing styles).
-  • Growth Pack: $350 CAD / 8 Reels (bi-weekly batch, full 3D VFX, motion B-roll).
-  • Authority Pack: $650 CAD / 15 Reels (daily month domination, priority 24h turnaround, custom thumbnails).
+• Packages: Starter Reel, Pro Viral Reel, and Monthly Growth Pack (10 Reels/Month) — every scope is quoted individually upon direct contact.
     `.trim(),
   },
 
   // ---------------------------------------------------------------------------
-  // 3. PRICING & ESTIMATES
+  // 3. QUOTES & ESTIMATION POLICY
   // ---------------------------------------------------------------------------
   {
     id: "pricing_guide",
-    title: "Pricing Guidelines & Estimation Policy",
+    title: "Custom Quotes & Estimation Policy",
     category: "pricing",
     keywords: [
       "price",
@@ -249,22 +246,14 @@ Service: Viral Video Editing & Motion Graphics (Page: /video-editing)
     ],
     priority: 10,
     content: `
-Pricing Guidelines & Estimates:
-Every client project is scoped with a 100% transparent, fixed-price milestone quote so there are never surprise fees or hourly overages.
+Custom Quotes & Estimation Policy:
+We do NOT publish generic fixed price lists or rate sheets online because every website, AI chatbot, automation workflow, and video package depends on your exact goals, integrations, and timeline.
 
-Starting Benchmarks (in CAD / USD equivalent):
-• High-Converting Landing Page / Business Website: $750 – $1,500 CAD (1–2 weeks delivery).
-• Custom RAG AI Chatbot / Lead Generation Assistant: $600 – $1,200 CAD (1–2 weeks delivery).
-• E-Commerce Storefront (Shopify or WooCommerce): $1,200 – $2,500 CAD (2–3 weeks delivery).
-• End-to-End AI Automation Pipeline (n8n/Make/CRM): $500 – $1,500 CAD depending on workflow complexity.
-• Full-Stack SaaS MVP / Custom Software Portal: $2,000 – $5,000+ CAD (3–5 weeks delivery).
-• Video Editing Bundles: $150 Starter (3 reels) | $350 Growth (8 reels) | $650 Authority (15 reels).
-
-Payment Terms & Guarantee:
-• Standard payment structure: 50% milestone upon kickoff & architecture approval, 50% upon final production launch & testing.
-• 100% Client Satisfaction Guarantee: Unlimited revisions during the project phase until you are thrilled with the outcome.
-• Free 30-day post-launch warranty support included for all custom websites and software builds.
-• To get an exact milestone quote for your project, share your requirements or drop your email/WhatsApp in chat!
+How Quoting Works:
+• Every client project is quoted individually after reviewing your requirements.
+• Typical timelines: Landing pages & business sites (1–2 weeks), Custom RAG AI chatbots (1–2 weeks), E-commerce storefronts (2–3 weeks), SaaS MVPs (3–5 weeks), Single video reel edits (24–48 hours).
+• Free consultation & milestone proposal: Share your requirements here, submit the form at https://www.aibyfaraz.com/contact, or message Faraz directly on WhatsApp (+1 437-434-8789) for an exact quote.
+• Client Satisfaction Focus: Milestone staging demos and post-launch support included on custom web builds.
     `.trim(),
   },
 
@@ -273,7 +262,7 @@ Payment Terms & Guarantee:
   // ---------------------------------------------------------------------------
   {
     id: "portfolio_cases",
-    title: "Portfolio, Case Studies & Verified Work",
+    title: "Portfolio, Case Studies & Client Work",
     category: "portfolio",
     keywords: [
       "portfolio",
@@ -281,11 +270,9 @@ Payment Terms & Guarantee:
       "projects",
       "case study",
       "clients",
-      "reviews",
       "elite class limo",
       "stn",
       "tabreed",
-      "testimonials",
       "proof",
     ],
     priority: 9,
@@ -300,9 +287,9 @@ Client Projects & Portfolio (Page: /portfolio):
 3. Tabreed & Takeef (Riyadh, Saudi Arabia):
    • Client: HVAC & home appliance maintenance company.
    • Built: Arabic (RTL) website with WhatsApp service dispatch and inspection booking.
-4. AI by Faraz (aibyfaraz.com): Faraz's own Next.js platform with this AI assistant.
+4. AI by Faraz (www.aibyfaraz.com): Faraz's own Next.js platform with this AI assistant.
 • Video editing samples are on /video-editing.
-• These are the only client projects to mention. Never invent other clients, case studies, reviews, or performance numbers.
+• These are the only client projects to mention. Never invent other clients, case studies, reviews, ratings, or price numbers.
     `.trim(),
   },
 
@@ -332,8 +319,8 @@ Direct Contact Channels for Faraz Ahmed:
 • WhatsApp: +1 (437) 434-8789 (Fastest response — 1-click chat: https://wa.me/14374348789)
 • Email: faraz.ahmed4723@gmail.com
 • Phone: +1 (437) 434-8789
-• Project Brief & Quote Form: https://aibyfaraz.com/contact
-• Location: Toronto, Ontario, Canada (Available across North American & International time zones).
+• Project Brief & Quote Form: https://www.aibyfaraz.com/contact
+• Location: Toronto, Ontario, Canada (Serving Toronto, Mississauga, the GTA & worldwide).
 • Consultation: Free 30-minute discovery call available to assess your website, AI workflow, or video editing vision.
     `.trim(),
   },

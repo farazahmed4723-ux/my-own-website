@@ -20,9 +20,9 @@ import {
 import { buildBreadcrumbJsonLd, buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Web Development, AI Chatbot & Automation Services in Toronto",
+  title: "Web & AI Development Services Toronto",
   description:
-    "Website development, WordPress, Shopify, AI chatbots, AI agents and automation services for Toronto and GTA businesses, by freelance developer Faraz Ahmed.",
+    "Explore website development, Next.js, WordPress, Shopify, AI chatbots and automation services in Toronto & the GTA. Contact Faraz for a custom quote.",
   path: "/services",
   keywords: [
     "Web Development Services",
@@ -147,7 +147,7 @@ export default function ServicesPage() {
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                   <Link
-                    href={service.slug === "video-editing" ? "/video-editing#pricing" : `/contact?service=${service.slug}`}
+                    href={service.slug === "video-editing" ? "/video-editing#packages" : `/contact?service=${service.slug}`}
                     className="text-[11px] font-medium text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white transition-colors"
                   >
                     {service.slug === "video-editing" ? "View Packages" : "Inquire Now"}

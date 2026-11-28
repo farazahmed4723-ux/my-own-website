@@ -354,63 +354,63 @@ export const servicesData: ServiceItem[] = [
  */
 export const serviceSeo: Record<string, { title: string; description: string; keywords: string[] }> = {
   "website-development": {
-    title: "Website Development Toronto | Next.js & WordPress",
+    title: "Website Development Toronto — Next.js & WP",
     description:
-      "Toronto web developer building fast, SEO-ready Next.js and WordPress websites for small businesses. Most business sites launch in 1–2 weeks. Get a free quote.",
+      "Custom Next.js & WordPress website development in Toronto by Faraz Ahmed. Fast, mobile-first and SEO-ready websites. Request a custom quote today.",
     keywords: ["website development Toronto", "web developer Toronto", "Next.js developer Toronto", "freelance web developer Toronto"],
   },
   "wordpress-development": {
-    title: "WordPress Developer Toronto | Custom Themes & WooCommerce",
+    title: "WordPress Developer Toronto — Custom Sites",
     description:
-      "Custom WordPress websites and WooCommerce stores for Toronto and GTA businesses — lightweight themes, speed tuning and security hardening. Message Faraz for a quote.",
+      "Custom WordPress development in Toronto using Bricks, Elementor & clean code. Built for speed, SEO and easy editing. Message Faraz for a free quote.",
     keywords: ["WordPress developer Toronto", "WordPress website development Toronto", "WooCommerce developer Toronto"],
   },
   "ai-chatbots": {
-    title: "AI Chatbot Development Toronto | Website & WhatsApp Bots",
+    title: "AI Chatbot Development Toronto — RAG Bots",
     description:
-      "AI chatbots for Toronto businesses, trained on your own services and FAQs, for your website and WhatsApp. Answer leads 24/7. Most chatbots go live in 1–2 weeks.",
+      "Custom 24/7 AI chatbot development in Toronto trained on your business docs for website & WhatsApp lead capture. Contact Faraz for a tailored quote.",
     keywords: ["AI chatbot development Toronto", "AI chatbot for business Toronto", "WhatsApp chatbot Toronto", "AI chatbot for trucking company"],
   },
   "ai-automation": {
-    title: "AI Automation Toronto | n8n, Make & CRM Workflows",
+    title: "AI Workflow Automation Toronto — n8n & Make",
     description:
-      "AI and workflow automation for Toronto small businesses with n8n, Make and Zapier — connect web forms, CRM (HubSpot, Airtable), email and WhatsApp. Get a quote.",
+      "Automate CRM leads, bookings and workflows with n8n, Make and APIs in Toronto. Save hours of manual work weekly. Contact Faraz for a custom quote.",
     keywords: ["AI automation for small business Toronto", "CRM workflow automation Toronto", "n8n automation Toronto"],
   },
   "digital-solutions": {
-    title: "Cloud, Payments & API Integrations Toronto",
+    title: "Digital Strategy & Web Solutions Toronto",
     description:
-      "Cloud hosting, Stripe payment gateways, DNS, email deliverability and API integrations for Toronto businesses on Vercel and AWS. Message Faraz for a quote.",
+      "End-to-end digital solutions in Toronto combining Next.js websites, AI chatbots, CRM integrations and conversion UX. Get your custom quote today.",
     keywords: ["Stripe integration Toronto", "cloud setup Toronto", "API integration developer Toronto"],
   },
   "seo-performance": {
-    title: "Technical SEO Toronto | Core Web Vitals & Schema",
+    title: "Technical SEO & Core Web Vitals Toronto",
     description:
-      "Technical SEO for Toronto business websites — Core Web Vitals, schema markup, sitemaps and Google Search Console setup so customers can find you on Google.",
+      "Technical SEO, Core Web Vitals speed optimization, schema markup and clean site architecture in Toronto. Book a free audit and quote with Faraz.",
     keywords: ["technical SEO Toronto", "website speed optimization Toronto", "Core Web Vitals Toronto"],
   },
   "ai-agents": {
-    title: "AI Agent Development Toronto | Custom Business AI Agents",
+    title: "AI Agent Developer Toronto — Tool Agents",
     description:
-      "Custom AI agents for Toronto small businesses that do real work — lead follow-up, scheduling, data entry and API tasks — with human approval steps. Request a quote.",
+      "Custom AI agent development in Toronto connecting LLMs safely with your CRM, calendar, docs and APIs. Reach out to Faraz for a custom project quote.",
     keywords: ["AI agent development Toronto", "AI agents for small business", "custom AI agent developer Canada"],
   },
   "ecommerce-solutions": {
-    title: "Shopify Developer Toronto | E-commerce Store Setup",
+    title: "Shopify & E-Commerce Developer Toronto",
     description:
-      "Shopify and WooCommerce store setup for Toronto and GTA brands — product pages, payments, shipping rules and a fast checkout. Message Faraz for a custom quote.",
+      "Shopify & WooCommerce e-commerce stores in Toronto built for fast mobile checkout, SEO and conversions. Request a custom store quote today.",
     keywords: ["Shopify developer Toronto", "Shopify store setup Toronto small business", "e-commerce website Toronto"],
   },
   "custom-software-development": {
-    title: "Custom Software Development Toronto | Web Apps & Dashboards",
+    title: "Custom Software & SaaS MVP Toronto",
     description:
-      "Custom web apps, client portals and dashboards for Toronto businesses, built with Next.js, TypeScript and Supabase, with clear weekly milestones. Request a quote.",
+      "Custom SaaS MVPs, portals and web apps in Toronto built with Next.js, TypeScript and PostgreSQL by Faraz Ahmed. Contact today for a custom quote.",
     keywords: ["custom software development Toronto", "web app developer Toronto", "SaaS MVP developer Toronto"],
   },
   "video-editing": {
-    title: "Video Editing Toronto | Reels, TikTok & YouTube Edits",
+    title: "Video Editing Services Toronto — Reels",
     description:
-      "Video editing in Toronto for Instagram Reels, TikTok, YouTube Shorts and brand videos — captions, motion graphics and sound design, delivered in 24–48 hours.",
+      "High-retention Instagram Reels, TikTok & YouTube Shorts editing in Toronto with 3D motion text and captions. Message Faraz for a custom quote.",
     keywords: ["video editing Toronto", "Reels editor Toronto", "short form video editor Toronto"],
   },
 };

@@ -49,15 +49,26 @@ export default function Footer() {
                 <span>faraz.ahmed4723@gmail.com</span>
               </a>
               <a
+                href="tel:+14374348789"
+                className="flex items-center gap-2 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
+                id="footer-phone-link"
+              >
+                <Phone className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                <span>Call: +1 (437) 434-8789</span>
+              </a>
+              <a
                 href="https://wa.me/14374348789"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-emerald-600 dark:hover:text-emerald-300 transition-colors"
                 id="footer-whatsapp-link"
               >
-                <Phone className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <MessageSquare className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 <span>WhatsApp: +1 (437) 434-8789</span>
               </a>
+              <p className="text-[11px] text-slate-500 dark:text-gray-400 pt-0.5">
+                Toronto, ON • Serving GTA, Mississauga &amp; Worldwide
+              </p>
             </div>
 
             {/* Social Icons Row */}

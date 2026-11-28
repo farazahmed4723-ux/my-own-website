@@ -215,7 +215,6 @@ export default function CustomCursor() {
           interactiveEl.matches("button") ||
           interactiveEl.matches("a[href*='contact']") ||
           interactiveEl.matches("a[href*='wa.me']") ||
-          interactiveEl.matches("a[href*='#write-review']") ||
           interactiveEl.matches("[id*='btn']") ||
           interactiveEl.matches("[class*='cta']") ||
           interactiveEl.hasAttribute("data-magnetic");

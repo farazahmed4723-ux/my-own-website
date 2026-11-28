@@ -14,9 +14,9 @@ import FounderShowcaseCard from "@/components/FounderShowcaseCard";
 import { buildBreadcrumbJsonLd, buildPageMetadata, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "About Faraz Ahmed — Toronto Web Developer & AI Specialist",
+  title: "About Faraz Ahmed | Toronto Web Developer",
   description:
-    "Meet Faraz Ahmed, Toronto-based founder of AI by Faraz — a freelance web developer building Next.js & WordPress websites, Shopify stores, AI chatbots and automations.",
+    "Meet Faraz Ahmed, Toronto web developer & AI specialist with 2+ years experience in Next.js, WordPress, AI chatbots and automation. Request a quote.",
   path: "/about",
   keywords: [
     "About Faraz Ahmed",

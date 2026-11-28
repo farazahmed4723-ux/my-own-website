@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans, Caveat } from "next/font/google";
 import dynamic from "next/dynamic";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -50,11 +51,11 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
   category: "technology",
   title: {
-    default: `Web Developer Toronto | AI Chatbots & Automation | ${SITE_NAME}`,
+    default: "AI by Faraz | Web Developer & AI Solutions in Toronto",
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Toronto web developer Faraz Ahmed (AI by Faraz) builds fast Next.js & WordPress websites, Shopify stores, AI chatbots and automation for small businesses. Free quote.",
+    "Faraz Ahmed (AI by Faraz) — Toronto web developer building high-converting Next.js & WordPress websites, AI chatbots and automations. Get a free quote.",
   keywords: [
     "AI by Faraz",
     "Faraz Ahmed",
@@ -82,6 +83,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_URL,
   },
+  // [TODO: GOOGLE SEARCH CONSOLE] Replace NEXT_PUBLIC_GSC_VERIFICATION or this placeholder with your Search Console verification token.
+  verification: {
+    google:
+      process.env.NEXT_PUBLIC_GSC_VERIFICATION ||
+      "TODO_PASTE_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE",
+  },
   robots: {
     index: true,
     follow: true,
@@ -98,23 +105,23 @@ export const metadata: Metadata = {
     locale: "en_CA",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `Web Developer Toronto | AI Chatbots & Automation | ${SITE_NAME}`,
+    title: "AI by Faraz | Web Developer & AI Solutions in Toronto",
     description:
-      "Toronto web developer Faraz Ahmed builds fast Next.js & WordPress websites, AI chatbots, Shopify stores and automated workflows for small businesses.",
+      "Faraz Ahmed (AI by Faraz) — Toronto web developer building high-converting Next.js & WordPress websites, AI chatbots and automations. Get a free quote.",
     images: [
       {
         url: `${SITE_URL}/images/website-reference.png`,
         width: 1200,
         height: 630,
-        alt: "AI by Faraz — Toronto Web Developer & AI Solutions Specialist",
+        alt: "AI by Faraz — Web Developer & AI Solutions in Toronto",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `Web Developer Toronto | AI Chatbots & Automation | ${SITE_NAME}`,
+    title: "AI by Faraz | Web Developer & AI Solutions in Toronto",
     description:
-      "Toronto web developer building fast Next.js & WordPress websites, AI chatbots, Shopify stores and automated workflows for small businesses.",
+      "Faraz Ahmed (AI by Faraz) — Toronto web developer building high-converting Next.js & WordPress websites, AI chatbots and automations. Get a free quote.",
     images: [`${SITE_URL}/images/website-reference.png`],
   },
   icons: {
@@ -164,6 +171,20 @@ export default function RootLayout({
           <FloatingSocialBar />
           <AIChatBot />
         </AuthProvider>
+
+        {/* Google Analytics 4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-VSTGF37NNN"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics-ga4" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-VSTGF37NNN');
+          `}
+        </Script>
       </body>
     </html>
   );

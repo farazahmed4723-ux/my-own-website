@@ -33,9 +33,9 @@ import VideoFaqAccordion from "@/components/VideoFaqAccordion";
 
 export const metadata: Metadata = buildPageMetadata({
   path: "/video-editing",
-  title: "Video Editing Toronto — Reels, TikTok & YouTube Shorts",
+  title: "Video Editing Toronto — Reels & Shorts",
   description:
-    "Turn your raw phone recordings into scroll-stopping Instagram Reels, TikToks & YouTube Shorts. Bold Roman Urdu captions, 3D text behind subject, audio cleanup, and SFX.",
+    "Scroll-stopping Instagram Reels, TikToks & YouTube Shorts in Toronto with 3D motion text, captions and clean audio. Contact Faraz for a custom quote.",
   keywords: [
     "Video Editing",
     "Viral Reels Editor",
@@ -286,18 +286,18 @@ export default function VideoEditingPage() {
         </div>
 
         {/* ========================================================
-            PRICING & PACKAGES
+            SERVICE PACKAGES (QUOTED ON INQUIRY)
             ======================================================== */}
-        <div id="pricing" className="mb-20 sm:mb-28 scroll-mt-28">
+        <div id="packages" className="mb-20 sm:mb-28 scroll-mt-28">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400">
-              Transparent Pricing
+              Tailored Scopes
             </span>
             <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-1 mb-3">
               Video Editing <span className="gradient-text-purple">Packages</span>
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-gray-300">
-              Choose single reel editing or monthly creator packages. No hidden fees.
+              Choose single reel editing or monthly creator packages. Every project is quoted individually — contact Faraz for a custom quote.
             </p>
           </div>
 
@@ -328,12 +328,12 @@ export default function VideoEditingPage() {
                   </p>
 
                   <div className="flex items-baseline gap-2 mb-6 pb-6 border-b border-slate-200 dark:border-white/10">
-                    <span className="font-heading text-4xl font-extrabold text-slate-900 dark:text-white">
+                    <span className="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
                       {pkg.price}
                     </span>
                     {pkg.period && (
                       <span className="text-xs text-slate-500 dark:text-gray-400 font-medium">
-                        {pkg.period}
+                        • {pkg.period}
                       </span>
                     )}
                   </div>
@@ -361,7 +361,7 @@ export default function VideoEditingPage() {
                   }`}
                 >
                   <MessageCircle className="w-4 h-4" />
-                  <span>Order on WhatsApp</span>
+                  <span>Request Custom Quote</span>
                 </a>
               </div>
             ))}

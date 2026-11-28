@@ -148,8 +148,6 @@ button,
 #services *,
 #portfolio,
 #portfolio *,
-#testimonials,
-#testimonials *,
 #why-choose,
 #why-choose *,
 #why-hire-me,
@@ -168,8 +166,6 @@ button,
 #services::selection,
 #portfolio *::selection,
 #portfolio::selection,
-#testimonials *::selection,
-#testimonials::selection,
 #why-choose *::selection,
 #why-choose::selection,
 #why-hire-me *::selection,
@@ -285,51 +281,6 @@ html:not(.dark) .glass-panel {
 
 .gold-radial-glow {
   background: radial-gradient(circle, rgba(214, 168, 75, 0.25) 0%, rgba(214, 168, 75, 0.05) 50%, rgba(6, 8, 19, 0) 70%);
-}
-
-/* ==========================================================================
-   Live Testimonials Marquee Slider (Smooth Infinite Sliding)
-   ========================================================================== */
-@keyframes marqueeLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes marqueeRight {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
-}
-
-.animate-marquee-left {
-  display: flex;
-  width: max-content;
-  animation: marqueeLeft 36s linear infinite;
-  will-change: transform;
-}
-
-.animate-marquee-right {
-  display: flex;
-  width: max-content;
-  animation: marqueeRight 40s linear infinite;
-  will-change: transform;
-}
-
-.animate-marquee-left:hover,
-.animate-marquee-right:hover,
-.animate-marquee-left:focus-within,
-.animate-marquee-right:focus-within,
-.animate-marquee-left:active,
-.animate-marquee-right:active {
-  animation-play-state: paused;
-}
-
-@media (max-width: 640px) {
-  .animate-marquee-left {
-    animation-duration: 26s;
-  }
-  .animate-marquee-right {
-    animation-duration: 30s;
-  }
 }
 
 /* ==========================================================================
@@ -582,7 +533,7 @@ html:not(.dark) textarea[class~="bg-black/40"] {
   color: #0F172A;
 }
 
-/* Day Mode Gradient Feature Cards (Testimonials, ContactCTA, Chatbot Header) */
+/* Day Mode Gradient Feature Cards (ContactCTA, Chatbot Header) */
 html:not(.dark) [class~="from-[#11142e]/90"]:not(.dark-preserve):not(.dark-preserve *) {
   background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(245, 243, 255, 0.94) 100%);
   border-color: rgba(139, 92, 246, 0.22);

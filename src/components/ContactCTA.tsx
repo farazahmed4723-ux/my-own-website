@@ -59,7 +59,7 @@ export default function ContactCTA() {
             <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-slate-600 dark:text-gray-400 pt-6 border-t border-slate-200 dark:border-white/[0.08]">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Transparent Fixed Scope & Pricing</span>
+                <span>Custom Fixed-Scope Proposals</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />

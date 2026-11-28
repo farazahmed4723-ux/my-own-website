@@ -475,7 +475,7 @@ export default function ContactPageClient() {
                       name="budget"
                       value={formData.budget}
                       onChange={handleChange}
-                      placeholder="e.g. $1,500 - $3,500 CAD"
+                      placeholder="Share your budget range or leave blank for a custom quote"
                       className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 transition-colors"
                     />
                   </div>

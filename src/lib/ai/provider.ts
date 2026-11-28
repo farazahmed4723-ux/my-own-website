@@ -394,28 +394,27 @@ async function* streamKnowledgeFallback(
     q.includes("budget")
   ) {
     text =
-      "Faraz Ahmed fixed-price milestone quotes provide karte hain with 100% satisfaction guarantee:\n\n" +
-      "• Landing Pages / Business Sites: $750 – $1,500 CAD (1–2 weeks delivery)\n" +
-      "• Custom RAG AI Chatbot: $600 – $1,200 CAD (1–2 weeks delivery)\n" +
-      "• Shopify / WooCommerce Store: $1,200 – $2,500 CAD (2–3 weeks delivery)\n" +
-      "• End-to-End AI Automation: $500 – $1,500 CAD\n" +
-      "• Viral Video Editing: $150 Starter (3 reels) | $350 Growth (8 reels) | $650 Authority (15 reels)\n\n" +
-      "Aap apna requirement ya budget yahan chat mein likhein, Faraz aapko personalized proposal bhejenge!";
+      "Every project is quoted individually based on your exact goals, features, and timeline — we don't publish fixed price lists online.\n\n" +
+      "Whether you need a Next.js or WordPress website, a Shopify store, a 24/7 AI chatbot, workflow automation, or video editing, simply share your requirements here or contact Faraz directly:\n\n" +
+      "• WhatsApp: +1 (437) 434-8789\n" +
+      "• Email: faraz.ahmed4723@gmail.com\n" +
+      "• Contact Form: /contact\n\n" +
+      "Aap apna project scope ya email/WhatsApp share karein — Faraz aapko tailored custom quote bhejenge!";
   } else if (q.includes("video") || q.includes("reel") || q.includes("tiktok") || q.includes("editing")) {
     text =
       "Faraz Ahmed viral video editing aur 3D motion graphics ke specialist hain!\n\n" +
       "• 3D Text Rotoscoping: Text subject ke peeche 3D space mein place kiya jata hai.\n" +
       "• Kinetic Roman Urdu & English Captions: Word-by-word dynamic highlighted subtitles.\n" +
       "• Saaf Studio Audio: Wind/room echo removal aur punchy SFX sound design.\n" +
-      "• Rapid Sentence Pacing: Zero boring pauses taake retention 90%+ rahe.\n\n" +
-      "Starter Pack 3 Reels ($150 CAD), Growth Pack 8 Reels ($350 CAD), Authority Pack 15 Reels ($650 CAD). Showcase dekhne ke liye /video-editing visit karein!";
+      "• Rapid Sentence Pacing: Zero boring pauses taake retention high rahe.\n\n" +
+      "Starter Reel, Pro Viral Reel, aur Monthly Growth Pack (10 Reels/month) available hain — custom quote aur showcase ke liye /video-editing visit karein ya WhatsApp karein!";
   } else if (q.includes("elite class limo") || q.includes("portfolio") || q.includes("project")) {
     text =
-      "Faraz Ahmed ne 50+ successful production projects deliver kiye hain, including:\n\n" +
-      "• Elite Class Limo (eliteclasslimo.ca): Toronto ka premier luxury chauffeur website with instant quote booking engine.\n" +
-      "• Lumina Boutique: High-converting luxury e-commerce fashion store (3.2x checkout lift).\n" +
-      "• RAG Customer Support AI Chatbots: Automated 65% of repetitive client inquiries.\n\n" +
-      "Check our full portfolio at /portfolio or message on WhatsApp for live demo links!";
+      "Faraz Ahmed has delivered live production websites including:\n\n" +
+      "• Elite Class Limo (eliteclasslimo.ca): Luxury chauffeur & limousine website with instant ride quotation.\n" +
+      "• STN Trucking Ltd. (infostntrucking.ca): Commercial trucking & freight website in BC.\n" +
+      "• Tabreed & Takeef (Riyadh): Arabic RTL HVAC service & booking site.\n\n" +
+      "View all projects at /portfolio or message Faraz on WhatsApp (+1 437-434-8789)!";
   } else {
     text =
       "Hello! Faraz Ahmed is a Toronto-based Full-Stack Web Developer, Custom WordPress Specialist, and AI Engineer with 50+ shipped projects.\n\n" +

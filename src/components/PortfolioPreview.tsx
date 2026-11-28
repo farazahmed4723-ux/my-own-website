@@ -74,7 +74,7 @@ export default function PortfolioPreview() {
           <div className="mt-2">
             <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-purple-500/10 border border-purple-500/20">
               <p className="text-xs sm:text-sm text-purple-700 dark:text-purple-300 font-medium">
-                Want to see the full before-and-after breakdown, pricing packages, and all viral reels?
+                Want to see the full before-and-after breakdown, scope packages, and all viral reels?
               </p>
               <Link
                 href="/video-editing"
@@ -242,7 +242,7 @@ export default function PortfolioPreview() {
             href="/video-editing"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-purple-600/10 hover:bg-purple-600/20 text-purple-600 dark:text-purple-300 border border-purple-500/30 text-xs font-bold transition-all hover:scale-105"
           >
-            <span>See all video edits, pricing &amp; Before/After &rarr;</span>
+            <span>See all video edits, packages &amp; Before/After &rarr;</span>
           </Link>
         </div>
         </>

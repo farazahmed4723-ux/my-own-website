@@ -41,15 +41,13 @@ export default function HomePage() {
       {/* 3. Services: What I Can Do For You (Matches User Request & Attachment Screenshot) */}
       <ServicesPreview />
 
-      {/* 4. Featured Projects & Solutions (Horizontal Swipe Carousel, Matches Pic 6) */}
+      {/* 4. Featured Projects & Solutions (Horizontal Swipe Carousel) */}
       <PortfolioPreview />
 
-      {/* 5. Client Reviews section turned off (Nov 2026). To restore: re-import TestimonialsSection and render it here. */}
-
-      {/* 6. Why Clients Choose My Digital Solutions (Matches Pic 3) */}
+      {/* 5. Why Clients Choose My Digital Solutions */}
       <WhyChooseMeSection />
 
-      {/* 7. Development Process: From Idea to Impact (Matches Pic 5 & Reference) */}
+      {/* 6. Development Process: From Idea to Impact */}
       <ProcessSection />
 
       {/* Desktop Deep-Dive Engineering & Specialized Services */}
@@ -60,8 +58,6 @@ export default function HomePage() {
 
       {/* Comprehensive FAQs */}
       <FAQSection />
-
-      {/* "Write a Review" section turned off (Nov 2026). To restore: re-import CustomerReviewSection and render it here. */}
 
       {/* High-Conversion Contact CTA */}
       <ContactCTA />

@@ -22,9 +22,9 @@ import {
 } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "How a Website Gets Built — 6-Stage Process (Toronto)",
+  title: "6-Stage Web & AI Development Process",
   description:
-    "Discover the transparent 6-step engineering lifecycle Faraz Ahmed uses to deliver high-speed websites and AI solutions: Discovery, Architecture, UI/UX Design, Development, QA Testing, and Launch.",
+    "See Faraz Ahmed's 6-stage Toronto web and AI development process from discovery to launch, staging demos and support. Start your project today.",
   path: "/process",
   keywords: [
     "Web Development Process",

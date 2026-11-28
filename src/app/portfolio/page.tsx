@@ -20,9 +20,9 @@ import {
 import VideoPortfolioGallery from "@/components/VideoPortfolioGallery";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Web Development Portfolio — Real Client Websites",
+  title: "Web & AI Portfolio — Real Client Projects",
   description:
-    "Real client websites built by Toronto web developer Faraz Ahmed, including Elite Class Limo, STN Trucking and Tabreed & Takeef, plus AI chatbot and automation work.",
+    "Explore live client websites built by Toronto web developer Faraz Ahmed, including Next.js apps, WordPress sites and AI chatbots. View work & inquire.",
   path: "/portfolio",
   keywords: [
     "Faraz Ahmed Portfolio",
@@ -201,7 +201,7 @@ export default function PortfolioPage() {
               href="/video-editing"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#8B5CF6] to-[#A855F7] text-white text-xs font-bold hover:scale-105 transition-all shadow-md shadow-purple-900/30 w-fit"
             >
-              <span>View Full Video Editing Showcase &amp; Pricing</span>
+              <span>View Full Video Editing Showcase &amp; Packages</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
